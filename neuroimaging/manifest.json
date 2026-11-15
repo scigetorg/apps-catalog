@@ -1,7 +1,7 @@
 {
-    "entries": 791,
+    "entries": 795,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "571ce16d71c6463f0bf1a65c8a716654827adc24"
+        "NeuroDesk/neurocontainers": "c66847eed4522cbb702701f6ae14a51b1e2ea6e3"
     },
     "app_sources": {
         "afni": {
@@ -705,10 +705,12 @@
             "gautomatch 0.56.0": "NeuroDesk/neurocontainers"
         },
         "gigaconnectome": {
-            "gigaconnectome 0.6.0": "NeuroDesk/neurocontainers"
+            "gigaconnectome 0.6.0": "NeuroDesk/neurocontainers",
+            "gigaconnectome 0.7.0": "NeuroDesk/neurocontainers"
         },
         "gigaconnectome_arm64": {
-            "gigaconnectome_arm64 0.6.0": "NeuroDesk/neurocontainers"
+            "gigaconnectome_arm64 0.6.0": "NeuroDesk/neurocontainers",
+            "gigaconnectome_arm64 0.7.0": "NeuroDesk/neurocontainers"
         },
         "gimp": {
             "gimpGUI-gimp 2.10.18": "NeuroDesk/neurocontainers",
@@ -838,6 +840,9 @@
             "julia 1.13.3": "NeuroDesk/neurocontainers",
             "vscodeGUI-julia 1.13.3": "NeuroDesk/neurocontainers",
             "REPLGUI-julia 1.13.3": "NeuroDesk/neurocontainers",
+            "julia 1.13.4": "NeuroDesk/neurocontainers",
+            "vscodeGUI-julia 1.13.4": "NeuroDesk/neurocontainers",
+            "REPLGUI-julia 1.13.4": "NeuroDesk/neurocontainers",
             "julia 1.4.1": "NeuroDesk/neurocontainers",
             "julia 1.9.4": "NeuroDesk/neurocontainers",
             "vscodeGUI-julia 1.9.4": "NeuroDesk/neurocontainers",
@@ -852,7 +857,10 @@
             "REPLGUI-julia_arm64 1.13.2": "NeuroDesk/neurocontainers",
             "julia_arm64 1.13.3": "NeuroDesk/neurocontainers",
             "vscodeGUI-julia_arm64 1.13.3": "NeuroDesk/neurocontainers",
-            "REPLGUI-julia_arm64 1.13.3": "NeuroDesk/neurocontainers"
+            "REPLGUI-julia_arm64 1.13.3": "NeuroDesk/neurocontainers",
+            "julia_arm64 1.13.4": "NeuroDesk/neurocontainers",
+            "vscodeGUI-julia_arm64 1.13.4": "NeuroDesk/neurocontainers",
+            "REPLGUI-julia_arm64 1.13.4": "NeuroDesk/neurocontainers"
         },
         "kspacefilter": {
             "kspacefilter 0.1.0": "NeuroDesk/neurocontainers"

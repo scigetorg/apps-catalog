@@ -334,6 +334,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "afni_26.3.11",
+                "doi": "https://doi.org/10.5281/zenodo.24211378",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],
@@ -350,6 +351,7 @@
                 "exec": "suma",
                 "apptainer_args": [],
                 "image": "afni_26.3.11",
+                "doi": "https://doi.org/10.5281/zenodo.24211378",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],
@@ -524,6 +526,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "amico_2.2.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211374",
                 "license": [
                     "AMICO software license agreement"
                 ],
@@ -564,6 +567,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "amico_arm64_2.2.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211380",
                 "license": [
                     "AMICO software license agreement"
                 ],
@@ -3186,10 +3190,11 @@
                 ]
             },
             "code 240320": {
-                "version": "20261112",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_240320",
+                "doi": "https://doi.org/10.5281/zenodo.24236590",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -3210,10 +3215,11 @@
     "code_arm64": {
         "apps": {
             "code_arm64 240320": {
-                "version": "20261112",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_arm64_240320",
+                "doi": "https://doi.org/10.5281/zenodo.24236676",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -3479,6 +3485,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cryosparc_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211388",
                 "license": [
                     "CryoSPARC licence (not included; installed with each user's own licence ID)",
                     "MIT"
@@ -5152,6 +5159,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "fastsurfer_2.6.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211382",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -6349,6 +6357,16 @@
                 "license": [
                     "MIT"
                 ]
+            },
+            "gigaconnectome 0.7.0": {
+                "version": "20261114",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "gigaconnectome_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.24236575",
+                "license": [
+                    "MIT"
+                ]
             }
         },
         "categories": [
@@ -6366,6 +6384,16 @@
                 "apptainer_args": [],
                 "image": "gigaconnectome_arm64_0.6.0",
                 "doi": "https://doi.org/10.5281/zenodo.23630267",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "gigaconnectome_arm64 0.7.0": {
+                "version": "20261114",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "gigaconnectome_arm64_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.24236571",
                 "license": [
                     "MIT"
                 ]
@@ -6972,6 +7000,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "heudiconv_1.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211489",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -7000,6 +7029,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "heudiconv_arm64_1.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211412",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -7480,6 +7510,36 @@
                     "MIT"
                 ]
             },
+            "julia 1.13.4": {
+                "version": "20261114",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "julia_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236691",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "vscodeGUI-julia 1.13.4": {
+                "version": "20261114",
+                "exec": "code",
+                "apptainer_args": [],
+                "image": "julia_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236691",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "REPLGUI-julia 1.13.4": {
+                "version": "20261114",
+                "exec": "julia",
+                "apptainer_args": [],
+                "image": "julia_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236691",
+                "license": [
+                    "MIT"
+                ]
+            },
             "julia 1.4.1": {
                 "version": "20210105",
                 "exec": "",
@@ -7610,6 +7670,36 @@
                 "apptainer_args": [],
                 "image": "julia_arm64_1.13.3",
                 "doi": "https://doi.org/10.5281/zenodo.23828742",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "julia_arm64 1.13.4": {
+                "version": "20261114",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "julia_arm64_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236638",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "vscodeGUI-julia_arm64 1.13.4": {
+                "version": "20261114",
+                "exec": "code",
+                "apptainer_args": [],
+                "image": "julia_arm64_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236638",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "REPLGUI-julia_arm64 1.13.4": {
+                "version": "20261114",
+                "exec": "julia",
+                "apptainer_args": [],
+                "image": "julia_arm64_1.13.4",
+                "doi": "https://doi.org/10.5281/zenodo.24236638",
                 "license": [
                     "MIT"
                 ]
@@ -8053,6 +8143,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8063,6 +8154,7 @@
                 "exec": "libreoffice",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8073,6 +8165,7 @@
                 "exec": "lowriter",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8083,6 +8176,7 @@
                 "exec": "localc",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8093,6 +8187,7 @@
                 "exec": "loimpress",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8103,6 +8198,7 @@
                 "exec": "lodraw",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8113,6 +8209,7 @@
                 "exec": "lobase",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8123,6 +8220,7 @@
                 "exec": "lomath",
                 "apptainer_args": [],
                 "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8229,6 +8327,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8239,6 +8338,7 @@
                 "exec": "libreoffice",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8249,6 +8349,7 @@
                 "exec": "lowriter",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8259,6 +8360,7 @@
                 "exec": "localc",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8269,6 +8371,7 @@
                 "exec": "loimpress",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8279,6 +8382,7 @@
                 "exec": "lodraw",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8289,6 +8393,7 @@
                 "exec": "lobase",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -8299,6 +8404,7 @@
                 "exec": "lomath",
                 "apptainer_args": [],
                 "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
                 "license": [
                     "LGPL-3.0-or-later",
                     "MPL-2.0"
@@ -9426,10 +9532,11 @@
                 ]
             },
             "mne 1.13.2": {
-                "version": "20261113",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_1.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24236588",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9444,10 +9551,11 @@
     "mne_arm64": {
         "apps": {
             "mne_arm64 1.13.2": {
-                "version": "20261113",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_arm64_1.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24236660",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9472,11 +9580,11 @@
                 ]
             },
             "mneextended 1.2.0": {
-                "version": "20261109",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_1.2.0",
-                "doi": "https://doi.org/10.5281/zenodo.24150157",
+                "doi": "https://doi.org/10.5281/zenodo.24236701",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9492,11 +9600,11 @@
     "mneextended_arm64": {
         "apps": {
             "mneextended_arm64 1.2.0": {
-                "version": "20261109",
+                "version": "20261114",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_arm64_1.2.0",
-                "doi": "https://doi.org/10.5281/zenodo.24150223",
+                "doi": "https://doi.org/10.5281/zenodo.24236569",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9615,6 +9723,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24211396",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -11154,7 +11263,8 @@
                 "version": "20261024",
                 "exec": "",
                 "apptainer_args": [],
-                "image": "openreconexample_1.0.0"
+                "image": "openreconexample_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24236684"
             }
         },
         "categories": [
