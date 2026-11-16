@@ -9915,6 +9915,15 @@
                 "license": [
                     "Apache-2.0"
                 ]
+            },
+            "mriqc 26.1.1": {
+                "version": "20261115",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "mriqc_26.1.1",
+                "license": [
+                    "Apache-2.0"
+                ]
             }
         },
         "categories": [
@@ -11070,6 +11079,15 @@
     },
     "noddi": {
         "apps": {
+            "noddi 1.0.0": {
+                "version": "20261115",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "noddi_1.0.0",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
             "noddi 1.0": {
                 "version": "20260520",
                 "exec": "",
@@ -12016,6 +12034,15 @@
                 "license": [
                     "BSD-3-Clause"
                 ]
+            },
+            "qsiprep 26.2.0": {
+                "version": "20261115",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "qsiprep_26.2.0",
+                "license": [
+                    "BSD-3-Clause"
+                ]
             }
         },
         "categories": [
@@ -12158,6 +12185,25 @@
                 "apptainer_args": [],
                 "image": "qsmxt_11.0.0",
                 "doi": "https://doi.org/10.5281/zenodo.24047780",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-2-Clause",
+                    "GPL-3.0-only",
+                    "ep3d-highres-preprocessing (no license file upstream; packaged with the author's permission)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "ep3d-highres-preprocessing (no license file upstream; packaged with the author's permission)",
+                        "url": "https://github.com/mrphysics-bonn/ep3d-highres-preprocessing"
+                    }
+                ]
+            },
+            "qsmxt 12.0.0": {
+                "version": "20261115",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "qsmxt_12.0.0",
                 "license": [
                     "Apache-2.0",
                     "BSD-2-Clause",
@@ -12421,7 +12467,7 @@
             "structural imaging",
             "workflows"
         ],
-        "description": "QSMxT is an end-to-end software toolbox for Quantitative Susceptibility Mapping (QSM), rebuilt in Rust as a single self-contained binary. This container packages upstream QSMxT 11.0.0. It reconstructs QSM from BIDS datasets, converts DICOMs to BIDS, and provides an interactive TUI.",
+        "description": "QSMxT is an end-to-end software toolbox for Quantitative Susceptibility Mapping (QSM), rebuilt in Rust as a single self-contained binary. This container packages upstream QSMxT 12.0.0. It reconstructs QSM from BIDS datasets, converts DICOMs to BIDS, and provides an interactive TUI.",
         "openrecon": true,
         "citation": "Stewart AW, Robinson SD, O’Brien K, Jin J, Widhalm G, Hangel G, Walls A, Goodwin J, Eckstein K, Tourell M, Morgan C, Narayanan A, Barth M, Bollmann S. “QSMxT: Robust masking and artifact reduction for quantitative susceptibility mapping”. Magnetic resonance in medicine 87.3 (2022): 1289-1300. https://doi.org/10.1002/mrm.29048"
     },
@@ -13132,6 +13178,24 @@
                 "apptainer_args": [],
                 "image": "rstudio_2026.10.1",
                 "doi": "https://doi.org/10.5281/zenodo.23933850",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudio 2026.11.0": {
+                "version": "20261115",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.0": {
+                "version": "20261115",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
                 "license": [
                     "AGPL-3.0-only"
                 ]

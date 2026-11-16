@@ -1,7 +1,7 @@
 {
-    "entries": 795,
+    "entries": 800,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "c66847eed4522cbb702701f6ae14a51b1e2ea6e3"
+        "NeuroDesk/neurocontainers": "713b117f3b9d796872d700aaa68cd628077d260b"
     },
     "app_sources": {
         "afni": {
@@ -1112,7 +1112,8 @@
             "mriqc 22.0.6": "NeuroDesk/neurocontainers",
             "mriqc 24.0.2": "NeuroDesk/neurocontainers",
             "mriqc 26.0.0": "NeuroDesk/neurocontainers",
-            "mriqc 26.1.0": "NeuroDesk/neurocontainers"
+            "mriqc 26.1.0": "NeuroDesk/neurocontainers",
+            "mriqc 26.1.1": "NeuroDesk/neurocontainers"
         },
         "mritools": {
             "mritools 3.3.0": "NeuroDesk/neurocontainers",
@@ -1254,6 +1255,7 @@
             "nobrainer 1.2.1": "NeuroDesk/neurocontainers"
         },
         "noddi": {
+            "noddi 1.0.0": "NeuroDesk/neurocontainers",
             "noddi 1.0": "NeuroDesk/neurocontainers"
         },
         "nomis": {
@@ -1373,7 +1375,8 @@
             "qsiprep 1.0.1": "NeuroDesk/neurocontainers",
             "qsiprep 26.0.0": "NeuroDesk/neurocontainers",
             "qsiprep 26.1.0": "NeuroDesk/neurocontainers",
-            "qsiprep 26.1.1": "NeuroDesk/neurocontainers"
+            "qsiprep 26.1.1": "NeuroDesk/neurocontainers",
+            "qsiprep 26.2.0": "NeuroDesk/neurocontainers"
         },
         "qsirecon": {
             "qsirecon 1.1.0": "NeuroDesk/neurocontainers",
@@ -1392,6 +1395,7 @@
         "qsmxt": {
             "qsmxt 10.0.0": "NeuroDesk/neurocontainers",
             "qsmxt 11.0.0": "NeuroDesk/neurocontainers",
+            "qsmxt 12.0.0": "NeuroDesk/neurocontainers",
             "qsmxt 6.3.2": "NeuroDesk/neurocontainers",
             "qsmxt 6.4.4": "NeuroDesk/neurocontainers",
             "qsmxt 7.3.3": "NeuroDesk/neurocontainers",
@@ -1500,7 +1504,9 @@
             "rstudio 2026.10.0": "NeuroDesk/neurocontainers",
             "rstudioGUI-rstudio 2026.10.0": "NeuroDesk/neurocontainers",
             "rstudio 2026.10.1": "NeuroDesk/neurocontainers",
-            "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers"
+            "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers",
+            "rstudio 2026.11.0": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers"
         },
         "samri": {
             "samri 0.5.4": "NeuroDesk/neurocontainers",
