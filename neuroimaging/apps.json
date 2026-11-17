@@ -3481,11 +3481,10 @@
     "cryosparc": {
         "apps": {
             "cryosparc 1.0.0": {
-                "version": "20261112",
+                "version": "20261116",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cryosparc_1.0.0",
-                "doi": "https://doi.org/10.5281/zenodo.24211388",
                 "license": [
                     "CryoSPARC licence (not included; installed with each user's own licence ID)",
                     "MIT"
@@ -9620,11 +9619,10 @@
     "mobstr3d": {
         "apps": {
             "mobstr3d 1.0.5": {
-                "version": "20261103",
+                "version": "20261116",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mobstr3d_1.0.5",
-                "doi": "https://doi.org/10.5281/zenodo.23933479",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -9635,7 +9633,7 @@
             "phase processing",
             "image segmentation"
         ],
-        "description": "Single-slice preprocessing from [mobstr3D](https://github.com/UOA-Heart-Mechanics-Research/mobstr3D) (Model-based Strains in 3D) for cine DENSE CMR with 3D displacement encoding, pinned to upstream commit e8cf9b20291acd14ef5ff67d40432531823fa46f. Each slice (magnitude plus x/y/z encoded phase, all frames) is processed on its own, so it can run as soon as the slice is acquired: 1. nnU-Net modelESv2 segmentation of the magnitude frames (myocardium, blood pool) 2. endocardial and epicardial contours from the labels 3. automatic seed selection and spatiotemporal quality-guided phase unwrapping 4. x/y/z displacements in mm, using the DENSE encoding frequency, scale and RCswap/RCSflip Slice correction, the pseudo-cardiac transform, model fitting and strain analysis need the whole stack and are not part of this container. Process a folder of DENSE DICOMs, one output folder per slice:",
+        "description": "Single-slice preprocessing from [mobstr3D](https://github.com/UOA-Heart-Mechanics-Research/mobstr3D) (Model-based Strains in 3D) for cine DENSE CMR with 3D displacement encoding, pinned to upstream commit f2c416e9593fb829824f92311d0ec331ba9101ca. Each slice (magnitude plus x/y/z encoded phase, all frames) is processed on its own, so it can run as soon as the slice is acquired: 1. nnU-Net modelESv2 segmentation of the magnitude frames (myocardium, blood pool) 2. endocardial and epicardial contours from the labels 3. automatic seed selection and spatiotemporal quality-guided phase unwrapping 4. x/y/z displacements in mm, using the DENSE encoding frequency, scale and RCswap/RCSflip Slice correction, the pseudo-cardiac transform, model fitting and strain analysis need the whole stack and are not part of this container. Process a folder of DENSE DICOMs, one output folder per slice:",
         "openrecon": true,
         "citation": "G. E. Harpur et al., \"mobstr3D: Open-Source Software for Analysing Cine DENSE\nCMR to Quantify Regional Heart Motion and Strain,\" JCMR 28:102336, 2026.\nhttps://doi.org/10.1016/j.jocmr.2025.102336"
     },
@@ -9719,11 +9717,10 @@
     "mp2ragedenoise": {
         "apps": {
             "mp2ragedenoise 0.1.0": {
-                "version": "20261113",
+                "version": "20261116",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
-                "doi": "https://doi.org/10.5281/zenodo.24211396",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -9921,6 +9918,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mriqc_26.1.1",
+                "doi": "https://doi.org/10.5281/zenodo.24268542",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -11084,6 +11082,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "noddi_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24268540",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -12040,6 +12039,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "qsiprep_26.2.0",
+                "doi": "https://doi.org/10.5281/zenodo.24268535",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -12204,6 +12204,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "qsmxt_12.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24268538",
                 "license": [
                     "Apache-2.0",
                     "BSD-2-Clause",
@@ -13183,7 +13184,7 @@
                 ]
             },
             "rstudio 2026.11.0": {
-                "version": "20261115",
+                "version": "20261116",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.0",
@@ -13192,7 +13193,7 @@
                 ]
             },
             "rstudioGUI-rstudio 2026.11.0": {
-                "version": "20261115",
+                "version": "20261116",
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.0",
@@ -14174,12 +14175,31 @@
                         "url": "https://github.com/UCL/STIR/blob/rel_6.4.0/LICENSES/PARAPET-license.txt"
                     }
                 ]
+            },
+            "stir 6.5.0": {
+                "version": "20261116",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "stir_6.5.0",
+                "license": [
+                    "Apache-2.0",
+                    "LGPL-2.1-or-later",
+                    "MIT",
+                    "MPL-2.0",
+                    "PARAPET license"
+                ],
+                "license_details": [
+                    {
+                        "name": "PARAPET license",
+                        "url": "https://github.com/UCL/STIR/blob/rel_6.5.0/LICENSES/PARAPET-license.txt"
+                    }
+                ]
             }
         },
         "categories": [
             "image reconstruction"
         ],
-        "description": "Software for Tomographic Image Reconstruction provides CPU PET and SPECT reconstruction, including `OSMAPOSL`, `FBP2D`, `FBP3DRP`, and `generate_image`. This build uses the stable STIR 6.4.0 source release. Python bindings, ITK, ROOT, CUDA, NiftyPET, and parallelproj support are disabled. Interfile support and STIR's CPU ray-tracing projectors are included. The release's Python bindings are incompatible with Debian's SWIG 4.1; this container provides the reconstruction command-line utilities. To run the bundled reconstruction example in a writable directory:",
+        "description": "Software for Tomographic Image Reconstruction provides CPU PET and SPECT reconstruction, including `OSMAPOSL`, `FBP2D`, `FBP3DRP`, and `generate_image`. This build uses the stable STIR 6.5.0 source release. Python bindings, ITK, ROOT, CUDA, NiftyPET, and parallelproj support are disabled. Interfile support and STIR's CPU ray-tracing projectors are included. The release's Python bindings are incompatible with Debian's SWIG 4.1; this container provides the reconstruction command-line utilities. To run the bundled reconstruction example in a writable directory:",
         "citation": "Thielemans K, Tsoumpas C, Mustafovic S, et al. STIR: software for tomographic image reconstruction release 2. Phys Med Biol. 2012;57(4):867-883. doi:10.1088/0031-9155/57/4/867"
     },
     "surfice": {

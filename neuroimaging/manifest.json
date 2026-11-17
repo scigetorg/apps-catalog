@@ -1,7 +1,7 @@
 {
-    "entries": 800,
+    "entries": 801,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "713b117f3b9d796872d700aaa68cd628077d260b"
+        "NeuroDesk/neurocontainers": "9309489e704cf0526758cf748a257d8ffaaa5a4c"
     },
     "app_sources": {
         "afni": {
@@ -1619,7 +1619,8 @@
             "StarTrack-startrack 20250920": "NeuroDesk/neurocontainers"
         },
         "stir": {
-            "stir 6.4.0": "NeuroDesk/neurocontainers"
+            "stir 6.4.0": "NeuroDesk/neurocontainers",
+            "stir 6.5.0": "NeuroDesk/neurocontainers"
         },
         "surfice": {
             "surfice 1.0.20211006": "NeuroDesk/neurocontainers",
