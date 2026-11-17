@@ -38,6 +38,11 @@ not generated `apps.json` files.
  │  (same asset set as consolidate; no wait for the 02:25 run)                     │
  └─────────────────────────────────────────────────────────────────────────────────┘
 
+ ┌─ sync-default-version.yml ── daily 03:40 UTC ──────────────────────────────────┐
+ │  releaseHistoryUrl "Latest" newer than defaultVersion and tag on Docker Hub?    │
+ │  ─► rewrite domains.json ─► npm test ─► open PR (merge ─► publish-domains)      │
+ └─────────────────────────────────────────────────────────────────────────────────┘
+
  ┌─ audit-doi-licenses.yml ── Sundays 05:00 UTC (read-only) ──────────────────────┐
  │  list Zenodo records ─► keep software records whose title is in apps.json       │
  │  ─► Zenodo licenses vs apps.json licenses (all of them, any order)              │
@@ -47,8 +52,11 @@ not generated `apps.json` files.
 ```
 
 `consolidate`, `publish-dois` and `publish-domains` share the `apps-catalog`
-concurrency group, so they never run at the same time. The `Test` workflow (not shown) runs the unit
-tests on pull requests and code pushes.
+concurrency group, so they never run at the same time. `sync-default-version`
+only opens pull requests, so it stays outside that group. The `Test` workflow
+(not shown) runs the unit tests on pull requests and code pushes; it does not
+run on the bot's PRs (GitHub skips workflows for PRs opened with
+`GITHUB_TOKEN`), which is why the bot runs `npm test` itself.
 
 ## Naming and layout
 

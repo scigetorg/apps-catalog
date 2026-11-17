@@ -22,6 +22,7 @@ scripts/workflow.mjs         # CLI: checkout | run | output-paths; multi-domain 
 scripts/catalog.mjs          # reads releases, builds catalog/manifest, license + DOI carry-over
 scripts/cloudflare.mjs       # Worker static-asset upload + post-deploy URL verification
 scripts/domains.mjs          # validates domains.json for publishing (ajv); CLI: npm run validate:domains
+scripts/default_version.mjs  # bumps container defaultVersion to the release history's Latest (tag must be on Docker Hub)
 scripts/zenodo_catalog.py    # DOI CLI: plan | publish
 scripts/doi_license.py       # recipe license resolution against Zenodo's live license catalog
 scripts/zenodo_licenses.py   # writes licenses/zenodo.json (public Zenodo API, no token)
@@ -173,6 +174,7 @@ All catalog-writing workflows share the `apps-catalog` concurrency group.
 | `audit-doi-licenses.yml` | Sundays 05:00 UTC, manual | read-only audit, uploads JSON artifact |
 | `backfill-zenodo-rights.yml` | manual only | dry run by default; `apply` edits `verified_legacy` records' license list (same DOI) |
 | `publish-domains.yml` | push to `main` touching `domains.json`, manual | validate → Cloudflare publish of `main` (same asset set as consolidate) |
+| `sync-default-version.yml` | daily 03:40 UTC, manual | bump `defaultVersion` to the `releaseHistoryUrl` Latest once on Docker Hub → `npm test` → open PR (never pushes to `main`; merge triggers publish-domains) |
 | `test.yml` | PRs and code pushes to `main` (incl. `domains.json`) | `npm test` + Python unittest, no secrets |
 
 Never add `pull_request` triggers to workflows that receive `ZENODO_TOKEN`:

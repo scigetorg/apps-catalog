@@ -1,0 +1,67 @@
+name: Sync default container version
+
+# Keeps each domain container's defaultVersion in domains.json at the release
+# its releaseHistoryUrl marks as Latest (scripts/default_version.mjs), once the
+# tag is on Docker Hub. It opens a pull request and never pushes to main;
+# merging the PR runs publish-domains.yml.
+#
+# A PR opened with GITHUB_TOKEN does not trigger test.yml, so this job runs
+# the tests itself before opening it. The repository setting "Allow GitHub
+# Actions to create and approve pull requests" must be on.
+
+on:
+  schedule:
+    - cron: '40 3 * * *'
+  workflow_dispatch: {}
+
+concurrency:
+  group: sync-default-version
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.0.0'
+          cache: npm
+      - run: npm ci
+      # Writes domains.json and the `branch`/`title` outputs when a domain has
+      # a newer Latest release. Fails if any domain could not be checked, but
+      # bumps for the other domains are still proposed below.
+      - name: Update defaultVersion from release history
+        id: sync
+        run: node scripts/default_version.mjs
+      - name: Test the updated domains.json
+        if: ${{ !cancelled() && steps.sync.outputs.branch != '' }}
+        run: npm test
+      - name: Open pull request
+        if: ${{ !cancelled() && steps.sync.outputs.branch != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ steps.sync.outputs.branch }}
+          TITLE: ${{ steps.sync.outputs.title }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # An existing branch means this bump was already proposed.
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
+            echo "Branch $BRANCH already exists; PR already opened."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git commit -m "$TITLE" -- domains.json
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "$TITLE" --body \
+            "The release history marks a newer release as Latest and its tag is on Docker Hub. Tests passed in the workflow run that opened this PR. Merging publishes \`domains.json\` (publish-domains.yml), and Neurodesk App then offers this version as the default."
