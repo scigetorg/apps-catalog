@@ -50,6 +50,21 @@ test("validates source lists and generated paths", async () => {
   await assert.rejects(readDomains(root), /Invalid source_repositories/);
 });
 
+test("domain IDs follow the published schema, including its 64-character limit", async () => {
+  const { root } = await fixture();
+  const write = (id) => writeFile(join(root, "domains.json"), JSON.stringify({
+    domains: { [id]: { source_repositories: [repo] } },
+  }));
+  for (const id of ["a", "neuro-imaging", "a".repeat(64)]) {
+    await write(id);
+    assert.deepEqual(Object.keys(await readDomains(root)), [id]);
+  }
+  for (const id of ["a".repeat(65), "Neuro", "1neuro", "neuro--imaging", "neuro-"]) {
+    await write(id);
+    await assert.rejects(readDomains(root), /Invalid domain ID/, id);
+  }
+});
+
 test("accepts a container block but does not validate its fields", async () => {
   const { root } = await fixture();
   // A malformed container must not stop catalog generation; the deploy check

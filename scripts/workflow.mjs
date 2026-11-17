@@ -8,7 +8,10 @@ import {
 } from "./catalog.mjs";
 
 const exec = promisify(execFile);
-const DOMAIN_ID = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
+// Same rule as the app's domains schema: starts with a letter, single hyphens,
+// at most 64 characters. A longer ID would generate a catalog that can never
+// be published.
+const DOMAIN_ID = /^[a-z](?:[a-z0-9]|-(?=[a-z0-9])){0,63}$/;
 const REPOSITORY = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
 const GENERATED = ["apps.json", "manifest.json"];
 export const sourcePath = (root, repository) =>
