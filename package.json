@@ -4,9 +4,11 @@
   "scripts": {
     "consolidate": "node scripts/workflow.mjs run",
     "publish:cloudflare": "node scripts/cloudflare.mjs",
-    "test": "node test/catalog.test.mjs && node test/workflow.test.mjs && node test/cloudflare.test.mjs"
+    "test": "node test/catalog.test.mjs && node test/workflow.test.mjs && node test/cloudflare.test.mjs && node test/domains.test.mjs",
+    "validate:domains": "node scripts/domains.mjs"
   },
   "dependencies": {
+    "ajv": "^8.20.0",
     "yaml": "^2.8.1"
   },
   "engines": {

@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/**'
       - 'test/**'
+      - 'domains.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/**'
@@ -13,6 +14,7 @@ on:
     paths:
       - 'scripts/**'
       - 'test/**'
+      - 'domains.json'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/**'

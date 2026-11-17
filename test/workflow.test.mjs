@@ -50,6 +50,27 @@ test("validates source lists and generated paths", async () => {
   await assert.rejects(readDomains(root), /Invalid source_repositories/);
 });
 
+test("accepts a container block but does not validate its fields", async () => {
+  const { root } = await fixture();
+  // A malformed container must not stop catalog generation; the deploy check
+  // (scripts/domains.mjs) rejects it instead.
+  const withContainer = {
+    neuroimaging: { source_repositories: [repo], container: { registry: "a;b" } },
+  };
+  await writeFile(join(root, "domains.json"), JSON.stringify({ schemaVersion: 1, domains: withContainer }));
+  assert.deepEqual(await readDomains(root), withContainer);
+  for (const container of [null, [], "image"]) {
+    await writeFile(join(root, "domains.json"), JSON.stringify({ domains: {
+      neuroimaging: { source_repositories: [repo], container },
+    } }));
+    await assert.rejects(readDomains(root), /Invalid container for neuroimaging/);
+  }
+  await writeFile(join(root, "domains.json"), JSON.stringify({ domains: {
+    neuroimaging: { source_repositories: [repo], containers: {} },
+  } }));
+  await assert.rejects(readDomains(root), /Unknown configuration field/);
+});
+
 test("domain move routes every version and carries established license", async () => {
   const { root, source } = await fixture();
   await consolidateDomains(root, domains, {

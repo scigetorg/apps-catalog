@@ -30,7 +30,16 @@ export async function readDomains(root) {
         new Set(config.source_repositories).size !== config.source_repositories.length) {
       throw new Error(`Invalid source_repositories for ${id}`);
     }
-    if (Object.keys(config).some((key) => key !== "source_repositories")) {
+    // `container` is the image Neurodesk App launches for this domain. The
+    // pipeline does not use it, so only its type is checked here: a bad
+    // container edit must not stop the catalogs from being generated. Its
+    // fields are validated against neurodesk-desktop's domains.schema.json (scripts/domains.mjs)
+    // and before every Cloudflare deploy (scripts/domains.mjs).
+    if (config.container !== undefined &&
+        (!config.container || typeof config.container !== "object" || Array.isArray(config.container))) {
+      throw new Error(`Invalid container for ${id}`);
+    }
+    if (Object.keys(config).some((key) => key !== "source_repositories" && key !== "container")) {
       throw new Error(`Unknown configuration field for ${id}`);
     }
     domains[id] = config;
