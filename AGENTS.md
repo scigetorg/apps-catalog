@@ -14,13 +14,15 @@ container images, and commit the results back to `main`.
 ## Layout
 
 ```text
-domains.json                 # allowed domains -> source_repositories (owner/repo array)
+domains.json                 # HAND-EDITED: domains -> source_repositories + optional container (see below)
 <domain>/apps.json           # GENERATED catalog (neuroimaging is the only domain today)
 <domain>/manifest.json       # GENERATED image count and source commits
 licenses/zenodo.json         # GENERATED Zenodo∩SPDX license IDs, served for neurocontainers-ui
 scripts/workflow.mjs         # CLI: checkout | run | output-paths; multi-domain orchestration
 scripts/catalog.mjs          # reads releases, builds catalog/manifest, license + DOI carry-over
 scripts/cloudflare.mjs       # Worker static-asset upload + post-deploy URL verification
+scripts/domains.mjs          # validates domains.json for publishing (ajv); CLI: npm run validate:domains
+scripts/default_version.mjs  # bumps container defaultVersion to the release history's Latest (tag must be on Docker Hub)
 scripts/zenodo_catalog.py    # DOI CLI: plan | publish
 scripts/doi_license.py       # recipe license resolution against Zenodo's live license catalog
 scripts/zenodo_licenses.py   # writes licenses/zenodo.json (public Zenodo API, no token)
@@ -44,10 +46,49 @@ repository's recipes / release JSON, or fix the generator here. When a
 code change alters output, regenerate locally rather than editing JSON by hand,
 and keep unrelated regenerated diffs out of code PRs.
 
+## Domain containers (`domains.json` → `container`)
+
+Each domain has one container image, which Neurodesk App launches. Its
+settings are the optional `container` block of that domain in `domains.json`.
+The Worker serves the whole file at `/domains.json`, so adding a domain's image
+or bumping its `defaultVersion` needs no app release. A domain may have no
+`container` yet.
+
+- Two checks, on purpose. `readDomains` (pipeline) only requires `container`
+  to be an object, so a bad container edit never stops catalog generation.
+  `scripts/domains.mjs` validates the whole file against sciget-app's
+  `domains.schema.json` in `npm test` and in `catalogAssets` before
+  every deploy, so a bad edit fails the deploy and the Worker keeps the
+  previous version.
+- Container fields reach the app's `docker run` script and its HTML, so the
+  schema only allows safe characters. The app re-validates and drops bad
+  entries, falling back to its last good copy; CI exists to stop the bad edit
+  first.
+- No two domains may share a `containerName` (their containers would collide
+  in the app); `domainsErrors` checks this, since JSON Schema cannot.
+- Never change an existing container's `containerName`, `volumeMount` or
+  `defaultStorageMount`: users' running containers and home volumes are found
+  by those names.
+- The schema is not stored here. `scripts/domains.mjs` fetches
+  `src/main/config/domains.schema.json` from the app repository
+  (`DOMAINS_SCHEMA_URL` in that file: `scigetorg/sciget-app`, branch
+  `release-v2.2.0` for now; move it to the release branch once merged).
+  Override with `DOMAINS_SCHEMA_FILE` for a local copy or the
+  `DOMAINS_SCHEMA_URL` env var for another ref. That file's source of truth is
+  `containerCatalogSchema.ts`, whose tests check the two match. A fetch
+  failure fails validation, so nothing is published, and the nightly catalog
+  deploy fails with it. Change the app's schema first; a new domain-level
+  field must also be added to `readDomains`.
+- A breaking change bumps `schemaVersion`; old apps then ignore the file and
+  keep their cache. A new optional container field needs no bump (old apps
+  drop unknown fields), but add it to the app's schema first or CI rejects it. Use
+  `minAppVersion` on a container that only newer apps can launch.
+
 ## Key rules encoded in the code
 
 - Domain IDs: lowercase slug, letters/digits/single hyphens, starts with a
-  letter. Stable even if the source repo is renamed.
+  letter, at most 64 characters. Stable even if the source repo is renamed;
+  Neurodesk App identifies the domain's container by this ID.
 - A source recipe declares `domains: [...]` in `recipes/<recipe>/build.yaml`;
   retired recipes declare them in `workflows/retired_recipes.yaml` in the
   source repo. Every release must resolve to a declared domain, and the source
@@ -132,7 +173,9 @@ All catalog-writing workflows share the `apps-catalog` concurrency group.
 | `publish-dois.yml` | daily 04:25 UTC, manual | Python tests → plan every missing licensed image (others skipped and listed; `limit` input for a smoke test) into ≤6 batches (`PUBLISH_JOBS`) → matrix publish, 6 in parallel, no new upload after 5 h (skipped when nothing is missing) |
 | `audit-doi-licenses.yml` | Sundays 05:00 UTC, manual | read-only audit, uploads JSON artifact |
 | `backfill-zenodo-rights.yml` | manual only | dry run by default; `apply` edits `verified_legacy` records' license list (same DOI) |
-| `test.yml` | PRs and code pushes to `main` | `npm test` + Python unittest, no secrets |
+| `publish-domains.yml` | push to `main` touching `domains.json`, manual | validate → Cloudflare publish of `main` (same asset set as consolidate) |
+| `sync-default-version.yml` | daily 03:40 UTC, manual | bump `defaultVersion` to the `releaseHistoryUrl` Latest once on Docker Hub → `npm test` → open PR (never pushes to `main`; merge triggers publish-domains) |
+| `test.yml` | PRs and code pushes to `main` (incl. `domains.json`) | `npm test` + Python unittest, no secrets |
 
 Never add `pull_request` triggers to workflows that receive `ZENODO_TOKEN`:
 `publish-dois` mints permanent production DOIs.
@@ -166,5 +209,8 @@ Run Python scripts as modules (`python -m scripts.<name>`) from the repo root.
 - `python -m scripts.zenodo_catalog publish` mints permanent production DOIs.
 - `python -m scripts.backfill_zenodo_rights --apply` edits published production records.
 
-Tests must not hit the network; existing tests stub `fetch`/`requests`.
+Tests must not hit the network; existing tests stub `fetch`/`requests`. The
+one exception is the domains schema: `domains.test.mjs` and
+`cloudflare.test.mjs` fetch it from the app repository (set
+`DOMAINS_SCHEMA_FILE` to run them offline).
 Follow that pattern when adding tests.

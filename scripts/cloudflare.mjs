@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { DOMAINS_PATH, readPublishedDomains } from "./domains.mjs";
 import { readDomains } from "./workflow.mjs";
 
 const API = "https://api.cloudflare.com/client/v4";
@@ -46,6 +47,15 @@ export async function catalogAssets(root) {
       throw new Error(`${path} must list licenses`);
     assets.set(path, { bytes: licenses, hash: assetHash(licenses, path) });
   }
+  // Neurodesk App reads each domain's container block from here. An invalid
+  // file throws, so a bad hand edit fails the deploy and leaves the Worker
+  // serving the previous version.
+  const domainsBytes = await readPublishedDomains(root);
+  const domainsPath = `/${DOMAINS_PATH}`;
+  assets.set(domainsPath, {
+    bytes: domainsBytes,
+    hash: assetHash(domainsBytes, domainsPath),
+  });
   return assets;
 }
 

@@ -33,6 +33,16 @@ not generated `apps.json` files.
  │  (the DOI enters apps.json at the next 02:25 consolidate)                       │
  └─────────────────────────────────────────────────────────────────────────────────┘
 
+ ┌─ publish-domains.yml ── push to main touching domains.json ────────────────────┐
+ │  check out main ─► validate domains.json ─► publish to Cloudflare Worker        │
+ │  (same asset set as consolidate; no wait for the 02:25 run)                     │
+ └─────────────────────────────────────────────────────────────────────────────────┘
+
+ ┌─ sync-default-version.yml ── daily 03:40 UTC ──────────────────────────────────┐
+ │  releaseHistoryUrl "Latest" newer than defaultVersion and tag on Docker Hub?    │
+ │  ─► rewrite domains.json ─► npm test ─► open PR (merge ─► publish-domains)      │
+ └─────────────────────────────────────────────────────────────────────────────────┘
+
  ┌─ audit-doi-licenses.yml ── Sundays 05:00 UTC (read-only) ──────────────────────┐
  │  list Zenodo records ─► keep software records whose title is in apps.json       │
  │  ─► Zenodo licenses vs apps.json licenses (all of them, any order)              │
@@ -41,9 +51,12 @@ not generated `apps.json` files.
  └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-`consolidate` and `publish-dois` share the `apps-catalog` concurrency group, so
-they never run at the same time. The `Test` workflow (not shown) runs the unit
-tests on pull requests and code pushes.
+`consolidate`, `publish-dois` and `publish-domains` share the `apps-catalog`
+concurrency group, so they never run at the same time. `sync-default-version`
+only opens pull requests, so it stays outside that group. The `Test` workflow
+(not shown) runs the unit tests on pull requests and code pushes; it does not
+run on the bot's PRs (GitHub skips workflows for PRs opened with
+`GITHUB_TOKEN`), which is why the bot runs `npm test` itself.
 
 ## Naming and layout
 
@@ -54,7 +67,9 @@ Keep it stable when a containers repository is renamed. Tool and app names
 remain scoped inside each domain's `apps.json`.
 
 `domains.json` maps each ID to a nonempty `source_repositories` list in
-`owner/repository` form. It is the allowed domain list. A source recipe declares
+`owner/repository` form, and optionally to the `container` Neurodesk App
+launches for that domain (see [Domain containers](#domain-containers)). It is
+the allowed domain list. A source recipe declares
 `domains: [neuroimaging]` in `recipes/<recipe>/build.yaml`; retired recipes
 declare domains in `workflows/retired_recipes.yaml`. Every release must resolve
 to one of those declarations. The source must be listed for every domain it
@@ -230,6 +245,55 @@ disable scheduled workflows in public
 repositories after a long period without activity; check that the schedule
 remains enabled.
 
+## Domain containers
+
+Each domain has one container image, which Neurodesk App launches. Its
+settings live in that domain's optional `container` block in `domains.json`:
+image registry, default tag, container and volume names, and remote session
+URLs. The Worker serves `domains.json` at `/domains.json`, so adding a domain's
+image or changing its default tag needs no app release.
+
+```json
+{
+  "schemaVersion": 1,
+  "domains": {
+    "neuroimaging": {
+      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "container": {
+        "title": "neurodesk",
+        "description": "Neuroimaging tools and resources ...",
+        "registry": "docker.io/vnmd/neurodesktop",
+        "defaultVersion": "2026-09-23",
+        "containerName": "neurodeskapp",
+        "volumeMount": "neurodesk-home",
+        "defaultStorageMount": "neurodesktop-storage"
+      }
+    }
+  }
+}
+```
+
+To change it, open a pull request. The `Test` workflow validates it against
+neurodesk-desktop's schema, fetched from GitHub; run `npm run validate:domains`
+locally. Once
+merged, **Publish domains** deploys it within minutes. Values reach the app's
+container launch command and its HTML, so only safe characters are allowed: no
+spaces or shell characters in names and tags, no `<`, `>`, `&` or quotes in
+text, and `https://` URLs only. Set `minAppVersion` on a container that older
+apps cannot launch. Each domain needs its own `containerName`. Do not rename an
+existing container's `containerName`, `volumeMount` or `defaultStorageMount`:
+users' containers and home volumes are found by those names.
+
+An invalid `container` does not stop the nightly catalog run; it fails the
+Cloudflare deploy, and the Worker keeps serving the previous files.
+
+The schema is not kept in this repository. `scripts/domains.mjs` fetches it
+from the app repository (`src/main/config/domains.schema.json` on
+`scigetorg/sciget-app` branch `release-v2.2.0`, set by `DOMAINS_SCHEMA_URL`),
+so a schema change is pushed there first and applies here at once. To validate
+offline, or against an unmerged schema, set `DOMAINS_SCHEMA_FILE` to a local
+copy (`DOMAINS_SCHEMA_URL` selects another branch or fork).
+
 ## Retire an image
 
 Delete its versioned release JSON in the source repository. The next catalog
@@ -246,9 +310,10 @@ CVMFS. Unreferenced SIFs older than 7 days are deleted from Nectar and S3.
 
 The workflow commits the generated catalogs, then publishes every configured
 domain as a Worker static asset at `/<domain>/apps.json`, together with
-`/licenses/zenodo.json`: the license IDs a recipe can use and still get a DOI
+`/licenses/zenodo.json` and `/domains.json`. The license list holds the license IDs a recipe can use and still get a DOI
 (Zenodo's catalogue intersected with the SPDX IDs the builder accepts). The
-neurocontainers-ui recipe editor reads that list. If the push fails,
+neurocontainers-ui recipe editor reads that list; Neurodesk App reads
+each domain's container from `domains.json`, and an invalid one fails the deploy. If the push fails,
 nothing is published. The GitHub
 repository remains the source of truth. Cloudflare serves the latest deployed
 catalog.

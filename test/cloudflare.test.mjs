@@ -15,6 +15,7 @@ async function fixture() {
   await writeFile(
     join(root, "domains.json"),
     JSON.stringify({
+      schemaVersion: 1,
       domains: {
         neuroimaging: { source_repositories: ["NeuroDesk/neurocontainers"] },
         microscopy: { source_repositories: ["Example/microcontainers"] },
@@ -58,7 +59,11 @@ test("publishes configured domain paths and requested asset batches", async () =
     workerName: "catalog",
     fetchImpl,
   });
-  assert.deepEqual(paths, ["/microscopy/apps.json", "/neuroimaging/apps.json"]);
+  assert.deepEqual(paths, [
+    "/microscopy/apps.json",
+    "/neuroimaging/apps.json",
+    "/domains.json",
+  ]);
   assert.equal(calls.length, 5);
   const manifest = JSON.parse(calls[1].options.body).manifest;
   for (const [path, asset] of assets) {
@@ -188,7 +193,9 @@ test("verifies public bytes, content type, and CORS after deployment", async () 
   const fetchImpl = async (url) => {
     requests.push(url);
     if (url.includes("api.cloudflare.com"))
-      return ok({ subdomain: { url: "https://apps-json.example.workers.dev" } });
+      return ok({
+        subdomain: { url: "https://apps-json.example.workers.dev" },
+      });
     const path = new URL(url).pathname;
     return new Response(assets.get(path).bytes, {
       headers: {
@@ -206,7 +213,11 @@ test("verifies public bytes, content type, and CORS after deployment", async () 
     }),
     "https://apps-json.example.workers.dev",
   );
-  assert.equal(requests.length, 3);
+  // One API lookup, then each asset: two catalogs and domains.json.
+  assert.equal(requests.length, 4);
+  assert.ok(
+    requests.includes("https://apps-json.example.workers.dev/domains.json"),
+  );
   assert.equal(
     requests[0],
     "https://api.cloudflare.com/client/v4/accounts/account/workers/workers/apps-json",
