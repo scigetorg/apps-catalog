@@ -25,6 +25,8 @@ const container = (overrides = {}) => ({
   volumeMount: "neurodesk-home",
   defaultStorageMount: "neurodesktop-storage",
   remoteUrl: ["https://play.neurodesk.cloud.edu.au/"],
+  appJsonUrl: "https://apps-catalog.example.workers.dev/neuroimaging/apps.json",
+  downloadUrls: ["https://example.org/mirror/{file}"],
   ...overrides,
 });
 
@@ -52,7 +54,10 @@ test("loadSchema fetches the configured URL, or DOMAINS_SCHEMA_URL", async () =>
     return new Response('{"type":"object"}');
   };
   assert.deepEqual(await loadSchema({}, fetchImpl), { type: "object" });
-  await loadSchema({ DOMAINS_SCHEMA_URL: "https://example.org/s.json" }, fetchImpl);
+  await loadSchema(
+    { DOMAINS_SCHEMA_URL: "https://example.org/s.json" },
+    fetchImpl,
+  );
   assert.deepEqual(urls, [DOMAINS_SCHEMA_URL, "https://example.org/s.json"]);
 });
 
@@ -72,7 +77,9 @@ test("loadSchema fails closed on HTTP errors, network errors and bad JSON", asyn
     /Could not fetch the domains schema .*HTTP 404/,
   );
   await assert.rejects(
-    loadSchema({}, async () => { throw new Error("offline"); }),
+    loadSchema({}, async () => {
+      throw new Error("offline");
+    }),
     /Could not fetch the domains schema .*offline/,
   );
   await assert.rejects(
@@ -115,6 +122,19 @@ for (const [label, field, value] of [
   ["http remote URL", "remoteUrl", ["http://play.neurodesk.org/"]],
   ["quote in remote URL", "remoteUrl", ["https://a.org/');alert(1);//"]],
   ["javascript release history", "releaseHistoryUrl", "javascript:alert(1)"],
+  [
+    "http appJsonUrl",
+    "appJsonUrl",
+    "http://example.org/neuroimaging/apps.json",
+  ],
+  ["javascript appJsonUrl", "appJsonUrl", "javascript:alert(1)"],
+  ["http download URL", "downloadUrls", ["http://example.org/{file}"]],
+  ["download URL with backtick", "downloadUrls", ["https://a.org/`{file}`"]],
+  [
+    "download URL string not array",
+    "downloadUrls",
+    "https://example.org/{file}",
+  ],
   ["non-semver minAppVersion", "minAppVersion", "2.1"],
 ]) {
   test(`rejects ${label}`, async () => {

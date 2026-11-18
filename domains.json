@@ -2,9 +2,7 @@
   "schemaVersion": 1,
   "domains": {
     "neuroimaging": {
-      "source_repositories": [
-        "NeuroDesk/neurocontainers"
-      ],
+      "source_repositories": ["NeuroDesk/neurocontainers"],
       "container": {
         "title": "neurodesk",
         "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
@@ -18,6 +16,11 @@
           "https://play.neurodesk.cloud.edu.au/",
           "https://play-america.neurodesk.org/",
           "https://play-europe.neurodesk.org/"
+        ],
+        "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/neuroimaging/apps.json",
+        "downloadUrls": [
+          "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+          "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
         ]
       }
     }
