@@ -1,0 +1,46 @@
+{
+    "nextpyp": {
+        "apps": {
+            "nextpyp 0.7.3": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextpyp_0.7.3",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "nextPYP (Bartesaghi lab, Duke University) is a web application for single-particle cryo-EM and cryo-electron tomography: pre-processing, particle picking, sub-tomogram averaging, constrained refinement and classification, run as projects in a browser. https://nextpyp.app nextPYP runs as two Apptainer images. This container includes the web server image (`nextPYP.sif`) and the `nextpyp` launcher. The processing image (`pyp.sif`, about 43 GB) is too large to include, so `nextpyp install` downloads it once into a directory you choose. The web server then runs from that directory in a nested Apptainer container. ### Install once Pick a writable directory with at least 50 GB free plus room for your projects (raw movies and tilt series need several TB). Every parent directory must be group- and world-executable (`chmod go+x`), which nextPYP enforces, so use project or scratch storage rather than a private home directory.",
+        "citation": "Liu, H.-F., Zhou, Y., Huang, Q., Piland, J., Jin, W., Mandel, J.,\nDu, X., Martin, J., Bartesaghi, A. nextPYP: a comprehensive and scalable\nplatform for characterizing protein variability in situ using single-particle\ncryo-electron tomography. Nat Methods 20, 1909-1919 (2023).\nhttps://doi.org/10.1038/s41592-023-02045-0"
+    },
+    "smartscope": {
+        "apps": {
+            "smartscope 0.10.0": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "smartscope_0.10.0",
+                "license": [
+                    "BSD-3-Clause",
+                    "GPL-2.0-only",
+                    "Janelia Research Campus Software License 1.2 (CTFFIND)"
+                ],
+                "license_details": [
+                    {
+                        "name": "Janelia Research Campus Software License 1.2 (CTFFIND)",
+                        "url": "https://www.janelia.org/open-science/software-licensing"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "SmartScope (NIEHS and Duke University) screens cryo-EM grids automatically. It drives the microscope through SerialEM: it acquires an atlas, finds and ranks squares and holes, collects high-magnification images and reports CTF and ice-thickness estimates in a web interface. https://smartscope.org Upstream ships SmartScope as several docker-compose services. This container runs them all from one image: MariaDB, Redis, the SmartScope web application (gunicorn behind nginx) and its Celery worker. It also includes IMOD 5.1.13 (`alignframes`) and CTFFIND 5.0.2, which SmartScope uses to process high-magnification movies. ### Create an instance once An instance directory holds the database, settings, logs and screening data. Choose a writable directory that keeps the same path in later sessions. The container image itself is read-only.",
+        "citation": "Bouvette J, Huang Q, Riccio AA, Copeland WC, Bartesaghi A,\nBorgnia MJ. Automated systematic evaluation of cryo-EM specimens with\nSmartScope. eLife 11, e80047 (2022). https://doi.org/10.7554/eLife.80047"
+    }
+}

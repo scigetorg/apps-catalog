@@ -1,0 +1,14 @@
+{
+    "entries": 2,
+    "source_commits": {
+        "NeuroDesk/neurocontainers": "c3f32d173cdbb0101387702a3097b3baf12fa459"
+    },
+    "app_sources": {
+        "nextpyp": {
+            "nextpyp 0.7.3": "NeuroDesk/neurocontainers"
+        },
+        "smartscope": {
+            "smartscope 0.10.0": "NeuroDesk/neurocontainers"
+        }
+    }
+}

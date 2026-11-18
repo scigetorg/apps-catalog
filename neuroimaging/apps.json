@@ -3485,6 +3485,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cryosparc_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296643",
                 "license": [
                     "CryoSPARC licence (not included; installed with each user's own licence ID)",
                     "MIT"
@@ -9623,6 +9624,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mobstr3d_1.0.5",
+                "doi": "https://doi.org/10.5281/zenodo.24296651",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -9721,6 +9723,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296649",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -13188,6 +13191,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -13197,6 +13201,7 @@
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -14181,6 +14186,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "stir_6.5.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296653",
                 "license": [
                     "Apache-2.0",
                     "LGPL-2.1-or-later",
