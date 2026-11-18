@@ -2,7 +2,9 @@
   "schemaVersion": 1,
   "domains": {
     "neuroimaging": {
-      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
       "container": {
         "title": "neurodesk",
         "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
@@ -25,17 +27,20 @@
       }
     },
     "microscopy": {
-      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
       "container": {
         "title": "microscopy",
         "description": "Image processing, segmentation, and quantitative analysis",
         "registry": "docker.io/vnmd/microscopy",
         "defaultVersion": "2026-11-19",
-        "releaseHistoryUrl": "",
         "containerName": "microscopy",
         "volumeMount": "microscopy-home",
         "defaultStorageMount": "microscopy-storage",
-        "remoteUrl": [],
+        "remoteUrl": [
+          "https://play-australia.sciget.org/"
+        ],
         "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/apps.json",
         "downloadUrls": [
           "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
