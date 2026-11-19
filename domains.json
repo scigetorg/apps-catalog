@@ -34,7 +34,7 @@
         "title": "microscopy",
         "description": "Image processing, segmentation, and quantitative analysis",
         "registry": "docker.io/vnmd/microscopy",
-        "defaultVersion": "2026-11-19",
+        "defaultVersion": "latest",
         "containerName": "microscopy",
         "volumeMount": "microscopy-home",
         "defaultStorageMount": "microscopy-storage",
