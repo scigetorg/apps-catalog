@@ -415,6 +415,17 @@
                     "BSD-3-Clause",
                     "GPL-3.0-only"
                 ]
+            },
+            "aidamri 3.1.0": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "aidamri_3.1.0",
+                "license": [
+                    "BSD-3-Clause",
+                    "CC-BY-NC-SA-4.0",
+                    "GPL-3.0-only"
+                ]
             }
         },
         "categories": [
@@ -434,6 +445,17 @@
                 "apptainer_args": [],
                 "image": "aidamri_arm64_3.0.0",
                 "doi": "https://doi.org/10.5281/zenodo.23629870",
+                "license": [
+                    "BSD-3-Clause",
+                    "CC-BY-NC-SA-4.0",
+                    "GPL-3.0-only"
+                ]
+            },
+            "aidamri_arm64 3.1.0": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "aidamri_arm64_3.1.0",
                 "license": [
                     "BSD-3-Clause",
                     "CC-BY-NC-SA-4.0",
@@ -12222,6 +12244,25 @@
                     }
                 ]
             },
+            "qsmxt 12.1.0": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "qsmxt_12.1.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-2-Clause",
+                    "GPL-3.0-only",
+                    "ep3d-highres-preprocessing (no license file upstream; packaged with the author's permission)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "ep3d-highres-preprocessing (no license file upstream; packaged with the author's permission)",
+                        "url": "https://github.com/mrphysics-bonn/ep3d-highres-preprocessing"
+                    }
+                ]
+            },
             "qsmxt 6.3.2": {
                 "version": "20231101",
                 "exec": "",
@@ -12471,7 +12512,7 @@
             "structural imaging",
             "workflows"
         ],
-        "description": "QSMxT is an end-to-end software toolbox for Quantitative Susceptibility Mapping (QSM), rebuilt in Rust as a single self-contained binary. This container packages upstream QSMxT 12.0.0. It reconstructs QSM from BIDS datasets, converts DICOMs to BIDS, and provides an interactive TUI.",
+        "description": "QSMxT is an end-to-end software toolbox for Quantitative Susceptibility Mapping (QSM), rebuilt in Rust as a single self-contained binary. This container packages upstream QSMxT 12.1.0. It reconstructs QSM from BIDS datasets, converts DICOMs to BIDS, and provides an interactive TUI.",
         "openrecon": true,
         "citation": "Stewart AW, Robinson SD, O’Brien K, Jin J, Widhalm G, Hangel G, Walls A, Goodwin J, Eckstein K, Tourell M, Morgan C, Narayanan A, Barth M, Bollmann S. “QSMxT: Robust masking and artifact reduction for quantitative susceptibility mapping”. Magnetic resonance in medicine 87.3 (2022): 1289-1300. https://doi.org/10.1002/mrm.29048"
     },
@@ -12715,6 +12756,22 @@
                 "apptainer_args": [],
                 "image": "rabies_0.6.3",
                 "doi": "https://doi.org/10.5281/zenodo.23850376",
+                "license": [
+                    "ACADEMIC PUBLIC LICENSE (Non-Commercial Use)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "ACADEMIC PUBLIC LICENSE (Non-Commercial Use)",
+                        "url": "https://github.com/CoBrALab/RABIES/blob/master/LICENSE"
+                    }
+                ]
+            },
+            "rabies 0.6.4": {
+                "version": "20261117",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rabies_0.6.4",
                 "license": [
                     "ACADEMIC PUBLIC LICENSE (Non-Commercial Use)"
                 ],
@@ -14590,6 +14647,15 @@
                 "license": [
                     "GPL-3.0-only"
                 ]
+            },
+            "topaz 0.3.21": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_0.3.21",
+                "license": [
+                    "GPL-3.0-only"
+                ]
             }
         },
         "categories": [
@@ -14607,6 +14673,15 @@
                 "apptainer_args": [],
                 "image": "topaz_arm64_0.3.20",
                 "doi": "https://doi.org/10.5281/zenodo.23629725",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "topaz_arm64 0.3.21": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_arm64_0.3.21",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -15328,6 +15403,24 @@
                 "apptainer_args": [],
                 "image": "whitematterlesions_0.5.20261108",
                 "doi": "https://doi.org/10.5281/zenodo.24150281",
+                "license": [
+                    "Apache-2.0",
+                    "CC-BY-4.0",
+                    "FreeSurfer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "FreeSurfer Software License Agreement",
+                        "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense"
+                    }
+                ]
+            },
+            "whitematterlesions 0.5.20261111": {
+                "version": "20261117",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "whitematterlesions_0.5.20261111",
                 "license": [
                     "Apache-2.0",
                     "CC-BY-4.0",

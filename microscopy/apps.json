@@ -6,6 +6,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nextpyp_0.7.3",
+                "doi": "https://doi.org/10.5281/zenodo.24329508",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -24,6 +25,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "smartscope_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.24329504",
                 "license": [
                     "BSD-3-Clause",
                     "GPL-2.0-only",
