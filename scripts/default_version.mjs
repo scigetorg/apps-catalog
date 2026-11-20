@@ -64,13 +64,13 @@ export async function planBumps(document, { fetchImpl = fetch } = {}) {
   const bumps = [];
   const notes = [];
   const errors = [];
-  for (const [id, { container }] of Object.entries(document.domains)) {
-    if (!container?.releaseHistoryUrl) continue;
-    const current = container.defaultVersion;
+  for (const [id, domain] of Object.entries(document.domains)) {
+    if (!domain.releaseHistoryUrl) continue;
+    const current = domain.defaultVersion;
     try {
-      const response = await get(fetchImpl, container.releaseHistoryUrl);
+      const response = await get(fetchImpl, domain.releaseHistoryUrl);
       if (!response.ok)
-        throw new Error(`${container.releaseHistoryUrl} answered HTTP ${response.status}`);
+        throw new Error(`${domain.releaseHistoryUrl} answered HTTP ${response.status}`);
       const latest = latestRelease(await response.text());
       if (latest === current) {
         notes.push(`${id}: already at ${current}`);
@@ -78,8 +78,8 @@ export async function planBumps(document, { fetchImpl = fetch } = {}) {
         notes.push(`${id}: defaultVersion ${current} is not a dated release; left alone (Latest is ${latest})`);
       } else if (latest < current) {
         notes.push(`${id}: defaultVersion ${current} is newer than Latest ${latest}; left alone`);
-      } else if (!(await tagExists(container.registry, latest, fetchImpl))) {
-        notes.push(`${id}: ${container.registry}:${latest} is not on the registry yet`);
+      } else if (!(await tagExists(domain.registry, latest, fetchImpl))) {
+        notes.push(`${id}: ${domain.registry}:${latest} is not on the registry yet`);
       } else {
         bumps.push({ id, from: current, to: latest });
       }
@@ -96,7 +96,7 @@ export async function updateDefaultVersions(root, options = {}) {
   const document = JSON.parse(await readFile(path, "utf8"));
   const plan = await planBumps(document, options);
   if (!plan.bumps.length) return plan;
-  for (const { id, to } of plan.bumps) document.domains[id].container.defaultVersion = to;
+  for (const { id, to } of plan.bumps) document.domains[id].defaultVersion = to;
   const invalid = await domainsErrors(document);
   if (invalid.length)
     throw new Error(`bumped ${DOMAINS_PATH} would be invalid:\n  ${invalid.join("\n  ")}`);

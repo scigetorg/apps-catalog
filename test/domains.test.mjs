@@ -30,11 +30,11 @@ const container = (overrides = {}) => ({
   ...overrides,
 });
 
-// domains.json with the given container block for neuroimaging.
+// domains.json with the given launch fields for neuroimaging.
 const withContainer = (block) => ({
   schemaVersion: 1,
   domains: {
-    neuroimaging: { source_repositories: SOURCES, container: block },
+    neuroimaging: { source_repositories: SOURCES, ...block },
   },
 });
 
@@ -93,11 +93,11 @@ test("the repository's domains.json is valid for the pipeline and for publishing
   await readPublishedDomains(repoRoot);
 });
 
-test("accepts a domain with a container", async () => {
+test("accepts a domain with launch fields", async () => {
   assert.deepEqual(await domainsErrors(withContainer(container())), []);
 });
 
-test("accepts a domain that has no container yet", async () => {
+test("accepts a domain that has no launch fields yet", async () => {
   const errors = await domainsErrors({
     schemaVersion: 1,
     domains: { microscopy: { source_repositories: ["Example/micro"] } },
@@ -142,19 +142,19 @@ for (const [label, field, value] of [
       withContainer(container({ [field]: value })),
     );
     assert.ok(
-      errors.some((error) => error.includes(`/container/${field}`)),
+      errors.some((error) => error.includes(`/domains/neuroimaging/${field}`)),
       `expected an error at ${field}, got ${JSON.stringify(errors)}`,
     );
   });
 }
 
-test("rejects a container missing a required field", async () => {
+test("rejects launch fields missing a required field", async () => {
   const block = container();
   delete block.registry;
   assert.notDeepEqual(await domainsErrors(withContainer(block)), []);
 });
 
-test("rejects an unknown container field, so typos are caught", async () => {
+test("rejects an unknown launch field, so typos are caught", async () => {
   const errors = await domainsErrors(
     withContainer({ ...container(), defaultVerison: "x" }),
   );
@@ -174,7 +174,7 @@ for (const [label, value] of [
   ],
   [
     "a domain without source repositories",
-    { schemaVersion: 1, domains: { neuroimaging: { container: container() } } },
+    { schemaVersion: 1, domains: { neuroimaging: container() } },
   ],
   [
     "a malformed source repository",
@@ -208,10 +208,10 @@ test("accepts two domains with their own containerNames", async () => {
   const errors = await domainsErrors({
     schemaVersion: 1,
     domains: {
-      neuroimaging: { source_repositories: SOURCES, container: container() },
+      neuroimaging: { source_repositories: SOURCES, ...container() },
       microscopy: {
         source_repositories: ["Example/micro"],
-        container: container({
+        ...container({
           title: "microscopy",
           containerName: "microapp",
         }),
@@ -225,10 +225,10 @@ test("rejects two domains sharing a containerName", async () => {
   const errors = await domainsErrors({
     schemaVersion: 1,
     domains: {
-      neuroimaging: { source_repositories: SOURCES, container: container() },
+      neuroimaging: { source_repositories: SOURCES, ...container() },
       microscopy: {
         source_repositories: ["Example/micro"],
-        container: container({ title: "microscopy" }),
+        ...container({ title: "microscopy" }),
       },
     },
   });
@@ -249,7 +249,7 @@ test("catalogAssets publishes domains.json byte for byte", async () => {
   assert.equal(assets.get("/domains.json").bytes.toString("utf8"), text);
 });
 
-test("a bad container fails the deploy but not catalog generation", async () => {
+test("bad launch fields fail the deploy but not catalog generation", async () => {
   const root = await fixture(
     JSON.stringify(withContainer(container({ registry: "a;b" }))),
   );

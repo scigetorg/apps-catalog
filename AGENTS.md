@@ -14,7 +14,7 @@ container images, and commit the results back to `main`.
 ## Layout
 
 ```text
-domains.json                 # HAND-EDITED: domains -> source_repositories + optional container (see below)
+domains.json                 # HAND-EDITED: domains -> source_repositories + optional launch fields (see below)
 <domain>/apps.json           # GENERATED catalog (neuroimaging is the only domain today)
 <domain>/manifest.json       # GENERATED image count and source commits
 licenses/zenodo.json         # GENERATED Zenodo∩SPDX license IDs, served for neurocontainers-ui
@@ -46,16 +46,26 @@ repository's recipes / release JSON, or fix the generator here. When a
 code change alters output, regenerate locally rather than editing JSON by hand,
 and keep unrelated regenerated diffs out of code PRs.
 
-## Domain containers (`domains.json` → `container`)
+## Domain containers (`domains.json` → domain fields)
 
 Each domain has one container image, which Neurodesk App launches. Its
-settings are the optional `container` block of that domain in `domains.json`.
+settings are optional fields alongside `source_repositories` in `domains.json`.
 The Worker serves the whole file at `/domains.json`, so adding a domain's image
 or bumping its `defaultVersion` needs no app release. A domain may have no
-`container` yet.
+launch fields yet.
 
-- Two checks, on purpose. `readDomains` (pipeline) only requires `container`
-  to be an object, so a bad container edit never stops catalog generation.
+Other readers depend on this shape. NeuroDesk/neurocontainers checks recipe
+`domains` against the domain IDs and `source_repositories`
+(`tools/validate_domains.py`), merges each `<domain>/apps.json` for upload and
+dashboard inventories (`tools/merge_domain_catalogs.py`), and uses those
+inventories plus source releases to protect images during cleanup and registry
+pruning (`tools/cleanup_stale_containers.py`). A recipe `domains:` edit changes
+catalog routing without rebuilding the container. Neurodesk App reads the
+`schemaVersion: 1` envelope and flat launch fields; scidesktop reads each
+domain's `title` and `appJsonUrl`.
+
+- Two checks, on purpose. `readDomains` (pipeline) checks launch field names
+  but not their values, so a bad value never stops catalog generation.
   `scripts/domains.mjs` validates the whole file against sciget-app's
   `domains.schema.json` in `npm test` and in `catalogAssets` before
   every deploy, so a bad edit fails the deploy and the Worker keeps the
@@ -79,9 +89,10 @@ or bumping its `defaultVersion` needs no app release. A domain may have no
   failure fails validation, so nothing is published, and the nightly catalog
   deploy fails with it. Change the app's schema first; a new domain-level
   field must also be added to `readDomains`.
-- A breaking change bumps `schemaVersion`; old apps then ignore the file and
-  keep their cache. A new optional container field needs no bump (old apps
-  drop unknown fields), but add it to the app's schema first or CI rejects it. Use
+- After a consumer release, a breaking change bumps `schemaVersion`; old apps
+  then ignore the file and keep their cache. A new optional launch field
+  needs no bump (old apps drop unknown fields), but add it to the app's schema
+  first or CI rejects it. Use
   `minAppVersion` on a container that only newer apps can launch.
 
 ## Key rules encoded in the code

@@ -1,6 +1,6 @@
 name: Publish domains
 
-# domains.json is edited by hand. Neurodesk App reads each domain's container
+# domains.json is edited by hand. Neurodesk App reads each domain's launch fields
 # block from it, so publish it as soon as it lands on main instead of waiting
 # for the nightly consolidate run. A deploy replaces every
 # asset, so this republishes the committed apps catalogs and license list too;
