@@ -1,7 +1,7 @@
 # Neurodesk apps catalog
 
 This directory is the root of the future public `Neurodesk/apps.json` GitHub
-repository. The active domain is `neuroimaging`, sourced from
+repository. The active domains are `neuroimaging` and `microscopy`, sourced from
 `Neurodesk/neurocontainers`. Catalogs are generated from
 configured source repositories; edit their recipe metadata and release files,
 not generated `apps.json` files.
@@ -12,35 +12,33 @@ not generated `apps.json` files.
                      neurocontainers repo                      Zenodo (production)
                 (releases/*.json, recipes/*/build.yaml)
                               │
- ┌─ consolidate.yml ── daily 02:25 UTC ───────────────────────────────────────────┐
+ ┌─ consolidate.yml ── daily 02:25 UTC, manual, or domains.json push to main ─────┐
+ │  prepare: reuse existing catalogs for launch-only pushes                        │
+ │  otherwise regenerate all configured domains:                                   │
  │  clone sources ─► build catalog from release JSON (domains from build.yaml)     │
  │                   ├─ DOIs:     look up published records ◄──────────── Zenodo   │
  │                   └─ licenses: every image, from recipe git history             │
  │                                → newest commit declaring its version            │
  │  ─► write <domain>/apps.json + manifest.json                                    │
  │  ─► refresh licenses/zenodo.json from Zenodo ∩ SPDX (failure keeps old file)    │
- │  ─► commit + push main ─► publish to Cloudflare Worker                          │
+ │  ─► commit + push main                                                          │
+ │  deploy: validate and publish the prepared commit to Cloudflare                 │
  └─────────────────────────────────────────────────────────────────────────────────┘
-                              │ apps.json on main
+                              │ after full preparation, in parallel with deploy
                               ▼
- ┌─ publish-dois.yml ── daily 04:25 UTC ──────────────────────────────────────────┐
+ ┌─ publish-dois.yml ── called with the prepared commit, or run manually ─────────┐
  │  plan:    unit tests ─► licensed images in apps.json with no Zenodo record      │
  │           ─► split into ≤ 6 batches (none missing → stop)                       │
  │  publish: 6 parallel jobs, per image:                                           │
  │           recipe-history license == apps.json license?                          │
  │             no  ─► log FAILED, continue with the next image                     │
  │             yes ─► Zenodo draft ─► stream S3 SIF ─► publish ─────────► DOI      │
- │  (the DOI enters apps.json at the next 02:25 consolidate)                       │
- └─────────────────────────────────────────────────────────────────────────────────┘
-
- ┌─ publish-domains.yml ── push to main touching domains.json ────────────────────┐
- │  check out main ─► validate domains.json ─► publish to Cloudflare Worker        │
- │  (same asset set as consolidate; no wait for the 02:25 run)                     │
+ │  (the DOI enters apps.json at the next full consolidation)                      │
  └─────────────────────────────────────────────────────────────────────────────────┘
 
  ┌─ sync-default-version.yml ── daily 03:40 UTC ──────────────────────────────────┐
  │  releaseHistoryUrl "Latest" newer than defaultVersion and tag on Docker Hub?    │
- │  ─► rewrite domains.json ─► npm test ─► open PR (merge ─► publish-domains)      │
+ │  ─► rewrite domains.json ─► npm test ─► open PR (merge triggers consolidate)    │
  └─────────────────────────────────────────────────────────────────────────────────┘
 
  ┌─ audit-doi-licenses.yml ── Sundays 05:00 UTC (read-only) ──────────────────────┐
@@ -51,9 +49,15 @@ not generated `apps.json` files.
  └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-`consolidate`, `publish-dois` and `publish-domains` share the `apps-catalog`
-concurrency group, so they never run at the same time. `sync-default-version`
-only opens pull requests, so it stays outside that group. The `Test` workflow
+On a domain push, preparation regenerates if any configured domain lacks
+`apps.json` or `manifest.json`, or its manifest lists different source
+repositories. Other domain edits deploy the committed catalogs immediately.
+Scheduled and manual runs always regenerate. Preparation, Cloudflare deployment,
+and DOI publication each have their own queue. A failed Cloudflare job can be
+retried independently. A retry skips publication if its deployment inputs have
+changed on `main`.
+
+The `Test` workflow
 (not shown) runs the unit tests on pull requests and code pushes; it does not
 run on the bot's PRs (GitHub skips workflows for PRs opened with
 `GITHUB_TOKEN`), which is why the bot runs `npm test` itself.
@@ -83,10 +87,10 @@ microscopy/apps.json         # generated after its source is configured
 microscopy/manifest.json     # generated
 ```
 
-Microscopy is an example only. To add it later, list the source repositories
-under `microscopy` in `domains.json` before recipes declare that domain. An
-empty configured domain publishes an empty catalog until its
-first app arrives.
+To add a domain, merge its entry in `domains.json` first. Wait for the catalog
+workflow to generate its files and deploy `/<domain>/apps.json`, then merge
+upstream recipes that declare it. A domain with no matching releases starts
+with an empty catalog.
 
 ### Who reads `domains.json`
 
@@ -255,12 +259,12 @@ Set `ZENODO_API_ROOT=https://sandbox.zenodo.org/api` with a sandbox token to try
    Website consumers should read the catalog directly and use
    `show_in_applist` to select visible entries. The catalog workflow sends
    no dispatch event and needs no website token.
-4. Run **Consolidate apps catalog**, then **Publish apps catalog DOIs** manually
-   with `limit: 1` first. Check that record on zenodo.org (licenses, file, DOI)
+4. To smoke-test an existing committed catalog, run **Publish apps catalog DOIs**
+   manually with `limit: 1` before enabling automatic runs. Check that record on zenodo.org (licenses, file, DOI)
    before the first full run, because DOIs are permanent. Check the files under `neuroimaging/` and website consumption before
    archiving `neurocommand` or disabling its old queue.
 
-The catalog workflow runs daily at 02:25 UTC; DOI publication runs at 04:25 UTC.
+The catalog workflow runs daily at 02:25 UTC. Full preparation triggers DOI publication.
 The DOI license audit runs Sundays at 05:00 UTC.
 The catalog workflow commits generated files using the repository `GITHUB_TOKEN`. GitHub may
 disable scheduled workflows in public
@@ -295,8 +299,7 @@ image or changing its default tag needs no app release.
 
 To change it, open a pull request. The `Test` workflow validates it against
 neurodesk-desktop's schema, fetched from GitHub; run `npm run validate:domains`
-locally. Once
-merged, **Publish domains** deploys it within minutes. Values reach the app's
+locally. Once merged, **Consolidate apps catalog** prepares and deploys the update. Values reach the app's
 container launch command and its HTML, so only safe characters are allowed: no
 spaces or shell characters in names and tags, no `<`, `>`, `&` or quotes in
 text, and `https://` URLs only. Set `minAppVersion` on a container that older

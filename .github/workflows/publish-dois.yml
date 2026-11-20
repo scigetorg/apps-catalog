@@ -1,9 +1,15 @@
 name: Publish apps catalog DOIs
 
 on:
-  workflow_run:
-    workflows: ["Consolidate apps catalog"]
-    types: [completed]
+  workflow_call:
+    inputs:
+      catalog_sha:
+        description: 'Catalog commit produced by the prepare job'
+        type: string
+        required: true
+    secrets:
+      ZENODO_TOKEN:
+        required: true
   workflow_dispatch:
     inputs:
       limit:
@@ -12,21 +18,21 @@ on:
         default: '0'
 
 concurrency:
-  group: apps-catalog
-  cancel-in-progress: false
+  group: zenodo-doi-publication
+  queue: max
 
 permissions:
   contents: read
 
 jobs:
   plan:
-    # Skip when triggered by a failed or cancelled consolidate run.
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     outputs:
       batches: ${{ steps.plan.outputs.batches }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.catalog_sha || github.sha }}
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
@@ -64,6 +70,8 @@ jobs:
         artifacts: ${{ fromJSON(needs.plan.outputs.batches) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.catalog_sha || github.sha }}
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'

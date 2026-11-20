@@ -3,7 +3,7 @@ name: Sync default container version
 # Keeps each domain container's defaultVersion in domains.json at the release
 # its releaseHistoryUrl marks as Latest (scripts/default_version.mjs), once the
 # tag is on Docker Hub. It opens a pull request and never pushes to main;
-# merging the PR runs publish-domains.yml.
+# merging the PR runs consolidate.yml.
 #
 # A PR opened with GITHUB_TOKEN does not trigger test.yml, so this job runs
 # the tests itself before opening it. The repository setting "Allow GitHub
@@ -64,4 +64,4 @@ jobs:
           git commit -m "$TITLE" -- domains.json
           git push origin "$BRANCH"
           gh pr create --base main --head "$BRANCH" --title "$TITLE" --body \
-            "The release history marks a newer release as Latest and its tag is on Docker Hub. Tests passed in the workflow run that opened this PR. Merging publishes \`domains.json\` (publish-domains.yml), and Neurodesk App then offers this version as the default."
+            "The release history marks a newer release as Latest and its tag is on Docker Hub. Tests passed in the workflow run that opened this PR. Merging triggers the catalog workflow to publish \`domains.json\`, and Neurodesk App then offers this version as the default."
