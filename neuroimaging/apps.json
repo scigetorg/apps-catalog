@@ -362,6 +362,38 @@
                         "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
                     }
                 ]
+            },
+            "afni 26.3.12": {
+                "version": "20261119",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "afni_26.3.12",
+                "license": [
+                    "AFNI public domain core and restricted third-party components"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "AFNI public domain core and restricted third-party components",
+                        "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
+                    }
+                ]
+            },
+            "sumaGUI-afni 26.3.12": {
+                "version": "20261119",
+                "exec": "suma",
+                "apptainer_args": [],
+                "image": "afni_26.3.12",
+                "license": [
+                    "AFNI public domain core and restricted third-party components"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "AFNI public domain core and restricted third-party components",
+                        "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
+                    }
+                ]
             }
         },
         "categories": [
@@ -3212,11 +3244,10 @@
                 ]
             },
             "code 240320": {
-                "version": "20261114",
+                "version": "20261119",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_240320",
-                "doi": "https://doi.org/10.5281/zenodo.24236590",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -3237,11 +3268,10 @@
     "code_arm64": {
         "apps": {
             "code_arm64 240320": {
-                "version": "20261114",
+                "version": "20261119",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_arm64_240320",
-                "doi": "https://doi.org/10.5281/zenodo.24236676",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -9554,11 +9584,10 @@
                 ]
             },
             "mne 1.13.2": {
-                "version": "20261114",
+                "version": "20261119",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_1.13.2",
-                "doi": "https://doi.org/10.5281/zenodo.24236588",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9573,11 +9602,10 @@
     "mne_arm64": {
         "apps": {
             "mne_arm64 1.13.2": {
-                "version": "20261114",
+                "version": "20261119",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_arm64_1.13.2",
-                "doi": "https://doi.org/10.5281/zenodo.24236660",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -14761,6 +14789,42 @@
                 "image": "topofit_0.6.0",
                 "doi": "https://doi.org/10.5281/zenodo.23630251",
                 "license": [
+                    "FreeSurfer Software License Agreement",
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "FreeSurfer Software License Agreement",
+                        "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense"
+                    }
+                ]
+            },
+            "topofit 0.7.0": {
+                "version": "20261119",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topofit_0.7.0",
+                "license": [
+                    "CC-BY-4.0",
+                    "FreeSurfer Software License Agreement",
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "FreeSurfer Software License Agreement",
+                        "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense"
+                    }
+                ]
+            },
+            "topofit 0.8.0": {
+                "version": "20261119",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topofit_0.8.0",
+                "license": [
+                    "CC-BY-4.0",
                     "FreeSurfer Software License Agreement",
                     "GPL-3.0-only"
                 ],
