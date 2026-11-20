@@ -41,7 +41,7 @@ const documentWith = (block) => ({
   domains: {
     neuroimaging: {
       source_repositories: ["NeuroDesk/neurocontainers"],
-      ...(block ? { container: block } : {}),
+      ...(block ?? {}),
     },
   },
 });
@@ -116,7 +116,7 @@ for (const [label, options, block, note] of [
   });
 }
 
-test("planBumps skips domains without a container or a release history", async () => {
+test("planBumps skips domains without launch fields or a release history", async () => {
   const { fetchImpl, urls } = stub();
   const noHistory = container();
   delete noHistory.releaseHistoryUrl;
@@ -130,7 +130,7 @@ test("planBumps reports a failing page per domain and still bumps the others", a
   const document = documentWith(container());
   document.domains.microscopy = {
     source_repositories: ["Example/micro"],
-    container: container({
+    ...container({
       containerName: "microapp",
       releaseHistoryUrl: "https://example.org/missing.mdx",
     }),

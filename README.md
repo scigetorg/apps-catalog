@@ -67,8 +67,8 @@ Keep it stable when a containers repository is renamed. Tool and app names
 remain scoped inside each domain's `apps.json`.
 
 `domains.json` maps each ID to a nonempty `source_repositories` list in
-`owner/repository` form, and optionally to the `container` Neurodesk App
-launches for that domain (see [Domain containers](#domain-containers)). It is
+`owner/repository` form, and optionally to the launch fields Neurodesk App
+uses for that domain (see [Domain containers](#domain-containers)). It is
 the allowed domain list. A source recipe declares
 `domains: [neuroimaging]` in `recipes/<recipe>/build.yaml`; retired recipes
 declare domains in `workflows/retired_recipes.yaml`. Every release must resolve
@@ -87,6 +87,28 @@ Microscopy is an example only. To add it later, list the source repositories
 under `microscopy` in `domains.json` before recipes declare that domain. An
 empty configured domain publishes an empty catalog until its
 first app arrives.
+
+### Who reads `domains.json`
+
+- **NeuroDesk/neurocontainers** validates each active and retired recipe's
+  `domains: [...]` against the top-level `domains` map and checks that each
+  domain's `source_repositories` allows `NeuroDesk/neurocontainers`
+  (`tools/validate_domains.py`). A recipe's `domains:` controls where this
+  catalog publishes it. Changing that field is a catalog change and does not
+  require a new container build (`workflows/ONE_PR_RELEASES.md`).
+- Neurocontainers workflows use each domain ID to read `<domain>/apps.json`
+  and merge the catalogs into inventories for uploads and dashboard status
+  (`tools/merge_domain_catalogs.py`). Storage cleanup and registry pruning use
+  those inventories to keep published images. Cleanup also reads the listed
+  source repositories' releases so images awaiting catalog publication are
+  protected (`tools/cleanup_stale_containers.py`).
+- **Neurodesk App** reads a `schemaVersion: 1` envelope with a `domains` map.
+  Each domain ID has `source_repositories` and optional launch fields at the
+  same level: `title`, `description`, `registry`, `defaultVersion`,
+  `containerName`, `volumeMount`, `defaultStorageMount`,
+  `releaseHistoryUrl`, `remoteUrl`, `appJsonUrl`, `downloadUrls`, `tags`, and
+  `minAppVersion`. The app validates launch fields before using them.
+- **scidesktop** reads each domain's `title` and `appJsonUrl` from this file.
 
 ## Consolidation rules
 
@@ -248,7 +270,7 @@ remains enabled.
 ## Domain containers
 
 Each domain has one container image, which Neurodesk App launches. Its
-settings live in that domain's optional `container` block in `domains.json`:
+settings live alongside `source_repositories` in `domains.json`:
 image registry, default tag, container and volume names, and remote session
 URLs. The Worker serves `domains.json` at `/domains.json`, so adding a domain's
 image or changing its default tag needs no app release.
@@ -259,15 +281,13 @@ image or changing its default tag needs no app release.
   "domains": {
     "neuroimaging": {
       "source_repositories": ["NeuroDesk/neurocontainers"],
-      "container": {
-        "title": "neurodesk",
-        "description": "Neuroimaging tools and resources ...",
-        "registry": "docker.io/vnmd/neurodesktop",
-        "defaultVersion": "2026-09-23",
-        "containerName": "neurodeskapp",
-        "volumeMount": "neurodesk-home",
-        "defaultStorageMount": "neurodesktop-storage"
-      }
+      "title": "neurodesk",
+      "description": "Neuroimaging tools and resources ...",
+      "registry": "docker.io/vnmd/neurodesktop",
+      "defaultVersion": "2026-09-23",
+      "containerName": "neurodeskapp",
+      "volumeMount": "neurodesk-home",
+      "defaultStorageMount": "neurodesktop-storage"
     }
   }
 }
@@ -284,7 +304,7 @@ apps cannot launch. Each domain needs its own `containerName`. Do not rename an
 existing container's `containerName`, `volumeMount` or `defaultStorageMount`:
 users' containers and home volumes are found by those names.
 
-An invalid `container` does not stop the nightly catalog run; it fails the
+Invalid launch fields do not stop the nightly catalog run; they fail the
 Cloudflare deploy, and the Worker keeps serving the previous files.
 
 The schema is not kept in this repository. `scripts/domains.mjs` fetches it
@@ -313,7 +333,7 @@ domain as a Worker static asset at `/<domain>/apps.json`, together with
 `/licenses/zenodo.json` and `/domains.json`. The license list holds the license IDs a recipe can use and still get a DOI
 (Zenodo's catalogue intersected with the SPDX IDs the builder accepts). The
 neurocontainers-ui recipe editor reads that list; Neurodesk App reads
-each domain's container from `domains.json`, and an invalid one fails the deploy. If the push fails,
+each domain's launch fields from `domains.json`, and invalid fields fail the deploy. If the push fails,
 nothing is published. The GitHub
 repository remains the source of truth. Cloudflare serves the latest deployed
 catalog.

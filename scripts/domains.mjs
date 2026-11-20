@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
 // domains.json is published for Neurodesk App. Each domain has one container
-// image, described by its optional `container` block, which the app fetches
+// image, described by optional fields alongside source_repositories, which the app fetches
 // to know what it can launch. readDomains (workflow.mjs) checks only what the
 // catalog pipeline needs; this file checks the whole document against the
 // app's JSON Schema before it is published. The app re-validates every
@@ -73,14 +73,14 @@ export async function domainsErrors(document) {
     );
   const errors = [];
   const owners = new Map();
-  for (const [id, { container }] of Object.entries(document.domains)) {
-    if (!container) continue;
-    const owner = owners.get(container.containerName);
+  for (const [id, domain] of Object.entries(document.domains)) {
+    if (!domain.containerName) continue;
+    const owner = owners.get(domain.containerName);
     if (owner)
       errors.push(
-        `/domains/${id}/container/containerName ${container.containerName} is already used by ${owner}`,
+        `/domains/${id}/containerName ${domain.containerName} is already used by ${owner}`,
       );
-    else owners.set(container.containerName, id);
+    else owners.set(domain.containerName, id);
   }
   return errors;
 }

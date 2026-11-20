@@ -5,48 +5,44 @@
       "source_repositories": [
         "NeuroDesk/neurocontainers"
       ],
-      "container": {
-        "title": "neurodesk",
-        "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
-        "registry": "docker.io/vnmd/neurodesktop",
-        "defaultVersion": "2026-09-23",
-        "releaseHistoryUrl": "https://raw.githubusercontent.com/neurodesk/neurodesk.github.io/refs/heads/main/src/content/docs/overview/release-history/index.mdx",
-        "containerName": "neurodesktop",
-        "volumeMount": "neurodesk-home",
-        "defaultStorageMount": "neurodesktop-storage",
-        "remoteUrl": [
-          "https://play.neurodesk.cloud.edu.au/",
-          "https://play-america.neurodesk.org/",
-          "https://play-europe.neurodesk.org/"
-        ],
-        "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/neuroimaging/apps.json",
-        "downloadUrls": [
-          "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
-          "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
-        ]
-      }
+      "title": "neurodesk",
+      "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
+      "registry": "docker.io/vnmd/neurodesktop",
+      "defaultVersion": "2026-09-23",
+      "releaseHistoryUrl": "https://raw.githubusercontent.com/neurodesk/neurodesk.github.io/refs/heads/main/src/content/docs/overview/release-history/index.mdx",
+      "containerName": "neurodesktop",
+      "volumeMount": "neurodesk-home",
+      "defaultStorageMount": "neurodesktop-storage",
+      "remoteUrl": [
+        "https://play.neurodesk.cloud.edu.au/",
+        "https://play-america.neurodesk.org/",
+        "https://play-europe.neurodesk.org/"
+      ],
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/neuroimaging/apps.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     },
     "microscopy": {
       "source_repositories": [
         "NeuroDesk/neurocontainers"
       ],
-      "container": {
-        "title": "microscopy",
-        "description": "Image processing, segmentation, and quantitative analysis",
-        "registry": "docker.io/vnmd/microscopy",
-        "defaultVersion": "latest",
-        "containerName": "microscopy",
-        "volumeMount": "microscopy-home",
-        "defaultStorageMount": "microscopy-storage",
-        "remoteUrl": [
-          "https://play-australia.sciget.org/"
-        ],
-        "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/apps.json",
-        "downloadUrls": [
-          "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
-          "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
-        ]
-      }
+      "title": "microscopy",
+      "description": "Image processing, segmentation, and quantitative analysis",
+      "registry": "docker.io/vnmd/microscopy",
+      "defaultVersion": "2026-11-19",
+      "containerName": "microscopy",
+      "volumeMount": "microscopy-home",
+      "defaultStorageMount": "microscopy-storage",
+      "remoteUrl": [
+        "https://play-australia.sciget.org/"
+      ],
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/apps.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     }
   }
 }

@@ -47,7 +47,7 @@ export async function catalogAssets(root) {
       throw new Error(`${path} must list licenses`);
     assets.set(path, { bytes: licenses, hash: assetHash(licenses, path) });
   }
-  // Neurodesk App reads each domain's container block from here. An invalid
+  // Neurodesk App reads each domain's launch fields from here. Invalid
   // file throws, so a bad hand edit fails the deploy and leaves the Worker
   // serving the previous version.
   const domainsBytes = await readPublishedDomains(root);

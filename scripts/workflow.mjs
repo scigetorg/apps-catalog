@@ -14,6 +14,11 @@ const exec = promisify(execFile);
 const DOMAIN_ID = /^[a-z](?:[a-z0-9]|-(?=[a-z0-9])){0,63}$/;
 const REPOSITORY = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
 const GENERATED = ["apps.json", "manifest.json"];
+const DOMAIN_FIELDS = new Set([
+  "source_repositories", "title", "description", "registry", "defaultVersion",
+  "releaseHistoryUrl", "containerName", "volumeMount", "defaultStorageMount",
+  "remoteUrl", "appJsonUrl", "downloadUrls", "tags", "minAppVersion",
+]);
 export const sourcePath = (root, repository) =>
   join(root, ".catalog-sources", encodeURIComponent(repository));
 
@@ -33,16 +38,10 @@ export async function readDomains(root) {
         new Set(config.source_repositories).size !== config.source_repositories.length) {
       throw new Error(`Invalid source_repositories for ${id}`);
     }
-    // `container` is the image Neurodesk App launches for this domain. The
-    // pipeline does not use it, so only its type is checked here: a bad
-    // container edit must not stop the catalogs from being generated. Its
-    // fields are validated against neurodesk-desktop's domains.schema.json (scripts/domains.mjs)
-    // and before every Cloudflare deploy (scripts/domains.mjs).
-    if (config.container !== undefined &&
-        (!config.container || typeof config.container !== "object" || Array.isArray(config.container))) {
-      throw new Error(`Invalid container for ${id}`);
-    }
-    if (Object.keys(config).some((key) => key !== "source_repositories" && key !== "container")) {
+    // Launch fields are validated against the app's schema before deployment.
+    // The catalog pipeline only checks their names, so malformed launch data
+    // does not interrupt catalog generation.
+    if (Object.keys(config).some((key) => !DOMAIN_FIELDS.has(key))) {
       throw new Error(`Unknown configuration field for ${id}`);
     }
     domains[id] = config;
