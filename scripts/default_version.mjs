@@ -1,6 +1,7 @@
 import { readFile, appendFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { parseDocument } from "yaml";
 import { DOMAINS_PATH, domainsErrors } from "./domains.mjs";
 
 // Keeps each domain container's `defaultVersion` in domains.json at the
@@ -93,14 +94,26 @@ export async function planBumps(document, { fetchImpl = fetch } = {}) {
 /** Apply planned bumps to <root>/domains.json, validated before writing. */
 export async function updateDefaultVersions(root, options = {}) {
   const path = join(root, DOMAINS_PATH);
-  const document = JSON.parse(await readFile(path, "utf8"));
+  const text = await readFile(path, "utf8");
+  const document = JSON.parse(text);
   const plan = await planBumps(document, options);
   if (!plan.bumps.length) return plan;
-  for (const { id, to } of plan.bumps) document.domains[id].defaultVersion = to;
-  const invalid = await domainsErrors(document);
+  // JSON.parse validates the input. The syntax tree locates the exact value
+  // tokens so a bump preserves the hand-edited layout and line endings.
+  const syntax = parseDocument(text);
+  if (syntax.errors.length) throw syntax.errors[0];
+  const edits = plan.bumps.map(({ id, to }) => {
+    const { range: [start, end] } = syntax.getIn(["domains", id, "defaultVersion"], true);
+    return { start, end, to };
+  });
+  let updated = text;
+  for (const { start, end, to } of edits.sort((a, b) => b.start - a.start)) {
+    updated = updated.slice(0, start) + JSON.stringify(to) + updated.slice(end);
+  }
+  const invalid = await domainsErrors(JSON.parse(updated));
   if (invalid.length)
     throw new Error(`bumped ${DOMAINS_PATH} would be invalid:\n  ${invalid.join("\n  ")}`);
-  await writeFile(path, `${JSON.stringify(document, null, 2)}\n`);
+  await writeFile(path, updated);
   return plan;
 }
 
