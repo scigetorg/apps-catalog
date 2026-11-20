@@ -368,6 +368,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "afni_26.3.12",
+                "doi": "https://doi.org/10.5281/zenodo.24384869",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],
@@ -384,6 +385,7 @@
                 "exec": "suma",
                 "apptainer_args": [],
                 "image": "afni_26.3.12",
+                "doi": "https://doi.org/10.5281/zenodo.24384869",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],
@@ -453,6 +455,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "aidamri_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24385017",
                 "license": [
                     "BSD-3-Clause",
                     "CC-BY-NC-SA-4.0",
@@ -3248,6 +3251,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_240320",
+                "doi": "https://doi.org/10.5281/zenodo.24384865",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -9588,6 +9592,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_1.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24384861",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9606,6 +9611,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_arm64_1.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24384871",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -12277,6 +12283,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "qsmxt_12.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24385088",
                 "license": [
                     "Apache-2.0",
                     "BSD-2-Clause",
@@ -12800,6 +12807,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rabies_0.6.4",
+                "doi": "https://doi.org/10.5281/zenodo.24385592",
                 "license": [
                     "ACADEMIC PUBLIC LICENSE (Non-Commercial Use)"
                 ],
@@ -14681,6 +14689,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "topaz_0.3.21",
+                "doi": "https://doi.org/10.5281/zenodo.24384961",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -14710,6 +14719,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "topaz_arm64_0.3.21",
+                "doi": "https://doi.org/10.5281/zenodo.24384984",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -14805,6 +14815,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "topofit_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.24384867",
                 "license": [
                     "CC-BY-4.0",
                     "FreeSurfer Software License Agreement",
@@ -14823,6 +14834,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "topofit_0.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.24385465",
                 "license": [
                     "CC-BY-4.0",
                     "FreeSurfer Software License Agreement",
@@ -15485,6 +15497,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "whitematterlesions_0.5.20261111",
+                "doi": "https://doi.org/10.5281/zenodo.24385114",
                 "license": [
                     "Apache-2.0",
                     "CC-BY-4.0",
