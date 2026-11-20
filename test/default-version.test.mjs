@@ -143,9 +143,11 @@ test("planBumps reports a failing page per domain and still bumps the others", a
   assert.match(plan.errors.join("\n"), /microscopy: .*HTTP 404/);
 });
 
-test("updateDefaultVersions rewrites only defaultVersion in domains.json", async () => {
+test("updateDefaultVersions preserves inline arrays and line endings when bumping a version", async () => {
   const root = await mkdtemp(join(tmpdir(), "neurodesk-default-version-"));
-  const before = `${JSON.stringify(documentWith(container()), null, 2)}\n`;
+  const before = JSON.stringify(documentWith(container()), null, 2)
+    .replace(/\[\s*"NeuroDesk\/neurocontainers"\s*\]/, '["NeuroDesk/neurocontainers"]')
+    .replaceAll("\n", "\r\n") + "\r\n";
   await writeFile(join(root, "domains.json"), before);
   await updateDefaultVersions(root, stub());
   const after = await readFile(join(root, "domains.json"), "utf8");
@@ -160,9 +162,18 @@ test("updateDefaultVersions leaves the file untouched when nothing changes", asy
   assert.equal(await readFile(join(root, "domains.json"), "utf8"), before);
 });
 
-test("the repository's domains.json is pretty-printed, so a bump is a one-line diff", async () => {
-  const text = await readFile(new URL("../domains.json", import.meta.url), "utf8");
-  assert.equal(text, `${JSON.stringify(JSON.parse(text), null, 2)}\n`);
+test("updateDefaultVersions bumps only the selected domains in compact JSON", async () => {
+  const root = await mkdtemp(join(tmpdir(), "neurodesk-default-version-"));
+  const document = documentWith(container({ description: "Released 2026-09-23" }));
+  document.domains.microscopy = { ...document.domains.neuroimaging, containerName: "microapp" };
+  delete document.domains.microscopy.releaseHistoryUrl;
+  document.domains.analysis = { ...document.domains.neuroimaging, containerName: "analysisapp" };
+  const before = JSON.stringify(document);
+  await writeFile(join(root, "domains.json"), before);
+  await updateDefaultVersions(root, stub());
+  document.domains.neuroimaging.defaultVersion = "2026-11-01";
+  document.domains.analysis.defaultVersion = "2026-11-01";
+  assert.equal(await readFile(join(root, "domains.json"), "utf8"), JSON.stringify(document));
 });
 
 test("pullRequestFor names a branch and title from the bumps", () => {
