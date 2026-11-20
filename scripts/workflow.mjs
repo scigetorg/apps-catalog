@@ -53,6 +53,17 @@ export function outputPaths(domains) {
   return Object.keys(domains).flatMap((id) => GENERATED.map((name) => `${id}/${name}`));
 }
 
+export async function needsConsolidation(root, domains) {
+  for (const [id, config] of Object.entries(domains)) {
+    // readPreviousCatalog returns no manifest when either generated file is missing.
+    const { manifest } = await readPreviousCatalog(join(root, id));
+    const sources = Object.keys(manifest?.source_commits ?? {});
+    if (sources.length !== config.source_repositories.length ||
+        sources.some((source) => !config.source_repositories.includes(source))) return true;
+  }
+  return false;
+}
+
 export async function checkoutSources(root, domains) {
   const sourceBase = join(root, ".catalog-sources");
   await mkdir(sourceBase, { recursive: true });
@@ -193,6 +204,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     await consolidateDomains(root, domains);
   } else if (command === "output-paths") {
     process.stdout.write(`${outputPaths(domains).join("\n")}\n`);
+  } else if (command === "needs-consolidation") {
+    console.log(await needsConsolidation(root, domains));
   } else if (command === "source-repository") {
     throw new Error("source-repository is retired; use source_repositories in domains.json");
   } else {

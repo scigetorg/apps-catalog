@@ -14,8 +14,8 @@ import { DOMAINS_PATH, domainsErrors } from "./domains.mjs";
 //   current defaultVersion  ◄── newer date? ── tag on Docker Hub? ── yes ──► bump
 //
 // The CLI rewrites domains.json in place and, under GitHub Actions, writes
-// `branch` and `title` outputs; sync-default-version.yml opens the PR, and
-// merging it runs publish-domains.yml. Nothing here publishes.
+// `branch` and `title` outputs. sync-default-version.yml opens the PR.
+// Merging the PR triggers the catalog workflow to publish domains.json.
 
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const LATEST_HEADING =

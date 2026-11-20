@@ -1,26 +1,33 @@
 name: Consolidate apps catalog
 
 on:
+  push:
+    branches: [main]
+    paths: [domains.json]
   schedule:
     - cron: '25 2 * * *'
   workflow_dispatch: {}
 
-concurrency:
-  group: apps-catalog
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  consolidate:
+  prepare:
     runs-on: ubuntu-24.04
     timeout-minutes: 240
+    permissions:
+      contents: write
+    concurrency:
+      group: apps-catalog-prepare
+      queue: max
+    outputs:
+      sha: ${{ steps.revision.outputs.sha }}
+      regenerate: ${{ steps.mode.outputs.regenerate }}
     steps:
       - name: Check out catalog
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          ref: main
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,25 +35,39 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Decide whether to regenerate
+        id: mode
+        run: |
+          regenerate=true
+          if [[ "$GITHUB_EVENT_NAME" == push ]]; then
+            regenerate=$(node scripts/workflow.mjs needs-consolidation)
+          fi
+          echo "regenerate=$regenerate" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v6
+        if: steps.mode.outputs.regenerate == 'true'
         with:
           python-version: '3.11'
       # jinja2 and attrs run neurocontainers' tools/generate_apps_json.py,
       # which supplies tool citations and descriptions.
       - name: Install license lookup and source generator dependencies
+        if: steps.mode.outputs.regenerate == 'true'
         run: python -m pip install requests 'pyyaml>=6.0.2' packaging jinja2 attrs
       - name: Check out configured containers repositories
+        if: steps.mode.outputs.regenerate == 'true'
         run: node scripts/workflow.mjs checkout
       - name: Consolidate every domain and recipe licenses
+        if: steps.mode.outputs.regenerate == 'true'
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
         run: npm run consolidate
       # Public Zenodo API (no token, ~5 requests). A failure keeps the committed
       # list and must not block the catalog update.
       - name: Refresh Zenodo license list
+        if: steps.mode.outputs.regenerate == 'true'
         continue-on-error: true
         run: python -m scripts.zenodo_licenses --output licenses/zenodo.json
       - name: Commit domain catalog files
+        if: steps.mode.outputs.regenerate == 'true'
         shell: bash
         run: |
           paths="$(node scripts/workflow.mjs output-paths)"
@@ -62,10 +83,58 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Update domain apps catalogs from container releases'
           git push origin HEAD:main
-      # Publish only what main holds, so a failed push leaves the Worker unchanged.
+      - name: Record prepared revision
+        id: revision
+        run: |
+          sha=$(git rev-parse HEAD)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    concurrency:
+      group: apps-catalog
+      queue: max
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.sha }}
+      # A delayed job or a retry may hold an older catalog. Compare deploy inputs
+      # under the deploy lock so unrelated commits on main still allow publication.
+      - name: Check for a superseding catalog
+        id: current
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          changed=$(git diff --name-only HEAD FETCH_HEAD -- \
+            domains.json ':(glob)*/apps.json' licenses/zenodo.json \
+            scripts/{cloudflare,domains,workflow,catalog}.mjs package.json package-lock.json)
+          if [[ -n "$changed" ]]; then
+            echo "Skipping superseded deployment. Changed on main:"
+            echo "$changed"
+          else
+            echo 'publish=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.current.outputs.publish == 'true'
+        with:
+          node-version: '24.0.0'
+          cache: npm
+      - run: npm ci
+        if: steps.current.outputs.publish == 'true'
       - name: Publish apps catalogs to Cloudflare
+        if: steps.current.outputs.publish == 'true'
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME }}
         run: npm run publish:cloudflare
+
+  dois:
+    needs: prepare
+    if: needs.prepare.outputs.regenerate == 'true'
+    uses: ./.github/workflows/publish-dois.yml
+    with:
+      catalog_sha: ${{ needs.prepare.outputs.sha }}
+    secrets:
+      ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}

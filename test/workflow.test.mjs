@@ -3,7 +3,8 @@ import { mkdir, mkdtemp, readFile, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
-import { consolidateDomains, outputPaths, readDomains, sourcePath } from "../scripts/workflow.mjs";
+import { consolidateDomains, needsConsolidation, outputPaths, readDomains, sourcePath } from "../scripts/workflow.mjs";
+import { catalogAssets } from "../scripts/cloudflare.mjs";
 import { readReleases, readSourceDomains } from "../scripts/catalog.mjs";
 
 const repo = "Example/containers";
@@ -48,6 +49,40 @@ test("validates source lists and generated paths", async () => {
     neuroimaging: { source_repositories: [repo, repo] },
   } }));
   await assert.rejects(readDomains(root), /Invalid source_repositories/);
+});
+
+test("a new domain gets its catalog and manifest before its launch settings are published", async () => {
+  const { root } = await fixture();
+  const existing = { neuroimaging: domains.neuroimaging };
+  const options = { sourceCommits: { [repo]: sha }, resolveLicenses, publishedDois: {} };
+  await consolidateDomains(root, existing, options);
+  assert.equal(await needsConsolidation(root, existing), false);
+
+  await writeFile(join(root, "domains.json"), JSON.stringify({ schemaVersion: 1, domains }));
+  const configured = await readDomains(root);
+  assert.equal(await needsConsolidation(root, configured), true);
+  await consolidateDomains(root, configured, options);
+  const assets = await catalogAssets(root);
+  assert.deepEqual(JSON.parse(assets.get("/domains.json").bytes).domains, domains);
+  assert.deepEqual(JSON.parse(assets.get("/microscopy/apps.json").bytes), {});
+  assert.ok(JSON.parse(assets.get("/neuroimaging/apps.json").bytes).demo);
+  configured.microscopy.title = "Microscopy tools";
+  assert.equal(await needsConsolidation(root, configured), false);
+});
+
+test("missing outputs and changed source membership require regeneration", async () => {
+  const { root } = await fixture();
+  const manifest = join(root, "neuroimaging", "manifest.json");
+  const sources = [repo, "Example/other"];
+  const configured = { neuroimaging: { source_repositories: sources } };
+  assert.equal(await needsConsolidation(root, configured), true); // Only apps.json exists.
+  await writeFile(manifest, JSON.stringify({ source_commits: { [sources[1]]: sha, [repo]: sha } }));
+  assert.equal(await needsConsolidation(root, configured), false);
+  for (const changed of [[repo], [repo, "Example/replacement"], [...sources, "Example/new"]]) {
+    assert.equal(await needsConsolidation(root, { neuroimaging: { source_repositories: changed } }), true);
+  }
+  await unlink(join(root, "neuroimaging", "apps.json"));
+  assert.equal(await needsConsolidation(root, configured), true);
 });
 
 test("domain IDs follow the published schema, including its 64-character limit", async () => {

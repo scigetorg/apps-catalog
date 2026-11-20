@@ -15,10 +15,10 @@ container images, and commit the results back to `main`.
 
 ```text
 domains.json                 # HAND-EDITED: domains -> source_repositories + optional launch fields (see below)
-<domain>/apps.json           # GENERATED catalog (neuroimaging is the only domain today)
+<domain>/apps.json           # GENERATED catalog for each configured domain
 <domain>/manifest.json       # GENERATED image count and source commits
 licenses/zenodo.json         # GENERATED Zenodo∩SPDX license IDs, served for neurocontainers-ui
-scripts/workflow.mjs         # CLI: checkout | run | output-paths; multi-domain orchestration
+scripts/workflow.mjs         # CLI: checkout | run | output-paths | needs-consolidation
 scripts/catalog.mjs          # reads releases, builds catalog/manifest, license + DOI carry-over
 scripts/cloudflare.mjs       # Worker static-asset upload + post-deploy URL verification
 scripts/domains.mjs          # validates domains.json for publishing (ajv); CLI: npm run validate:domains
@@ -176,16 +176,16 @@ domain's `title` and `appJsonUrl`.
 
 ## Workflows (`.github/workflows/`)
 
-All catalog-writing workflows share the `apps-catalog` concurrency group.
+Preparation, Cloudflare deployment, and DOI publication serialize independently
+in `apps-catalog-prepare`, `apps-catalog`, and `zenodo-doi-publication`.
 
 | Workflow | Trigger | Does |
 | --- | --- | --- |
-| `consolidate.yml` | daily 02:25 UTC, manual | checkout sources → `npm run consolidate` → refresh `licenses/zenodo.json` (failure keeps the old file) → commit outputs → Cloudflare publish |
-| `publish-dois.yml` | daily 04:25 UTC, manual | Python tests → plan every missing licensed image (others skipped and listed; `limit` input for a smoke test) into ≤6 batches (`PUBLISH_JOBS`) → matrix publish, 6 in parallel, no new upload after 5 h (skipped when nothing is missing) |
+| `consolidate.yml` | daily 02:25 UTC, manual, push to `main` touching `domains.json` | Prepare every domain, refresh the license list (failure keeps the old file), commit outputs, then deploy the prepared revision. Domain pushes reuse committed files when both outputs exist and manifest sources match. |
+| `publish-dois.yml` | called after full preparation, manual | Python tests → plan every missing licensed image (others skipped and listed; `limit` input for a smoke test) into ≤6 batches (`PUBLISH_JOBS`) → matrix publish, 6 in parallel, no new upload after 5 h (skipped when nothing is missing) |
 | `audit-doi-licenses.yml` | Sundays 05:00 UTC, manual | read-only audit, uploads JSON artifact |
 | `backfill-zenodo-rights.yml` | manual only | dry run by default; `apply` edits `verified_legacy` records' license list (same DOI) |
-| `publish-domains.yml` | push to `main` touching `domains.json`, manual | validate → Cloudflare publish of `main` (same asset set as consolidate) |
-| `sync-default-version.yml` | daily 03:40 UTC, manual | bump `defaultVersion` to the `releaseHistoryUrl` Latest once on Docker Hub → `npm test` → open PR (never pushes to `main`; merge triggers publish-domains) |
+| `sync-default-version.yml` | daily 03:40 UTC, manual | bump `defaultVersion` to the `releaseHistoryUrl` Latest once on Docker Hub → `npm test` → open PR (merge triggers consolidate) |
 | `test.yml` | PRs and code pushes to `main` (incl. `domains.json`) | `npm test` + Python unittest, no secrets |
 
 Never add `pull_request` triggers to workflows that receive `ZENODO_TOKEN`:
