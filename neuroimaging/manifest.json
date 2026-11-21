@@ -1,7 +1,7 @@
 {
-    "entries": 811,
+    "entries": 812,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "a556b095088dabaf3999a07c0695408db5647eb7"
+        "NeuroDesk/neurocontainers": "e595bb8d43eb8c1710446b5979a21af6c1f57fcc"
     },
     "app_sources": {
         "afni": {
@@ -1764,7 +1764,8 @@
             "whitematterlesions 0.5.20261022": "NeuroDesk/neurocontainers",
             "whitematterlesions 0.5.20261103": "NeuroDesk/neurocontainers",
             "whitematterlesions 0.5.20261108": "NeuroDesk/neurocontainers",
-            "whitematterlesions 0.5.20261111": "NeuroDesk/neurocontainers"
+            "whitematterlesions 0.5.20261111": "NeuroDesk/neurocontainers",
+            "whitematterlesions 0.5.20261119": "NeuroDesk/neurocontainers"
         },
         "workshopdemo": {
             "workshopdemo 1.0.0": "NeuroDesk/neurocontainers"

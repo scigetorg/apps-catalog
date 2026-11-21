@@ -491,6 +491,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "aidamri_arm64_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24386823",
                 "license": [
                     "BSD-3-Clause",
                     "CC-BY-NC-SA-4.0",
@@ -9588,11 +9589,10 @@
                 ]
             },
             "mne 1.13.2": {
-                "version": "20261119",
+                "version": "20261120",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_1.13.2",
-                "doi": "https://doi.org/10.5281/zenodo.24384861",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9607,11 +9607,10 @@
     "mne_arm64": {
         "apps": {
             "mne_arm64 1.13.2": {
-                "version": "20261119",
+                "version": "20261120",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_arm64_1.13.2",
-                "doi": "https://doi.org/10.5281/zenodo.24384871",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9636,11 +9635,10 @@
                 ]
             },
             "mneextended 1.2.0": {
-                "version": "20261114",
+                "version": "20261120",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_1.2.0",
-                "doi": "https://doi.org/10.5281/zenodo.24236701",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -9656,11 +9654,10 @@
     "mneextended_arm64": {
         "apps": {
             "mneextended_arm64 1.2.0": {
-                "version": "20261114",
+                "version": "20261120",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_arm64_1.2.0",
-                "doi": "https://doi.org/10.5281/zenodo.24236569",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -15498,6 +15495,24 @@
                 "apptainer_args": [],
                 "image": "whitematterlesions_0.5.20261111",
                 "doi": "https://doi.org/10.5281/zenodo.24385114",
+                "license": [
+                    "Apache-2.0",
+                    "CC-BY-4.0",
+                    "FreeSurfer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "FreeSurfer Software License Agreement",
+                        "url": "https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense"
+                    }
+                ]
+            },
+            "whitematterlesions 0.5.20261119": {
+                "version": "20261120",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "whitematterlesions_0.5.20261119",
                 "license": [
                     "Apache-2.0",
                     "CC-BY-4.0",
