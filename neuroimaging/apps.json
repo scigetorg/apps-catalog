@@ -3087,6 +3087,15 @@
                 "license": [
                     "MIT"
                 ]
+            },
+            "clearswi 1.7.1": {
+                "version": "20261121",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "clearswi_1.7.1",
+                "license": [
+                    "MIT"
+                ]
             }
         },
         "categories": [
@@ -3104,6 +3113,15 @@
                 "apptainer_args": [],
                 "image": "clearswi_arm64_1.7.0",
                 "doi": "https://doi.org/10.5281/zenodo.23630534",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "clearswi_arm64 1.7.1": {
+                "version": "20261121",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "clearswi_arm64_1.7.1",
                 "license": [
                     "MIT"
                 ]
@@ -3277,6 +3295,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "code_arm64_240320",
+                "doi": "https://doi.org/10.5281/zenodo.24410158",
                 "license": [
                     "Microsoft Visual Studio Code product license"
                 ],
@@ -3538,11 +3557,10 @@
     "cryosparc": {
         "apps": {
             "cryosparc 1.0.0": {
-                "version": "20261116",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cryosparc_1.0.0",
-                "doi": "https://doi.org/10.5281/zenodo.24296643",
                 "license": [
                     "CryoSPARC licence (not included; installed with each user's own licence ID)",
                     "MIT"
@@ -4851,11 +4869,10 @@
                 ]
             },
             "elastix 5.3.1": {
-                "version": "20261013",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "elastix_5.3.1",
-                "doi": "https://doi.org/10.5281/zenodo.23630249",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -4870,11 +4887,10 @@
     "elastix_arm64": {
         "apps": {
             "elastix_arm64 5.3.1": {
-                "version": "20261013",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "elastix_arm64_5.3.1",
-                "doi": "https://doi.org/10.5281/zenodo.23630261",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -9589,7 +9605,7 @@
                 ]
             },
             "mne 1.13.2": {
-                "version": "20261120",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_1.13.2",
@@ -9607,7 +9623,7 @@
     "mne_arm64": {
         "apps": {
             "mne_arm64 1.13.2": {
-                "version": "20261120",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mne_arm64_1.13.2",
@@ -9635,7 +9651,7 @@
                 ]
             },
             "mneextended 1.2.0": {
-                "version": "20261120",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_1.2.0",
@@ -9654,7 +9670,7 @@
     "mneextended_arm64": {
         "apps": {
             "mneextended_arm64 1.2.0": {
-                "version": "20261120",
+                "version": "20261121",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mneextended_arm64_1.2.0",
@@ -15513,6 +15529,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "whitematterlesions_0.5.20261119",
+                "doi": "https://doi.org/10.5281/zenodo.24410153",
                 "license": [
                     "Apache-2.0",
                     "CC-BY-4.0",

@@ -1,7 +1,7 @@
 {
-    "entries": 812,
+    "entries": 814,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "e595bb8d43eb8c1710446b5979a21af6c1f57fcc"
+        "NeuroDesk/neurocontainers": "54934a334d8f62ea5c5b27219a70eb851674c2b6"
     },
     "app_sources": {
         "afni": {
@@ -342,10 +342,12 @@
         "clearswi": {
             "clearswi 1.0.0": "NeuroDesk/neurocontainers",
             "clearswi 1.6.1": "NeuroDesk/neurocontainers",
-            "clearswi 1.7.0": "NeuroDesk/neurocontainers"
+            "clearswi 1.7.0": "NeuroDesk/neurocontainers",
+            "clearswi 1.7.1": "NeuroDesk/neurocontainers"
         },
         "clearswi_arm64": {
-            "clearswi_arm64 1.7.0": "NeuroDesk/neurocontainers"
+            "clearswi_arm64 1.7.0": "NeuroDesk/neurocontainers",
+            "clearswi_arm64 1.7.1": "NeuroDesk/neurocontainers"
         },
         "clinica": {
             "clinica 0.10.0": "NeuroDesk/neurocontainers",
