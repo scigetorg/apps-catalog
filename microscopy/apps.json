@@ -2297,6 +2297,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nighres_1.5.3",
+                "doi": "https://doi.org/10.5281/zenodo.24452954",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -2315,6 +2316,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nighres_arm64_1.5.3",
+                "doi": "https://doi.org/10.5281/zenodo.24452958",
                 "license": [
                     "Apache-2.0"
                 ]

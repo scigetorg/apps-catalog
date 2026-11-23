@@ -9536,6 +9536,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24452961",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -9784,6 +9785,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mritools_4.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.24452963",
                 "license": [
                     "MIT"
                 ]
@@ -9822,6 +9824,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mritools_arm64_4.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.24452967",
                 "license": [
                     "MIT"
                 ]
@@ -10714,6 +10717,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nighres_1.5.3",
+                "doi": "https://doi.org/10.5281/zenodo.24452954",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -10732,6 +10736,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nighres_arm64_1.5.3",
+                "doi": "https://doi.org/10.5281/zenodo.24452958",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -12039,6 +12044,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "qsmxt_12.2.0",
+                "doi": "https://doi.org/10.5281/zenodo.24452956",
                 "license": [
                     "Apache-2.0",
                     "BSD-2-Clause",
@@ -12634,6 +12640,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "romeo_4.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.24452973",
                 "license": [
                     "MIT"
                 ]
@@ -12672,6 +12679,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "romeo_arm64_4.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.24452971",
                 "license": [
                     "MIT"
                 ]
