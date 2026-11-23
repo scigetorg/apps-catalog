@@ -37,6 +37,22 @@
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
       ]
+    },
+    "datascience": {
+      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "title": "datascience",
+      "description": "Data science, AI/ML, and advanced analytics tools.",
+      "registry": "ghcr.io/scigetorg/aidesktop",
+      "defaultVersion": "latest",
+      "containerName": "aidesktop",
+      "volumeMount": "datascience-home",
+      "defaultStorageMount": "datascience-storage",
+      "remoteUrl": ["https://play-australia.sciget.org/"],
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/datascience/apps.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     }
   }
 }
