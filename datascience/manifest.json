@@ -1,7 +1,14 @@
 {
-    "entries": 0,
+    "entries": 2,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "3d0cc180daf3a103f64c4e08cdcef17913081db7"
+        "NeuroDesk/neurocontainers": "6770ab2dcf8e37ad0f8e642d7c205f5e04f1e34f"
     },
-    "app_sources": {}
+    "app_sources": {
+        "postgresanalytics": {
+            "postgresanalytics 18.7.0": "NeuroDesk/neurocontainers"
+        },
+        "postgresanalytics_arm64": {
+            "postgresanalytics_arm64 18.7.0": "NeuroDesk/neurocontainers"
+        }
+    }
 }

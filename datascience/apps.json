@@ -1,1 +1,46 @@
-{}
+{
+    "postgresanalytics": {
+        "apps": {
+            "postgresanalytics 18.7.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "postgresanalytics_18.7.0",
+                "license": [
+                    "Apache-2.0",
+                    "GPL-2.0-or-later",
+                    "ISC",
+                    "PostgreSQL"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "statistics",
+            "programming"
+        ],
+        "description": "Bundled PostgreSQL 18 advanced analytics container for data science desktops (`scidesktop`, `aidesktop`) loaded via `ml` (Lmod / Apptainer). ### Bundled Extensions - **Geospatial**: `postgis`, `postgis_topology`, `postgis_raster` (plus `shp2pgsql` and `raster2pgsql`) - **Vector & AI Embeddings**: `vector` (`pgvector`) and `pgedge_vectorizer` (`v1.1`) - **Horizontal Partitioning**: `plproxy` - **Time-Series & Streaming Analytics**: `timescaledb` (Apache-2.0 edition), `hll` (HyperLogLog), `tdigest` - **Query Optimization & Contrib**: `hypopg`, `pg_stat_statements`, `btree_gin`, `btree_gist`, `pg_trgm`, `hstore`, `uuid-ossp`, `citext`, `cube`, `earthdistance`, `tablefunc` ### Quick Start (Read-Only Apptainer / Non-Root Desktops) The `pg-analytics` helper runs PostgreSQL in user space on port `5433` by default (avoiding port `5432` used by Airflow/MLflow in `aidesktop`):"
+    },
+    "postgresanalytics_arm64": {
+        "apps": {
+            "postgresanalytics_arm64 18.7.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "postgresanalytics_arm64_18.7.0",
+                "license": [
+                    "Apache-2.0",
+                    "GPL-2.0-or-later",
+                    "ISC",
+                    "PostgreSQL"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "statistics",
+            "programming"
+        ],
+        "description": "Bundled PostgreSQL 18 advanced analytics container for data science desktops (`scidesktop`, `aidesktop`) loaded via `ml` (Lmod / Apptainer). ### Bundled Extensions - **Geospatial**: `postgis`, `postgis_topology`, `postgis_raster` (plus `shp2pgsql` and `raster2pgsql`) - **Vector & AI Embeddings**: `vector` (`pgvector`) and `pgedge_vectorizer` (`v1.1`) - **Horizontal Partitioning**: `plproxy` - **Time-Series & Streaming Analytics**: `timescaledb` (Apache-2.0 edition), `hll` (HyperLogLog), `tdigest` - **Query Optimization & Contrib**: `hypopg`, `pg_stat_statements`, `btree_gin`, `btree_gist`, `pg_trgm`, `hstore`, `uuid-ossp`, `citext`, `cube`, `earthdistance`, `tablefunc` ### Quick Start (Read-Only Apptainer / Non-Root Desktops) The `pg-analytics` helper runs PostgreSQL in user space on port `5433` by default (avoiding port `5432` used by Airflow/MLflow in `aidesktop`):"
+    }
+}
