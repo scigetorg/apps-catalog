@@ -37,6 +37,9 @@
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
       ]
+    },
+    "datascience": {
+      "source_repositories": ["NeuroDesk/neurocontainers"]
     }
   }
 }
