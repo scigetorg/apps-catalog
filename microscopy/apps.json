@@ -1,4 +1,2212 @@
 {
+    "ants": {
+        "apps": {
+            "ants 2.3.1": {
+                "version": "20211204",
+                "exec": "",
+                "image": "ants_2.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931717",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.3.5": {
+                "version": "20211212",
+                "exec": "",
+                "image": "ants_2.3.5",
+                "doi": "https://doi.org/10.5281/zenodo.18931426",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.5.1": {
+                "version": "20240429",
+                "exec": "",
+                "image": "ants_2.5.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931523",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.5.3": {
+                "version": "20240925",
+                "exec": "",
+                "image": "ants_2.5.3",
+                "doi": "https://doi.org/10.5281/zenodo.18931334",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.5.4": {
+                "version": "20250423",
+                "exec": "",
+                "image": "ants_2.5.4",
+                "doi": "https://doi.org/10.5281/zenodo.18932089",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.6.0": {
+                "version": "20250424",
+                "exec": "",
+                "image": "ants_2.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931323",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "ants 2.6.5": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "ants_2.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23629911",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "image registration",
+            "structural imaging",
+            "image segmentation"
+        ],
+        "description": "ANTs extracts information from complex datasets that include imaging. Paired with ANTsR, ANTs is useful for managing, interpreting and visualizing multidimensional data. ANTs is popularly considered a state-of-the-art medical image registration and segmentation toolkit. ANTsR is an emerging tool supporting standardized multimodality image analysis. ANTs depends on the Insight ToolKit (ITK), a widely used medical image processing library to which ANTs developers contribute. A summary of some ANTs findings and tutorial material (most of which is on this page) is here.\\",
+        "citation": "Avants BB, Tustison NJ, Song G, Cook PA, Klein A, Gee JC. A reproducible evaluation of ANTs similarity metric performance in brain image registration. Neuroimage. 2011 Feb 1;54(3):2033-44. doi: 10.1016/j.neuroimage.2010.09.025. Epub 2010 Sep 17. PMID: 20851191; PMCID: PMC3065962."
+    },
+    "ants_arm64": {
+        "apps": {
+            "ants_arm64 2.6.5": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "ants_arm64_2.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23630312",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "image registration",
+            "structural imaging",
+            "image segmentation"
+        ],
+        "description": "ANTs extracts information from complex datasets that include imaging. Paired with ANTsR, ANTs is useful for managing, interpreting and visualizing multidimensional data. ANTs is popularly considered a state-of-the-art medical image registration and segmentation toolkit. ANTsR is an emerging tool supporting standardized multimodality image analysis. ANTs depends on the Insight ToolKit (ITK), a widely used medical image processing library to which ANTs developers contribute. A summary of some ANTs findings and tutorial material (most of which is on this page) is here.\\",
+        "citation": "Avants BB, Tustison NJ, Song G, Cook PA, Klein A, Gee JC. A reproducible evaluation of ANTs similarity metric performance in brain image registration. Neuroimage. 2011 Feb 1;54(3):2033-44. doi: 10.1016/j.neuroimage.2010.09.025. Epub 2010 Sep 17. PMID: 20851191; PMCID: PMC3065962."
+    },
+    "blender": {
+        "apps": {
+            "blender 5.0.1": {
+                "version": "20260304",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "blender_5.0.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931356",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blenderGUI-blender 5.0.1": {
+                "version": "20260304",
+                "exec": "blender",
+                "apptainer_args": [],
+                "image": "blender_5.0.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931356",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blender 5.2.1": {
+                "version": "20260912",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "blender_5.2.1",
+                "doi": "https://doi.org/10.5281/zenodo.22851286",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blenderGUI-blender 5.2.1": {
+                "version": "20260912",
+                "exec": "blender",
+                "apptainer_args": [],
+                "image": "blender_5.2.1",
+                "doi": "https://doi.org/10.5281/zenodo.22851286",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blender 5.2.2": {
+                "version": "20260916",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "blender_5.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.22851343",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blenderGUI-blender 5.2.2": {
+                "version": "20260916",
+                "exec": "blender",
+                "apptainer_args": [],
+                "image": "blender_5.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.22851343",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blender 5.2.3": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "blender_5.2.3",
+                "doi": "https://doi.org/10.5281/zenodo.23630162",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blenderGUI-blender 5.2.3": {
+                "version": "20261023",
+                "exec": "blender",
+                "apptainer_args": [],
+                "image": "blender_5.2.3",
+                "doi": "https://doi.org/10.5281/zenodo.23630162",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blender 5.3.0": {
+                "version": "20261111",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "blender_5.3.0",
+                "doi": "https://doi.org/10.5281/zenodo.24150139",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "blenderGUI-blender 5.3.0": {
+                "version": "20261111",
+                "exec": "blender",
+                "apptainer_args": [],
+                "image": "blender_5.3.0",
+                "doi": "https://doi.org/10.5281/zenodo.24150139",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "Blender is an open-source 3D creation suite for modeling, animation, rendering, compositing, simulation, and scripting."
+    },
+    "cmtk": {
+        "apps": {
+            "cmtk 3.4.0": {
+                "version": "20261003",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cmtk_3.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630410",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "image registration",
+            "structural imaging"
+        ],
+        "description": "Computational Morphometry Toolkit provides CPU registration and image resampling. Run `cmtk registration --help`, `cmtk warp --help`, or `cmtk reformatx --help` for the affine, nonrigid, and resampling commands. Installed from the official CMTK 3.4.0 source release. This build supports NIfTI, Analyze, and NRRD images. DICOM support uses the bundled DCMTK library. Optional CUDA and Qt viewers are disabled. License texts are in `/opt/cmtk/share/licenses/cmtk`. [Upstream documentation](https://www.nitrc.org/projects/cmtk/)"
+    },
+    "convert3d": {
+        "apps": {
+            "convert3d 1.0.0": {
+                "version": "20210104",
+                "exec": "",
+                "image": "convert3d_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931378",
+                "license": [
+                    "GPL-2.0"
+                ]
+            },
+            "convert3d 1.1.0": {
+                "version": "20251212",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "convert3d_1.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931464",
+                "license": [
+                    "GPL-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "C3D is a command-line tool for converting 3D images between common file formats. The tool also includes a growing list of commands for image manipulation, such as thresholding and resampling."
+    },
+    "cryosparc": {
+        "apps": {
+            "cryosparc 1.0.0": {
+                "version": "20261121",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cryosparc_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24432206",
+                "license": [
+                    "CryoSPARC licence (not included; installed with each user's own licence ID)",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "name": "CryoSPARC licence (not included; installed with each user's own licence ID)",
+                        "url": "https://guide.cryosparc.com/licensing"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "CryoSPARC (Structura Biotechnology) is a GPU-accelerated platform for single-particle cryo-EM: motion and CTF correction, particle picking, 2D classification, ab-initio reconstruction and refinement, run through a browser-based interface. https://cryosparc.com **This container does not include CryoSPARC.** CryoSPARC needs a licence ID (free for non-profit academic research, commercial licence otherwise), and its licence forbids redistributing the software. The container provides the Ubuntu 24.04 runtime and tools that CryoSPARC's installer and services need, plus the `cryosparc` launcher. The launcher downloads CryoSPARC with your own licence ID into a directory you can write to and runs it from there. The container version 1.0.0 is the launcher version, not a CryoSPARC version. You choose the CryoSPARC release at install time; the default is the latest release. ### Install once 1. Request a licence ID: https://cryosparc.com/download 2. Pick a writable directory with several GB free that keeps the same path in future sessions (not inside the container image). Run the container with GPU access (`apptainer exec --nv`), then:",
+        "citation": "Punjani, A., Rubinstein, J. L., Fleet, D. J., Brubaker, M. A.\ncryoSPARC: algorithms for rapid unsupervised cryo-EM structure determination.\nNat Methods 14, 290-296 (2017). https://doi.org/10.1038/nmeth.4169"
+    },
+    "ctffind": {
+        "apps": {
+            "ctffind 4.1.14": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "ctffind_4.1.14",
+                "doi": "https://doi.org/10.5281/zenodo.23444355",
+                "license": [
+                    "Janelia Research Campus Software License 1.2"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "Janelia Research Campus Software License 1.2",
+                        "url": "https://www.janelia.org/open-science/software-licensing"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "CTFFIND estimates the defocus, astigmatism and optional phase shift of electron micrographs by fitting the contrast transfer function (CTF) to their amplitude spectra. This container builds CTFFIND 4.1.14 from the official source release with FFTW and OpenMP threading. It runs on the CPU and needs no GPU. CTFFIND 4.1.14 is the release that RELION drives through its \"Use CTFFIND-4.1?\" option. CTFFIND 5 adds an extra \"Determine sample thickness?\" prompt that RELION does not answer, so RELION jobs stop at the expert-options prompt. Run `ctffind` and answer the prompts, or script them from standard input:",
+        "citation": "Rohou A, Grigorieff N. CTFFIND4: Fast and accurate defocus\nestimation from electron micrographs. J Struct Biol. 2015;192(2):216-221.\nhttps://doi.org/10.1016/j.jsb.2015.08.008"
+    },
+    "datalad": {
+        "apps": {
+            "datalad 1.1.5": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.1.5",
+                "doi": "https://doi.org/10.5281/zenodo.22730963",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.3.1 arm64": {
+                "version": "20260512",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "datalad_1.3.1_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23996074",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.3.1": {
+                "version": "20260512",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.20685849",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.2": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.2",
+                "doi": "https://doi.org/10.5281/zenodo.22730991",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.3": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.3",
+                "doi": "https://doi.org/10.5281/zenodo.22984898",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.4": {
+                "version": "20260924",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.4",
+                "doi": "https://doi.org/10.5281/zenodo.23444198",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.5": {
+                "version": "20261001",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23129772",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.0": {
+                "version": "20261006",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629927",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.1": {
+                "version": "20261007",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444363",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.2": {
+                "version": "20261029",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.2",
+                "doi": "https://doi.org/10.5281/zenodo.23937084",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.3": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.3",
+                "doi": "https://doi.org/10.5281/zenodo.23905825",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.8.0": {
+                "version": "20261103",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.23995582",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "data management"
+        ],
+        "description": "DataLad is a data management and distribution platform providing access to a wide range of data resources. Git for data using git-annex as backend.",
+        "citation": "Halchenko YO, Meyer K, Poldrack B, et al. DataLad: distributed system for joint management of code, data, and their relationship. J Open Source Softw. 2021;6(63):3262. doi:10.21105/joss.03262"
+    },
+    "datalad_arm64": {
+        "apps": {
+            "datalad_arm64 1.1.5": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.1.5",
+                "doi": "https://doi.org/10.5281/zenodo.22851276",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.2": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.2",
+                "doi": "https://doi.org/10.5281/zenodo.22851331",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.3": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.3",
+                "doi": "https://doi.org/10.5281/zenodo.22984900",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.4": {
+                "version": "20260924",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.4",
+                "doi": "https://doi.org/10.5281/zenodo.22984825",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.5": {
+                "version": "20261001",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23130005",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.0": {
+                "version": "20261006",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630651",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.1": {
+                "version": "20261007",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.1",
+                "doi": "https://doi.org/10.5281/zenodo.23290008",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.2": {
+                "version": "20261029",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.2",
+                "doi": "https://doi.org/10.5281/zenodo.23937092",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.3": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.3",
+                "doi": "https://doi.org/10.5281/zenodo.23875811",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.8.0": {
+                "version": "20261103",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.23969612",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "DataLad is a data management and distribution platform providing access to a wide range of data resources. Git for data using git-annex as backend.",
+        "citation": "Halchenko YO, Meyer K, Poldrack B, et al. DataLad: distributed system for joint management of code, data, and their relationship. J Open Source Softw. 2021;6(63):3262. doi:10.21105/joss.03262"
+    },
+    "dcm2niix": {
+        "apps": {
+            "dcm2niix v1.0.20240202 arm64": {
+                "version": "20260513",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "dcm2niix_v1.0.20240202_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23997598",
+                "license": [
+                    "dcm2niix license"
+                ],
+                "license_details": [
+                    {
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/master/license.txt"
+                    }
+                ]
+            },
+            "dcm2niix v1.0.20240202": {
+                "version": "20260512",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dcm2niix_v1.0.20240202",
+                "doi": "https://doi.org/10.5281/zenodo.20685761",
+                "license": [
+                    "dcm2niix license"
+                ],
+                "license_details": [
+                    {
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/master/license.txt"
+                    }
+                ]
+            },
+            "dcm2niix v1.0.20260724": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dcm2niix_v1.0.20260724",
+                "doi": "https://doi.org/10.5281/zenodo.23129768",
+                "license": [
+                    "dcm2niix license"
+                ],
+                "license_details": [
+                    {
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/master/license.txt"
+                    }
+                ]
+            },
+            "dcm2niix v1.0.20261029": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dcm2niix_v1.0.20261029",
+                "doi": "https://doi.org/10.5281/zenodo.23995584",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "dcm2niix is designed to convert neuroimaging data from the DICOM format to the NIfTI format. This web page hosts the developmental source code - a compiled version for Linux, MacOS, and Windows of the most recent stable release is included with MRIcroGL. A full manual for this software is available in the form of a NITRC wiki.",
+        "citation": "Li X, Morgan PS, Ashburner J, Smith J, Rorden C (2016) The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 264:47-56. doi: 10.1016/j.jneumeth.2016.03.001. PMID: 26945974"
+    },
+    "dcm2niix_arm64": {
+        "apps": {
+            "dcm2niix_arm64 v1.0.20260724": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dcm2niix_arm64_v1.0.20260724",
+                "doi": "https://doi.org/10.5281/zenodo.22984811",
+                "license": [
+                    "dcm2niix license"
+                ],
+                "license_details": [
+                    {
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/master/license.txt"
+                    }
+                ]
+            },
+            "dcm2niix_arm64 v1.0.20261029": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dcm2niix_arm64_v1.0.20261029",
+                "doi": "https://doi.org/10.5281/zenodo.23995572",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "dcm2niix is designed to convert neuroimaging data from the DICOM format to the NIfTI format. This web page hosts the developmental source code - a compiled version for Linux, MacOS, and Windows of the most recent stable release is included with MRIcroGL. A full manual for this software is available in the form of a NITRC wiki.",
+        "citation": "Li X, Morgan PS, Ashburner J, Smith J, Rorden C (2016) The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 264:47-56. doi: 10.1016/j.jneumeth.2016.03.001. PMID: 26945974"
+    },
+    "dicomtools": {
+        "apps": {
+            "dicomtools 1.0.0": {
+                "version": "20250204",
+                "exec": "",
+                "image": "dicomtools_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.18932141",
+                "license": [
+                    "dcm2niix license",
+                    "dcmtk license"
+                ],
+                "license_details": [
+                    {
+                        "name": "dcmtk license",
+                        "url": "https://support.dcmtk.org/docs/file_copyright.html"
+                    },
+                    {
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/master/license.txt"
+                    }
+                ]
+            },
+            "dicomtools 1.1.0": {
+                "version": "20261030",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dicomtools_1.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.23995604",
+                "license": [
+                    "BSD-2-Clause",
+                    "DCMTK copyright and license"
+                ],
+                "license_details": [
+                    {
+                        "name": "DCMTK copyright and license",
+                        "url": "https://support.dcmtk.org/docs/file_copyright.html"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Contains a collection of tools useful for DICOM to BIDS conversion Tools included:",
+        "citation": "Li X, Morgan PS, Ashburner J, Smith J, Rorden C. The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 2016;264:47-56. doi:10.1016/j.jneumeth.2016.03.001"
+    },
+    "dicomtools_arm64": {
+        "apps": {
+            "dicomtools_arm64 1.1.0": {
+                "version": "20261030",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dicomtools_arm64_1.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.23995864",
+                "license": [
+                    "BSD-2-Clause",
+                    "DCMTK copyright and license"
+                ],
+                "license_details": [
+                    {
+                        "name": "DCMTK copyright and license",
+                        "url": "https://support.dcmtk.org/docs/file_copyright.html"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Contains a collection of tools useful for DICOM to BIDS conversion Tools included:",
+        "citation": "Li X, Morgan PS, Ashburner J, Smith J, Rorden C. The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 2016;264:47-56. doi:10.1016/j.jneumeth.2016.03.001"
+    },
+    "elastix": {
+        "apps": {
+            "elastix 5.1.0": {
+                "version": "20230407",
+                "exec": "",
+                "image": "elastix_5.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931950",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "elastix 5.3.1": {
+                "version": "20261121",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "elastix_5.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24432198",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "image registration"
+        ],
+        "description": "a toolbox for rigid and nonrigid registration of images. elastix is open source software, based on the well-known Insight Segmentation and Registration Toolkit (ITK). The software consists of a collection of algorithms that are commonly used to perform (medical) image registration: the task of finding a spatial transformation, mapping one image (the fixed image) to another (the moving image), by optimizing relevant image similarity metrics. The modular design of elastix allows the user to quickly configure, test, and compare different registration methods for a specific application. A command-line interface enables automated processing of large numbers of data sets, by means of scripting. Nowadays elastix is accompanied by ITKElastix making it available in Python (on Pypi) and by SimpleElastix, making it available in languages like C++, Python, Java, R, Ruby, C# and Lua.",
+        "citation": "S. Klein, M. Staring, K. Murphy, M.A. Viergever, J.P.W. Pluim, \"elastix: a toolbox for intensity based medical image registration,\" IEEE Transactions on Medical Imaging, vol. 29, no. 1, pp. 196 - 205, January 2010.\n\nD.P. Shamonin, E.E. Bron, B.P.F. Lelieveldt, M. Smits, S. Klein and M. Staring, \"Fast Parallel Image Registration on CPU and GPU for Diagnostic Classification of Alzheimer's Disease\", Frontiers in Neuroinformatics, vol. 7, no. 50, pp. 1-15, January 2014."
+    },
+    "elastix_arm64": {
+        "apps": {
+            "elastix_arm64 5.3.1": {
+                "version": "20261121",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "elastix_arm64_5.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24432208",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "image registration"
+        ],
+        "description": "a toolbox for rigid and nonrigid registration of images. elastix is open source software, based on the well-known Insight Segmentation and Registration Toolkit (ITK). The software consists of a collection of algorithms that are commonly used to perform (medical) image registration: the task of finding a spatial transformation, mapping one image (the fixed image) to another (the moving image), by optimizing relevant image similarity metrics. The modular design of elastix allows the user to quickly configure, test, and compare different registration methods for a specific application. A command-line interface enables automated processing of large numbers of data sets, by means of scripting. Nowadays elastix is accompanied by ITKElastix making it available in Python (on Pypi) and by SimpleElastix, making it available in languages like C++, Python, Java, R, Ruby, C# and Lua.",
+        "citation": "S. Klein, M. Staring, K. Murphy, M.A. Viergever, J.P.W. Pluim, \"elastix: a toolbox for intensity based medical image registration,\" IEEE Transactions on Medical Imaging, vol. 29, no. 1, pp. 196 - 205, January 2010.\n\nD.P. Shamonin, E.E. Bron, B.P.F. Lelieveldt, M. Smits, S. Klein and M. Staring, \"Fast Parallel Image Registration on CPU and GPU for Diagnostic Classification of Alzheimer's Disease\", Frontiers in Neuroinformatics, vol. 7, no. 50, pp. 1-15, January 2014."
+    },
+    "eman2": {
+        "apps": {
+            "eman2 2.99.85": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "eman2_2.99.85",
+                "doi": "https://doi.org/10.5281/zenodo.23630866",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "e2projectmanagerGUI-eman2 2.99.85": {
+                "version": "20261012",
+                "exec": "e2projectmanager.py",
+                "apptainer_args": [],
+                "image": "eman2_2.99.85",
+                "doi": "https://doi.org/10.5281/zenodo.23630866",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "e2displayGUI-eman2 2.99.85": {
+                "version": "20261012",
+                "exec": "e2display.py",
+                "apptainer_args": [],
+                "image": "eman2_2.99.85",
+                "doi": "https://doi.org/10.5281/zenodo.23630866",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "eman2 2.99.86": {
+                "version": "20261111",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "eman2_2.99.86",
+                "doi": "https://doi.org/10.5281/zenodo.24150364",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "e2projectmanagerGUI-eman2 2.99.86": {
+                "version": "20261111",
+                "exec": "e2projectmanager.py",
+                "apptainer_args": [],
+                "image": "eman2_2.99.86",
+                "doi": "https://doi.org/10.5281/zenodo.24150364",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "e2displayGUI-eman2 2.99.86": {
+                "version": "20261111",
+                "exec": "e2display.py",
+                "apptainer_args": [],
+                "image": "eman2_2.99.86",
+                "doi": "https://doi.org/10.5281/zenodo.24150364",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "EMAN2 is a scientific image processing suite for single particle cryo-EM reconstruction, subtomogram averaging and related electron microscopy workflows. Release 2.99.86 of the official `eman-dev` conda package (cryoem and conda-forge channels, Qt GUI build) is installed in /opt/eman2. All `e2*.py` programs are on the PATH. Examples:",
+        "citation": "Tang G, Peng L, Baldwin PR, Mann DS, Jiang W, Rees I, Ludtke SJ.\nEMAN2: an extensible image processing suite for electron microscopy.\nJ Struct Biol. 2007;157(1):38-46. doi:10.1016/j.jsb.2006.05.009"
+    },
+    "epu-group-afis": {
+        "apps": {
+            "epu-group-afis 0.3.0": {
+                "version": "20261003",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "epu-group-afis_0.3.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630201",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "EPU_group_AFIS converts EPU AFIS XML metadata into RELION optics groups. Run `EPU_Group_AFIS.py --xml_dir /data/xml --n_clusters 5 --quiet --output_fn /data/movies.star`. Set the movie directory, pixel size and microscope parameters for your acquisition. The upstream grid calculation requires at least five optics groups. `--quiet` alone still prompts when the default cluster count is one; supply `--n_clusters` explicitly. The plotting backend is headless. Input metadata and output files belong in a writable mounted directory. Upstream release v0.3 is installed under /opt/epu-group-afis. https://github.com/DustinMorado/EPU_group_AFIS"
+    },
+    "gautomatch": {
+        "apps": {
+            "gautomatch 0.56.0": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "gautomatch_0.56.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630183",
+                "license": [
+                    "Gautomatch freeware binary (Kai Zhang, MRC-LMB); no licence published",
+                    "NVIDIA CUDA Toolkit EULA (redistributable cuFFT, cuBLAS, cuRAND, NPP runtime libraries)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Gautomatch freeware binary (Kai Zhang, MRC-LMB); no licence published",
+                        "url": "https://web.archive.org/web/20230429192932/https://www2.mrc-lmb.cam.ac.uk/download/gautomatch-056/"
+                    },
+                    {
+                        "license": "other-closed",
+                        "name": "NVIDIA CUDA Toolkit EULA (redistributable cuFFT, cuBLAS, cuRAND, NPP runtime libraries)",
+                        "url": "https://docs.nvidia.com/cuda/archive/10.1/eula/index.html"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "Gautomatch is a GPU-accelerated program by Kai Zhang (MRC Laboratory of Molecular Biology) for fully automatic particle picking in cryo-EM micrographs, with or without 2D templates. This container installs Gautomatch v0.56, binary `Gautomatch_v0.56_sm30-75_cu10.1`. The binary was compiled for CUDA 10.1 and compute capabilities sm_30 to sm_75. It also embeds sm_75 PTX, which the NVIDIA driver JIT-compiles for newer GPUs. The CUDA 10.1 runtime libraries it links against (cuFFT, cuBLAS, cuRAND and NPP) are bundled in /opt/gautomatch-0.56/lib. The host must provide an NVIDIA GPU and a driver that supports CUDA 10.1 or newer (418.39+). Run Apptainer/Singularity with `--nv`.",
+        "citation": "Zhang, K. Gautomatch. Unpublished software, MRC Laboratory of Molecular Biology.\nhttps://www2.mrc-lmb.cam.ac.uk/research/locally-developed-software/zhang-software/#gauto"
+    },
+    "gimp": {
+        "apps": {
+            "gimpGUI-gimp 2.10.18": {
+                "version": "20210104",
+                "exec": "gimp",
+                "image": "gimp_2.10.18",
+                "doi": "https://doi.org/10.5281/zenodo.18931896",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "gimp 2.10.18": {
+                "version": "20210104",
+                "exec": "",
+                "image": "gimp_2.10.18",
+                "doi": "https://doi.org/10.5281/zenodo.18931896",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "gimp 2.10.36": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "gimp_2.10.36",
+                "doi": "https://doi.org/10.5281/zenodo.22731002",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "gimpGUI-gimp 2.10.36": {
+                "version": "20260911",
+                "exec": "gimp",
+                "apptainer_args": [],
+                "image": "gimp_2.10.36",
+                "doi": "https://doi.org/10.5281/zenodo.22731002",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "Whether you are a graphic designer, photographer, illustrator, or scientist, GIMP provides you with sophisticated tools to get your job done. You can further enhance your productivity with GIMP thanks to many customization options and 3rd party plugins."
+    },
+    "gimp_arm64": {
+        "apps": {
+            "gimp_arm64 2.10.36": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "gimp_arm64_2.10.36",
+                "doi": "https://doi.org/10.5281/zenodo.22851370",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "gimpGUI-gimp_arm64 2.10.36": {
+                "version": "20260911",
+                "exec": "gimp",
+                "apptainer_args": [],
+                "image": "gimp_arm64_2.10.36",
+                "doi": "https://doi.org/10.5281/zenodo.22851370",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "Whether you are a graphic designer, photographer, illustrator, or scientist, GIMP provides you with sophisticated tools to get your job done. You can further enhance your productivity with GIMP thanks to many customization options and 3rd party plugins."
+    },
+    "globus": {
+        "apps": {
+            "globusGUI-globus 3.2.2": {
+                "version": "20230620",
+                "exec": "globusconnectpersonal -gui",
+                "image": "globus_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931916",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.2.2": {
+                "version": "20230620",
+                "exec": "",
+                "image": "globus_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931916",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.2.8": {
+                "version": "20260514",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.2.8",
+                "doi": "https://doi.org/10.5281/zenodo.20249513",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.2.8": {
+                "version": "20260514",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.2.8",
+                "doi": "https://doi.org/10.5281/zenodo.20249513",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.3.1": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23630367",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.3.1": {
+                "version": "20261013",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23630367",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.3.2": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630169",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.3.2": {
+                "version": "20261023",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630169",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Globus client"
+    },
+    "globus_arm64": {
+        "apps": {
+            "globus_arm64 3.3.1": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444246",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus_arm64 3.3.1": {
+                "version": "20261013",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444246",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus_arm64 3.3.2": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630426",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus_arm64 3.3.2": {
+                "version": "20261023",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630426",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Globus client"
+    },
+    "ilastik": {
+        "apps": {
+            "ilastik 1.4.0": {
+                "version": "20230720",
+                "exec": "",
+                "image": "ilastik_1.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931501",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "ilastik GPL with extension exception",
+                        "url": "https://www.ilastik.org/about"
+                    }
+                ]
+            },
+            "ilastikGUI-ilastik 1.4.0": {
+                "version": "20230720",
+                "exec": "run_ilastik.sh",
+                "image": "ilastik_1.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931501",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "ilastik GPL with extension exception",
+                        "url": "https://www.ilastik.org/about"
+                    }
+                ]
+            },
+            "ilastik 1.4.2": {
+                "version": "20260928",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "ilastik_1.4.2",
+                "doi": "https://doi.org/10.5281/zenodo.23129999",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "ilastik GPL with extension exception",
+                        "url": "https://www.ilastik.org/about"
+                    }
+                ]
+            },
+            "ilastikGUI-ilastik 1.4.2": {
+                "version": "20260928",
+                "exec": "run_ilastik.sh",
+                "apptainer_args": [],
+                "image": "ilastik_1.4.2",
+                "doi": "https://doi.org/10.5281/zenodo.23129999",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "ilastik GPL with extension exception",
+                        "url": "https://www.ilastik.org/about"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation"
+        ],
+        "description": "ilastik is a simple, user-friendly tool for interactive image classification, segmentation and analysis. It is built as a modular software framework, which currently has workflows for automated (supervised) pixel- and object-level classification, automated and semi-automated object tracking, semi-automated segmentation and object counting without detection.",
+        "citation": "ilastik: interactive machine learning for (bio)image analysis\nStuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N. Straehle, Bernhard X. Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A. Hamprecht & Anna Kreshuk\nin: Nature Methods, (2019)"
+    },
+    "irkernel": {
+        "apps": {
+            "irkernel 4.4.3 arm64": {
+                "version": "20260513",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "irkernel_4.4.3_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23997953",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "programming"
+        ],
+        "description": "R kernel in notebook"
+    },
+    "itksnap": {
+        "apps": {
+            "itksnapGUI-itksnap 3.8.0": {
+                "version": "20201208",
+                "exec": "itksnap /MRIcrop-orig.gipl",
+                "image": "itksnap_3.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.18932044",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnap 3.8.0": {
+                "version": "20201208",
+                "exec": "",
+                "image": "itksnap_3.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.18932044",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnapGUI-itksnap 4.0.1": {
+                "version": "20230609",
+                "exec": "itksnap /MRIcrop-orig.gipl",
+                "image": "itksnap_4.0.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931992",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnap 4.0.1": {
+                "version": "20230609",
+                "exec": "",
+                "image": "itksnap_4.0.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931992",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnapGUI-itksnap 4.0.2": {
+                "version": "20240117",
+                "exec": "itksnap /MRIcrop-orig.gipl",
+                "image": "itksnap_4.0.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931596",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnap 4.0.2": {
+                "version": "20240117",
+                "exec": "",
+                "image": "itksnap_4.0.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931596",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnap 4.2.2": {
+                "version": "20250805",
+                "exec": "",
+                "image": "itksnap_4.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931581",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnapGUI-itksnap 4.2.2": {
+                "version": "20250805",
+                "exec": "itksnap",
+                "image": "itksnap_4.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931581",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnap 4.4.0": {
+                "version": "20260117",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "itksnap_4.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931493",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "itksnapGUI-itksnap 4.4.0": {
+                "version": "20260117",
+                "exec": "itksnap",
+                "apptainer_args": [],
+                "image": "itksnap_4.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931493",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "visualization"
+        ],
+        "description": "itksnap is an image viewer for DICOM and NII files and supports manual segmentation of data.",
+        "citation": "Paul A. Yushkevich, Joseph Piven, Heather Cody Hazlett, Rachel Gimpel Smith, Sean Ho, James C. Gee, and Guido Gerig. User-guided 3D active contour segmentation of anatomical structures: Significantly improved efficiency and reliability. Neuroimage 2006 Jul 1;31(3):1116-28."
+    },
+    "jamovi": {
+        "apps": {
+            "jamovi 2.7.4": {
+                "version": "20260529",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jamovi_2.7.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685645",
+                "license": [
+                    "AGPL-3.0-or-later",
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "statistics"
+        ],
+        "description": "jamovi is a free and open statistical spreadsheet built on top of R.",
+        "citation": "The jamovi project. jamovi (Version 2.7.4) [Computer Software]. Retrieved from https://www.jamovi.org"
+    },
+    "jidt": {
+        "apps": {
+            "jidt 1.6.1": {
+                "version": "20260928",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jidt_1.6.1",
+                "doi": "https://doi.org/10.5281/zenodo.23129885",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "jidt 1.6": {
+                "version": "20260608",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jidt_1.6",
+                "doi": "https://doi.org/10.5281/zenodo.20780351",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "statistics",
+            "programming"
+        ],
+        "description": "JIDT: Java Information Dynamics Toolkit for studying information-theoretic measures of computation in complex systems. JIDT provides a stand-alone, open-source code Java implementation (also usable in Matlab, Octave, Python, R, Julia and Clojure) of information-theoretic measures of distributed computation in complex systems: i.e. information storage, transfer and modification.",
+        "citation": "https://arxiv.org/abs/1408.3270"
+    },
+    "libreoffice": {
+        "apps": {
+            "libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "LibreOffice is a free and open-source office suite with applications for word processing, spreadsheets, presentations, vector drawing, databases, and formula editing."
+    },
+    "libreoffice_arm64": {
+        "apps": {
+            "libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "LibreOffice is a free and open-source office suite with applications for word processing, spreadsheets, presentations, vector drawing, databases, and formula editing."
+    },
+    "mede": {
+        "apps": {
+            "mede 0.0.12": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "mede_0.0.12",
+                "doi": "https://doi.org/10.5281/zenodo.23850166",
+                "license": [
+                    "Apache License 2.0 with Commons Clause and attribution terms"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Apache License 2.0 with Commons Clause and attribution terms",
+                        "url": "https://github.com/TIO-IKIM/medical_image_deidentification/blob/main/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "MEDE de-identifies medical imaging data including MRI, CT, ultrasound, whole slide images, and MRI raw data. It supports metadata de-identification, defacing, skull stripping, text removal, and file renaming.\nThis container removes all private DICOM tags recursively with basicProfile. The rtnSafePrivOpt option is rejected because MEDE 0.0.12 has no validated safe-private allowlist. Other profiles alone do not enable basicProfile; select it explicitly for metadata de-identification.",
+        "citation": "Rempe M, Heine L, Seibold C, Horst F, Kleesiek J. De-identification of medical imaging data: a comprehensive tool for ensuring patient privacy. European Radiology. 2025."
+    },
+    "mede_arm64": {
+        "apps": {
+            "mede_arm64 0.0.12": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "mede_arm64_0.0.12",
+                "doi": "https://doi.org/10.5281/zenodo.23850687",
+                "license": [
+                    "Apache License 2.0 with Commons Clause and attribution terms"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Apache License 2.0 with Commons Clause and attribution terms",
+                        "url": "https://github.com/TIO-IKIM/medical_image_deidentification/blob/main/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "MEDE de-identifies medical imaging data including MRI, CT, ultrasound, whole slide images, and MRI raw data. It supports metadata de-identification, defacing, skull stripping, text removal, and file renaming.\nThis container removes all private DICOM tags recursively with basicProfile. The rtnSafePrivOpt option is rejected because MEDE 0.0.12 has no validated safe-private allowlist. Other profiles alone do not enable basicProfile; select it explicitly for metadata de-identification.",
+        "citation": "Rempe M, Heine L, Seibold C, Horst F, Kleesiek J. De-identification of medical imaging data: a comprehensive tool for ensuring patient privacy. European Radiology. 2025."
+    },
+    "mipav": {
+        "apps": {
+            "mipav 11.3.3": {
+                "version": "20260611",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "mipav_11.3.3",
+                "doi": "https://doi.org/10.5281/zenodo.20780355",
+                "license": [
+                    "Medical Image Processing, Analysis and Visualization"
+                ],
+                "license_details": [
+                    {
+                        "name": "Medical Image Processing, Analysis and Visualization",
+                        "url": "https://mipav.cit.nih.gov/clickwrap.php"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "The MIPAV (Medical Image Processing, Analysis, and Visualization) application enables quantitative analysis and visualization of medical images of numerous modalities such as PET, MRI, CT, or microscopy."
+    },
+    "motioncor3": {
+        "apps": {
+            "motioncor3 1.2.4": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "motioncor3_1.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.23444240",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "MotionCor3 corrects beam-induced motion in cryo-EM and cryo-ET movies on NVIDIA GPUs. It is the open-source (BSD-3-Clause) successor of UCSF MotionCor2. It reads MRC, TIFF and EER movies. It performs whole-frame and local patch alignment, dose weighting and gain/defect correction, and estimates CTF. This container builds MotionCor3 1.2.4 (commit dd8b6831ae66ef016fb7ef3b9b6172f8b56c79aa) from source with CUDA 12.8. It contains native kernels for compute capability 7.0 to 12.0 (Volta to Blackwell) and PTX for newer GPUs. MotionCor2 is not included: its UCSF licence forbids redistribution without written permission. MotionCor3 is an improved implementation of MotionCor2 and keeps its option names (-InMrc, -OutMrc, -Patch, ...). Requirements: - An NVIDIA GPU with a CUDA 12 capable driver (525 or newer). The driver library (libcuda.so.1) comes from the host, so run the container with GPU support, for example `apptainer exec --nv`. - Without a GPU only `MotionCor3 --help` style inspection is possible; alignment needs a GPU.",
+        "citation": "Zheng SQ, Palovcak E, Armache JP, Verba KA, Cheng Y, Agard DA. MotionCor2: anisotropic correction of beam-induced motion for improved cryo-electron microscopy. Nature Methods 14, 331-332 (2017). doi:10.1038/nmeth.4193"
+    },
+    "napari": {
+        "apps": {
+            "napari 0.10.0": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "napari_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23875810",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari GUI-napari 0.10.0": {
+                "version": "20261101",
+                "exec": "napari",
+                "apptainer_args": [],
+                "image": "napari_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23875810",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "VoxTell-napari 0.10.0": {
+                "version": "20261101",
+                "exec": "napari-voxtell",
+                "apptainer_args": [],
+                "image": "napari_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23875810",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "nnInteractive-napari 0.10.0": {
+                "version": "20261101",
+                "exec": "napari-nninteractive",
+                "apptainer_args": [],
+                "image": "napari_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23875810",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari 0.8.0": {
+                "version": "20260814",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "napari_0.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.21960207",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari GUI-napari 0.8.0": {
+                "version": "20260814",
+                "exec": "napari",
+                "apptainer_args": [],
+                "image": "napari_0.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.21960207",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "VoxTell-napari 0.8.0": {
+                "version": "20260814",
+                "exec": "napari-voxtell",
+                "apptainer_args": [],
+                "image": "napari_0.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.21960207",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "nnInteractive-napari 0.8.0": {
+                "version": "20260814",
+                "exec": "napari-nninteractive",
+                "apptainer_args": [],
+                "image": "napari_0.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.21960207",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari 0.9.2": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "napari_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629837",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari GUI-napari 0.9.2": {
+                "version": "20261013",
+                "exec": "napari",
+                "apptainer_args": [],
+                "image": "napari_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629837",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "VoxTell-napari 0.9.2": {
+                "version": "20261013",
+                "exec": "napari-voxtell",
+                "apptainer_args": [],
+                "image": "napari_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629837",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "nnInteractive-napari 0.9.2": {
+                "version": "20261013",
+                "exec": "napari-nninteractive",
+                "apptainer_args": [],
+                "image": "napari_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629837",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "napari is an interactive multi-dimensional image viewer. This container adds the VoxTell free-text 3D medical segmentation plugin and the nnInteractive prompt-based 3D segmentation plugin, including nnInteractive local and remote inference support.",
+        "citation": "napari contributors (2019). napari: a multi-dimensional image viewer for Python. doi:10.5281/zenodo.3555620\nIsensee et al. (2025). nnInteractive: Redefining 3D Promptable Segmentation. arXiv:2503.08373.\nRokuss et al. (2025). VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation. arXiv:2511.11450."
+    },
+    "napari_arm64": {
+        "apps": {
+            "napari_arm64 0.10.0": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23933483",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari GUI-napari_arm64 0.10.0": {
+                "version": "20261101",
+                "exec": "napari",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23933483",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "VoxTell-napari_arm64 0.10.0": {
+                "version": "20261101",
+                "exec": "napari-voxtell",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23933483",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "nnInteractive-napari_arm64 0.10.0": {
+                "version": "20261101",
+                "exec": "napari-nninteractive",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23933483",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari_arm64 0.9.2": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629719",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "napari GUI-napari_arm64 0.9.2": {
+                "version": "20261013",
+                "exec": "napari",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629719",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "VoxTell-napari_arm64 0.9.2": {
+                "version": "20261013",
+                "exec": "napari-voxtell",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629719",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            },
+            "nnInteractive-napari_arm64 0.9.2": {
+                "version": "20261013",
+                "exec": "napari-nninteractive",
+                "apptainer_args": [],
+                "image": "napari_arm64_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.23629719",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "napari is an interactive multi-dimensional image viewer. This container adds the VoxTell free-text 3D medical segmentation plugin and the nnInteractive prompt-based 3D segmentation plugin, including nnInteractive local and remote inference support.",
+        "citation": "napari contributors (2019). napari: a multi-dimensional image viewer for Python. doi:10.5281/zenodo.3555620\nIsensee et al. (2025). nnInteractive: Redefining 3D Promptable Segmentation. arXiv:2503.08373.\nRokuss et al. (2025). VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation. arXiv:2511.11450."
+    },
     "nextpyp": {
         "apps": {
             "nextpyp 0.7.3": {
@@ -17,6 +2225,894 @@
         ],
         "description": "nextPYP (Bartesaghi lab, Duke University) is a web application for single-particle cryo-EM and cryo-electron tomography: pre-processing, particle picking, sub-tomogram averaging, constrained refinement and classification, run as projects in a browser. https://nextpyp.app nextPYP runs as two Apptainer images. This container includes the web server image (`nextPYP.sif`) and the `nextpyp` launcher. The processing image (`pyp.sif`, about 43 GB) is too large to include, so `nextpyp install` downloads it once into a directory you choose. The web server then runs from that directory in a nested Apptainer container. ### Install once Pick a writable directory with at least 50 GB free plus room for your projects (raw movies and tilt series need several TB). Every parent directory must be group- and world-executable (`chmod go+x`), which nextPYP enforces, so use project or scratch storage rather than a private home directory.",
         "citation": "Liu, H.-F., Zhou, Y., Huang, Q., Piland, J., Jin, W., Mandel, J.,\nDu, X., Martin, J., Bartesaghi, A. nextPYP: a comprehensive and scalable\nplatform for characterizing protein variability in situ using single-particle\ncryo-electron tomography. Nat Methods 20, 1909-1919 (2023).\nhttps://doi.org/10.1038/s41592-023-02045-0"
+    },
+    "niftyreg": {
+        "apps": {
+            "niftyreg 1.4.0": {
+                "version": "20220317",
+                "exec": "",
+                "image": "niftyreg_1.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.18932008",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "niftyreg 2.1.2": {
+                "version": "20261003",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niftyreg_2.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.23129990",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "image registration"
+        ],
+        "citation": "[1] Ourselin, et al. (2001). Reconstructing a 3D structure from serial\nhistological sections. Image and Vision Computing, 19(1-2), 25\\u201331.\n[2] Modat, et al. (2014). Global image registration using a symmetric block-\nmatching approach. Journal of Medical Imaging, 1(2), 024003\\u2013024003.\ndoi:10.1117/1.JMI.1.2.024003\n[3] Rueckert, et al.. (1999). Nonrigid registration using free-form\ndeformations: Application to breast MR images. IEEE Transactions on Medical\nImaging, 18(8), 712\\u2013721. doi:10.1109/42.796284\n[4] Modat, et al. (2010). Fast free-form deformation using graphics processing\nunits. Computer Methods And Programs In Biomedicine,98(3), 278\\u2013284.\ndoi:10.1016/j.cmpb.2009.09.002"
+    },
+    "niftyreg_arm64": {
+        "apps": {
+            "niftyreg_arm64 2.1.2": {
+                "version": "20261003",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niftyreg_arm64_2.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.23129758",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "image registration"
+        ],
+        "citation": "[1] Ourselin, et al. (2001). Reconstructing a 3D structure from serial\nhistological sections. Image and Vision Computing, 19(1-2), 25\\u201331.\n[2] Modat, et al. (2014). Global image registration using a symmetric block-\nmatching approach. Journal of Medical Imaging, 1(2), 024003\\u2013024003.\ndoi:10.1117/1.JMI.1.2.024003\n[3] Rueckert, et al.. (1999). Nonrigid registration using free-form\ndeformations: Application to breast MR images. IEEE Transactions on Medical\nImaging, 18(8), 712\\u2013721. doi:10.1109/42.796284\n[4] Modat, et al. (2010). Fast free-form deformation using graphics processing\nunits. Computer Methods And Programs In Biomedicine,98(3), 278\\u2013284.\ndoi:10.1016/j.cmpb.2009.09.002"
+    },
+    "nighres": {
+        "apps": {
+            "nighres 1.5.1": {
+                "version": "20240611",
+                "exec": "",
+                "image": "nighres_1.5.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931645",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "nighres 1.5.2": {
+                "version": "20260608",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nighres_1.5.2",
+                "doi": "https://doi.org/10.5281/zenodo.20685707",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "nighres 1.5.3": {
+                "version": "20261122",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nighres_1.5.3",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "structural imaging"
+        ],
+        "description": "Neuroimaging at high resolution is a collection of python/java tools for processing of high resolution neuroimaging data, including UHF-MRI and microscopy. The package includes many tools for quantitative MRI, brain parcellation, shape analysis optimized to scale nicely with resolution.",
+        "citation": "Huntenburg, Steele & Bazin (2018). Nighres: processing tools for high-resolution neuroimaging.\nGigaScience, 7(7). https://doi.org/10.1093/gigascience/giy082"
+    },
+    "nighres_arm64": {
+        "apps": {
+            "nighres_arm64 1.5.3": {
+                "version": "20261122",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nighres_arm64_1.5.3",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "structural imaging"
+        ],
+        "description": "Neuroimaging at high resolution is a collection of python/java tools for processing of high resolution neuroimaging data, including UHF-MRI and microscopy. The package includes many tools for quantitative MRI, brain parcellation, shape analysis optimized to scale nicely with resolution.",
+        "citation": "Huntenburg, Steele & Bazin (2018). Nighres: processing tools for high-resolution neuroimaging.\nGigaScience, 7(7). https://doi.org/10.1093/gigascience/giy082"
+    },
+    "niimath": {
+        "apps": {
+            "niimath 1.0.0": {
+                "version": "20250617",
+                "exec": "",
+                "image": "niimath_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931957",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20250529": {
+                "version": "20250623",
+                "exec": "",
+                "image": "niimath_1.0.20250529",
+                "doi": "https://doi.org/10.5281/zenodo.18931537",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20250804 arm64": {
+                "version": "20251016",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "niimath_1.0.20250804_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23998157",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20250804": {
+                "version": "20251016",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_1.0.20250804",
+                "doi": "https://doi.org/10.5281/zenodo.18931557",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20260703": {
+                "version": "20260909",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_1.0.20260703",
+                "doi": "https://doi.org/10.5281/zenodo.22851339",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20260924": {
+                "version": "20261004",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_1.0.20260924",
+                "doi": "https://doi.org/10.5281/zenodo.23444129",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath 1.0.20261016": {
+                "version": "20261018",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_1.0.20261016",
+                "doi": "https://doi.org/10.5281/zenodo.23996348",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "It is said that `imitation is the sincerest form of flattery`. This project emulates the popular [fslmaths](https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro3/index.html) tool. fslmaths is advertised as a `general image calculator` and is not only one of the foundational tools for FSL's brain imaging pipelines (such as [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT)), but has also been widely adopted by many tools. This popularity suggests that it fulfills an important niche. While scientists are often encouraged to discover novel solutions, it sometimes seems that replication is undervalued. Here are some specific reasons for creating this tool:",
+        "citation": "Rorden C, Webster M, Drake C, Jenkinson M, Clayden JD, Li N, Hanayik T (2024) niimath and fslmaths: replication as a method to enhance popular neuroimaging tools. Aperture Neuro.4. doi:10.52294/001c.94384"
+    },
+    "niimath_arm64": {
+        "apps": {
+            "niimath_arm64 1.0.20260703": {
+                "version": "20260909",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_arm64_1.0.20260703",
+                "doi": "https://doi.org/10.5281/zenodo.22851358",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath_arm64 1.0.20260924": {
+                "version": "20261004",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_arm64_1.0.20260924",
+                "doi": "https://doi.org/10.5281/zenodo.23290198",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "niimath_arm64 1.0.20261016": {
+                "version": "20261018",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "niimath_arm64_1.0.20261016",
+                "doi": "https://doi.org/10.5281/zenodo.23629750",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "It is said that `imitation is the sincerest form of flattery`. This project emulates the popular [fslmaths](https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro3/index.html) tool. fslmaths is advertised as a `general image calculator` and is not only one of the foundational tools for FSL's brain imaging pipelines (such as [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT)), but has also been widely adopted by many tools. This popularity suggests that it fulfills an important niche. While scientists are often encouraged to discover novel solutions, it sometimes seems that replication is undervalued. Here are some specific reasons for creating this tool:",
+        "citation": "Rorden C, Webster M, Drake C, Jenkinson M, Clayden JD, Li N, Hanayik T (2024) niimath and fslmaths: replication as a method to enhance popular neuroimaging tools. Aperture Neuro.4. doi:10.52294/001c.94384"
+    },
+    "openrefine": {
+        "apps": {
+            "openrefine 3.10.1": {
+                "version": "20260601",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "openrefine_3.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.20685649",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "OpenRefine is a tool for working with messy data: cleaning it, transforming it from one format into another, and extending it with web services and external data."
+    },
+    "palmettobug": {
+        "apps": {
+            "palmettobug 0.0.3": {
+                "version": "20250424",
+                "exec": "",
+                "image": "palmettobug_0.0.3",
+                "doi": "https://doi.org/10.5281/zenodo.18931309",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "palmettobugGUI-palmettobug 0.0.3": {
+                "version": "20250424",
+                "exec": "palmettobug",
+                "image": "palmettobug_0.0.3",
+                "doi": "https://doi.org/10.5281/zenodo.18931309",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "palmettobug 0.2.11": {
+                "version": "20261024",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "palmettobug_0.2.11",
+                "doi": "https://doi.org/10.5281/zenodo.23850184",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "palmettobugGUI-palmettobug 0.2.11": {
+                "version": "20261024",
+                "exec": "palmettobug",
+                "apptainer_args": [],
+                "image": "palmettobug_0.2.11",
+                "doi": "https://doi.org/10.5281/zenodo.23850184",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "molecular biology"
+        ],
+        "description": "HARMONI is a pure-python GUI in customtinker that, along with its sister package isoSegDenoise, can preprocess, segment, and analyze high-dimensional image or flow cytometry data, especially mass cytometry / imaging mass cytometry data"
+    },
+    "panoptica": {
+        "apps": {
+            "panoptica 2.1.6": {
+                "version": "20260819",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "panoptica_2.1.6",
+                "doi": "https://doi.org/10.5281/zenodo.22851304",
+                "license": [
+                    "Apache-2.0"
+                ]
+            },
+            "panoptica 2.1.7": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "panoptica_2.1.7",
+                "doi": "https://doi.org/10.5281/zenodo.23444258",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "quality control",
+            "image segmentation"
+        ],
+        "description": "panoptica is a Python framework for instance-wise evaluation of 3D segmentation maps (instance matching, panoptic quality, Dice, IoU, ASSD). Part of the BrainLesion Suite (BLS): https://github.com/BrainLesion This container provides both a command line tool and the Python library. ### Command line",
+        "citation": "https://doi.org/10.1101/2024.10.03.24314745"
+    },
+    "panoptica_arm64": {
+        "apps": {
+            "panoptica_arm64 2.1.7": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "panoptica_arm64_2.1.7",
+                "doi": "https://doi.org/10.5281/zenodo.23629815",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "quality control",
+            "image segmentation"
+        ],
+        "description": "panoptica is a Python framework for instance-wise evaluation of 3D segmentation maps (instance matching, panoptic quality, Dice, IoU, ASSD). Part of the BrainLesion Suite (BLS): https://github.com/BrainLesion This container provides both a command line tool and the Python library. ### Command line",
+        "citation": "https://doi.org/10.1101/2024.10.03.24314745"
+    },
+    "pyem": {
+        "apps": {
+            "pyem 0.69.0": {
+                "version": "20261004",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "pyem_0.69.0",
+                "doi": "https://doi.org/10.5281/zenodo.23996060",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "pyem provides Python tools for cryo-EM metadata and image processing. Upstream release v0.69 is installed in /opt/pyem-venv. Run `csparc2star.py --help` for CryoSPARC conversion and `star.py --help` for RELION STAR selection and editing. All upstream console scripts are exposed. For example, `star.py --class 1 particles.star selected.star` selects one class. Commands and Python use private temporary Numba and Matplotlib cache directories, removed when the command exits. No writable home directory is required. Set NUMBA_CACHE_DIR or MPLCONFIGDIR to your own writable paths to retain caches. Mount your metadata, images and output directory at runtime. These CPU metadata tools do not require a GPU. https://github.com/asarnow/pyem",
+        "citation": "Asarnow D, Palovcak E, Cheng Y. UCSF pyem v0.5 (Zenodo). 2019. doi:10.5281/zenodo.3576630"
+    },
+    "qupath": {
+        "apps": {
+            "qupath 0.6.0": {
+                "version": "20250805",
+                "exec": "",
+                "image": "qupath_0.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931602",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "qupathGUI-qupath 0.6.0": {
+                "version": "20250805",
+                "exec": "QuPath",
+                "image": "qupath_0.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931602",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "qupath 0.7.0": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "qupath_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850208",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "GPL-3.0-only"
+                ]
+            },
+            "qupathGUI-qupath 0.7.0": {
+                "version": "20261013",
+                "exec": "QuPath",
+                "apptainer_args": [],
+                "image": "qupath_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850208",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "data organisation",
+            "structural imaging"
+        ],
+        "description": "QuPath is an open-source software for bioimage analysis, especially digital pathology. This container includes the BIOP Cellpose extension and a preconfigured Cellpose 3 environment.",
+        "citation": "Bankhead P, Loughrey MB, Fernández JA, et al. QuPath: Open source software for digital pathology image analysis. Sci Rep. 2017;7(1):16878. doi:10.1038/s41598-017-17204-5"
+    },
+    "qupath_arm64": {
+        "apps": {
+            "qupath_arm64 0.7.0": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "qupath_arm64_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630247",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "GPL-3.0-only"
+                ]
+            },
+            "qupathGUI-qupath_arm64 0.7.0": {
+                "version": "20261013",
+                "exec": "QuPath",
+                "apptainer_args": [],
+                "image": "qupath_arm64_0.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630247",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "structural imaging",
+            "data organisation"
+        ],
+        "description": "QuPath is an open-source software for bioimage analysis, especially digital pathology. This container includes the BIOP Cellpose extension and a preconfigured Cellpose 3 environment.",
+        "citation": "Bankhead P, Loughrey MB, Fernández JA, et al. QuPath: Open source software for digital pathology image analysis. Sci Rep. 2017;7(1):16878. doi:10.1038/s41598-017-17204-5"
+    },
+    "relion": {
+        "apps": {
+            "relion 4.0.1.sm61": {
+                "version": "20240528",
+                "exec": "",
+                "image": "relion_4.0.1.sm61",
+                "doi": "https://doi.org/10.5281/zenodo.18931802",
+                "license": [
+                    "GPL-2.0-only"
+                ]
+            },
+            "relion 4.0.1.sm75": {
+                "version": "20260606",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "relion_4.0.1.sm75",
+                "doi": "https://doi.org/10.5281/zenodo.20685678",
+                "license": [
+                    "GPL-2.0-only"
+                ]
+            },
+            "relion 5.1.1": {
+                "version": "20261107",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "relion_5.1.1",
+                "doi": "https://doi.org/10.5281/zenodo.24071695",
+                "license": [
+                    "GPL-2.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "RELION (REgularised LIkelihood OptimisatioN) is a stand-alone program for Maximum A Posteriori refinement of 3D reconstructions and 2D class averages in cryo-electron microscopy. This container builds RELION 5.1.1 from source for CUDA compute capabilities 7.0, 7.5, 8.0, 8.6, 8.9 and 9.0, with PTX for newer GPUs, and includes helper integrations for CTFFIND and MotionCor2. A bundled Python environment with CUDA PyTorch 2.7.1+cu128 provides the RELION Python programs: Blush regularisation, the 2D class ranker, DynaMight, Topaz, ModelAngelo, the tomography tools and the amyloid tracer. The Blush and class ranker model weights are installed in `TORCH_HOME=/opt/relion-5.1.1/torch`. ModelAngelo and the amyloid tracer download their model weights on first use, which needs a writable `TORCH_HOME`, for example `export TORCH_HOME=~/.cache/torch`. Blush and the class ranker then download their weights there too.",
+        "citation": "Sjors H W Scheres. RELION: Implementation of a Bayesian approach to cryo-EM structure determination. Journal of Structural Biology, 180(3):519-530, December 2012. doi:10.1016/j.jsb.2012.09.006."
+    },
+    "rstudio": {
+        "apps": {
+            "rstudio 1.4.1106": {
+                "version": "20211014",
+                "exec": "",
+                "image": "rstudio_1.4.1106",
+                "doi": "https://doi.org/10.5281/zenodo.18932040",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 1.4.1106": {
+                "version": "20211014",
+                "exec": "rstudio",
+                "image": "rstudio_1.4.1106",
+                "doi": "https://doi.org/10.5281/zenodo.18932040",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2022.07.2": {
+                "version": "20221129",
+                "exec": "",
+                "image": "rstudio_2022.07.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931532",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2022.07.2": {
+                "version": "20221129",
+                "exec": "rstudio",
+                "image": "rstudio_2022.07.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931532",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2023.09.1": {
+                "version": "20231207",
+                "exec": "",
+                "image": "rstudio_2023.09.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931380",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2023.09.1": {
+                "version": "20231207",
+                "exec": "rstudio",
+                "image": "rstudio_2023.09.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931380",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2023.12.1": {
+                "version": "20260211",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2023.12.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931290",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2023.12.1": {
+                "version": "20260211",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2023.12.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931290",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.09.0": {
+                "version": "20261009",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.09.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629873",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.09.0": {
+                "version": "20261009",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.09.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629873",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.10.0": {
+                "version": "20261015",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850221",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.10.0": {
+                "version": "20261015",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850221",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.10.1": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.23933850",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.10.1": {
+                "version": "20261101",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.23933850",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudio 2026.11.0": {
+                "version": "20261116",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.0": {
+                "version": "20261116",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "statistics"
+        ],
+        "description": "RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. This container includes both RStudio Desktop (GUI) and RStudio Server (web-based)."
+    },
+    "scipion": {
+        "apps": {
+            "scipion 3.8.3": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "scipion_3.8.3",
+                "doi": "https://doi.org/10.5281/zenodo.23444330",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "scipion 3.9.0": {
+                "version": "20261106",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "scipion_3.9.0",
+                "doi": "https://doi.org/10.5281/zenodo.24047834",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM",
+            "workflows"
+        ],
+        "description": "Scipion is an image processing framework for cryo-electron microscopy. It integrates many cryo-EM packages into reproducible, traceable workflows that you build and run from a graphical project manager or from Python. This container installs Scipion 3.9.0 with scipion-installer 3.0.0 into a conda environment (Python 3.10.22) under /opt/scipion: - scipion-app 3.9.0 - scipion-pyworkflow 3.12.0 - scipion-em (pwem) 3.11.1 Run `scipion3` to open the project manager (Tk GUI). Other useful commands: - `scipion3 version` prints the installed package versions - `scipion3 protocols` lists the available protocols - `scipion3 printenv` shows the effective configuration - `scipion3 python script.py` runs a script with pyworkflow and pwem importable - `scipion3 tests --help` lists the built-in test runner options Projects are stored in `SCIPION_USER_DATA`, which defaults to `~/ScipionUserData`. If your home directory is not writable, the launcher falls back to `${TMPDIR:-/tmp}/ScipionUserData-<uid>` and prints a warning. Set `SCIPION_USER_DATA` to a persistent directory to keep projects in that case. Test datasets downloaded by `scipion3 testdata` go to `$SCIPION_USER_DATA/data/tests` unless `SCIPION_TESTS` is set. A personal configuration file at `~/.config/scipion/scipion.conf`, or the file named by `SCIPION_LOCAL_CONFIG`, overrides the defaults. The container provides the Scipion core and the protocols bundled with pwem (data import, subsets, masks and others). It does not include plugins that wrap external programs (Xmipp, RELION, CTFFIND, MotionCor2, ...). The installation is read-only, so `scipion3 installp` and the plugin manager cannot add plugins at runtime. Use the dedicated Neurodesk containers for those programs. Documentation: https://scipion-em.github.io/docs/",
+        "citation": "de la Rosa-Trevin JM, et al. Scipion: A software framework toward\nintegration, reproducibility and validation in 3D electron microscopy.\nJ Struct Biol. 2016;195(1):93-99. doi:10.1016/j.jsb.2016.04.010"
+    },
+    "skan": {
+        "apps": {
+            "skan 0.13.1": {
+                "version": "20261004",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "skan_0.13.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444254",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "shape analysis"
+        ],
+        "description": "Skeleton analysis in Python. skan measures the branches and junctions of skeletonised 2D and 3D images, such as vessel, neurite or fibre networks.",
+        "citation": "Nunez-Iglesias J, Blanch AJ, Looker O, Dixon MW, Tilley L. (2018)\nA new Python library to analyse skeleton images confirms malaria parasite\nremodelling of the red blood cell membrane skeleton. PeerJ 6:e4312.\nhttps://doi.org/10.7717/peerj.4312"
+    },
+    "skan_arm64": {
+        "apps": {
+            "skan_arm64 0.13.1": {
+                "version": "20261004",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "skan_arm64_0.13.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444345",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "shape analysis"
+        ],
+        "description": "Skeleton analysis in Python. skan measures the branches and junctions of skeletonised 2D and 3D images, such as vessel, neurite or fibre networks.",
+        "citation": "Nunez-Iglesias J, Blanch AJ, Looker O, Dixon MW, Tilley L. (2018)\nA new Python library to analyse skeleton images confirms malaria parasite\nremodelling of the red blood cell membrane skeleton. PeerJ 6:e4312.\nhttps://doi.org/10.7717/peerj.4312"
+    },
+    "slicer": {
+        "apps": {
+            "slicer 4.11.20200930": {
+                "version": "20201108",
+                "exec": "",
+                "image": "slicer_4.11.20200930",
+                "doi": "https://doi.org/10.5281/zenodo.18931298",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "3DSlicerGUI-slicer 4.11.20200930": {
+                "version": "20201108",
+                "exec": "Slicer",
+                "image": "slicer_4.11.20200930",
+                "doi": "https://doi.org/10.5281/zenodo.18931298",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "slicer 5.0.3": {
+                "version": "20221025",
+                "exec": "",
+                "image": "slicer_5.0.3",
+                "doi": "https://doi.org/10.5281/zenodo.18932042",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "3DSlicerGUI-slicer 5.0.3": {
+                "version": "20221025",
+                "exec": "Slicer",
+                "image": "slicer_5.0.3",
+                "doi": "https://doi.org/10.5281/zenodo.18932042",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "slicer 5.10.0": {
+                "version": "20261005",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "slicer_5.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630090",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "slicerGUI-slicer 5.10.0": {
+                "version": "20261005",
+                "exec": "Slicer",
+                "apptainer_args": [],
+                "image": "slicer_5.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630090",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "slicer 5.12.4": {
+                "version": "20261010",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "slicer_5.12.4",
+                "doi": "https://doi.org/10.5281/zenodo.23996405",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            },
+            "slicerGUI-slicer 5.12.4": {
+                "version": "20261010",
+                "exec": "Slicer",
+                "apptainer_args": [],
+                "image": "slicer_5.12.4",
+                "doi": "https://doi.org/10.5281/zenodo.23996405",
+                "license": [
+                    "3D Slicer Software License Agreement"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "3D Slicer Software License Agreement",
+                        "url": "https://github.com/Slicer/Slicer/blob/main/License.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "image registration",
+            "structural imaging",
+            "visualization"
+        ],
+        "description": "3D Slicer is a software application for visualization and analysis of medical image computing data sets. Supports images, segmentations, surfaces, annotations, transformations in 2D, 3D, and 4D.",
+        "citation": "Fedorov A, Beichel R, Kalpathy-Cramer J, et al. 3D Slicer as an image computing platform for the Quantitative Imaging Network. Magn Reson Imaging. 2012;30(9):1323-1341. doi:10.1016/j.mri.2012.05.001"
+    },
+    "slicersalt": {
+        "apps": {
+            "slicersalt 3.0.0": {
+                "version": "20210301",
+                "exec": "",
+                "image": "slicersalt_3.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931671",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "3DSlicerGUI-slicersalt 3.0.0": {
+                "version": "20210301",
+                "exec": "SlicerSALTApp-real",
+                "image": "slicersalt_3.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.18931671",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "slicersalt 6.0.0": {
+                "version": "20261010",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "slicersalt_6.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630058",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "shape analysis",
+            "quantitative imaging",
+            "structural imaging"
+        ],
+        "description": "This project will develop a comprehensive software that will allow biomedical scientists to precisely locate shape changes in their imaging studies. This software called Shape AnaLysis Toolbox (SALT), will enhance the intuitiveness and ease of use for such studies, as well as allow researchers to find shape changes with higher statistical power. Altogether this constitutes a crucial resource for the imaging field that will enable many and important new findings in biomedical imaging studies."
     },
     "smartscope": {
         "apps": {
@@ -44,5 +3140,321 @@
         ],
         "description": "SmartScope (NIEHS and Duke University) screens cryo-EM grids automatically. It drives the microscope through SerialEM: it acquires an atlas, finds and ranks squares and holes, collects high-magnification images and reports CTF and ice-thickness estimates in a web interface. https://smartscope.org Upstream ships SmartScope as several docker-compose services. This container runs them all from one image: MariaDB, Redis, the SmartScope web application (gunicorn behind nginx) and its Celery worker. It also includes IMOD 5.1.13 (`alignframes`) and CTFFIND 5.0.2, which SmartScope uses to process high-magnification movies. ### Create an instance once An instance directory holds the database, settings, logs and screening data. Choose a writable directory that keeps the same path in later sessions. The container image itself is read-only.",
         "citation": "Bouvette J, Huang Q, Riccio AA, Copeland WC, Bartesaghi A,\nBorgnia MJ. Automated systematic evaluation of cryo-EM specimens with\nSmartScope. eLife 11, e80047 (2022). https://doi.org/10.7554/eLife.80047"
+    },
+    "terastitcher": {
+        "apps": {
+            "terastitcher 1.11.10": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "terastitcher_1.11.10",
+                "doi": "https://doi.org/10.5281/zenodo.23996621",
+                "license": [
+                    "TeraStitcher non-profit research license"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "TeraStitcher non-profit research license",
+                        "url": "https://github.com/abria/TeraStitcher/blob/master/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "TeraStitcher is a free tool that enables the stitching of Teravoxel-sized tiled microscopy images even on workstations with relatively limited resources of memory (<8 GB) and processing power.",
+        "citation": "Bria A, Iannello G. TeraStitcher - A tool for fast automatic 3D-stitching of teravoxel-sized microscopy images. BMC Bioinformatics. 2012;13:316. doi:10.1186/1471-2105-13-316\n\nBria A, Bernaschi M, Guarrasi M, Iannello G. Exploiting Multi-Level Parallelism for Stitching Very Large Microscopy Images. Front Neuroinform. 2019;13:41. doi:10.3389/fninf.2019.00041"
+    },
+    "terastitcher_arm64": {
+        "apps": {
+            "terastitcher_arm64 1.11.10": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "terastitcher_arm64_1.11.10",
+                "doi": "https://doi.org/10.5281/zenodo.23630123",
+                "license": [
+                    "TeraStitcher non-profit research license"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "TeraStitcher non-profit research license",
+                        "url": "https://github.com/abria/TeraStitcher/blob/master/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "TeraStitcher is a free tool that enables the stitching of Teravoxel-sized tiled microscopy images even on workstations with relatively limited resources of memory (<8 GB) and processing power.",
+        "citation": "Bria A, Iannello G. TeraStitcher - A tool for fast automatic 3D-stitching of teravoxel-sized microscopy images. BMC Bioinformatics. 2012;13:316. doi:10.1186/1471-2105-13-316\n\nBria A, Bernaschi M, Guarrasi M, Iannello G. Exploiting Multi-Level Parallelism for Stitching Very Large Microscopy Images. Front Neuroinform. 2019;13:41. doi:10.3389/fninf.2019.00041"
+    },
+    "topaz": {
+        "apps": {
+            "topaz 0.2.5": {
+                "version": "20240313",
+                "exec": "",
+                "image": "topaz_0.2.5",
+                "doi": "https://doi.org/10.5281/zenodo.18931533",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "topaz 0.3.20": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_0.3.20",
+                "doi": "https://doi.org/10.5281/zenodo.23630096",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "topaz 0.3.21": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_0.3.21",
+                "doi": "https://doi.org/10.5281/zenodo.24384961",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM",
+            "machine learning"
+        ],
+        "description": "A pipeline for particle detection in cryo-electron microscopy images using convolutional neural networks trained from positive and unlabeled examples. Topaz also includes methods for micrograph and tomogram denoising using deep denoising models.",
+        "citation": "Bepler, T., Morin, A., Rapp, M. et al. Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs. Nat Methods 16, 1153-1160 (2019)."
+    },
+    "topaz_arm64": {
+        "apps": {
+            "topaz_arm64 0.3.20": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_arm64_0.3.20",
+                "doi": "https://doi.org/10.5281/zenodo.23629725",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "topaz_arm64 0.3.21": {
+                "version": "20261118",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "topaz_arm64_0.3.21",
+                "doi": "https://doi.org/10.5281/zenodo.24384984",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM",
+            "machine learning"
+        ],
+        "description": "A pipeline for particle detection in cryo-electron microscopy images using convolutional neural networks trained from positive and unlabeled examples. Topaz also includes methods for micrograph and tomogram denoising using deep denoising models.",
+        "citation": "Bepler, T., Morin, A., Rapp, M. et al. Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs. Nat Methods 16, 1153-1160 (2019)."
+    },
+    "vesselvio": {
+        "apps": {
+            "vesselvio 1.1.2": {
+                "version": "20230428",
+                "exec": "",
+                "image": "vesselvio_1.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.18932149",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            },
+            "vesselvioGUI-vesselvio 1.1.2": {
+                "version": "20230428",
+                "exec": "vesselvio",
+                "image": "vesselvio_1.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.18932149",
+                "license": [
+                    "GPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "VesselVio is an open-source application designed to allow researchers to analyze and visualize segmented vasculature datasets.",
+        "citation": "https://doi.org/10.1016/j.crmeth.2022.100189"
+    },
+    "vessynth": {
+        "apps": {
+            "vessynth 2026.10.9": {
+                "version": "20261010",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "vessynth_2026.10.9",
+                "doi": "https://doi.org/10.5281/zenodo.23996422",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "Vessel segmentation with the official TOF, T2star, HiPCT, OCT, and fibers models. The container pins upstream commit 1f02f40b6d25ec062d730812073152e5f23dfc8f and packages all models under /opt/VesSynth/models. Its date-based version identifies this container bundle because upstream has no software release version. Run NIfTI inference from your working directory:",
+        "openrecon": true
+    },
+    "vmtk": {
+        "apps": {
+            "vmtk 1.5.0": {
+                "version": "20260604",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "vmtk_1.5.0",
+                "doi": "https://doi.org/10.5281/zenodo.20685874",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "vmtk 1.5.2": {
+                "version": "20261019",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "vmtk_1.5.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630314",
+                "license": [
+                    "BSD-3-Clause",
+                    "TetGen 1.4.3 license"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "TetGen 1.4.3 license",
+                        "url": "https://github.com/vmtk/vmtk/blob/v1.5.2/vtkVmtk/Utilities/tetgen1.4.3/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "visualization",
+            "shape analysis"
+        ],
+        "description": "The Vascular Modeling Toolkit is a collection of libraries and tools for 3D reconstruction, geometric analysis, mesh generation, and surface data analysis for image-based modeling of blood vessels. VMTK can be used through its command line tools, as Python/C++ libraries, or as part of 3D Slicer workflows. This container builds upstream VMTK 1.5.2 from source with its individual command launchers and TetGen support. The locked conda-forge development environment supplies VTK 9.6.2, ITK 5.4.5, and Python 3.12.15. Homepage: http://www.vmtk.org/ Documentation: http://www.vmtk.org/documentation/",
+        "citation": "Izzo R, Steinman D, Manini S, Antiga L. The Vascular Modeling Toolkit: A Python Library for the Analysis of Tubular Structures in Medical Images. J Open Source Softw. 2018;3(25):745. doi:10.21105/joss.00745"
+    },
+    "voreen": {
+        "apps": {
+            "voreen 5.3.0": {
+                "version": "20260722",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "voreen_5.3.0",
+                "doi": "https://doi.org/10.5281/zenodo.21753718",
+                "license": [
+                    "GPL-2.0-only"
+                ]
+            },
+            "voreenGUI-voreen 5.3.0": {
+                "version": "20260722",
+                "exec": "voreenve",
+                "apptainer_args": [],
+                "image": "voreen_5.3.0",
+                "doi": "https://doi.org/10.5281/zenodo.21753718",
+                "license": [
+                    "GPL-2.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "visualization"
+        ],
+        "description": "Voreen is an open source rapid application development framework for the interactive visualization and analysis of multi-modal volumetric data sets. It provides GPU-based volume rendering and data analysis techniques.",
+        "citation": "Jennis Meyer-Spradow, Timo Ropinski, Jorg Mensmann, Klaus H. Hinrichs:\nVoreen: A Rapid-Prototyping Environment for Ray-Casting-Based Volume Visualizations. IEEE Computer Graphics and Applications 29(6): 6-13 (2009)"
+    },
+    "xmipp": {
+        "apps": {
+            "xmipp 6.0.0": {
+                "version": "20261012",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "xmipp_6.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.23996212",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-2-Clause",
+                    "BSD-3-Clause",
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "cryo EM"
+        ],
+        "description": "Xmipp is a suite of image processing programs for cryo-electron microscopy: micrograph and particle handling, CTF estimation, 2D classification, 3D reconstruction, volume analysis and metadata utilities. https://github.com/I2PC/xmipp This container builds Xmipp 6.0.0 standalone, not as a Scipion plugin, with xmippCore 4.1.0 and xmippViz 4.0.2. It is a CPU build with OpenMPI support. CUDA programs are not included. All `xmipp_*` programs are installed in /opt/xmipp/bin, for example: xmipp_phantom_create -i phantom.descr -o phantom.mrc xmipp_image_header -i phantom.mrc xmipp_image_statistics -i phantom.mrc MPI programs (`xmipp_mpi_*`) run with `mpirun -np N`. The Python binding `xmippLib` (pyxmipp3 0.4.0) is on PYTHONPATH. The Java viewer `xmipp_showj` needs a graphical desktop. Deep-learning programs that need Xmipp's separate conda environments are not set up, and some Python scripts need extra packages (for example PyWavelets) that are not installed. The build runs CMake directly with the options of upstream's `./xmipp` installer. Every source, including those CMake would clone from moving branches, comes from a pinned, checksummed archive.",
+        "citation": "Strelak D, Jiménez-Moreno A, Vilas JL, et al. Advances in Xmipp for cryo-electron microscopy: From Xmipp to Scipion. Molecules. 2021;26(20):6224. doi:10.3390/molecules26206224\n\nde la Rosa-Trevín JM, Otón J, Marabini R, Zaldívar A, Vargas J, Carazo JM, et al. Xmipp 3.0: An improved software suite for image processing in electron microscopy. J Struct Biol. 2013;184(2):321-328. doi:10.1016/j.jsb.2013.09.015"
+    },
+    "xnat": {
+        "apps": {
+            "xnat 1.10.0": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "xnat_1.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630336",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "xnat 1.9.2.1": {
+                "version": "20261014",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "xnat_1.9.2.1",
+                "doi": "https://doi.org/10.5281/zenodo.23630556",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "XNAT 1.10.0 with native PostgreSQL, Tomcat and Java on both architectures. Start the deployed xnat command from a writable working directory as an ordinary user. Runtime state is written below xnat-runtime in that directory. Initial setup uses the normal XNAT setup UI/API; configure the site and credentials before regular use. Runtime tests start the real server, initialize the database and site, create a project through the authenticated API and verify a complete NIfTI upload/download with access checks.",
+        "citation": "Marcus DS, Olsen TR, Ramaratnam M, Buckner RL. The extensible neuroimaging archive toolkit: an informatics platform for managing, exploring, and sharing neuroimaging data. Neuroinformatics. 2007;5(1):11-33. doi:10.1385/NI:5:1:11"
+    },
+    "xnat_arm64": {
+        "apps": {
+            "xnat_arm64 1.10.0": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "xnat_arm64_1.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629946",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            },
+            "xnat_arm64 1.9.2.1": {
+                "version": "20261014",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "xnat_arm64_1.9.2.1",
+                "doi": "https://doi.org/10.5281/zenodo.23850327",
+                "license": [
+                    "BSD-2-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "XNAT 1.10.0 with native PostgreSQL, Tomcat and Java on both architectures. Start the deployed xnat command from a writable working directory as an ordinary user. Runtime state is written below xnat-runtime in that directory. Initial setup uses the normal XNAT setup UI/API; configure the site and credentials before regular use. Runtime tests start the real server, initialize the database and site, create a project through the authenticated API and verify a complete NIfTI upload/download with access checks.",
+        "citation": "Marcus DS, Olsen TR, Ramaratnam M, Buckner RL. The extensible neuroimaging archive toolkit: an informatics platform for managing, exploring, and sharing neuroimaging data. Neuroinformatics. 2007;5(1):11-33. doi:10.1385/NI:5:1:11"
     }
 }
