@@ -85,8 +85,8 @@ neuroimaging/apps.json       # generated catalog
 neuroimaging/manifest.json   # generated image count and source commits
 microscopy/apps.json         # generated after its source is configured
 microscopy/manifest.json     # generated
-datascience/apps.json        # generated after its source is configured
-datascience/manifest.json    # generated
+datascience/apps.json       # generated catalog
+datascience/manifest.json   # generated image count and source commits
 ```
 
 To add a domain, merge its entry in `domains.json` first. Wait for the catalog
