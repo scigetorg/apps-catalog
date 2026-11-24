@@ -2,7 +2,7 @@
 
 This directory is the root of the future public `Neurodesk/apps.json` GitHub
 repository. The active domains are `neuroimaging`, `microscopy`, `datascience`,
-`preclinical`, and `molecular-imaging`, sourced from `Neurodesk/neurocontainers`.
+`dermatology`, `preclinical`, and `molecular-imaging`, sourced from `Neurodesk/neurocontainers`.
 Catalogs are generated from configured source repositories; edit their recipe
 metadata and release files, not generated `apps.json` files.
 
@@ -98,6 +98,8 @@ microscopy/apps.json         # generated after its source is configured
 microscopy/manifest.json     # generated
 datascience/apps.json       # generated catalog
 datascience/manifest.json   # generated image count and source commits
+dermatology/apps.json       # generated catalog
+dermatology/manifest.json   # generated image count and source commits
 preclinical/apps.json       # generated catalog
 preclinical/manifest.json   # generated image count and source commits
 molecular-imaging/apps.json     # generated catalog
