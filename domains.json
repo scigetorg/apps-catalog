@@ -73,6 +73,27 @@
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
       ]
     },
+    "dermatology": {
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
+      "title": "dermdesktop",
+      "description": "Dermatology research: dermoscopy, dermatopathology whole-slide imaging, 3D surface imaging, and clinical image analysis",
+      "registry": "ghcr.io/scigetorg/dermdesktop",
+      "defaultVersion": "latest",
+      "containerName": "dermdesktop",
+      "volumeMount": "dermdesktop-home",
+      "defaultStorageMount": "dermdesktop-storage",
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/dermatology/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/dermatology/eessi.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
+    },
     "preclinical": {
       "source_repositories": [
         "NeuroDesk/neurocontainers"

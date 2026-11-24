@@ -23,6 +23,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - visualization
     launchers:
@@ -40,6 +41,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - programming
       - statistics
@@ -58,6 +60,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - programming
       - statistics
@@ -77,6 +80,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - programming
     launchers:
@@ -107,6 +111,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - programming
       - statistics
@@ -126,6 +131,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - molecular biology
       - statistics
@@ -157,6 +163,7 @@ packages:
       - microscopy
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - visualization
       - image segmentation
@@ -174,6 +181,7 @@ packages:
       - microscopy
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - visualization
     launchers:
@@ -191,6 +199,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - visualization
     launchers:
@@ -269,6 +278,7 @@ packages:
       - microscopy
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - image segmentation
       - quantitative imaging
@@ -288,6 +298,7 @@ packages:
       - datascience
       - preclinical
       - molecular-imaging
+      - dermatology
     categories:
       - machine learning
       - programming
@@ -303,6 +314,7 @@ packages:
     domains:
       - microscopy
       - preclinical
+      - dermatology
     categories:
       - quantitative imaging
       - programming
@@ -320,6 +332,7 @@ packages:
       - microscopy
       - datascience
       - preclinical
+      - dermatology
     categories:
       - data management
       - programming
@@ -338,6 +351,7 @@ packages:
       - microscopy
       - datascience
       - preclinical
+      - dermatology
     categories:
       - data management
       - programming
@@ -355,6 +369,7 @@ packages:
       - microscopy
       - datascience
       - preclinical
+      - dermatology
     categories:
       - data management
       - programming
@@ -425,6 +440,7 @@ packages:
     id: seaborn
     domains:
       - datascience
+      - dermatology
     categories:
       - visualization
       - statistics
@@ -439,6 +455,7 @@ packages:
     id: plotly
     domains:
       - datascience
+      - dermatology
     categories:
       - visualization
     launchers:
