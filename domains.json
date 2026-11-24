@@ -2,7 +2,9 @@
   "schemaVersion": 1,
   "domains": {
     "neuroimaging": {
-      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
       "title": "neurodesk",
       "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
       "registry": "docker.io/vnmd/neurodesktop",
@@ -23,7 +25,9 @@
       ]
     },
     "microscopy": {
-      "source_repositories": ["NeuroDesk/neurocontainers"],
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
       "title": "microscopy",
       "description": "Image processing, segmentation, and quantitative analysis",
       "registry": "docker.io/vnmd/microdesktop",
@@ -31,7 +35,9 @@
       "containerName": "microscopy",
       "volumeMount": "microscopy-home",
       "defaultStorageMount": "microscopy-storage",
-      "remoteUrl": ["https://play-australia.sciget.org/"],
+      "remoteUrl": [
+        "https://play-australia.sciget.org/"
+      ],
       "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/apps.json",
       "downloadUrls": [
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
@@ -39,13 +45,31 @@
       ]
     },
     "datascience": {
-      "source_repositories": ["NeuroDesk/neurocontainers"]
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
+      "title": "datadesktop",
+      "description": "General-purpose data science: tabular analytics, SQL, statistics, and machine learning",
+      "registry": "ghcr.io/scigetorg/datadesktop",
+      "defaultVersion": "latest",
+      "containerName": "datadesktop",
+      "volumeMount": "datadesktop-home",
+      "defaultStorageMount": "datadesktop-storage",
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/datascience/apps.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     },
     "preclinical": {
-      "source_repositories": ["NeuroDesk/neurocontainers"]
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ]
     },
     "molecular-imaging": {
-      "source_repositories": ["NeuroDesk/neurocontainers"]
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ]
     }
   }
 }
