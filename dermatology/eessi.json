@@ -1,0 +1,540 @@
+{
+    "schemaVersion": 1,
+    "backend": "eessi",
+    "explicitSelectionRequired": true,
+    "cvmfsRepo": "software.eessi.io",
+    "stacks": [
+        "2025.06"
+    ],
+    "tools": {
+        "dask": {
+            "package": "dask",
+            "categories": [
+                "data management",
+                "programming",
+                "workflows"
+            ],
+            "description": "Dask natively scales Python. Dask provides advanced parallelism for analytics, enabling performance at scale for the tools you love.",
+            "homepage": "https://dask.org/",
+            "apps": {
+                "Dask 2025.9.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "dask/2025.9.1-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2025.9.1",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "gnuplot": {
+            "package": "gnuplot",
+            "categories": [
+                "visualization"
+            ],
+            "description": "Portable interactive, function plotting utility",
+            "homepage": "http://gnuplot.sourceforge.net",
+            "apps": {
+                "gnuplot 6.0.3 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "gnuplot/6.0.3-GCCcore-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "6.0.3",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "gnuplot"
+                    ],
+                    "gui": false,
+                    "terminal": true,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "imageio": {
+            "package": "imageio",
+            "categories": [
+                "quantitative imaging",
+                "programming"
+            ],
+            "description": "Imageio is a Python library that provides an easy interface to read and write a wide range of image data, including animated images, video, volumetric data, and scientific formats.",
+            "homepage": "https://imageio.github.io",
+            "apps": {
+                "imageio 2.37.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "imageio/2.37.0-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.37.0",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "julia": {
+            "package": "Julia",
+            "categories": [
+                "programming"
+            ],
+            "description": "Julia is a high-level, high-performance dynamic programming language for numerical computing",
+            "homepage": "https://julialang.org",
+            "apps": {
+                "Julia 1.12.2 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Julia/1.12.2",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.12.2",
+                    "toolchain": "system",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "julia"
+                    ],
+                    "gui": false,
+                    "terminal": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "napari": {
+            "package": "napari",
+            "categories": [
+                "visualization",
+                "image segmentation"
+            ],
+            "description": "napari is a fast, interactive, multi-dimensional image viewer for Python. It's designed for browsing, annotating, and analyzing large multi-dimensional images. It's built on top of Qt (for the GUI), vispy (for performant GPU-based rendering), and the scientific Python stack (numpy, scipy).",
+            "homepage": "https://napari.org/",
+            "apps": {
+                "napari 0.6.6 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "napari/0.6.6-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.6.6",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "napari"
+                    ],
+                    "gui": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "octave": {
+            "package": "Octave",
+            "categories": [
+                "programming",
+                "statistics"
+            ],
+            "description": "GNU Octave is a high-level interpreted language, primarily intended for numerical computations.",
+            "homepage": "https://www.gnu.org/software/octave/",
+            "apps": {
+                "GNU Octave 11.1.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Octave/11.1.0-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "11.1.0",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "octave",
+                        "--gui"
+                    ],
+                    "gui": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "paraview": {
+            "package": "ParaView",
+            "categories": [
+                "visualization"
+            ],
+            "description": "ParaView is a scientific parallel visualizer.",
+            "homepage": "https://www.paraview.org",
+            "apps": {
+                "ParaView 6.0.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "ParaView/6.0.1-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "6.0.1",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "paraview"
+                    ],
+                    "gui": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "plotly": {
+            "package": "plotly.py",
+            "categories": [
+                "visualization"
+            ],
+            "description": "An open-source, interactive graphing library for Python",
+            "homepage": "https://plot.ly/python",
+            "apps": {
+                "Plotly 6.5.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "plotly.py/6.5.0-GCCcore-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "6.5.0",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "r": {
+            "package": "R",
+            "categories": [
+                "programming",
+                "statistics"
+            ],
+            "description": "R is a free software environment for statistical computing and graphics.",
+            "homepage": "https://www.r-project.org/",
+            "apps": {
+                "R 4.5.2 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "R/4.5.2-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "4.5.2",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "R"
+                    ],
+                    "gui": false,
+                    "terminal": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "r-bundle-bioconductor": {
+            "package": "R-bundle-Bioconductor",
+            "categories": [
+                "molecular biology",
+                "statistics"
+            ],
+            "description": "Bioconductor provides tools for the analysis and coprehension of high-throughput genomic data.",
+            "homepage": "https://bioconductor.org",
+            "apps": {
+                "R + Bioconductor 3.22 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "R-bundle-Bioconductor/3.22-foss-2025b-R-4.5.2",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "3.22",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "R"
+                    ],
+                    "gui": false,
+                    "terminal": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "r-bundle-cran": {
+            "package": "R-bundle-CRAN",
+            "categories": [
+                "programming",
+                "statistics"
+            ],
+            "description": "Bundle of R packages from CRAN",
+            "homepage": "https://www.r-project.org/",
+            "apps": {
+                "R + CRAN 2025.11 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "R-bundle-CRAN/2025.11-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2025.11",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "R"
+                    ],
+                    "gui": false,
+                    "terminal": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "scikit-image": {
+            "package": "scikit-image",
+            "categories": [
+                "image segmentation",
+                "quantitative imaging",
+                "programming"
+            ],
+            "description": "scikit-image is a collection of algorithms for image processing.",
+            "homepage": "https://scikit-image.org/",
+            "apps": {
+                "scikit-image 0.25.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "scikit-image/0.25.0-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.25.0",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "scikit-learn": {
+            "package": "scikit-learn",
+            "categories": [
+                "machine learning",
+                "programming"
+            ],
+            "description": "Scikit-learn integrates machine learning algorithms in the tightly-knit scientific Python world, building upon numpy, scipy, and matplotlib. As a machine-learning module, it provides versatile tools for data mining and analysis in any field of science and engineering. It strives to be simple and efficient, accessible to everybody, and reusable in various contexts.",
+            "homepage": "https://scikit-learn.org/stable/index.html",
+            "apps": {
+                "scikit-learn 1.7.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "scikit-learn/1.7.1-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.7.1",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "seaborn": {
+            "package": "Seaborn",
+            "categories": [
+                "visualization",
+                "statistics"
+            ],
+            "description": "Seaborn is a Python visualization library based on matplotlib. It provides a high-level interface for drawing attractive statistical graphics.",
+            "homepage": "https://seaborn.pydata.org/",
+            "apps": {
+                "Seaborn 0.13.2 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Seaborn/0.13.2-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.13.2",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "vtk": {
+            "package": "VTK",
+            "categories": [
+                "visualization"
+            ],
+            "description": "The Visualization Toolkit (VTK) is an open-source, freely available software system for 3D computer graphics, image processing and visualization. VTK consists of a C++ class library and several interpreted interface layers including Tcl/Tk, Java, and Python. VTK supports a wide variety of visualization algorithms including: scalar, vector, tensor, texture, and volumetric methods; and advanced modeling techniques such as: implicit modeling, polygon reduction, mesh smoothing, cutting, contouring, and Delaunay triangulation.",
+            "homepage": "https://www.vtk.org",
+            "apps": {
+                "VTK 9.5.2 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "VTK/9.5.2-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "9.5.2",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "xarray": {
+            "package": "xarray",
+            "categories": [
+                "data management",
+                "programming"
+            ],
+            "description": "xarray (formerly xray) is an open source project and Python package that aims to bring the labeled data power of pandas to the physical sciences, by providing N-dimensional variants of the core pandas data structures.",
+            "homepage": "https://github.com/pydata/xarray",
+            "apps": {
+                "xarray 2025.10.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "xarray/2025.10.0-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2025.10.0",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "zarr": {
+            "package": "zarr",
+            "categories": [
+                "data management",
+                "programming"
+            ],
+            "description": "Zarr is a Python package providing an implementation of compressed, chunked, N-dimensional arrays, designed for use in parallel computing.",
+            "homepage": "https://zarr.readthedocs.io/en/stable/",
+            "apps": {
+                "Zarr 3.1.5 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "zarr/3.1.5-gfbf-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "3.1.5",
+                    "toolchain": "gfbf/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        }
+    }
+}
