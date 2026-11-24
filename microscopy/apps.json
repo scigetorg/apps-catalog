@@ -2686,6 +2686,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nextflow_arm64_26.10.7",
+                "doi": "https://doi.org/10.5281/zenodo.24493388",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -2943,6 +2944,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "omero_5.8.6",
+                "doi": "https://doi.org/10.5281/zenodo.24493001",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -2952,6 +2954,7 @@
                 "exec": "omero-insight",
                 "apptainer_args": [],
                 "image": "omero_5.8.6",
+                "doi": "https://doi.org/10.5281/zenodo.24493001",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -4098,6 +4101,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "webknossos_5.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24493042",
                 "license": [
                     "AGPL-3.0-only"
                 ]

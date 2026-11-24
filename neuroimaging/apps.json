@@ -9691,6 +9691,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24493158",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -10746,6 +10747,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nextflow_arm64_26.10.7",
+                "doi": "https://doi.org/10.5281/zenodo.24493388",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -11862,6 +11864,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "prostatefiducialseg_8.0.4",
+                "doi": "https://doi.org/10.5281/zenodo.24493036",
                 "license": [
                     "seedseg"
                 ],

@@ -1,4 +1,1210 @@
 {
+    "datalad": {
+        "apps": {
+            "datalad 1.1.5": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.1.5",
+                "doi": "https://doi.org/10.5281/zenodo.22730963",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.3.1 arm64": {
+                "version": "20260512",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "datalad_1.3.1_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23996074",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.3.1": {
+                "version": "20260512",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.20685849",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.2": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.2",
+                "doi": "https://doi.org/10.5281/zenodo.22730991",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.3": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.3",
+                "doi": "https://doi.org/10.5281/zenodo.22984898",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.4": {
+                "version": "20260924",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.4",
+                "doi": "https://doi.org/10.5281/zenodo.23444198",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.6.5": {
+                "version": "20261001",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23129772",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.0": {
+                "version": "20261006",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629927",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.1": {
+                "version": "20261007",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444363",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.2": {
+                "version": "20261029",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.2",
+                "doi": "https://doi.org/10.5281/zenodo.23937084",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.7.3": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.7.3",
+                "doi": "https://doi.org/10.5281/zenodo.23905825",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad 1.8.0": {
+                "version": "20261103",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.23995582",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "data management"
+        ],
+        "description": "DataLad is a data management and distribution platform providing access to a wide range of data resources. Git for data using git-annex as backend.",
+        "citation": "Halchenko YO, Meyer K, Poldrack B, et al. DataLad: distributed system for joint management of code, data, and their relationship. J Open Source Softw. 2021;6(63):3262. doi:10.21105/joss.03262"
+    },
+    "datalad_arm64": {
+        "apps": {
+            "datalad_arm64 1.1.5": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.1.5",
+                "doi": "https://doi.org/10.5281/zenodo.22851276",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.2": {
+                "version": "20260911",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.2",
+                "doi": "https://doi.org/10.5281/zenodo.22851331",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.3": {
+                "version": "20260920",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.3",
+                "doi": "https://doi.org/10.5281/zenodo.22984900",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.4": {
+                "version": "20260924",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.4",
+                "doi": "https://doi.org/10.5281/zenodo.22984825",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.6.5": {
+                "version": "20261001",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.6.5",
+                "doi": "https://doi.org/10.5281/zenodo.23130005",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.0": {
+                "version": "20261006",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.23630651",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.1": {
+                "version": "20261007",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.1",
+                "doi": "https://doi.org/10.5281/zenodo.23290008",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.2": {
+                "version": "20261029",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.2",
+                "doi": "https://doi.org/10.5281/zenodo.23937092",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.7.3": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.7.3",
+                "doi": "https://doi.org/10.5281/zenodo.23875811",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "datalad_arm64 1.8.0": {
+                "version": "20261103",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "datalad_arm64_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.23969612",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "DataLad is a data management and distribution platform providing access to a wide range of data resources. Git for data using git-annex as backend.",
+        "citation": "Halchenko YO, Meyer K, Poldrack B, et al. DataLad: distributed system for joint management of code, data, and their relationship. J Open Source Softw. 2021;6(63):3262. doi:10.21105/joss.03262"
+    },
+    "globus": {
+        "apps": {
+            "globusGUI-globus 3.2.2": {
+                "version": "20230620",
+                "exec": "globusconnectpersonal -gui",
+                "image": "globus_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931916",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.2.2": {
+                "version": "20230620",
+                "exec": "",
+                "image": "globus_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931916",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.2.8": {
+                "version": "20260514",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.2.8",
+                "doi": "https://doi.org/10.5281/zenodo.20249513",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.2.8": {
+                "version": "20260514",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.2.8",
+                "doi": "https://doi.org/10.5281/zenodo.20249513",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.3.1": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23630367",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.3.1": {
+                "version": "20261013",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23630367",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus 3.3.2": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630169",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus 3.3.2": {
+                "version": "20261023",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630169",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Globus client"
+    },
+    "globus_arm64": {
+        "apps": {
+            "globus_arm64 3.3.1": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444246",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus_arm64 3.3.1": {
+                "version": "20261013",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.23444246",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globus_arm64 3.3.2": {
+                "version": "20261023",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630426",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            },
+            "globusGUI-globus_arm64 3.3.2": {
+                "version": "20261023",
+                "exec": "globusconnectpersonal -gui",
+                "apptainer_args": [],
+                "image": "globus_arm64_3.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.23630426",
+                "license": [
+                    "Globus Connect Personal"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "Globus Connect Personal",
+                        "url": "https://www.globus.org/globus-connect-personal"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "Globus client"
+    },
+    "irkernel": {
+        "apps": {
+            "irkernel 4.4.3 arm64": {
+                "version": "20260513",
+                "exec": "",
+                "apptainer_args": [],
+                "architecture": "aarch64",
+                "image": "irkernel_4.4.3_arm64",
+                "doi": "https://doi.org/10.5281/zenodo.23997953",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "programming"
+        ],
+        "description": "R kernel in notebook"
+    },
+    "jamovi": {
+        "apps": {
+            "jamovi 2.7.4": {
+                "version": "20260529",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jamovi_2.7.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685645",
+                "license": [
+                    "AGPL-3.0-or-later",
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "statistics"
+        ],
+        "description": "jamovi is a free and open statistical spreadsheet built on top of R.",
+        "citation": "The jamovi project. jamovi (Version 2.7.4) [Computer Software]. Retrieved from https://www.jamovi.org"
+    },
+    "jidt": {
+        "apps": {
+            "jidt 1.6.1": {
+                "version": "20260928",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jidt_1.6.1",
+                "doi": "https://doi.org/10.5281/zenodo.23129885",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "jidt 1.6": {
+                "version": "20260608",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jidt_1.6",
+                "doi": "https://doi.org/10.5281/zenodo.20780351",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "statistics",
+            "programming"
+        ],
+        "description": "JIDT: Java Information Dynamics Toolkit for studying information-theoretic measures of computation in complex systems. JIDT provides a stand-alone, open-source code Java implementation (also usable in Matlab, Octave, Python, R, Julia and Clojure) of information-theoretic measures of distributed computation in complex systems: i.e. information storage, transfer and modification.",
+        "citation": "https://arxiv.org/abs/1408.3270"
+    },
+    "libreoffice": {
+        "apps": {
+            "libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.2.4": {
+                "version": "20260613",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.20685741",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933907",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211376",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "LibreOffice is a free and open-source office suite with applications for word processing, spreadsheets, presentations, vector drawing, databases, and formula editing."
+    },
+    "libreoffice_arm64": {
+        "apps": {
+            "libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice_arm64 26.8.2.2": {
+                "version": "20261031",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.23933481",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "libreoffice",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lowriter",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "localc",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "loimpress",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lodraw",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lobase",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            },
+            "libreofficeMathGUI-libreoffice_arm64 26.8.3.1": {
+                "version": "20261113",
+                "exec": "lomath",
+                "apptainer_args": [],
+                "image": "libreoffice_arm64_26.8.3.1",
+                "doi": "https://doi.org/10.5281/zenodo.24211372",
+                "license": [
+                    "LGPL-3.0-or-later",
+                    "MPL-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "LibreOffice is a free and open-source office suite with applications for word processing, spreadsheets, presentations, vector drawing, databases, and formula editing."
+    },
+    "matlab": {
+        "apps": {
+            "matlab 2022a": {
+                "version": "20231207",
+                "exec": "",
+                "image": "matlab_2022a",
+                "doi": "https://doi.org/10.5281/zenodo.18931604",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2022a": {
+                "version": "20231207",
+                "exec": "matlab",
+                "image": "matlab_2022a",
+                "doi": "https://doi.org/10.5281/zenodo.18931604",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2022b": {
+                "version": "20250124",
+                "exec": "",
+                "image": "matlab_2022b",
+                "doi": "https://doi.org/10.5281/zenodo.18932238",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2022b": {
+                "version": "20250124",
+                "exec": "matlab",
+                "image": "matlab_2022b",
+                "doi": "https://doi.org/10.5281/zenodo.18932238",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2023b": {
+                "version": "20250121",
+                "exec": "",
+                "image": "matlab_2023b",
+                "doi": "https://doi.org/10.5281/zenodo.18931673",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2023b": {
+                "version": "20250121",
+                "exec": "matlab",
+                "image": "matlab_2023b",
+                "doi": "https://doi.org/10.5281/zenodo.18931673",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2024b": {
+                "version": "20250117",
+                "exec": "",
+                "image": "matlab_2024b",
+                "doi": "https://doi.org/10.5281/zenodo.18931880",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2024b": {
+                "version": "20250117",
+                "exec": "matlab",
+                "image": "matlab_2024b",
+                "doi": "https://doi.org/10.5281/zenodo.18931880",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2025b": {
+                "version": "20260406",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "matlab_2025b",
+                "doi": "https://doi.org/10.5281/zenodo.19522517",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2026b": {
+                "version": "20260929",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "matlab_2026b",
+                "doi": "https://doi.org/10.5281/zenodo.23997672",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "programming",
+            "visualization",
+            "machine learning"
+        ],
+        "description": "MATLAB with the Deep Learning Toolbox Converter for ONNX Model Format preinstalled.",
+        "citation": "The MathWorks Inc. MATLAB. Natick, Massachusetts: The MathWorks Inc. https://www.mathworks.com"
+    },
+    "nextflow": {
+        "apps": {
+            "nextflow 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_26.10.7",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
+    },
+    "nextflow_arm64": {
+        "apps": {
+            "nextflow_arm64 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_arm64_26.10.7",
+                "doi": "https://doi.org/10.5281/zenodo.24493388",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
+    },
+    "openrefine": {
+        "apps": {
+            "openrefine 3.10.1": {
+                "version": "20260601",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "openrefine_3.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.20685649",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation"
+        ],
+        "description": "OpenRefine is a tool for working with messy data: cleaning it, transforming it from one format into another, and extending it with web services and external data."
+    },
     "postgresanalytics": {
         "apps": {
             "postgresanalytics 18.7.0": {
@@ -44,5 +1250,250 @@
             "programming"
         ],
         "description": "Bundled PostgreSQL 18 advanced analytics container for data science desktops (`scidesktop`, `aidesktop`) loaded via `ml` (Lmod / Apptainer). ### Bundled Extensions - **Geospatial**: `postgis`, `postgis_topology`, `postgis_raster` (plus `shp2pgsql` and `raster2pgsql`) - **Vector & AI Embeddings**: `vector` (`pgvector`) and `pgedge_vectorizer` (`v1.1`) - **Horizontal Partitioning**: `plproxy` - **Time-Series & Streaming Analytics**: `timescaledb` (Apache-2.0 edition), `hll` (HyperLogLog), `tdigest` - **Query Optimization & Contrib**: `hypopg`, `pg_stat_statements`, `btree_gin`, `btree_gist`, `pg_trgm`, `hstore`, `uuid-ossp`, `citext`, `cube`, `earthdistance`, `tablefunc` ### Quick Start (Read-Only Apptainer / Non-Root Desktops) The `pg-analytics` helper runs PostgreSQL in user space on port `5433` by default (avoiding port `5432` used by Airflow/MLflow in `aidesktop`):"
+    },
+    "rclone": {
+        "apps": {
+            "rclone 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
+    },
+    "rclone_arm64": {
+        "apps": {
+            "rclone_arm64 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_arm64_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
+    },
+    "root": {
+        "apps": {
+            "root 6.22.02": {
+                "version": "20201104",
+                "exec": "",
+                "image": "root_6.22.02",
+                "doi": "https://doi.org/10.5281/zenodo.18931779",
+                "license": [
+                    "LGPL-2.1+"
+                ]
+            },
+            "root 6.24.06": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "root_6.24.06",
+                "doi": "https://doi.org/10.5281/zenodo.23630330",
+                "license": [
+                    "LGPL-2.1-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "programming"
+        ],
+        "description": "ROOT is a powerful software framework, an open source project coordinated by the European Organisation for Nuclear Research, CERN in Geneva. ROOT is very flexible and provides both a programming interface to use in own applications and a graphical user interface for interactive data analysis. ROOT leads a double life. It has an interpreter for macros (Cling) that you can run from the command line or run like applications. But it is also an interactive shell that can evaluate arbitrary statements and expressions. This is extremely useful for debugging, quick hacking and testing. Let us first have a look at some very simple examples. start the root shell with the command 'root', try things like 'TMath::Pi()' or plotting a function",
+        "citation": "Brun R, Rademakers F. ROOT — An object oriented data analysis framework. Nuclear Instruments and Methods in Physics Research Section A. 1997;389(1-2):81-86. doi:10.1016/S0168-9002(97)00048-X"
+    },
+    "root_arm64": {
+        "apps": {
+            "root_arm64 6.24.06": {
+                "version": "20261013",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "root_arm64_6.24.06",
+                "doi": "https://doi.org/10.5281/zenodo.23444151",
+                "license": [
+                    "LGPL-2.1-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "programming"
+        ],
+        "description": "ROOT is a powerful software framework, an open source project coordinated by the European Organisation for Nuclear Research, CERN in Geneva. ROOT is very flexible and provides both a programming interface to use in own applications and a graphical user interface for interactive data analysis. ROOT leads a double life. It has an interpreter for macros (Cling) that you can run from the command line or run like applications. But it is also an interactive shell that can evaluate arbitrary statements and expressions. This is extremely useful for debugging, quick hacking and testing. Let us first have a look at some very simple examples. start the root shell with the command 'root', try things like 'TMath::Pi()' or plotting a function",
+        "citation": "Brun R, Rademakers F. ROOT — An object oriented data analysis framework. Nuclear Instruments and Methods in Physics Research Section A. 1997;389(1-2):81-86. doi:10.1016/S0168-9002(97)00048-X"
+    },
+    "rstudio": {
+        "apps": {
+            "rstudio 1.4.1106": {
+                "version": "20211014",
+                "exec": "",
+                "image": "rstudio_1.4.1106",
+                "doi": "https://doi.org/10.5281/zenodo.18932040",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 1.4.1106": {
+                "version": "20211014",
+                "exec": "rstudio",
+                "image": "rstudio_1.4.1106",
+                "doi": "https://doi.org/10.5281/zenodo.18932040",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2022.07.2": {
+                "version": "20221129",
+                "exec": "",
+                "image": "rstudio_2022.07.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931532",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2022.07.2": {
+                "version": "20221129",
+                "exec": "rstudio",
+                "image": "rstudio_2022.07.2",
+                "doi": "https://doi.org/10.5281/zenodo.18931532",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2023.09.1": {
+                "version": "20231207",
+                "exec": "",
+                "image": "rstudio_2023.09.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931380",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2023.09.1": {
+                "version": "20231207",
+                "exec": "rstudio",
+                "image": "rstudio_2023.09.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931380",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2023.12.1": {
+                "version": "20260211",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2023.12.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931290",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2023.12.1": {
+                "version": "20260211",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2023.12.1",
+                "doi": "https://doi.org/10.5281/zenodo.18931290",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.09.0": {
+                "version": "20261009",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.09.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629873",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.09.0": {
+                "version": "20261009",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.09.0",
+                "doi": "https://doi.org/10.5281/zenodo.23629873",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.10.0": {
+                "version": "20261015",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850221",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.10.0": {
+                "version": "20261015",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.0",
+                "doi": "https://doi.org/10.5281/zenodo.23850221",
+                "license": [
+                    "AGPL-3.0"
+                ]
+            },
+            "rstudio 2026.10.1": {
+                "version": "20261101",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.23933850",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.10.1": {
+                "version": "20261101",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.10.1",
+                "doi": "https://doi.org/10.5281/zenodo.23933850",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudio 2026.11.0": {
+                "version": "20261116",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.0": {
+                "version": "20261116",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24296641",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "statistics"
+        ],
+        "description": "RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management. This container includes both RStudio Desktop (GUI) and RStudio Server (web-based)."
     }
 }

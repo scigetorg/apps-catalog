@@ -1,14 +1,162 @@
 {
-    "entries": 2,
+    "entries": 61,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "57c69538b5ef60e45410126d07b0507e0effd629"
+        "NeuroDesk/neurocontainers": "0e4046378d8cdfb266752e76373896fa16b78850"
     },
     "app_sources": {
+        "datalad": {
+            "datalad 1.1.5": "NeuroDesk/neurocontainers",
+            "datalad 1.3.1 arm64": "NeuroDesk/neurocontainers",
+            "datalad 1.3.1": "NeuroDesk/neurocontainers",
+            "datalad 1.6.2": "NeuroDesk/neurocontainers",
+            "datalad 1.6.3": "NeuroDesk/neurocontainers",
+            "datalad 1.6.4": "NeuroDesk/neurocontainers",
+            "datalad 1.6.5": "NeuroDesk/neurocontainers",
+            "datalad 1.7.0": "NeuroDesk/neurocontainers",
+            "datalad 1.7.1": "NeuroDesk/neurocontainers",
+            "datalad 1.7.2": "NeuroDesk/neurocontainers",
+            "datalad 1.7.3": "NeuroDesk/neurocontainers",
+            "datalad 1.8.0": "NeuroDesk/neurocontainers"
+        },
+        "datalad_arm64": {
+            "datalad_arm64 1.1.5": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.6.2": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.6.3": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.6.4": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.6.5": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.7.0": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.7.1": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.7.2": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.7.3": "NeuroDesk/neurocontainers",
+            "datalad_arm64 1.8.0": "NeuroDesk/neurocontainers"
+        },
+        "globus": {
+            "globusGUI-globus 3.2.2": "NeuroDesk/neurocontainers",
+            "globus 3.2.2": "NeuroDesk/neurocontainers",
+            "globus 3.2.8": "NeuroDesk/neurocontainers",
+            "globusGUI-globus 3.2.8": "NeuroDesk/neurocontainers",
+            "globus 3.3.1": "NeuroDesk/neurocontainers",
+            "globusGUI-globus 3.3.1": "NeuroDesk/neurocontainers",
+            "globus 3.3.2": "NeuroDesk/neurocontainers",
+            "globusGUI-globus 3.3.2": "NeuroDesk/neurocontainers"
+        },
+        "globus_arm64": {
+            "globus_arm64 3.3.1": "NeuroDesk/neurocontainers",
+            "globusGUI-globus_arm64 3.3.1": "NeuroDesk/neurocontainers",
+            "globus_arm64 3.3.2": "NeuroDesk/neurocontainers",
+            "globusGUI-globus_arm64 3.3.2": "NeuroDesk/neurocontainers"
+        },
+        "irkernel": {
+            "irkernel 4.4.3 arm64": "NeuroDesk/neurocontainers"
+        },
+        "jamovi": {
+            "jamovi 2.7.4": "NeuroDesk/neurocontainers"
+        },
+        "jidt": {
+            "jidt 1.6.1": "NeuroDesk/neurocontainers",
+            "jidt 1.6": "NeuroDesk/neurocontainers"
+        },
+        "libreoffice": {
+            "libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeWriterGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeCalcGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeImpressGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeDrawGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeBaseGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreofficeMathGUI-libreoffice 26.2.4": "NeuroDesk/neurocontainers",
+            "libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeWriterGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeCalcGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeImpressGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeDrawGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeBaseGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeMathGUI-libreoffice 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeWriterGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeCalcGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeImpressGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeDrawGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeBaseGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeMathGUI-libreoffice 26.8.3.1": "NeuroDesk/neurocontainers"
+        },
+        "libreoffice_arm64": {
+            "libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreofficeMathGUI-libreoffice_arm64 26.8.2.2": "NeuroDesk/neurocontainers",
+            "libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeWriterGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeCalcGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeImpressGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeDrawGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeBaseGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers",
+            "libreofficeMathGUI-libreoffice_arm64 26.8.3.1": "NeuroDesk/neurocontainers"
+        },
+        "matlab": {
+            "matlab 2022a": "NeuroDesk/neurocontainers",
+            "matlabGUI-matlab 2022a": "NeuroDesk/neurocontainers",
+            "matlab 2022b": "NeuroDesk/neurocontainers",
+            "matlabGUI-matlab 2022b": "NeuroDesk/neurocontainers",
+            "matlab 2023b": "NeuroDesk/neurocontainers",
+            "matlabGUI-matlab 2023b": "NeuroDesk/neurocontainers",
+            "matlab 2024b": "NeuroDesk/neurocontainers",
+            "matlabGUI-matlab 2024b": "NeuroDesk/neurocontainers",
+            "matlab 2025b": "NeuroDesk/neurocontainers",
+            "matlab 2026b": "NeuroDesk/neurocontainers"
+        },
+        "nextflow": {
+            "nextflow 26.10.7": "NeuroDesk/neurocontainers"
+        },
+        "nextflow_arm64": {
+            "nextflow_arm64 26.10.7": "NeuroDesk/neurocontainers"
+        },
+        "openrefine": {
+            "openrefine 3.10.1": "NeuroDesk/neurocontainers"
+        },
         "postgresanalytics": {
             "postgresanalytics 18.7.0": "NeuroDesk/neurocontainers"
         },
         "postgresanalytics_arm64": {
             "postgresanalytics_arm64 18.7.0": "NeuroDesk/neurocontainers"
+        },
+        "rclone": {
+            "rclone 1.76.0": "NeuroDesk/neurocontainers"
+        },
+        "rclone_arm64": {
+            "rclone_arm64 1.76.0": "NeuroDesk/neurocontainers"
+        },
+        "root": {
+            "root 6.22.02": "NeuroDesk/neurocontainers",
+            "root 6.24.06": "NeuroDesk/neurocontainers"
+        },
+        "root_arm64": {
+            "root_arm64 6.24.06": "NeuroDesk/neurocontainers"
+        },
+        "rstudio": {
+            "rstudio 1.4.1106": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 1.4.1106": "NeuroDesk/neurocontainers",
+            "rstudio 2022.07.2": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2022.07.2": "NeuroDesk/neurocontainers",
+            "rstudio 2023.09.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2023.09.1": "NeuroDesk/neurocontainers",
+            "rstudio 2023.12.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2023.12.1": "NeuroDesk/neurocontainers",
+            "rstudio 2026.09.0": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.09.0": "NeuroDesk/neurocontainers",
+            "rstudio 2026.10.0": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.10.0": "NeuroDesk/neurocontainers",
+            "rstudio 2026.10.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers",
+            "rstudio 2026.11.0": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers"
         }
     }
 }
