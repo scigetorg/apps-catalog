@@ -43,6 +43,9 @@
     },
     "preclinical": {
       "source_repositories": ["NeuroDesk/neurocontainers"]
+    },
+    "molecular-imaging": {
+      "source_repositories": ["NeuroDesk/neurocontainers"]
     }
   }
 }
