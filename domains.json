@@ -40,6 +40,9 @@
     },
     "datascience": {
       "source_repositories": ["NeuroDesk/neurocontainers"]
+    },
+    "preclinical": {
+      "source_repositories": ["NeuroDesk/neurocontainers"]
     }
   }
 }
