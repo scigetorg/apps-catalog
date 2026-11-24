@@ -3,7 +3,7 @@ name: Consolidate apps catalog
 on:
   push:
     branches: [main]
-    paths: [domains.json]
+    paths: [domains.json, eessi/curation.yaml]
   schedule:
     - cron: '25 2 * * *'
   workflow_dispatch: {}
@@ -28,6 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,12 +38,29 @@ jobs:
         run: npm ci
       - name: Decide whether to regenerate
         id: mode
+        env:
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_SHA: ${{ github.sha }}
         run: |
           regenerate=true
+          regenerate_eessi=true
           if [[ "$GITHUB_EVENT_NAME" == push ]]; then
             regenerate=$(node scripts/workflow.mjs needs-consolidation)
+            regenerate_eessi=$(node scripts/workflow.mjs needs-eessi)
+            if [[ "$regenerate_eessi" != "true" ]]; then
+              if [[ -n "$EVENT_BEFORE" && "$EVENT_BEFORE" != 0000000000000000000000000000000000000000 ]] \
+                 && git cat-file -e "${EVENT_BEFORE}^{commit}" 2>/dev/null; then
+                curation_changed=$(git diff --name-only "$EVENT_BEFORE" "$EVENT_SHA" -- eessi/curation.yaml)
+              else
+                curation_changed=$(git show --name-only --format= HEAD -- eessi/curation.yaml)
+              fi
+              if [[ -n "$curation_changed" ]]; then
+                regenerate_eessi=true
+              fi
+            fi
           fi
           echo "regenerate=$regenerate" >> "$GITHUB_OUTPUT"
+          echo "regenerate_eessi=$regenerate_eessi" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v6
         if: steps.mode.outputs.regenerate == 'true'
         with:
@@ -66,22 +84,44 @@ jobs:
         if: steps.mode.outputs.regenerate == 'true'
         continue-on-error: true
         run: python -m scripts.zenodo_licenses --output licenses/zenodo.json
+      # Public EESSI metadata feed. Push events run strictly so curation or
+      # stack changes fail fast in prepare; scheduled/manual runs fail softly
+      # on upstream feed outages (keeping committed eessi.json files).
+      - name: Refresh EESSI software catalogs
+        if: steps.mode.outputs.regenerate_eessi == 'true'
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == push ]]; then
+            node scripts/workflow.mjs eessi
+          else
+            node scripts/workflow.mjs eessi --fail-soft
+          fi
       - name: Commit domain catalog files
-        if: steps.mode.outputs.regenerate == 'true'
+        if: steps.mode.outputs.regenerate == 'true' || steps.mode.outputs.regenerate_eessi == 'true'
         shell: bash
+        env:
+          REGENERATE: ${{ steps.mode.outputs.regenerate }}
         run: |
           paths="$(node scripts/workflow.mjs output-paths)"
           while IFS= read -r path; do
-            git add -- "$path"
+            [[ -z "$path" ]] && continue
+            if [[ "$path" == */apps.json || "$path" == */manifest.json ]]; then
+              git add -- "$path"
+            elif [[ -e "$path" ]]; then
+              git add -- "$path"
+            fi
           done <<< "$paths"
-          git add -- licenses/zenodo.json
+          [[ -e licenses/zenodo.json ]] && git add -- licenses/zenodo.json
           if git diff --cached --quiet; then
             echo 'No catalog changes to commit'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update domain apps catalogs from container releases'
+          if [[ "$REGENERATE" == "true" ]]; then
+            git commit -m 'Update domain apps catalogs from container releases'
+          else
+            git commit -m 'Update EESSI software catalogs'
+          fi
           git push origin HEAD:main
       - name: Record prepared revision
         id: revision
@@ -107,8 +147,9 @@ jobs:
         run: |
           git fetch --no-tags --depth=1 origin main
           changed=$(git diff --name-only HEAD FETCH_HEAD -- \
-            domains.json ':(glob)*/apps.json' licenses/zenodo.json \
-            scripts/{cloudflare,domains,workflow,catalog}.mjs package.json package-lock.json)
+            domains.json eessi/curation.yaml ':(glob)*/apps.json' ':(glob)*/eessi.json' \
+            eessi/catalog.json licenses/zenodo.json \
+            scripts/{cloudflare,domains,eessi,workflow,catalog}.mjs package.json package-lock.json)
           if [[ -n "$changed" ]]; then
             echo "Skipping superseded deployment. Changed on main:"
             echo "$changed"

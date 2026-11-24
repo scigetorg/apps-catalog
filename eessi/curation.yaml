@@ -1,0 +1,543 @@
+# Hand-edited EESSI software curation manifest for scigetorg/apps-catalog.
+#
+# Each entry maps an EasyBuild package name in EESSI's metadata feed
+# (eessi_api_metadata_software.json) to one or more configured domains,
+# categories, and safe argv launchers.
+#
+# By default, consolidation selects the newest CPU build of each package in a
+# domain's configured eessi_stacks. Set `gpu: optional` to emit both the newest
+# CPU and newest GPU build, `gpu: only` for GPU-only builds, `version_pattern`
+# to constrain versions by regex, or `pin` (string or per-stack map) to lock an
+# exact module name.
+
+schemaVersion: 1
+sourceUrl: https://www.eessi.io/api_data/data/eessi_api_metadata_software.json
+cvmfsRepo: software.eessi.io
+
+packages:
+  ParaView:
+    id: paraview
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - visualization
+    launchers:
+      - name: ParaView
+        exec: [paraview]
+        gui: true
+        show_in_menu: true
+        show_in_applist: true
+
+  Octave:
+    id: octave
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - programming
+      - statistics
+    launchers:
+      - name: GNU Octave
+        exec: [octave, --gui]
+        gui: true
+        show_in_menu: true
+        show_in_applist: true
+
+  R:
+    id: r
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - programming
+      - statistics
+    launchers:
+      - name: R
+        exec: [R]
+        gui: false
+        terminal: true
+        show_in_menu: true
+        show_in_applist: true
+
+  Julia:
+    id: julia
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - programming
+    launchers:
+      - name: Julia
+        exec: [julia]
+        gui: false
+        terminal: true
+        show_in_menu: true
+        show_in_applist: true
+
+  IJulia:
+    id: ijulia
+    domains:
+      - datascience
+    categories:
+      - programming
+    launchers:
+      - name: IJulia
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  R-bundle-CRAN:
+    id: r-bundle-cran
+    domains:
+      - neuroimaging
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - programming
+      - statistics
+    launchers:
+      - name: R + CRAN
+        exec: [R]
+        gui: false
+        terminal: true
+        show_in_menu: true
+        show_in_applist: true
+
+  R-bundle-Bioconductor:
+    id: r-bundle-bioconductor
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - molecular biology
+      - statistics
+    launchers:
+      - name: R + Bioconductor
+        exec: [R]
+        gui: false
+        terminal: true
+        show_in_menu: true
+        show_in_applist: true
+
+  RStudio-Server:
+    id: rstudio-server
+    domains:
+      - datascience
+    categories:
+      - programming
+      - statistics
+    launchers:
+      - name: RStudio Server
+        exec: [rserver]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  napari:
+    id: napari
+    domains:
+      - microscopy
+      - preclinical
+      - molecular-imaging
+    categories:
+      - visualization
+      - image segmentation
+    launchers:
+      - name: napari
+        exec: [napari]
+        gui: true
+        show_in_menu: true
+        show_in_applist: true
+
+  VTK:
+    id: vtk
+    domains:
+      - neuroimaging
+      - microscopy
+      - preclinical
+      - molecular-imaging
+    categories:
+      - visualization
+    launchers:
+      - name: VTK
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  gnuplot:
+    id: gnuplot
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - visualization
+    launchers:
+      - name: gnuplot
+        exec: [gnuplot]
+        gui: false
+        terminal: true
+        show_in_menu: false
+        show_in_applist: true
+
+  GROMACS:
+    id: gromacs
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+      - molecular imaging
+    gpu: optional
+    launchers:
+      - name: GROMACS
+        exec: [gmx]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  LAMMPS:
+    id: lammps
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+      - molecular imaging
+    launchers:
+      - name: LAMMPS
+        exec: [lmp]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  RDKit:
+    id: rdkit
+    domains:
+      - molecular-imaging
+      - preclinical
+    categories:
+      - molecular biology
+      - molecular imaging
+    launchers:
+      - name: RDKit
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Biopython:
+    id: biopython
+    domains:
+      - neuroimaging
+      - microscopy
+      - preclinical
+      - molecular-imaging
+    categories:
+      - molecular biology
+      - programming
+    launchers:
+      - name: Biopython
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  scikit-image:
+    id: scikit-image
+    domains:
+      - neuroimaging
+      - microscopy
+      - preclinical
+      - molecular-imaging
+    categories:
+      - image segmentation
+      - quantitative imaging
+      - programming
+    launchers:
+      - name: scikit-image
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  scikit-learn:
+    id: scikit-learn
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+      - molecular-imaging
+    categories:
+      - machine learning
+      - programming
+    launchers:
+      - name: scikit-learn
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  imageio:
+    id: imageio
+    domains:
+      - microscopy
+      - preclinical
+    categories:
+      - quantitative imaging
+      - programming
+    launchers:
+      - name: imageio
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  dask:
+    id: dask
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+    categories:
+      - data management
+      - programming
+      - workflows
+    launchers:
+      - name: Dask
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  xarray:
+    id: xarray
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+    categories:
+      - data management
+      - programming
+    launchers:
+      - name: xarray
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  zarr:
+    id: zarr
+    domains:
+      - neuroimaging
+      - microscopy
+      - datascience
+      - preclinical
+    categories:
+      - data management
+      - programming
+    launchers:
+      - name: Zarr
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Arrow:
+    id: arrow
+    domains:
+      - datascience
+    categories:
+      - data management
+      - programming
+    launchers:
+      - name: Apache Arrow
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  arrow-R:
+    id: arrow-r
+    domains:
+      - datascience
+    categories:
+      - data management
+      - statistics
+    launchers:
+      - name: Apache Arrow for R
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  statsmodels:
+    id: statsmodels
+    domains:
+      - datascience
+    categories:
+      - statistics
+      - programming
+    launchers:
+      - name: statsmodels
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Optuna:
+    id: optuna
+    domains:
+      - datascience
+    categories:
+      - machine learning
+      - programming
+    launchers:
+      - name: Optuna
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Seaborn:
+    id: seaborn
+    domains:
+      - datascience
+    categories:
+      - visualization
+      - statistics
+    launchers:
+      - name: Seaborn
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  plotly.py:
+    id: plotly
+    domains:
+      - datascience
+    categories:
+      - visualization
+    launchers:
+      - name: Plotly
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  bokeh:
+    id: bokeh
+    domains:
+      - datascience
+    categories:
+      - visualization
+    launchers:
+      - name: Bokeh
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  SAMtools:
+    id: samtools
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    launchers:
+      - name: SAMtools
+        exec: [samtools]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  BCFtools:
+    id: bcftools
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    launchers:
+      - name: BCFtools
+        exec: [bcftools]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  BLAST+:
+    id: blast-plus
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    launchers:
+      - name: BLAST+
+        exec: [blastn]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Bowtie2:
+    id: bowtie2
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    launchers:
+      - name: Bowtie2
+        exec: [bowtie2]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  HMMER:
+    id: hmmer
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    launchers:
+      - name: HMMER
+        exec: [hmmsearch]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  IQ-TREE:
+    id: iq-tree
+    domains:
+      - molecular-imaging
+    categories:
+      - molecular biology
+    # EESSI 2023.06 ships IQ-TREE 2.x (binary `iqtree2`); restrict this `iqtree3`
+    # launcher to IQ-TREE 3.x builds.
+    version_pattern: "^3\\."
+    launchers:
+      - name: IQ-TREE
+        exec: [iqtree3]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true

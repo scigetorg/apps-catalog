@@ -28,6 +28,7 @@ SIF_BASE = os.environ.get(
 ).rstrip("/")
 IMAGE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._+-]*$")
 BUILDDATE = re.compile(r"^[0-9]{8}$")
+STACK_ID = re.compile(r"^[0-9]{4}\.[0-9]{2}$")
 MAX_FILE_BYTES = 50_000_000_000
 # Without this Accept header Zenodo answers /api/user/records in its legacy
 # format, which shows only the first license and no `pids`.
@@ -73,8 +74,16 @@ def catalog_artifacts(root: Path) -> dict[str, dict[str, Any]]:
     artifacts: dict[str, dict[str, Any]] = {}
     domains = json.loads((root / "domains.json").read_text(encoding="utf-8"))["domains"]
     for path in domain_paths(root):
-        sources = domains[path.parent.name].get("source_repositories")
-        if not isinstance(sources, list) or not sources or any(
+        domain_config = domains[path.parent.name]
+        sources = domain_config.get("source_repositories")
+        eessi_stacks = domain_config.get("eessi_stacks")
+        has_eessi = (
+            isinstance(eessi_stacks, list)
+            and bool(eessi_stacks)
+            and all(isinstance(stack, str) and STACK_ID.fullmatch(stack) for stack in eessi_stacks)
+            and len(set(eessi_stacks)) == len(eessi_stacks)
+        )
+        if not isinstance(sources, list) or (not sources and not has_eessi) or any(
             not isinstance(source, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", source)
             for source in sources
         ) or len(set(sources)) != len(sources):
@@ -82,6 +91,12 @@ def catalog_artifacts(root: Path) -> dict[str, dict[str, Any]]:
         catalog = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(catalog, dict):
             raise ValueError(f"Invalid apps catalog: {path}")
+        if not sources:
+            if catalog:
+                raise ValueError(
+                    f"EESSI-only domain {path.parent.name} must have an empty apps.json"
+                )
+            continue
         for tool, entry in catalog.items():
             if not isinstance(entry, dict) or not isinstance(entry.get("apps"), dict):
                 raise ValueError(f"Invalid app group in {path}: {tool}")

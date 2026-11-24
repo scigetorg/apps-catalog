@@ -3,7 +3,10 @@ import { mkdir, mkdtemp, readFile, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
-import { consolidateDomains, needsConsolidation, outputPaths, readDomains, sourcePath } from "../scripts/workflow.mjs";
+import {
+  consolidateDomains, eessiOutputPaths, needsConsolidation, needsEessiConsolidation,
+  outputPaths, readDomains, sourcePath,
+} from "../scripts/workflow.mjs";
 import { catalogAssets } from "../scripts/cloudflare.mjs";
 import { readReleases, readSourceDomains } from "../scripts/catalog.mjs";
 
@@ -94,7 +97,7 @@ test("domain IDs follow the published schema, including its 64-character limit",
     await write(id);
     assert.deepEqual(Object.keys(await readDomains(root)), [id]);
   }
-  for (const id of ["a".repeat(65), "Neuro", "1neuro", "neuro--imaging", "neuro-"]) {
+  for (const id of ["a".repeat(65), "Neuro", "1neuro", "neuro--imaging", "neuro-", "eessi"]) {
     await write(id);
     await assert.rejects(readDomains(root), /Invalid domain ID/, id);
   }
@@ -390,4 +393,263 @@ test("the generator's description wins and the recipe readme fills a gap", async
   catalog = await runWithToken(root);
   assert.equal(catalog.demo.description, "From the generator.");
   assert.equal(Object.hasOwn(catalog.demo, "citation"), false);
+});
+
+test("supports hybrid and EESSI-only domains in readDomains, outputPaths, and consolidation checks", async () => {
+  const { root } = await fixture();
+  const configured = {
+    neuroimaging: {
+      source_repositories: [repo],
+      eessi_stacks: ["2025.06"],
+      eessiCatalogUrl: "https://apps-catalog.example.workers.dev/neuroimaging/eessi.json",
+    },
+    hpc: {
+      source_repositories: [],
+      eessi_stacks: ["2025.06"],
+      eessiCatalogUrl: "https://apps-catalog.example.workers.dev/hpc/eessi.json",
+    },
+  };
+  await writeFile(join(root, "domains.json"), JSON.stringify({ schemaVersion: 1, domains: configured }));
+  const parsed = await readDomains(root);
+  assert.deepEqual(Object.keys(parsed), ["hpc", "neuroimaging"]);
+  assert.deepEqual(eessiOutputPaths(parsed), [
+    "hpc/eessi.json",
+    "neuroimaging/eessi.json",
+    "eessi/catalog.json",
+  ]);
+  assert.deepEqual(outputPaths(parsed), [
+    "hpc/apps.json",
+    "hpc/manifest.json",
+    "neuroimaging/apps.json",
+    "neuroimaging/manifest.json",
+    "hpc/eessi.json",
+    "neuroimaging/eessi.json",
+    "eessi/catalog.json",
+  ]);
+
+  // First consolidate neuroimaging so its container outputs are up to date,
+  // then verify adding a brand-new EESSI-only domain does NOT trigger
+  // container consolidation (or Zenodo DOI publication), only EESSI consolidation.
+  await consolidateDomains(root, { neuroimaging: configured.neuroimaging }, {
+    sourceCommits: { [repo]: sha }, resolveLicenses, publishedDois: {},
+  });
+  assert.equal(await needsConsolidation(root, parsed), false);
+  assert.equal(await needsEessiConsolidation(root, parsed), true);
+
+  const validDomainEessi = JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2025.06"],
+    tools: {},
+  });
+  const validGlobalEessi = JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2025.06"],
+    domain_stacks: { hpc: ["2025.06"], neuroimaging: ["2025.06"] },
+    tools: {},
+  });
+  await mkdir(join(root, "hpc"), { recursive: true });
+  await writeFile(join(root, "hpc", "apps.json"), "{}\n");
+  await writeFile(join(root, "hpc", "manifest.json"), JSON.stringify({ entries: 0, source_commits: {}, app_sources: {} }));
+  await mkdir(join(root, "eessi"), { recursive: true });
+  await writeFile(join(root, "hpc", "eessi.json"), validDomainEessi);
+  await writeFile(join(root, "neuroimaging", "eessi.json"), validDomainEessi);
+  await writeFile(join(root, "eessi", "catalog.json"), validGlobalEessi);
+  assert.equal(await needsEessiConsolidation(root, parsed), false);
+
+  // Malformed JSON or structurally corrupt EESSI-only compatibility files trigger repair
+  // instead of throwing, and scheduled container consolidation repairs them cleanly.
+  for (const corrupt of ["{broken", '{"stale":null}', '{"stale":{"apps":{"x":null}}}']) {
+    await writeFile(join(root, "hpc", "apps.json"), corrupt);
+    assert.equal(await needsEessiConsolidation(root, parsed), true, corrupt);
+    await consolidateDomains(root, parsed, {
+      sourceCommits: { [repo]: sha }, resolveLicenses, publishedDois: {},
+    });
+    assert.deepEqual(JSON.parse(await readFile(join(root, "hpc", "apps.json"), "utf8")), {}, corrupt);
+    assert.equal(await needsEessiConsolidation(root, parsed), false, corrupt);
+  }
+
+  // Disabling EESSI on one of two enabled domains triggers EESSI regeneration
+  // so stale tools/stacks are removed from the global eessi/catalog.json.
+  const onlyHpc = {
+    hpc: parsed.hpc,
+    neuroimaging: { source_repositories: [repo] },
+  };
+  assert.equal(await needsConsolidation(root, onlyHpc), false);
+  assert.equal(await needsEessiConsolidation(root, onlyHpc), true);
+
+  // Changing eessi_stacks triggers EESSI regeneration without container regeneration.
+  parsed.hpc.eessi_stacks = ["2025.06", "2023.06"];
+  assert.equal(await needsConsolidation(root, parsed), false);
+  assert.equal(await needsEessiConsolidation(root, parsed), true);
+
+  // Rejects empty source_repositories without eessi_stacks and bad eessi_stacks.
+  await writeFile(join(root, "domains.json"), JSON.stringify({
+    domains: { empty: { source_repositories: [] } },
+  }));
+  await assert.rejects(readDomains(root), /Invalid source_repositories/);
+  await writeFile(join(root, "domains.json"), JSON.stringify({
+    domains: { bad: { source_repositories: [repo], eessi_stacks: ["2025"] } },
+  }));
+  await assert.rejects(readDomains(root), /Invalid eessi_stacks/);
+});
+
+test("converting a domain to EESSI-only preserves stored licenses and DOIs across corrupt manifests and destination retries", async () => {
+  const { root, source } = await fixture();
+  // Use a release with no embedded DOI so stored DOI carry-over is isolated.
+  await writeFile(join(source, "releases", "demo", "1.0.json"), JSON.stringify({
+    apps: { "demo 1.0": { version: "20260921" } },
+    categories: ["visualization"],
+  }));
+  // Converted domain ("a-legacy") sorts BEFORE destination ("z-target").
+  await mkdir(join(root, "a-legacy"), { recursive: true });
+  await mkdir(join(root, "z-target"), { recursive: true });
+  await writeFile(join(root, "a-legacy", "apps.json"), JSON.stringify({
+    demo: {
+      apps: {
+        "demo 1.0": {
+          image: "demo_1.0",
+          version: "20260921",
+          doi: "https://doi.org/10.123/stored",
+          license: ["MIT"],
+        },
+      },
+      categories: ["visualization"],
+    },
+  }));
+  // Corrupt manifest on the converted domain must not hide its valid apps.json or drop its stored DOI.
+  await writeFile(join(root, "a-legacy", "manifest.json"), "{corrupt");
+  await writeFile(join(root, "z-target", "apps.json"), "{}\n");
+  await writeFile(join(root, "z-target", "manifest.json"), JSON.stringify({
+    entries: 0,
+    source_commits: { [repo]: sha },
+    app_sources: {},
+  }));
+  await writeFile(join(source, "recipes", "demo", "build.yaml"), "domains: [z-target]\n");
+
+  const converted = {
+    "a-legacy": { source_repositories: [], eessi_stacks: ["2025.06"] },
+    "z-target": { source_repositories: [repo] },
+  };
+  assert.equal(await needsConsolidation(root, converted), true);
+
+  // Simulate a destination failure during conversion: a-legacy/apps.json must remain intact for retry.
+  await assert.rejects(
+    consolidateDomains(root, converted, {
+      sourceCommits: { [repo]: sha },
+      resolveLicenses: async () => { throw new Error("destination resolver exploded"); },
+      publishedDois: {},
+    }),
+    /destination resolver exploded/,
+  );
+  assert.ok(JSON.parse(await readFile(join(root, "a-legacy", "apps.json"), "utf8")).demo);
+
+  // Retry succeeds with no recipe history and no Zenodo lookup, preserving BOTH stored MIT license and DOI.
+  const noHistoryLicenses = async () => ({ resolved: {}, errors: {} });
+  await consolidateDomains(root, converted, {
+    sourceCommits: { [repo]: sha },
+    resolveLicenses: noHistoryLicenses,
+    publishedDois: {},
+  });
+  assert.deepEqual(JSON.parse(await readFile(join(root, "a-legacy", "apps.json"), "utf8")), {});
+  assert.equal(await needsConsolidation(root, converted), false);
+  const target = JSON.parse(await readFile(join(root, "z-target", "apps.json"), "utf8"));
+  assert.deepEqual(target.demo.apps["demo 1.0"].license, ["MIT"]);
+  assert.equal(target.demo.apps["demo 1.0"].doi, "https://doi.org/10.123/stored");
+
+  // Retry after a partial destination write (z-target/apps.json already updated to Apache-2.0
+  // while a-legacy/apps.json still holds old MIT) must not fail with Conflicting catalog licenses,
+  // and an earlier domain lacking a DOI must not hide a later converted domain's stored DOI.
+  await writeFile(join(root, "z-target", "apps.json"), JSON.stringify({
+    demo: {
+      apps: {
+        "demo 1.0": { image: "demo_1.0", version: "20260921", license: ["Apache-2.0"] },
+      },
+      categories: ["visualization"],
+    },
+  }));
+  await writeFile(join(root, "a-legacy", "apps.json"), JSON.stringify({
+    demo: {
+      apps: {
+        "demo 1.0": {
+          image: "demo_1.0",
+          version: "20260921",
+          doi: "https://doi.org/10.123/from-converted",
+          license: ["MIT"],
+        },
+      },
+      categories: ["visualization"],
+    },
+  }));
+  await consolidateDomains(root, converted, {
+    sourceCommits: { [repo]: sha },
+    resolveLicenses: noHistoryLicenses,
+    publishedDois: {},
+  });
+  const afterPartial = JSON.parse(await readFile(join(root, "z-target", "apps.json"), "utf8"));
+  assert.deepEqual(afterPartial.demo.apps["demo 1.0"].license, ["Apache-2.0"]);
+  assert.equal(afterPartial.demo.apps["demo 1.0"].doi, "https://doi.org/10.123/from-converted");
+  assert.deepEqual(JSON.parse(await readFile(join(root, "a-legacy", "apps.json"), "utf8")), {});
+
+  // Also test when the domain WITHOUT a DOI ("a-dest") sorts BEFORE the converted domain WITH the DOI ("z-old").
+  await mkdir(join(root, "a-dest"), { recursive: true });
+  await mkdir(join(root, "z-old"), { recursive: true });
+  await writeFile(join(root, "a-dest", "apps.json"), JSON.stringify({
+    demo: { apps: { "demo 1.0": { image: "demo_1.0", version: "20260921", license: ["MIT"] } } },
+  }));
+  await writeFile(join(root, "z-old", "apps.json"), JSON.stringify({
+    demo: {
+      apps: {
+        "demo 1.0": {
+          image: "demo_1.0",
+          version: "20260921",
+          doi: "https://doi.org/10.123/from-z-old",
+          license: ["MIT"],
+        },
+      },
+    },
+  }));
+  await writeFile(join(source, "recipes", "demo", "build.yaml"), "domains: [a-dest]\n");
+  await consolidateDomains(root, {
+    "a-dest": { source_repositories: [repo] },
+    "z-old": { source_repositories: [], eessi_stacks: ["2025.06"] },
+  }, {
+    sourceCommits: { [repo]: sha },
+    resolveLicenses: noHistoryLicenses,
+    publishedDois: {},
+  });
+  const destAfter = JSON.parse(await readFile(join(root, "a-dest", "apps.json"), "utf8"));
+  assert.equal(destAfter.demo.apps["demo 1.0"].doi, "https://doi.org/10.123/from-z-old");
+  assert.deepEqual(JSON.parse(await readFile(join(root, "z-old", "apps.json"), "utf8")), {});
+
+  // An older build under the same launcher name in an earlier converted domain must not hide
+  // the current build's stored DOI in the destination domain.
+  await writeFile(join(root, "a-legacy", "apps.json"), JSON.stringify({
+    demo: { apps: { "demo 1.0": { image: "demo_1.0", version: "20200101", license: ["MIT"] } } },
+  }));
+  await writeFile(join(root, "z-target", "apps.json"), JSON.stringify({
+    demo: {
+      apps: {
+        "demo 1.0": {
+          image: "demo_1.0",
+          version: "20260921",
+          doi: "https://doi.org/10.123/current-build",
+          license: ["MIT"],
+        },
+      },
+    },
+  }));
+  await writeFile(join(source, "recipes", "demo", "build.yaml"), "domains: [z-target]\n");
+  await consolidateDomains(root, converted, {
+    sourceCommits: { [repo]: sha },
+    resolveLicenses: noHistoryLicenses,
+    publishedDois: {},
+  });
+  const currentTarget = JSON.parse(await readFile(join(root, "z-target", "apps.json"), "utf8"));
+  assert.equal(currentTarget.demo.apps["demo 1.0"].doi, "https://doi.org/10.123/current-build");
 });

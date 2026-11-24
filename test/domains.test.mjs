@@ -256,3 +256,77 @@ test("bad launch fields fail the deploy but not catalog generation", async () =>
   await readDomains(root);
   await assert.rejects(catalogAssets(root), /domains\.json is invalid/);
 });
+
+test("enforces EESSI cross-field invariants against an EESSI-aware schema", async () => {
+  const eessiSchema = {
+    type: "object",
+    additionalProperties: false,
+    required: ["schemaVersion", "domains"],
+    properties: {
+      schemaVersion: { const: 1 },
+      domains: {
+        type: "object",
+        minProperties: 1,
+        additionalProperties: {
+          type: "object",
+          additionalProperties: false,
+          required: ["source_repositories"],
+          properties: {
+            source_repositories: { type: "array", items: { type: "string" } },
+            eessi_stacks: { type: "array", items: { type: "string" } },
+            eessiCatalogUrl: { type: "string", pattern: "^https://" },
+          },
+        },
+      },
+    },
+  };
+
+  assert.deepEqual(await domainsErrors({
+    schemaVersion: 1,
+    domains: {
+      neuroimaging: {
+        source_repositories: SOURCES,
+        eessi_stacks: ["2025.06"],
+        eessiCatalogUrl: "https://apps-catalog.example.workers.dev/neuroimaging/eessi.json",
+      },
+      hpc: {
+        source_repositories: [],
+        eessi_stacks: ["2025.06"],
+        eessiCatalogUrl: "https://apps-catalog.example.workers.dev/hpc/eessi.json",
+      },
+    },
+  }, { schema: eessiSchema }), []);
+
+  const neither = await domainsErrors({
+    schemaVersion: 1,
+    domains: { empty: { source_repositories: [] } },
+  }, { schema: eessiSchema });
+  assert.ok(neither.some((e) => e.includes("must declare non-empty source_repositories or eessi_stacks")));
+
+  const urlWithoutStacks = await domainsErrors({
+    schemaVersion: 1,
+    domains: {
+      neuroimaging: {
+        source_repositories: SOURCES,
+        eessiCatalogUrl: "https://apps-catalog.example.workers.dev/neuroimaging/eessi.json",
+      },
+    },
+  }, { schema: eessiSchema });
+  assert.ok(urlWithoutStacks.some((e) => e.includes("eessiCatalogUrl requires non-empty eessi_stacks")));
+
+  const badStack = await domainsErrors({
+    schemaVersion: 1,
+    domains: {
+      neuroimaging: { source_repositories: SOURCES, eessi_stacks: ["2025.06", "2025.06"] },
+    },
+  }, { schema: eessiSchema });
+  assert.ok(badStack.some((e) => e.includes("eessi_stacks must list unique YYYY.MM stacks")));
+
+  const reserved = await domainsErrors({
+    schemaVersion: 1,
+    domains: {
+      eessi: { source_repositories: SOURCES },
+    },
+  }, { schema: eessiSchema });
+  assert.ok(reserved.some((e) => e.includes("reserved domain ID")));
+});

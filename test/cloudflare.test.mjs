@@ -263,3 +263,127 @@ test("ships the Zenodo license list with the catalogs when present", async () =>
   await writeFile(join(root, "licenses", "zenodo.json"), '{"licenses": []}');
   await assert.rejects(catalogAssets(root), /must list licenses/);
 });
+
+test("ships per-domain eessi.json and global /eessi/catalog.json when eessi_stacks are configured", async () => {
+  const root = await mkdtemp(join(tmpdir(), "neurodesk-cloudflare-eessi-"));
+  const schema = {
+    type: "object",
+    required: ["schemaVersion", "domains"],
+    properties: {
+      schemaVersion: { const: 1 },
+      domains: {
+        type: "object",
+        additionalProperties: {
+          type: "object",
+          properties: {
+            source_repositories: { type: "array", items: { type: "string" } },
+            eessi_stacks: { type: "array", items: { type: "string" } },
+            eessiCatalogUrl: { type: "string" },
+          },
+        },
+      },
+    },
+  };
+  await writeFile(join(root, "domains.json"), JSON.stringify({
+    schemaVersion: 1,
+    domains: {
+      neuroimaging: {
+        source_repositories: ["NeuroDesk/neurocontainers"],
+        eessi_stacks: ["2025.06"],
+        eessiCatalogUrl: "https://apps-catalog.example.workers.dev/neuroimaging/eessi.json",
+      },
+      microscopy: {
+        source_repositories: ["Example/microcontainers"],
+      },
+    },
+  }));
+  await mkdir(join(root, "neuroimaging"));
+  await mkdir(join(root, "microscopy"));
+  await mkdir(join(root, "eessi"));
+  await writeFile(join(root, "neuroimaging", "apps.json"), "{}");
+  await writeFile(join(root, "microscopy", "apps.json"), "{}");
+  const eessiDoc = JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2025.06"],
+    tools: {},
+  });
+  const globalEessiDoc = JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2025.06"],
+    domain_stacks: { neuroimaging: ["2025.06"] },
+    tools: {},
+  });
+  await writeFile(join(root, "neuroimaging", "eessi.json"), eessiDoc);
+  await writeFile(join(root, "eessi", "catalog.json"), globalEessiDoc);
+
+  const assets = await catalogAssets(root, { schema });
+  assert.deepEqual([...assets.keys()], [
+    "/microscopy/apps.json",
+    "/neuroimaging/apps.json",
+    "/neuroimaging/eessi.json",
+    "/eessi/catalog.json",
+    "/domains.json",
+  ]);
+
+  // Stack mismatch between domains.json and committed eessi.json fails closed.
+  await writeFile(join(root, "neuroimaging", "eessi.json"), JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2023.06"],
+    tools: {},
+  }));
+  await assert.rejects(catalogAssets(root, { schema }), /do not match configured/);
+
+  // Stale domain_stacks in global eessi/catalog.json fails closed.
+  await writeFile(join(root, "neuroimaging", "eessi.json"), eessiDoc);
+  await writeFile(join(root, "eessi", "catalog.json"), JSON.stringify({
+    schemaVersion: 1,
+    backend: "eessi",
+    explicitSelectionRequired: true,
+    cvmfsRepo: "software.eessi.io",
+    stacks: ["2025.06"],
+    domain_stacks: { microscopy: ["2025.06"], neuroimaging: ["2025.06"] },
+    tools: {},
+  }));
+  await assert.rejects(catalogAssets(root, { schema }), /domain_stacks do not match/);
+
+  await writeFile(join(root, "eessi", "catalog.json"), globalEessiDoc);
+  await writeFile(join(root, "neuroimaging", "eessi.json"), '{"schemaVersion":1,"backend":"wrong"}');
+  await assert.rejects(catalogAssets(root, { schema }), /must declare schemaVersion 1 and backend "eessi"/);
+
+  // EESSI-only domain with stale non-empty apps.json fails closed at deployment.
+  await writeFile(join(root, "neuroimaging", "eessi.json"), eessiDoc);
+  await writeFile(join(root, "domains.json"), JSON.stringify({
+    schemaVersion: 1,
+    domains: {
+      neuroimaging: {
+        source_repositories: [],
+        eessi_stacks: ["2025.06"],
+        eessiCatalogUrl: "https://apps-catalog.example.workers.dev/neuroimaging/eessi.json",
+      },
+    },
+  }));
+  await writeFile(join(root, "neuroimaging", "apps.json"), JSON.stringify({
+    stale: { apps: { "stale 1.0": { image: "stale_1.0", version: "20260101" } } },
+  }));
+  await assert.rejects(
+    catalogAssets(root, { schema }),
+    /EESSI-only domain neuroimaging must have an empty apps\.json/,
+  );
+  await writeFile(join(root, "neuroimaging", "apps.json"), "{}");
+  const eessiOnlyAssets = await catalogAssets(root, { schema });
+  assert.deepEqual([...eessiOnlyAssets.keys()], [
+    "/neuroimaging/apps.json",
+    "/neuroimaging/eessi.json",
+    "/eessi/catalog.json",
+    "/domains.json",
+  ]);
+});

@@ -14,12 +14,16 @@ container images, and commit the results back to `main`.
 ## Layout
 
 ```text
-domains.json                 # HAND-EDITED: domains -> source_repositories + optional launch fields (see below)
-<domain>/apps.json           # GENERATED catalog for each configured domain
+domains.json                 # HAND-EDITED: domains -> source_repositories + optional EESSI & launch fields (see below)
+eessi/curation.yaml          # HAND-EDITED: curated EESSI packages -> domains, categories, safe argv launchers
+<domain>/apps.json           # GENERATED Neurocontainers SIF catalog for each configured domain
 <domain>/manifest.json       # GENERATED image count and source commits
+<domain>/eessi.json          # GENERATED curated EESSI Lmod catalog (when domain sets eessi_stacks)
+eessi/catalog.json           # GENERATED combined curated EESSI catalog across enabled domains
 licenses/zenodo.json         # GENERATED Zenodo∩SPDX license IDs, served for neurocontainers-ui
-scripts/workflow.mjs         # CLI: checkout | run | output-paths | needs-consolidation
+scripts/workflow.mjs         # CLI: checkout | run | eessi | output-paths | eessi-output-paths | needs-consolidation | needs-eessi
 scripts/catalog.mjs          # reads releases, builds catalog/manifest, license + DOI carry-over
+scripts/eessi.mjs            # validates eessi/curation.yaml, joins EESSI metadata feed -> <domain>/eessi.json + eessi/catalog.json
 scripts/cloudflare.mjs       # Worker static-asset upload + post-deploy URL verification
 scripts/domains.mjs          # validates domains.json for publishing (ajv); CLI: npm run validate:domains
 scripts/default_version.mjs  # bumps container defaultVersion to the release history's Latest (tag must be on Docker Hub)
@@ -30,7 +34,7 @@ scripts/recipe_history.py    # license = newest recipe commit declaring the imag
 scripts/doi_metadata.py      # records-API draft metadata
 scripts/audit_doi_licenses.py# weekly read-only audit: Zenodo license vs apps.json -> JSON report
 scripts/backfill_zenodo_rights.py # manual: rewrite verified_legacy records' rights from apps.json
-test/*.test.mjs              # node:test suites (catalog, workflow, cloudflare)
+test/*.test.mjs              # node:test suites (catalog, workflow, cloudflare, domains, default-version, eessi)
 test/test_*.py               # unittest suites (zenodo_catalog, doi_licenses, recipe_history, backfill)
 ```
 
@@ -39,7 +43,7 @@ test/test_*.py               # unittest suites (zenodo_catalog, doi_licenses, re
 
 ## Generated files — do not hand-edit
 
-`*/apps.json`, `*/manifest.json` and `licenses/zenodo.json` are rewritten by CI. Most
+`*/apps.json`, `*/manifest.json`, `*/eessi.json`, `eessi/catalog.json` and `licenses/zenodo.json` are rewritten by CI. Most
 commits on `main` are bot commits ("Update domain apps catalogs from container
 releases", "Add published DOI metadata ..."). Fix data problems in the source
 repository's recipes / release JSON, or fix the generator here. When a
@@ -173,6 +177,22 @@ domain's `title` and `appJsonUrl`.
   in bare form (`{id}` or `{title, link}`; Zenodo rejects its own expanded
   entries), and treat a non-empty `errors` list on a draft write as a failure
   even though the HTTP status is 200/201.
+- EESSI tools on `/cvmfs/software.eessi.io` are EasyBuild Lmod modules, not
+  Neurocontainers SIF images. Never mix EESSI entries into `<domain>/apps.json`
+  (which drives Zenodo DOIs, license audits, and `neurocontainers` cleanup).
+  Instead, `scripts/eessi.mjs` validates `eessi/curation.yaml` strictly and
+  joins it with EESSI's `eessi_api_metadata_software.json` feed to generate
+  sibling `<domain>/eessi.json` catalogs (for domains with `eessi_stacks` in
+  `domains.json`) plus `/eessi/catalog.json`, selecting the newest CPU build per
+  package per stack (with optional `gpu: optional|only`, `version_pattern`, or
+  `pin` overrides). Every EESSI catalog sets `explicitSelectionRequired: true`
+  so Neurocontainers stay default and EESSI requires explicit selection. Feed
+  fetches in `consolidate.yml` run with `--fail-soft` (keeping committed
+  `eessi.json` files on upstream outage) and EESSI-only refreshes do not trigger
+  `publish-dois.yml`. An EESSI-only domain (`source_repositories: []` with
+  non-empty `eessi_stacks`) still gets an empty `{}` `apps.json` so
+  `neurocontainers/tools/merge_domain_catalogs.py` never hits a missing file,
+  and `scripts/zenodo_catalog.py` asserts that `apps.json` is `{}`.
 
 ## Workflows (`.github/workflows/`)
 
@@ -181,7 +201,7 @@ in `apps-catalog-prepare`, `apps-catalog`, and `zenodo-doi-publication`.
 
 | Workflow | Trigger | Does |
 | --- | --- | --- |
-| `consolidate.yml` | daily 02:25 UTC, manual, push to `main` touching `domains.json` | Prepare every domain, refresh the license list (failure keeps the old file), commit outputs, then deploy the prepared revision. Domain pushes reuse committed files when both outputs exist and manifest sources match. |
+| `consolidate.yml` | daily 02:25 UTC, manual, push to `main` touching `domains.json` or `eessi/curation.yaml` | Prepare every domain (`apps.json` + fail-soft `eessi.json` / `eessi/catalog.json`), refresh the license list (failure keeps the old file), commit outputs, then deploy the prepared revision. EESSI-only pushes skip container checkout and `publish-dois.yml`. |
 | `publish-dois.yml` | called after full preparation, manual | Python tests → plan every missing licensed image (others skipped and listed; `limit` input for a smoke test) into ≤6 batches (`PUBLISH_JOBS`) → matrix publish, 6 in parallel, no new upload after 5 h (skipped when nothing is missing) |
 | `audit-doi-licenses.yml` | Sundays 05:00 UTC, manual | read-only audit, uploads JSON artifact |
 | `backfill-zenodo-rights.yml` | manual only | dry run by default; `apply` edits `verified_legacy` records' license list (same DOI) |
