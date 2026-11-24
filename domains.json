@@ -5,6 +5,9 @@
       "source_repositories": [
         "NeuroDesk/neurocontainers"
       ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
       "title": "neurodesk",
       "description": "Neuroimaging tools and resources for neuroimaging research and analysis.",
       "registry": "docker.io/vnmd/neurodesktop",
@@ -19,6 +22,7 @@
         "https://play-europe.neurodesk.org/"
       ],
       "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/neuroimaging/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/neuroimaging/eessi.json",
       "downloadUrls": [
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
@@ -27,6 +31,9 @@
     "microscopy": {
       "source_repositories": [
         "NeuroDesk/neurocontainers"
+      ],
+      "eessi_stacks": [
+        "2025.06"
       ],
       "title": "microscopy",
       "description": "Image processing, segmentation, and quantitative analysis",
@@ -39,6 +46,7 @@
         "https://play-australia.sciget.org/"
       ],
       "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/microscopy/eessi.json",
       "downloadUrls": [
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
@@ -48,6 +56,9 @@
       "source_repositories": [
         "NeuroDesk/neurocontainers"
       ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
       "title": "datadesktop",
       "description": "General-purpose data science: tabular analytics, SQL, statistics, and machine learning",
       "registry": "ghcr.io/scigetorg/datadesktop",
@@ -56,6 +67,7 @@
       "volumeMount": "datadesktop-home",
       "defaultStorageMount": "datadesktop-storage",
       "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/datascience/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/datascience/eessi.json",
       "downloadUrls": [
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
@@ -64,12 +76,20 @@
     "preclinical": {
       "source_repositories": [
         "NeuroDesk/neurocontainers"
-      ]
+      ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/preclinical/eessi.json"
     },
     "molecular-imaging": {
       "source_repositories": [
         "NeuroDesk/neurocontainers"
-      ]
+      ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/molecular-imaging/eessi.json"
     }
   }
 }
