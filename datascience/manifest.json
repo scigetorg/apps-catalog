@@ -1,7 +1,7 @@
 {
     "entries": 2,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "b54df4e6950d5ca60abf525a314e9a4e02540f41"
+        "NeuroDesk/neurocontainers": "e36591acd71c6a78b21bce24beca87ccf5a5bd55"
     },
     "app_sources": {
         "postgresanalytics": {

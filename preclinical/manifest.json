@@ -1,7 +1,7 @@
 {
-    "entries": 181,
+    "entries": 182,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "b54df4e6950d5ca60abf525a314e9a4e02540f41"
+        "NeuroDesk/neurocontainers": "e36591acd71c6a78b21bce24beca87ccf5a5bd55"
     },
     "app_sources": {
         "aidamri": {
@@ -300,6 +300,9 @@
             "niimath_arm64 1.0.20260703": "NeuroDesk/neurocontainers",
             "niimath_arm64 1.0.20260924": "NeuroDesk/neurocontainers",
             "niimath_arm64 1.0.20261016": "NeuroDesk/neurocontainers"
+        },
+        "petfit": {
+            "petfit 0.2.4": "NeuroDesk/neurocontainers"
         },
         "petprep": {
             "petprep 0.0.10": "NeuroDesk/neurocontainers",
