@@ -266,5 +266,36 @@ class ZenodoCatalogTests(unittest.TestCase):
         user_records(session, {f"t_1_{i:08d}" for i in range(120)})
         self.assertEqual(session.get.call_count, 3)
 
+    def test_eessi_only_domain_with_empty_apps_json_is_skipped(self) -> None:
+        (self.root / "hpc").mkdir()
+        (self.root / "hpc/apps.json").write_text("{}")
+        (self.root / "domains.json").write_text(json.dumps({"domains": {
+            "neuroimaging": {
+                "source_repositories": ["NeuroDesk/neurocontainers"],
+                "eessi_stacks": ["2025.06"],
+            },
+            "hpc": {
+                "source_repositories": [],
+                "eessi_stacks": ["2025.06"],
+            },
+        }}))
+        artifacts = catalog_artifacts(self.root)
+        self.assertEqual(set(artifacts), {"demo_1.0_20260101"})
+
+        # Non-empty apps.json on an EESSI-only domain must fail loudly.
+        (self.root / "hpc/apps.json").write_text(json.dumps({
+            "rogue": {"apps": {"rogue 1.0": {"image": "rogue_1.0", "version": "20260101"}}},
+        }))
+        with self.assertRaisesRegex(ValueError, "EESSI-only domain hpc must have an empty apps.json"):
+            catalog_artifacts(self.root)
+
+        # Empty source_repositories without eessi_stacks still fails.
+        (self.root / "hpc/apps.json").write_text("{}")
+        (self.root / "domains.json").write_text(json.dumps({"domains": {
+            "hpc": {"source_repositories": []},
+        }}))
+        with self.assertRaisesRegex(ValueError, "Invalid source_repositories for hpc"):
+            catalog_artifacts(self.root)
+
 if __name__ == "__main__":
     unittest.main()

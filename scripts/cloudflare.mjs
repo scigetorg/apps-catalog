@@ -3,6 +3,9 @@ import { readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { DOMAINS_PATH, readPublishedDomains } from "./domains.mjs";
+import {
+  expectedGlobalEessiConfig, GLOBAL_EESSI_CATALOG_PATH, validateEessiCatalog,
+} from "./eessi.mjs";
 import { readDomains } from "./workflow.mjs";
 
 const API = "https://api.cloudflare.com/client/v4";
@@ -20,17 +23,38 @@ function assetHash(bytes, path) {
     .slice(0, 32);
 }
 
-export async function catalogAssets(root) {
+export async function catalogAssets(root, domainOptions) {
   const domains = await readDomains(root);
+  const { domainStacks, stacks: globalStacks } = expectedGlobalEessiConfig(domains);
   const assets = new Map();
-  for (const id of Object.keys(domains)) {
+  for (const [id, config] of Object.entries(domains)) {
     const path = `/${id}/apps.json`;
     const bytes = await readFile(join(root, id, "apps.json"));
     const catalog = JSON.parse(bytes.toString("utf8"));
     if (!catalog || typeof catalog !== "object" || Array.isArray(catalog)) {
       throw new Error(`${path} must contain a JSON object`);
     }
+    if (!config.source_repositories.length && Object.keys(catalog).length > 0) {
+      throw new Error(`EESSI-only domain ${id} must have an empty apps.json`);
+    }
     assets.set(path, { bytes, hash: assetHash(bytes, path) });
+    if (Array.isArray(config.eessi_stacks) && config.eessi_stacks.length) {
+      const eessiPath = `/${id}/eessi.json`;
+      const eessiBytes = await readFile(join(root, id, "eessi.json"));
+      const eessiCatalog = JSON.parse(eessiBytes.toString("utf8"));
+      validateEessiCatalog(eessiCatalog, eessiPath, { expectedStacks: config.eessi_stacks });
+      assets.set(eessiPath, { bytes: eessiBytes, hash: assetHash(eessiBytes, eessiPath) });
+    }
+  }
+  if (Object.keys(domainStacks).length) {
+    const globalPath = `/${GLOBAL_EESSI_CATALOG_PATH}`;
+    const globalBytes = await readFile(join(root, GLOBAL_EESSI_CATALOG_PATH));
+    const globalCatalog = JSON.parse(globalBytes.toString("utf8"));
+    validateEessiCatalog(globalCatalog, globalPath, {
+      expectedStacks: globalStacks,
+      expectedDomainStacks: domainStacks,
+    });
+    assets.set(globalPath, { bytes: globalBytes, hash: assetHash(globalBytes, globalPath) });
   }
   // Every deploy replaces the whole asset set, so the license list ships with
   // each catalog publish rather than on its own.
@@ -50,7 +74,7 @@ export async function catalogAssets(root) {
   // Neurodesk App reads each domain's launch fields from here. Invalid
   // file throws, so a bad hand edit fails the deploy and leaves the Worker
   // serving the previous version.
-  const domainsBytes = await readPublishedDomains(root);
+  const domainsBytes = await readPublishedDomains(root, domainOptions);
   const domainsPath = `/${DOMAINS_PATH}`;
   assets.set(domainsPath, {
     bytes: domainsBytes,

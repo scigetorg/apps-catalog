@@ -2,6 +2,7 @@ import Ajv from "ajv";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { RESERVED_DOMAIN_IDS, STACK_ID } from "./eessi.mjs";
 
 // domains.json is published for Neurodesk App. Each domain has one container
 // image, described by optional fields alongside source_repositories, which the app fetches
@@ -62,11 +63,13 @@ async function validator() {
 
 /**
  * Validation errors for a parsed domains.json; empty if valid. Besides the
- * schema, no two domains may share a containerName: their containers would
- * collide in the app.
+ * schema, no two domains may share a containerName (their containers would
+ * collide in the app), and EESSI cross-field invariants are enforced here.
  */
-export async function domainsErrors(document) {
-  const validate = await validator();
+export async function domainsErrors(document, { schema } = {}) {
+  const validate = schema
+    ? new Ajv({ strict: true, allErrors: true }).compile(schema)
+    : await validator();
   if (!validate(document))
     return validate.errors.map(
       ({ instancePath, message }) => `${instancePath || "/"} ${message}`,
@@ -74,6 +77,24 @@ export async function domainsErrors(document) {
   const errors = [];
   const owners = new Map();
   for (const [id, domain] of Object.entries(document.domains)) {
+    if (RESERVED_DOMAIN_IDS.has(id)) {
+      errors.push(`/domains/${id} is a reserved domain ID`);
+    }
+    const hasRepos = Array.isArray(domain.source_repositories) && domain.source_repositories.length > 0;
+    const hasEessi = Array.isArray(domain.eessi_stacks) && domain.eessi_stacks.length > 0;
+    if (!hasRepos && !hasEessi) {
+      errors.push(`/domains/${id} must declare non-empty source_repositories or eessi_stacks`);
+    }
+    if (domain.eessiCatalogUrl && !hasEessi) {
+      errors.push(`/domains/${id}/eessiCatalogUrl requires non-empty eessi_stacks`);
+    }
+    if (domain.eessi_stacks !== undefined) {
+      if (!Array.isArray(domain.eessi_stacks) || !domain.eessi_stacks.length ||
+          domain.eessi_stacks.some((stack) => typeof stack !== "string" || !STACK_ID.test(stack)) ||
+          new Set(domain.eessi_stacks).size !== domain.eessi_stacks.length) {
+        errors.push(`/domains/${id}/eessi_stacks must list unique YYYY.MM stacks`);
+      }
+    }
     if (!domain.containerName) continue;
     const owner = owners.get(domain.containerName);
     if (owner)
@@ -89,7 +110,7 @@ export async function domainsErrors(document) {
  * Read <root>/domains.json and validate it for publishing. Returns its bytes;
  * throws when it is not valid JSON or fails validation.
  */
-export async function readPublishedDomains(root) {
+export async function readPublishedDomains(root, options) {
   const bytes = await readFile(join(root, DOMAINS_PATH));
   let document;
   try {
@@ -97,7 +118,7 @@ export async function readPublishedDomains(root) {
   } catch (error) {
     throw new Error(`${DOMAINS_PATH} is not valid JSON: ${error.message}`);
   }
-  const errors = await domainsErrors(document);
+  const errors = await domainsErrors(document, options);
   if (errors.length)
     throw new Error(`${DOMAINS_PATH} is invalid:\n  ${errors.join("\n  ")}`);
   return bytes;

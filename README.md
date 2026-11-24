@@ -12,19 +12,23 @@ metadata and release files, not generated `apps.json` files.
                      neurocontainers repo                      Zenodo (production)
                 (releases/*.json, recipes/*/build.yaml)
                               │
- ┌─ consolidate.yml ── daily 02:25 UTC, manual, or domains.json push to main ─────┐
+ ┌─ consolidate.yml ── daily 02:25 UTC, manual, or domains.json / curation push ──┐
  │  prepare: reuse existing catalogs for launch-only pushes                        │
- │  otherwise regenerate all configured domains:                                   │
+ │  container sources (when needed or scheduled):                                  │
  │  clone sources ─► build catalog from release JSON (domains from build.yaml)     │
  │                   ├─ DOIs:     look up published records ◄──────────── Zenodo   │
  │                   └─ licenses: every image, from recipe git history             │
  │                                → newest commit declaring its version            │
  │  ─► write <domain>/apps.json + manifest.json                                    │
  │  ─► refresh licenses/zenodo.json from Zenodo ∩ SPDX (failure keeps old file)    │
+ │  EESSI sources (when needed or scheduled):                                      │
+ │  validate eessi/curation.yaml ─► join EESSI metadata feed (fail-soft on outage) │
+ │  ─► write <domain>/eessi.json + eessi/catalog.json (+ empty apps.json for       │
+ │     EESSI-only domains so neurocontainers merge never sees a missing file)      │
  │  ─► commit + push main                                                          │
  │  deploy: validate and publish the prepared commit to Cloudflare                 │
  └─────────────────────────────────────────────────────────────────────────────────┘
-                              │ after full preparation, in parallel with deploy
+                              │ after container preparation only (not EESSI-only)
                               ▼
  ┌─ publish-dois.yml ── called with the prepared commit, or run manually ─────────┐
  │  plan:    unit tests ─► licensed images in apps.json with no Zenodo record      │
@@ -70,10 +74,17 @@ hyphens, beginning with a letter. Examples are `neuroimaging` and
 Keep it stable when a containers repository is renamed. Tool and app names
 remain scoped inside each domain's `apps.json`.
 
-`domains.json` maps each ID to a nonempty `source_repositories` list in
-`owner/repository` form, and optionally to the launch fields Neurodesk App
-uses for that domain (see [Domain containers](#domain-containers)). It is
-the allowed domain list. A source recipe declares
+`domains.json` maps each ID to a `source_repositories` list in
+`owner/repository` form, optional EESSI fields (`eessi_stacks` and
+`eessiCatalogUrl`), and optionally the launch fields Neurodesk App uses for
+that domain (see [Domain containers](#domain-containers)). `source_repositories`
+must be non-empty unless `eessi_stacks` is set (an EESSI-only domain still gets
+an empty `{}` `<domain>/apps.json` and zero-entry `manifest.json` so
+`NeuroDesk/neurocontainers`'s `tools/merge_domain_catalogs.py` never hits a
+missing file). Before adding `eessi_stacks` or `eessiCatalogUrl` to
+`domains.json`, update `scigetorg/sciget-app`'s `domains.schema.json` first, as
+`scripts/domains.mjs` validates `domains.json` fail-closed against that schema.
+It is the allowed domain list. A source recipe declares
 `domains: [neuroimaging]` in `recipes/<recipe>/build.yaml`; retired recipes
 declare domains in `workflows/retired_recipes.yaml`. Every release must resolve
 to one of those declarations. The source must be listed for every domain it
@@ -338,8 +349,13 @@ CVMFS. Unreferenced SIFs older than 7 days are deleted from Nectar and S3.
 ## Publish on Cloudflare Workers
 
 The workflow commits the generated catalogs, then publishes every configured
-domain as a Worker static asset at `/<domain>/apps.json`, together with
-`/licenses/zenodo.json` and `/domains.json`. The license list holds the license IDs a recipe can use and still get a DOI
+domain as a Worker static asset at `/<domain>/apps.json` (plus `/<domain>/eessi.json`
+and `/eessi/catalog.json` when domains configure `eessi_stacks`), together with
+`/licenses/zenodo.json` and `/domains.json`. Every generated EESSI catalog sets
+`explicitSelectionRequired: true` (Neurocontainers remain default; EESSI requires
+explicit selection), uses argv arrays in `exec` (`[]` means load the module in an
+interactive shell / library context), and carries upstream `description` text that
+HTML consumers must escape. The license list holds the license IDs a recipe can use and still get a DOI
 (Zenodo's catalogue intersected with the SPDX IDs the builder accepts). The
 neurocontainers-ui recipe editor reads that list; Neurodesk App reads
 each domain's launch fields from `domains.json`, and invalid fields fail the deploy. If the push fails,
