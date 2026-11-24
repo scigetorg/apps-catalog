@@ -203,6 +203,82 @@
         ],
         "description": "Blender is an open-source 3D creation suite for modeling, animation, rendering, compositing, simulation, and scripting."
     },
+    "cellpose": {
+        "apps": {
+            "cellpose 4.2.1.1": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cellpose_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "Cellpose-cellpose 4.2.1.1": {
+                "version": "20261124",
+                "exec": "cellpose",
+                "apptainer_args": [],
+                "image": "cellpose_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "Cellpose 3D-cellpose 4.2.1.1": {
+                "version": "20261124",
+                "exec": "cellpose-3d",
+                "apptainer_args": [],
+                "image": "cellpose_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning",
+            "visualization"
+        ],
+        "citation": "Pachitariu, M., Rariden, M., & Stringer, C. (2025). Cellpose-SAM:\nsuperhuman generalization for cellular segmentation. bioRxiv.\nhttps://doi.org/10.1101/2025.04.28.651001\n\nStringer, C., Wang, T., Michaelos, M., & Pachitariu, M. (2021).\nCellpose: a generalist algorithm for cellular segmentation. Nature Methods,\n18(1), 100-106. https://doi.org/10.1038/s41592-020-01018-x",
+        "description": "Cellpose 4 (Cellpose-SAM) is a generalist deep-learning algorithm and interactive Qt6 GUI for 2D and 3D cellular and nuclear segmentation in microscopy images. This container includes CUDA-enabled PyTorch on x86_64 (CPU wheels on ARM64) and covers both 2D (`cellpose`) and 3D Z-stack (`cellpose-3d` / `cellpose --Zstack`) workflows."
+    },
+    "cellpose_arm64": {
+        "apps": {
+            "cellpose_arm64 4.2.1.1": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cellpose_arm64_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "Cellpose-cellpose_arm64 4.2.1.1": {
+                "version": "20261124",
+                "exec": "cellpose",
+                "apptainer_args": [],
+                "image": "cellpose_arm64_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "Cellpose 3D-cellpose_arm64 4.2.1.1": {
+                "version": "20261124",
+                "exec": "cellpose-3d",
+                "apptainer_args": [],
+                "image": "cellpose_arm64_4.2.1.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning",
+            "visualization"
+        ],
+        "citation": "Pachitariu, M., Rariden, M., & Stringer, C. (2025). Cellpose-SAM:\nsuperhuman generalization for cellular segmentation. bioRxiv.\nhttps://doi.org/10.1101/2025.04.28.651001\n\nStringer, C., Wang, T., Michaelos, M., & Pachitariu, M. (2021).\nCellpose: a generalist algorithm for cellular segmentation. Nature Methods,\n18(1), 100-106. https://doi.org/10.1038/s41592-020-01018-x",
+        "description": "Cellpose 4 (Cellpose-SAM) is a generalist deep-learning algorithm and interactive Qt6 GUI for 2D and 3D cellular and nuclear segmentation in microscopy images. This container includes CUDA-enabled PyTorch on x86_64 (CPU wheels on ARM64) and covers both 2D (`cellpose`) and 3D Z-stack (`cellpose-3d` / `cellpose --Zstack`) workflows."
+    },
     "cellprofiler": {
         "apps": {
             "cellprofiler 4.2.8.1": {
@@ -283,11 +359,10 @@
     "cryosparc": {
         "apps": {
             "cryosparc 1.0.0": {
-                "version": "20261121",
+                "version": "20261124",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cryosparc_1.0.0",
-                "doi": "https://doi.org/10.5281/zenodo.24432206",
                 "license": [
                     "CryoSPARC licence (not included; installed with each user's own licence ID)",
                     "MIT"
@@ -674,6 +749,35 @@
         ],
         "description": "dcm2niix is designed to convert neuroimaging data from the DICOM format to the NIfTI format. This web page hosts the developmental source code - a compiled version for Linux, MacOS, and Windows of the most recent stable release is included with MRIcroGL. A full manual for this software is available in the form of a NITRC wiki.",
         "citation": "Li X, Morgan PS, Ashburner J, Smith J, Rorden C (2016) The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 264:47-56. doi: 10.1016/j.jneumeth.2016.03.001. PMID: 26945974"
+    },
+    "deeplabcut": {
+        "apps": {
+            "deeplabcut 2.3.11": {
+                "version": "20260722",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "deeplabcut_2.3.11",
+                "doi": "https://doi.org/10.5281/zenodo.21856230",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            },
+            "deeplabcut 3.0.2": {
+                "version": "20260924",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "deeplabcut_3.0.2",
+                "doi": "https://doi.org/10.5281/zenodo.22985123",
+                "license": [
+                    "LGPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "machine learning"
+        ],
+        "description": "DeepLabCut is a toolbox for state-of-the-art markerless pose estimation of animals performing various behaviors. As long as you can see (label) what you want to track, you can use this toolbox, as it is animal and object agnostic.",
+        "citation": "@article{Mathisetal2018,\n    title = {DeepLabCut: markerless pose estimation of user-defined body parts with deep learning},\n    author = {Alexander Mathis and Pranav Mamidanna and Kevin M. Cury and Taiga Abe  and Venkatesh N. Murthy and Mackenzie W. Mathis and Matthias Bethge},\n    journal = {Nature Neuroscience},\n    year = {2018},\n    url = {https://www.nature.com/articles/s41593-018-0209-y}}\n\n @article{NathMathisetal2019,\n    title = {Using DeepLabCut for 3D markerless pose estimation across species and behaviors},\n    author = {Nath*, Tanmay and Mathis*, Alexander and Chen, An Chi and Patel, Amir and Bethge, Matthias and Mathis, Mackenzie W},\n    journal = {Nature Protocols},\n    year = {2019},\n    url = {https://doi.org/10.1038/s41596-019-0176-0}}\n    \n@InProceedings{Mathis_2021_WACV,\n    author    = {Mathis, Alexander and Biasi, Thomas and Schneider, Steffen and Yuksekgonul, Mert and Rogers, Byron and Bethge, Matthias and Mathis, Mackenzie W.},\n    title     = {Pretraining Boosts Out-of-Domain Robustness for Pose Estimation},\n    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},\n    month     = {January},\n    year      = {2021},\n    pages     = {1859-1868}}\n    \n@article{Lauer2022MultianimalPE,\n    title={Multi-animal pose estimation, identification and tracking with DeepLabCut},\n    author={Jessy Lauer and Mu Zhou and Shaokai Ye and William Menegas and Steffen Schneider and Tanmay Nath and Mohammed Mostafizur Rahman and     Valentina Di Santo and Daniel Soberanes and Guoping Feng and Venkatesh N. Murthy and George Lauder and Catherine Dulac and M. Mathis and Alexander Mathis},\n    journal={Nature Methods},\n    year={2022},\n    volume={19},\n    pages={496 - 504}}\n\n@article{Ye2024SuperAnimal,\n    title={SuperAnimal pretrained pose estimation models for behavioral analysis},\n    author={Shaokai Ye and Anastasiia Filippova and Jessy Lauer and Steffen Schneider and Maxime Vidal and and Tian Qiu and Alexander Mathis and Mackenzie W. Mathis},\n    journal={Nature Communications},\n    year={2024},\n    volume={15}}"
     },
     "dicomtools": {
         "apps": {
@@ -1531,6 +1635,63 @@
         "description": "JIDT: Java Information Dynamics Toolkit for studying information-theoretic measures of computation in complex systems. JIDT provides a stand-alone, open-source code Java implementation (also usable in Matlab, Octave, Python, R, Julia and Clojure) of information-theoretic measures of distributed computation in complex systems: i.e. information storage, transfer and modification.",
         "citation": "https://arxiv.org/abs/1408.3270"
     },
+    "jipipe": {
+        "apps": {
+            "jipipe 5.3.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "jipipe_5.3.0",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "GPL-3.0-or-later",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MTrack2 2.0.1 (bundled as MTrack2_-2.0.1.jar in JIPipe 5.3.0 prepackaged Fiji runtime) and combined GPLv3 distribution notice in /opt/jipipe/GPL-SOURCE-NOTICE.txt",
+                        "url": "https://github.com/fiji/MTrack2/tree/MTrack2_-2.0.1"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Bundled Fiji / ImageJ2 runtime components in JIPipe prepackaged Linux64 archive",
+                        "url": "https://imagej.net/licensing"
+                    }
+                ]
+            },
+            "JIPipe-jipipe 5.3.0": {
+                "version": "20261124",
+                "exec": "jipipe",
+                "apptainer_args": [],
+                "image": "jipipe_5.3.0",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "GPL-3.0-or-later",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MTrack2 2.0.1 (bundled as MTrack2_-2.0.1.jar in JIPipe 5.3.0 prepackaged Fiji runtime) and combined GPLv3 distribution notice in /opt/jipipe/GPL-SOURCE-NOTICE.txt",
+                        "url": "https://github.com/fiji/MTrack2/tree/MTrack2_-2.0.1"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Bundled Fiji / ImageJ2 runtime components in JIPipe prepackaged Linux64 archive",
+                        "url": "https://imagej.net/licensing"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation",
+            "workflows"
+        ],
+        "citation": "Gerst, R., Cseresnyés, Z., & Figge, M. T. (2023). JIPipe: visual batch\nprocessing for ImageJ. Nature Methods, 20(2), 168-169.\nhttps://doi.org/10.1038/s41592-022-01744-4",
+        "description": "JIPipe (Java Image Processing Pipeline) is an open-source visual programming language and workflow builder for ImageJ/Fiji, enabling reproducible batch microscopy image analysis without coding."
+    },
     "libreoffice": {
         "apps": {
             "libreoffice 26.2.4": {
@@ -1987,6 +2148,178 @@
         ],
         "description": "LibreOffice is a free and open-source office suite with applications for word processing, spreadsheets, presentations, vector drawing, databases, and formula editing."
     },
+    "matlab": {
+        "apps": {
+            "matlab 2022a": {
+                "version": "20231207",
+                "exec": "",
+                "image": "matlab_2022a",
+                "doi": "https://doi.org/10.5281/zenodo.18931604",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2022a": {
+                "version": "20231207",
+                "exec": "matlab",
+                "image": "matlab_2022a",
+                "doi": "https://doi.org/10.5281/zenodo.18931604",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2022b": {
+                "version": "20250124",
+                "exec": "",
+                "image": "matlab_2022b",
+                "doi": "https://doi.org/10.5281/zenodo.18932238",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2022b": {
+                "version": "20250124",
+                "exec": "matlab",
+                "image": "matlab_2022b",
+                "doi": "https://doi.org/10.5281/zenodo.18932238",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2023b": {
+                "version": "20250121",
+                "exec": "",
+                "image": "matlab_2023b",
+                "doi": "https://doi.org/10.5281/zenodo.18931673",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2023b": {
+                "version": "20250121",
+                "exec": "matlab",
+                "image": "matlab_2023b",
+                "doi": "https://doi.org/10.5281/zenodo.18931673",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2024b": {
+                "version": "20250117",
+                "exec": "",
+                "image": "matlab_2024b",
+                "doi": "https://doi.org/10.5281/zenodo.18931880",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlabGUI-matlab 2024b": {
+                "version": "20250117",
+                "exec": "matlab",
+                "image": "matlab_2024b",
+                "doi": "https://doi.org/10.5281/zenodo.18931880",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2025b": {
+                "version": "20260406",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "matlab_2025b",
+                "doi": "https://doi.org/10.5281/zenodo.19522517",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            },
+            "matlab 2026b": {
+                "version": "20260929",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "matlab_2026b",
+                "doi": "https://doi.org/10.5281/zenodo.23997672",
+                "license": [
+                    "MATLAB"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "MATLAB",
+                        "url": "https://www.mathworks.com/products/matlab.html"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "programming",
+            "visualization",
+            "machine learning"
+        ],
+        "description": "MATLAB with the Deep Learning Toolbox Converter for ONNX Model Format preinstalled.",
+        "citation": "The MathWorks Inc. MATLAB. Natick, Massachusetts: The MathWorks Inc. https://www.mathworks.com"
+    },
     "mede": {
         "apps": {
             "mede 0.0.12": {
@@ -2324,6 +2657,44 @@
         "description": "napari is an interactive multi-dimensional image viewer. This container adds the VoxTell free-text 3D medical segmentation plugin and the nnInteractive prompt-based 3D segmentation plugin, including nnInteractive local and remote inference support.",
         "citation": "napari contributors (2019). napari: a multi-dimensional image viewer for Python. doi:10.5281/zenodo.3555620\nIsensee et al. (2025). nnInteractive: Redefining 3D Promptable Segmentation. arXiv:2503.08373.\nRokuss et al. (2025). VoxTell: Free-Text Promptable Universal 3D Medical Image Segmentation. arXiv:2511.11450."
     },
+    "nextflow": {
+        "apps": {
+            "nextflow 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_26.10.7",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
+    },
+    "nextflow_arm64": {
+        "apps": {
+            "nextflow_arm64 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_arm64_26.10.7",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
+    },
     "nextpyp": {
         "apps": {
             "nextpyp 0.7.3": {
@@ -2562,6 +2933,34 @@
         "description": "It is said that `imitation is the sincerest form of flattery`. This project emulates the popular [fslmaths](https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro3/index.html) tool. fslmaths is advertised as a `general image calculator` and is not only one of the foundational tools for FSL's brain imaging pipelines (such as [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT)), but has also been widely adopted by many tools. This popularity suggests that it fulfills an important niche. While scientists are often encouraged to discover novel solutions, it sometimes seems that replication is undervalued. Here are some specific reasons for creating this tool:",
         "citation": "Rorden C, Webster M, Drake C, Jenkinson M, Clayden JD, Li N, Hanayik T (2024) niimath and fslmaths: replication as a method to enhance popular neuroimaging tools. Aperture Neuro.4. doi:10.52294/001c.94384"
     },
+    "omero": {
+        "apps": {
+            "omero 5.8.6": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "omero_5.8.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "OMERO.insight-omero 5.8.6": {
+                "version": "20261124",
+                "exec": "omero-insight",
+                "apptainer_args": [],
+                "image": "omero_5.8.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "data organisation"
+        ],
+        "citation": "Allan, C., Burel, J.-M., Moore, J., Blackburn, C., Linkert, M., Loynton, S.,\nMacDonald, D., Moore, W. J., Neves, C., Patterson, A., Porter, M., Tarkowska,\nA., Loranger, B., Avondo, J., Lagerstedt, I., Lianas, L., Leo, S., Hands, K.,\nHay, R. T., ... Swedlow, J. R. (2012). OMERO: flexible, model-driven data\nmanagement for experimental biology. Nature Methods, 9(3), 245-253.\nhttps://doi.org/10.1038/nmeth.1896",
+        "description": "OMERO.insight is the official desktop client for the Open Microscopy Environment (OMERO), enabling biologists and imaging facilities to browse, annotate, import, and visualize multi-dimensional microscopy image datasets managed on an OMERO server."
+    },
     "openrefine": {
         "apps": {
             "openrefine 3.10.1": {
@@ -2675,6 +3074,35 @@
         ],
         "description": "panoptica is a Python framework for instance-wise evaluation of 3D segmentation maps (instance matching, panoptic quality, Dice, IoU, ASSD). Part of the BrainLesion Suite (BLS): https://github.com/BrainLesion This container provides both a command line tool and the Python library. ### Command line",
         "citation": "https://doi.org/10.1101/2024.10.03.24314745"
+    },
+    "plantseg": {
+        "apps": {
+            "plantseg 2.2.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "plantseg_2.2.0",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "PlantSeg (PanSeg)-plantseg 2.2.0": {
+                "version": "20261124",
+                "exec": "plantseg-gui",
+                "apptainer_args": [],
+                "image": "plantseg_2.2.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning",
+            "visualization"
+        ],
+        "citation": "Wolny, A., Cerrone, L., Vijayan, A., Tofanelli, R., Barro, A. V., Louveaux,\nM., Wenzl, C., Strauss, S., Wilson-Sánchez, D., Lymbouridou, R., Steigleder,\nS. S., Pape, C., Bailoni, A., Duran-Nebreda, S., Bassel, G. W., Lohmann,\nJ. U., Tsiantis, M., Hamprecht, F. A., Schneitz, K., Maizel, A., & Kreshuk,\nA. (2020). Accurate and versatile 3D segmentation of plant tissues at\ncellular resolution. eLife, 9, e57613. https://doi.org/10.7554/eLife.57613",
+        "description": "PlantSeg (renamed upstream to PanSeg as of v2.0) is an open-source deep learning pipeline and napari-based GUI for 2D and 3D instance segmentation of densely packed cells and nuclei in microscopy volumes. Both `plantseg` (with legacy `--gui` compatibility) and `panseg` commands are provided."
     },
     "pyem": {
         "apps": {
@@ -2872,6 +3300,42 @@
         ],
         "description": "QuPath is an open-source software for bioimage analysis, especially digital pathology. This container includes the BIOP Cellpose extension and a preconfigured Cellpose 3 environment.",
         "citation": "Bankhead P, Loughrey MB, Fernández JA, et al. QuPath: Open source software for digital pathology image analysis. Sci Rep. 2017;7(1):16878. doi:10.1038/s41598-017-17204-5"
+    },
+    "rclone": {
+        "apps": {
+            "rclone 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
+    },
+    "rclone_arm64": {
+        "apps": {
+            "rclone_arm64 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_arm64_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
     },
     "relion": {
         "apps": {
@@ -3402,6 +3866,34 @@
         "description": "TeraStitcher is a free tool that enables the stitching of Teravoxel-sized tiled microscopy images even on workstations with relatively limited resources of memory (<8 GB) and processing power.",
         "citation": "Bria A, Iannello G. TeraStitcher - A tool for fast automatic 3D-stitching of teravoxel-sized microscopy images. BMC Bioinformatics. 2012;13:316. doi:10.1186/1471-2105-13-316\n\nBria A, Bernaschi M, Guarrasi M, Iannello G. Exploiting Multi-Level Parallelism for Stitching Very Large Microscopy Images. Front Neuroinform. 2019;13:41. doi:10.3389/fninf.2019.00041"
     },
+    "tissuumaps": {
+        "apps": {
+            "tissuumaps 3.2.1.14": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "tissuumaps_3.2.1.14",
+                "license": [
+                    "MIT"
+                ]
+            },
+            "TissUUmaps-tissuumaps 3.2.1.14": {
+                "version": "20261124",
+                "exec": "tissuumaps",
+                "apptainer_args": [],
+                "image": "tissuumaps_3.2.1.14",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "molecular biology"
+        ],
+        "citation": "Pielawski, N., Andersson, A., Avenel, C., Behanova, A., Chelebian, E.,\nKlemm, A., Nysjö, F., Solorzano, L., & Wählby, C. (2023). TissUUmaps 3:\nImprovements in interactive visualization, exploration, and quality\nassessment of large-scale spatial omics data. Heliyon, 9(5), e15306.\nhttps://doi.org/10.1016/j.heliyon.2023.e15306",
+        "description": "TissUUmaps is an open-source, browser- and QtWebEngine-based viewer for large whole-slide microscopy images and spatial omics / point-cloud annotations, supporting pyvips and OpenSlide image backends."
+    },
     "topaz": {
         "apps": {
             "topaz 0.2.5": {
@@ -3594,6 +4086,15 @@
                 "apptainer_args": [],
                 "image": "webknossos_4.4.0",
                 "doi": "https://doi.org/10.5281/zenodo.24487718",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "webknossos 5.0.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "webknossos_5.0.0",
                 "license": [
                     "AGPL-3.0-only"
                 ]

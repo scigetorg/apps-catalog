@@ -1,7 +1,7 @@
 {
-    "entries": 804,
+    "entries": 810,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "e36591acd71c6a78b21bce24beca87ccf5a5bd55"
+        "NeuroDesk/neurocontainers": "57c69538b5ef60e45410126d07b0507e0effd629"
     },
     "app_sources": {
         "afni": {
@@ -788,7 +788,11 @@
             "hmriGUI-hmri 1.0.0": "NeuroDesk/neurocontainers"
         },
         "hnncore": {
-            "hnncore 0.3": "NeuroDesk/neurocontainers"
+            "hnncore 0.3": "NeuroDesk/neurocontainers",
+            "hnncore 1.0.0": "NeuroDesk/neurocontainers"
+        },
+        "hnncore_arm64": {
+            "hnncore_arm64 1.0.0": "NeuroDesk/neurocontainers"
         },
         "hypermapp3r": {
             "hypermapp3r 0.1.0": "NeuroDesk/neurocontainers"
@@ -1202,6 +1206,12 @@
         "neurodock": {
             "neurodock 1.0.0": "NeuroDesk/neurocontainers"
         },
+        "nextflow": {
+            "nextflow 26.10.7": "NeuroDesk/neurocontainers"
+        },
+        "nextflow_arm64": {
+            "nextflow_arm64 26.10.7": "NeuroDesk/neurocontainers"
+        },
         "nftsim": {
             "nftsim 1.0.2": "NeuroDesk/neurocontainers"
         },
@@ -1455,6 +1465,12 @@
         },
         "rapidtide_arm64": {
             "rapidtide_arm64 3.2.0": "NeuroDesk/neurocontainers"
+        },
+        "rclone": {
+            "rclone 1.76.0": "NeuroDesk/neurocontainers"
+        },
+        "rclone_arm64": {
+            "rclone_arm64 1.76.0": "NeuroDesk/neurocontainers"
         },
         "romeo": {
             "romeo 3.2.4": "NeuroDesk/neurocontainers",

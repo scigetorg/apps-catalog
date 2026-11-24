@@ -7086,6 +7086,32 @@
                 "license": [
                     "BSD-3-Clause"
                 ]
+            },
+            "hnncore 1.0.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "hnncore_1.0.0",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "electrophysiology"
+        ],
+        "citation": "Jas M, Thorpe R, Tolley N, et al. HNN-core: A Python software for cellular and circuit-level interpretation of human MEG/EEG. J Open Source Softw. 2023;8(92):5848. doi:10.21105/joss.05848"
+    },
+    "hnncore_arm64": {
+        "apps": {
+            "hnncore_arm64 1.0.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "hnncore_arm64_1.0.0",
+                "license": [
+                    "BSD-3-Clause"
+                ]
             }
         },
         "categories": [
@@ -9620,6 +9646,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "moosez_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.24489015",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -9641,6 +9668,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "moosez_arm64_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.24489017",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -9658,11 +9686,10 @@
     "mp2ragedenoise": {
         "apps": {
             "mp2ragedenoise 0.1.0": {
-                "version": "20261122",
+                "version": "20261124",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "mp2ragedenoise_0.1.0",
-                "doi": "https://doi.org/10.5281/zenodo.24452961",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -10691,6 +10718,44 @@
         ],
         "description": "PyD is an installable Python package designed to perform pre- and post- processing of dMRI acquisitions.",
         "citation": "Siddhartha Dhiman, Joshua B Teves, Kathryn E Thorn, Emilie T McKinnon,\nHunter G Moss, Vitria Adisetiyo, Benjamin Ades-Aron, Jelle Veraart, Jenny Chen,\nEls Fieremans, Andreana Benitez, Joseph A Helpern, Jens H Jensen. PyDesigner: A\nPythonic Implementation of the DESIGNER Pipeline for Diffusion Tensor and\nDiffusional Kurtosis Imaging. bioRxiv 2021.10.20.465189. doi:\nhttps://doi.org/10.1101/2021.10.20.465189```\n\nLicense: Custom license non-commerical, non-clinical care: https://github.com/muscbridge/PyDesigner?tab=License-1-ov-file#readme\n\n----------------------------------"
+    },
+    "nextflow": {
+        "apps": {
+            "nextflow 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_26.10.7",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
+    },
+    "nextflow_arm64": {
+        "apps": {
+            "nextflow_arm64 26.10.7": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nextflow_arm64_26.10.7",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "workflows",
+            "programming"
+        ],
+        "citation": "Di Tommaso, P., Chatzou, M., Floden, E. W., Barja, P. P., Palumbo, E., &\nNotredame, C. (2017). Nextflow enables reproducible computational workflows.\nNature Biotechnology, 35(4), 316-319. https://doi.org/10.1038/nbt.3820",
+        "description": "Nextflow is a workflow management system for scalable and reproducible scientific data analysis pipelines across local, HPC, and cloud environments. This container bundles the self-contained Nextflow distribution with OpenJDK 21."
     },
     "nftsim": {
         "apps": {
@@ -11792,11 +11857,10 @@
                 ]
             },
             "prostatefiducialseg 8.0.4": {
-                "version": "20261103",
+                "version": "20261124",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "prostatefiducialseg_8.0.4",
-                "doi": "https://doi.org/10.5281/zenodo.24182322",
                 "license": [
                     "seedseg"
                 ],
@@ -12831,6 +12895,42 @@
         ],
         "description": "Rapidtide is a suite of Python tools for performing time delay (and similarity) analysis on fMRI and other physiological data. Its principal use is to find and remove low frequency systemic (non-neuronal) blood signals - such as those arising from respiration and the cardiac cycle - by mapping the time delay of a moving blood-borne regressor throughout the brain (the RIPTiDe algorithm). The package also includes happy, a tool for cardiac waveform extraction and cardiac cycle analysis of fMRI data, and a number of supporting time course and NIfTI utilities.",
         "citation": "Frederick, B, Salo, T, Drucker, J, Zhang, D, & Han, X. (2024).\nbbfrederick/rapidtide: Rapidtide. Zenodo. https://doi.org/10.5281/zenodo.814990\n\nErdogan S, Tong Y, Hocke L, Lindsey K, Frederick B. (2016). Correcting\nresting state fMRI-BOLD signals for blood arrival time enhances functional\nconnectivity analysis. Front. Hum. Neurosci. 10:311.\nhttps://doi.org/10.3389/fnhum.2016.00311"
+    },
+    "rclone": {
+        "apps": {
+            "rclone 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
+    },
+    "rclone_arm64": {
+        "apps": {
+            "rclone_arm64 1.76.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rclone_arm64_1.76.0",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "data organisation",
+            "workflows"
+        ],
+        "description": "rclone is a command-line program to manage, synchronize, and transfer files across cloud and object storage providers (S3, WebDAV, SFTP, Google Drive, Nextcloud/ownCloud, Swift, and more), with an optional web GUI (`rclone rcd --rc-web-gui`). When running without a writable home directory, point `RCLONE_CONFIG` or `--config` to a writable path for storing remote credentials."
     },
     "romeo": {
         "apps": {

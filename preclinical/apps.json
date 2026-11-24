@@ -2568,6 +2568,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "moosez_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.24489015",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -2589,6 +2590,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "moosez_arm64_3.2.2",
+                "doi": "https://doi.org/10.5281/zenodo.24489017",
                 "license": [
                     "Apache-2.0"
                 ]
