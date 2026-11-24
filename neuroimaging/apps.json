@@ -11526,6 +11526,27 @@
         "description": "Toolbox for normative modelling and spatial inference of neuroimaging data. https://pcntoolkit.readthedocs.io/en/latest/",
         "citation": "de Boer, A. A. A., Bayer, J. M. M., Fraza, C., Chavanne, A., Buckova, B. R., \nTsilimparis, K., Serin, E., Bernas, A., Cirstian, R., Zabihi, M., Rutherford, S., \nAl-Khaledi, A., Wolfers, T., Beckmann, C. F., Kia, S. M., & Marquand, A. F. (2026). \nProtocol update: The Normative Modelling Paradigm for Computational Psychiatry. \nbioRxiv [Preprint]. https://doi.org/10.64898/2026.02.17.706268."
     },
+    "petfit": {
+        "apps": {
+            "petfit 0.2.4": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "petfit_0.2.4",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "quantitative imaging",
+            "bids apps"
+        ],
+        "description": "PETFit is a BIDS App and R Shiny application suite built on kinfitr for reproducible Positron Emission Tomography (PET) pharmacokinetic modeling. It provides interactive web apps and non-interactive automatic pipelines for combining regional time-activity curves (regiondef), plasma-input compartmental and graphical modeling (1TCM, 2TCM, 2TCM_irr, Logan, MA1, Patlak), and reference-tissue modeling (SRTM, SRTM2, SUV/SUVR, refLogan, MRTM1, MRTM2, refPatlak), generating HTML quality-control reports for each processing step.",
+        "citation": "Matheson, G. J. (2019). Kinfitr: Reproducible PET Pharmacokinetic Modelling in R. bioRxiv: 755751. https://doi.org/10.1101/755751\n\nTjerkaski, J., Cervenka, S., Farde, L., & Matheson, G. J. (2020). Kinfitr - an open source tool for reproducible PET modelling: Validation and evaluation of test-retest reliability. EJNMMI Research 10, 77. https://doi.org/10.1186/s13550-020-00664-8"
+    },
     "petprep": {
         "apps": {
             "petprep 0.0.10": {

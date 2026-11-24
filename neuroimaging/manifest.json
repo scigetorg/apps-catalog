@@ -1,7 +1,7 @@
 {
-    "entries": 801,
+    "entries": 802,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "77ff79bc54c60b0fd51f59bcb9b82dbe6c3ada27"
+        "NeuroDesk/neurocontainers": "5f0c184f1e73d559e1a2b7b192b986ac5a6890e0"
     },
     "app_sources": {
         "afni": {
@@ -1311,6 +1311,9 @@
         "pcntoolkit_arm64": {
             "pcntoolkit_arm64 1.3.0": "NeuroDesk/neurocontainers",
             "pcntoolkit_arm64 1.4.0": "NeuroDesk/neurocontainers"
+        },
+        "petfit": {
+            "petfit 0.2.4": "NeuroDesk/neurocontainers"
         },
         "petprep": {
             "petprep 0.0.10": "NeuroDesk/neurocontainers",

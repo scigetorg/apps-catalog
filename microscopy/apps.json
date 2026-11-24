@@ -210,6 +210,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cellprofiler_4.2.8.1",
+                "doi": "https://doi.org/10.5281/zenodo.24487728",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -219,6 +220,7 @@
                 "exec": "cellprofiler",
                 "apptainer_args": [],
                 "image": "cellprofiler_4.2.8.1",
+                "doi": "https://doi.org/10.5281/zenodo.24487728",
                 "license": [
                     "BSD-3-Clause"
                 ]
@@ -2700,6 +2702,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "pymol_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487709",
                 "license": [
                     "PyMOL Open-Source License (Schrodinger, Inc.)"
                 ],
@@ -2716,6 +2719,7 @@
                 "exec": "pymol",
                 "apptainer_args": [],
                 "image": "pymol_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487709",
                 "license": [
                     "PyMOL Open-Source License (Schrodinger, Inc.)"
                 ],
@@ -2743,6 +2747,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "pymol_arm64_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487725",
                 "license": [
                     "PyMOL Open-Source License (Schrodinger, Inc.)"
                 ],
@@ -2759,6 +2764,7 @@
                 "exec": "pymol",
                 "apptainer_args": [],
                 "image": "pymol_arm64_3.1.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487725",
                 "license": [
                     "PyMOL Open-Source License (Schrodinger, Inc.)"
                 ],
