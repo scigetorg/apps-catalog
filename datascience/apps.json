@@ -1155,6 +1155,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nextflow_26.10.7",
+                "doi": "https://doi.org/10.5281/zenodo.24498222",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -1258,6 +1259,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rclone_1.76.0",
+                "doi": "https://doi.org/10.5281/zenodo.24514954",
                 "license": [
                     "MIT"
                 ]
@@ -1276,6 +1278,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rclone_arm64_1.76.0",
+                "doi": "https://doi.org/10.5281/zenodo.24514952",
                 "license": [
                     "MIT"
                 ]
