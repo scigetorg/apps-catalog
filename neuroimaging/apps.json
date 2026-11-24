@@ -7092,6 +7092,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "hnncore_1.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24492952",
                 "license": [
                     "BSD-3-Clause"
                 ]
