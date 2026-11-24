@@ -219,8 +219,8 @@ export async function verifyPublishedCatalogs(
     apiToken,
     workerName = "apps-json",
     fetchImpl = fetch,
-    attempts = 5,
-    delayMs = 1000,
+    attempts = 15,
+    delayMs = 2000,
   },
 ) {
   const workerPath = `/accounts/${encodeURIComponent(accountId)}/workers/workers/${workerName}`;

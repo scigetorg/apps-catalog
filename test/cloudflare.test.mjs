@@ -222,6 +222,30 @@ test("verifies public bytes, content type, and CORS after deployment", async () 
     requests[0],
     "https://api.cloudflare.com/client/v4/accounts/account/workers/workers/apps-json",
   );
+  // Retries transient 404s while Cloudflare edge propagates newly added routes.
+  const transientCounts = new Map();
+  await verifyPublishedCatalogs(root, {
+    accountId: "account",
+    apiToken: "api-token",
+    delayMs: 0,
+    fetchImpl: async (url) => {
+      if (url.includes("api.cloudflare.com"))
+        return ok({ subdomain: { url: "https://apps-json.example.workers.dev" } });
+      const path = new URL(url).pathname;
+      const seen = (transientCounts.get(path) || 0) + 1;
+      transientCounts.set(path, seen);
+      if (path === "/neuroimaging/apps.json" && seen < 7) {
+        return new Response("not found", { status: 404 });
+      }
+      return new Response(assets.get(path).bytes, {
+        headers: {
+          "content-type": "application/json",
+          "access-control-allow-origin": "*",
+        },
+      });
+    },
+  });
+  assert.equal(transientCounts.get("/neuroimaging/apps.json"), 7);
   await assert.rejects(
     verifyPublishedCatalogs(root, {
       accountId: "account",
