@@ -2561,6 +2561,48 @@
         ],
         "description": "The MIPAV (Medical Image Processing, Analysis, and Visualization) application enables quantitative analysis and visualization of medical images of numerous modalities such as PET, MRI, CT, or microscopy."
     },
+    "moosez": {
+        "apps": {
+            "moosez 3.2.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "moosez_3.2.2",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "MOOSE (Multi-Organ Objective Segmentation, moosez) is an nnU-Net v2 deep learning segmentation suite from the ENHANCE-PET initiative providing clinical whole-body CT and clinical MR segmentation models, clinical FDG-PET brain and face models, and preclinical CT leg-muscle and preclinical multi-organ MR segmentation models.",
+        "citation": "Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063"
+    },
+    "moosez_arm64": {
+        "apps": {
+            "moosez_arm64 3.2.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "moosez_arm64_3.2.2",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "MOOSE (Multi-Organ Objective Segmentation, moosez) is an nnU-Net v2 deep learning segmentation suite from the ENHANCE-PET initiative providing clinical whole-body CT and clinical MR segmentation models, clinical FDG-PET brain and face models, and preclinical CT leg-muscle and preclinical multi-organ MR segmentation models.",
+        "citation": "Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063"
+    },
     "napari": {
         "apps": {
             "napari 0.10.0": {

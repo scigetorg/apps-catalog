@@ -9613,6 +9613,48 @@
         "description": "modsort sorts, identifies and tags MR sequences through a drag-and-drop desktop interface, then copies and renames the files into the structure you choose. It is a graphical tool: there is no batch or command line mode. Part of the BrainLesion Suite (BLS): https://github.com/BrainLesion ### Input format modsort is **NIfTI only**. Its drop targets are BraTS-style modality tags -- `_t1.nii.gz`, `_t1c.nii.gz`, `_t2.nii.gz`, `_fla.nii.gz`, plus `swi`, `dwi`, `adc` and `rcbv`. It does not sort DICOM; convert first with `dcm2niix` if that is what you have. ### It writes to your filesystem Sorting means copying and renaming real files into a destination you pick. Point it at a copy before running it over data you cannot regenerate. ### Example",
         "citation": "Kofler F, Rosier M, Astaraki M, et al. BrainLesion Suite: a flexible and user-friendly framework for modular brain lesion image analysis (arXiv). 2025. doi:10.48550/arXiv.2507.09036"
     },
+    "moosez": {
+        "apps": {
+            "moosez 3.2.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "moosez_3.2.2",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "MOOSE (Multi-Organ Objective Segmentation, moosez) is an nnU-Net v2 deep learning segmentation suite from the ENHANCE-PET initiative providing clinical whole-body CT and clinical MR segmentation models, clinical FDG-PET brain and face models, and preclinical CT leg-muscle and preclinical multi-organ MR segmentation models.",
+        "citation": "Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063"
+    },
+    "moosez_arm64": {
+        "apps": {
+            "moosez_arm64 3.2.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "moosez_arm64_3.2.2",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "MOOSE (Multi-Organ Objective Segmentation, moosez) is an nnU-Net v2 deep learning segmentation suite from the ENHANCE-PET initiative providing clinical whole-body CT and clinical MR segmentation models, clinical FDG-PET brain and face models, and preclinical CT leg-muscle and preclinical multi-organ MR segmentation models.",
+        "citation": "Shiyam Sundar, L. K., Yu, J., Muzik, O., Kulterer, O., Fueger, B. J., Kifjak, D., Nakuz, T., Shin, H. M., Sima, A. K., Kitzmantl, D., Badawi, R. D., Nardo, L., Cherry, S. R., Spencer, B. A., Hacker, M., & Beyer, T. (2022). Fully-automated, semantic segmentation of whole-body 18F-FDG PET/CT images based on data-centric artificial intelligence. Journal of Nuclear Medicine. https://doi.org/10.2967/jnumed.122.264063"
+    },
     "mp2ragedenoise": {
         "apps": {
             "mp2ragedenoise 0.1.0": {
@@ -11533,6 +11575,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "petfit_0.2.4",
+                "doi": "https://doi.org/10.5281/zenodo.24488140",
                 "license": [
                     "MIT"
                 ]
