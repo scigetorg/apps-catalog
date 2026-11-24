@@ -650,6 +650,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "amide_1.0.6",
+                "doi": "https://doi.org/10.5281/zenodo.24487680",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -659,6 +660,7 @@
                 "exec": "amide",
                 "apptainer_args": [],
                 "image": "amide_1.0.6",
+                "doi": "https://doi.org/10.5281/zenodo.24487680",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -679,6 +681,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "amide_arm64_1.0.6",
+                "doi": "https://doi.org/10.5281/zenodo.24487688",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -688,6 +691,7 @@
                 "exec": "amide",
                 "apptainer_args": [],
                 "image": "amide_arm64_1.0.6",
+                "doi": "https://doi.org/10.5281/zenodo.24487688",
                 "license": [
                     "GPL-2.0-or-later"
                 ]
@@ -7607,6 +7611,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "kinfitr_0.9.3",
+                "doi": "https://doi.org/10.5281/zenodo.24487686",
                 "license": [
                     "MIT"
                 ]
@@ -11558,6 +11563,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "petpvc_1.2.12",
+                "doi": "https://doi.org/10.5281/zenodo.24487674",
                 "license": [
                     "Apache-2.0"
                 ]
@@ -11841,6 +11847,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "pypet2bids_1.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487684",
                 "license": [
                     "BSD-2-Clause",
                     "MIT"
@@ -11874,6 +11881,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "pypet2bids_arm64_1.6.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487676",
                 "license": [
                     "BSD-2-Clause",
                     "MIT"
@@ -14581,6 +14589,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "tpcclib_0.8.2",
+                "doi": "https://doi.org/10.5281/zenodo.24487720",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -14601,6 +14610,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "tpcclib_arm64_0.8.2",
+                "doi": "https://doi.org/10.5281/zenodo.24487716",
                 "license": [
                     "GPL-3.0-or-later"
                 ]

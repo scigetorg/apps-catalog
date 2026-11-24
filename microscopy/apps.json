@@ -886,6 +886,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "fiji_20261112-1517",
+                "doi": "https://doi.org/10.5281/zenodo.24487691",
                 "license": [
                     "GPL-2.0-or-later",
                     "GPL-3.0-or-later"
@@ -908,6 +909,7 @@
                 "exec": "fiji",
                 "apptainer_args": [],
                 "image": "fiji_20261112-1517",
+                "doi": "https://doi.org/10.5281/zenodo.24487691",
                 "license": [
                     "GPL-2.0-or-later",
                     "GPL-3.0-or-later"
@@ -1258,6 +1260,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "icy_2.5.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487707",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -1267,6 +1270,7 @@
                 "exec": "icy",
                 "apptainer_args": [],
                 "image": "icy_2.5.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487707",
                 "license": [
                     "GPL-3.0-or-later"
                 ]
@@ -3583,6 +3587,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "webknossos_4.4.0",
+                "doi": "https://doi.org/10.5281/zenodo.24487718",
                 "license": [
                     "AGPL-3.0-only"
                 ]
