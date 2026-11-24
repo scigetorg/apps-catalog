@@ -643,6 +643,64 @@
         "description": "Accelerated Microstructure Imaging via Convex Optimization (AMICO) from diffusion MRI data",
         "citation": "Accelerated Microstructure Imaging via Convex Optimization (AMICO) from diffusion MRI data\nAlessandro Daducci, Erick Canales-Rodriguez, Hui Zhang, Tim Dyrby, Daniel C Alexander, Jean-Philippe Thiran\nNeuroimage 105 (2015): 32-44. https://doi.org/10.1016/j.neuroimage.2014.10.026\n\nOrientationally invariant indices of axon diameter and density from diffusion MRI\nDaniel C Alexander, Penny L Hubbard, Matt G Hall, Elizabeth A Moore, Maurice Ptito, Geoff J M Parker, Tim B Dyrby\nNeuroimage 52.4 (2010): 1374-1389. https://doi.org/10.1016/j.neuroimage.2010.05.043\n\nNODDI: practical in vivo neurite orientation dispersion and density imaging of the human brain\nHui Zhang, Torben Schneider, Claudia A Wheeler-Kingshott, Daniel C Alexander\nNeuroimage 61.4 (2012): 1000-1016. https://doi.org/10.1016/j.neuroimage.2012.03.072\n\nSANDI: A compartment-based model for non-invasive apparent soma and neurite imaging by diffusion MRI\nMarco Palombo, Andrada Ianus, Michele Guerreri, Daniel Nunes, Daniel C. Alexander, Noam Shemesh, Hui Zhang\nNeuroimage 215 (2020): 116835. https://doi.org/10.1016/j.neuroimage.2020.116835"
     },
+    "amide": {
+        "apps": {
+            "amide 1.0.6": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "amide_1.0.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "AMIDE-amide 1.0.6": {
+                "version": "20261124",
+                "exec": "amide",
+                "apptainer_args": [],
+                "image": "amide_1.0.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "visualization"
+        ],
+        "description": "AMIDE (A Medical Image Data Examiner) is a tool for viewing, registering, and analyzing multimodal 3D medical imaging datasets, including clinical and preclinical microPET, microCT, SPECT, and MRI studies, with interactive ROI delineation, SUV/quantitative statistics, and volume rendering.",
+        "citation": "Loening AM, Gambhir SS. AMIDE: a free software tool for multimodality medical image analysis.\nMolecular Imaging. 2003;2(3):131-137. doi:10.1162/153535003322556877"
+    },
+    "amide_arm64": {
+        "apps": {
+            "amide_arm64 1.0.6": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "amide_arm64_1.0.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            },
+            "AMIDE-amide_arm64 1.0.6": {
+                "version": "20261124",
+                "exec": "amide",
+                "apptainer_args": [],
+                "image": "amide_arm64_1.0.6",
+                "license": [
+                    "GPL-2.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "visualization"
+        ],
+        "description": "AMIDE (A Medical Image Data Examiner) is a tool for viewing, registering, and analyzing multimodal 3D medical imaging datasets, including clinical and preclinical microPET, microCT, SPECT, and MRI studies, with interactive ROI delineation, SUV/quantitative statistics, and volume rendering.",
+        "citation": "Loening AM, Gambhir SS. AMIDE: a free software tool for multimodality medical image analysis.\nMolecular Imaging. 2003;2(3):131-137. doi:10.1162/153535003322556877"
+    },
     "ants": {
         "apps": {
             "ants 2.3.1": {
@@ -7542,6 +7600,27 @@
         ],
         "description": "Julia was designed from the beginning for high performance. Julia programs compile to efficient native code for multiple platforms via LLVM."
     },
+    "kinfitr": {
+        "apps": {
+            "kinfitr 0.9.3": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "kinfitr_0.9.3",
+                "license": [
+                    "MIT"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "quantitative imaging",
+            "statistics"
+        ],
+        "description": "kinfitr is an R package for reproducible pharmacokinetic modeling of Positron Emission Tomography (PET) time-activity curves (TACs). It implements compartmental models (1TCM, 2TCM), graphical analyses (Logan, Patlak, MA1), and reference tissue models (SRTM, SRTM2, MRTM1, MRTM2, refLogan, refPatlak) along with arterial blood data processing utilities.",
+        "citation": "Matheson, G. J. (2019). Kinfitr: Reproducible PET Pharmacokinetic Modelling in R. bioRxiv: 755751. https://doi.org/10.1101/755751\n\nTjerkaski, J., Cervenka, S., Farde, L., & Matheson, G. J. (2020). Kinfitr - an open source tool for reproducible PET modelling: Validation and evaluation of test-retest reliability. EJNMMI Research 10, 77. https://doi.org/10.1186/s13550-020-00664-8"
+    },
     "kspacefilter": {
         "apps": {
             "kspacefilter 0.1.0": {
@@ -11472,6 +11551,26 @@
         "description": "PETPrep is a positron emission tomography (PET) data preprocessing pipeline that is designed to provide an easily accessible, state-of-the-art interface that is robust to variations in scan acquisition protocols and that requires minimal user input, while providing easily interpretable and comprehensive error and output reporting. It performs comprehensive processing steps—such as motion correction, segmentation, registration, partial volume correction, and extraction of time activity curves, providing outputs that can be easily submitted to a variety of group level analyses, pharmacokinetic modelling, graph theory measures, and surface or volume-based statistics.",
         "citation": "Nørgaard M, Esteban O, Matheson GJ, et al. PETPrep: a robust preprocessing pipeline for positron emission tomography (PET) neuroimaging. 15th International Symposium on Functional Neuroreceptor Mapping of the Living Brain (NRM), Uppsala. 2026. https://github.com/nipreps/petprep/blob/main/CITATION.cff"
     },
+    "petpvc": {
+        "apps": {
+            "petpvc 1.2.12": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "petpvc_1.2.12",
+                "license": [
+                    "Apache-2.0"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "quantitative imaging"
+        ],
+        "citation": "Thomas BA, Cuplov V, Bousse A, Mendes A, Thielemans K, Hutton BF, Erlandsson K. PETPVC: a toolbox for performing partial volume correction techniques in positron emission tomography. Physics in Medicine and Biology. 2016;61(22):7975-7993. doi:10.1088/0031-9155/61/22/7975",
+        "description": "PETPVC (UCL) is a standalone command-line suite for partial volume correction (PVC) in positron emission tomography (PET), providing region-based and voxel-wise methods including GTM, RBV, Labbe, MTC, Iterative Yang (IY), Discrete IY, Muller-Gartner (MG), Richardson-Lucy (RL), Van Cittert (VC), and STC, along with PSF simulation and 4D mask preparation utilities."
+    },
     "petu": {
         "apps": {
             "petu 0.0.7": {
@@ -11734,6 +11833,72 @@
         ],
         "description": "pydeface is defacing utility for MRI images",
         "citation": "https://github.com/poldracklab/pydeface/"
+    },
+    "pypet2bids": {
+        "apps": {
+            "pypet2bids 1.6.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "pypet2bids_1.6.0",
+                "license": [
+                    "BSD-2-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "PET2BIDS license",
+                        "url": "https://github.com/openneuropet/PET2BIDS/blob/main/LICENSE"
+                    },
+                    {
+                        "license": "BSD-2-Clause",
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/v1.0.20261029/license.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "data organisation",
+            "bids apps"
+        ],
+        "description": "pypet2bids (OpenNeuroPET/PET2BIDS) converts source Positron Emission Tomography (PET) imaging data (DICOM and ECAT) and blood radioactivity measurements into the Brain Imaging Data Structure (BIDS). It bundles a modern `dcm2niix` (v1.0.20261029) so DICOM-to-BIDS conversion works out of the box. ### Included CLI Tools",
+        "citation": "Galassi A, Norgaard M, Thomas AG, Gonzalez-Escamilla G, Svarer C, Rorden C, Matheson GJ, Knudsen GM, Innis RB, Ganz M, Eierud C, Bilgel M, Pernet C. PET2BIDS: a library for converting Positron Emission Tomography data to BIDS. Journal of Open Source Software. 2024;9(100):6067. doi:10.21105/joss.06067\n\nLi X, Morgan PS, Ashburner J, Smith J, Rorden C. The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 2016;264:47-56. doi:10.1016/j.jneumeth.2016.03.001"
+    },
+    "pypet2bids_arm64": {
+        "apps": {
+            "pypet2bids_arm64 1.6.0": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "pypet2bids_arm64_1.6.0",
+                "license": [
+                    "BSD-2-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "PET2BIDS license",
+                        "url": "https://github.com/openneuropet/PET2BIDS/blob/main/LICENSE"
+                    },
+                    {
+                        "license": "BSD-2-Clause",
+                        "name": "dcm2niix license",
+                        "url": "https://github.com/rordenlab/dcm2niix/blob/v1.0.20261029/license.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "data organisation",
+            "bids apps"
+        ],
+        "description": "pypet2bids (OpenNeuroPET/PET2BIDS) converts source Positron Emission Tomography (PET) imaging data (DICOM and ECAT) and blood radioactivity measurements into the Brain Imaging Data Structure (BIDS). It bundles a modern `dcm2niix` (v1.0.20261029) so DICOM-to-BIDS conversion works out of the box. ### Included CLI Tools",
+        "citation": "Galassi A, Norgaard M, Thomas AG, Gonzalez-Escamilla G, Svarer C, Rorden C, Matheson GJ, Knudsen GM, Innis RB, Ganz M, Eierud C, Bilgel M, Pernet C. PET2BIDS: a library for converting Positron Emission Tomography data to BIDS. Journal of Open Source Software. 2024;9(100):6067. doi:10.21105/joss.06067\n\nLi X, Morgan PS, Ashburner J, Smith J, Rorden C. The first step for neuroimaging data analysis: DICOM to NIfTI conversion. J Neurosci Methods. 2016;264:47-56. doi:10.1016/j.jneumeth.2016.03.001"
     },
     "qmrlab": {
         "apps": {
@@ -14408,6 +14573,46 @@
         ],
         "description": "Tool for segmentation of most major anatomical structures in any CT or MR image. It was trained on a wide range of different CT and MR images (different scanners, institutions, protocols,...) and therefore works well on most images. A large part of the training dataset can be downloaded here: CT dataset (1228 subjects) and MR dataset (616 subjects). You can also try the tool online at totalsegmentator.com or as 3D Slicer extension.",
         "citation": "Wasserthal, J., Breit, H.-C., Meyer, M.T., Pradella, M., Hinck, D., Sauter, A.W., Heye, T., Boll, D., Cyriac, J., Yang, S., Bach, M., Segeroth, M., 2023. TotalSegmentator: Robust Segmentation of 104 Anatomic Structures in CT Images. Radiology: Artificial Intelligence. https://doi.org/10.1148/ryai.230024"
+    },
+    "tpcclib": {
+        "apps": {
+            "tpcclib 0.8.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "tpcclib_0.8.2",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "quantitative imaging"
+        ],
+        "description": "TPCCLIB is the Turku PET Centre C command-line tool suite for clinical and preclinical dynamic PET analysis, time-activity curves (TACs), input functions, kinetic modeling, and parametric imaging.",
+        "citation": "Oikonen V, Johansson J, Liukko K, Merisaari H, Alenius S, Laakkonen C, Krais R. TPCCLIB: Turku PET Centre C library and command-line tools for processing and analysing PET data. https://gitlab.utu.fi/vesoik/tpcclib"
+    },
+    "tpcclib_arm64": {
+        "apps": {
+            "tpcclib_arm64 0.8.2": {
+                "version": "20261124",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "tpcclib_arm64_0.8.2",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "molecular imaging",
+            "preclinical imaging",
+            "quantitative imaging"
+        ],
+        "description": "TPCCLIB is the Turku PET Centre C command-line tool suite for clinical and preclinical dynamic PET analysis, time-activity curves (TACs), input functions, kinetic modeling, and parametric imaging.",
+        "citation": "Oikonen V, Johansson J, Liukko K, Merisaari H, Alenius S, Laakkonen C, Krais R. TPCCLIB: Turku PET Centre C library and command-line tools for processing and analysing PET data. https://gitlab.utu.fi/vesoik/tpcclib"
     },
     "trackvis": {
         "apps": {

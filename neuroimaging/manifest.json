@@ -1,7 +1,7 @@
 {
-    "entries": 793,
+    "entries": 801,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "6770ab2dcf8e37ad0f8e642d7c205f5e04f1e34f"
+        "NeuroDesk/neurocontainers": "d1e6986c565b2790bbe97325b4b2ddd1681e2384"
     },
     "app_sources": {
         "afni": {
@@ -63,6 +63,14 @@
         "amico_arm64": {
             "amico_arm64 2.1.1": "NeuroDesk/neurocontainers",
             "amico_arm64 2.2.0": "NeuroDesk/neurocontainers"
+        },
+        "amide": {
+            "amide 1.0.6": "NeuroDesk/neurocontainers",
+            "AMIDE-amide 1.0.6": "NeuroDesk/neurocontainers"
+        },
+        "amide_arm64": {
+            "amide_arm64 1.0.6": "NeuroDesk/neurocontainers",
+            "AMIDE-amide_arm64 1.0.6": "NeuroDesk/neurocontainers"
         },
         "ants": {
             "ants 2.3.1": "NeuroDesk/neurocontainers",
@@ -842,6 +850,9 @@
             "vscodeGUI-julia_arm64 1.13.4": "NeuroDesk/neurocontainers",
             "REPLGUI-julia_arm64 1.13.4": "NeuroDesk/neurocontainers"
         },
+        "kinfitr": {
+            "kinfitr 0.9.3": "NeuroDesk/neurocontainers"
+        },
         "kspacefilter": {
             "kspacefilter 0.1.0": "NeuroDesk/neurocontainers"
         },
@@ -1305,6 +1316,9 @@
             "petprep 0.0.10": "NeuroDesk/neurocontainers",
             "petprep 0.0.5": "NeuroDesk/neurocontainers"
         },
+        "petpvc": {
+            "petpvc 1.2.12": "NeuroDesk/neurocontainers"
+        },
         "petu": {
             "petu 0.0.7": "NeuroDesk/neurocontainers"
         },
@@ -1336,6 +1350,12 @@
         },
         "pydeface_arm64": {
             "pydeface_arm64 2.1.0": "NeuroDesk/neurocontainers"
+        },
+        "pypet2bids": {
+            "pypet2bids 1.6.0": "NeuroDesk/neurocontainers"
+        },
+        "pypet2bids_arm64": {
+            "pypet2bids_arm64 1.6.0": "NeuroDesk/neurocontainers"
         },
         "qmrlab": {
             "qmrlab 2.4.2": "NeuroDesk/neurocontainers",
@@ -1635,6 +1655,12 @@
         },
         "totalsegmentator_arm64": {
             "totalsegmentator_arm64 2.18.0": "NeuroDesk/neurocontainers"
+        },
+        "tpcclib": {
+            "tpcclib 0.8.2": "NeuroDesk/neurocontainers"
+        },
+        "tpcclib_arm64": {
+            "tpcclib_arm64 0.8.2": "NeuroDesk/neurocontainers"
         },
         "trackvis": {
             "trackvis 0.6.1": "NeuroDesk/neurocontainers",

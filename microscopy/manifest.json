@@ -1,7 +1,7 @@
 {
-    "entries": 157,
+    "entries": 163,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "6770ab2dcf8e37ad0f8e642d7c205f5e04f1e34f"
+        "NeuroDesk/neurocontainers": "d1e6986c565b2790bbe97325b4b2ddd1681e2384"
     },
     "app_sources": {
         "ants": {
@@ -27,6 +27,10 @@
             "blenderGUI-blender 5.2.3": "NeuroDesk/neurocontainers",
             "blender 5.3.0": "NeuroDesk/neurocontainers",
             "blenderGUI-blender 5.3.0": "NeuroDesk/neurocontainers"
+        },
+        "cellprofiler": {
+            "cellprofiler 4.2.8.1": "NeuroDesk/neurocontainers",
+            "CellProfiler-cellprofiler 4.2.8.1": "NeuroDesk/neurocontainers"
         },
         "cmtk": {
             "cmtk 3.4.0": "NeuroDesk/neurocontainers"
@@ -102,6 +106,10 @@
         "epu-group-afis": {
             "epu-group-afis 0.3.0": "NeuroDesk/neurocontainers"
         },
+        "fiji": {
+            "fiji 20261112-1517": "NeuroDesk/neurocontainers",
+            "Fiji-fiji 20261112-1517": "NeuroDesk/neurocontainers"
+        },
         "gautomatch": {
             "gautomatch 0.56.0": "NeuroDesk/neurocontainers"
         },
@@ -130,6 +138,10 @@
             "globusGUI-globus_arm64 3.3.1": "NeuroDesk/neurocontainers",
             "globus_arm64 3.3.2": "NeuroDesk/neurocontainers",
             "globusGUI-globus_arm64 3.3.2": "NeuroDesk/neurocontainers"
+        },
+        "icy": {
+            "icy 2.5.4.0": "NeuroDesk/neurocontainers",
+            "Icy-icy 2.5.4.0": "NeuroDesk/neurocontainers"
         },
         "ilastik": {
             "ilastik 1.4.0": "NeuroDesk/neurocontainers",
@@ -290,6 +302,14 @@
         "pyem": {
             "pyem 0.69.0": "NeuroDesk/neurocontainers"
         },
+        "pymol": {
+            "pymol 3.1.0": "NeuroDesk/neurocontainers",
+            "PyMOL-pymol 3.1.0": "NeuroDesk/neurocontainers"
+        },
+        "pymol_arm64": {
+            "pymol_arm64 3.1.0": "NeuroDesk/neurocontainers",
+            "PyMOL-pymol_arm64 3.1.0": "NeuroDesk/neurocontainers"
+        },
         "qupath": {
             "qupath 0.6.0": "NeuroDesk/neurocontainers",
             "qupathGUI-qupath 0.6.0": "NeuroDesk/neurocontainers",
@@ -380,6 +400,9 @@
         "voreen": {
             "voreen 5.3.0": "NeuroDesk/neurocontainers",
             "voreenGUI-voreen 5.3.0": "NeuroDesk/neurocontainers"
+        },
+        "webknossos": {
+            "webknossos 4.4.0": "NeuroDesk/neurocontainers"
         },
         "xmipp": {
             "xmipp 6.0.0": "NeuroDesk/neurocontainers"

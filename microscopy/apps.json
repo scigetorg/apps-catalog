@@ -203,6 +203,35 @@
         ],
         "description": "Blender is an open-source 3D creation suite for modeling, animation, rendering, compositing, simulation, and scripting."
     },
+    "cellprofiler": {
+        "apps": {
+            "cellprofiler 4.2.8.1": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cellprofiler_4.2.8.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            },
+            "CellProfiler-cellprofiler 4.2.8.1": {
+                "version": "20261123",
+                "exec": "cellprofiler",
+                "apptainer_args": [],
+                "image": "cellprofiler_4.2.8.1",
+                "license": [
+                    "BSD-3-Clause"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation",
+            "workflows"
+        ],
+        "citation": "Stirling, D. R., Swain-Bowden, M. J., Lucas, A. M., Carpenter, A. E.,\nCimini, B. A., & Goodman, A. (2021). CellProfiler 4: improvements in speed,\nutility and usability. BMC Bioinformatics, 22, 433.\nhttps://doi.org/10.1186/s12859-021-04344-9",
+        "description": "CellProfiler is an open-source application for quantitative high-throughput microscopy image analysis, providing both an interactive GUI pipeline builder and headless batch execution via Bio-Formats."
+    },
     "cmtk": {
         "apps": {
             "cmtk 3.4.0": {
@@ -850,6 +879,60 @@
         ],
         "description": "EPU_group_AFIS converts EPU AFIS XML metadata into RELION optics groups. Run `EPU_Group_AFIS.py --xml_dir /data/xml --n_clusters 5 --quiet --output_fn /data/movies.star`. Set the movie directory, pixel size and microscope parameters for your acquisition. The upstream grid calculation requires at least five optics groups. `--quiet` alone still prompts when the default cluster count is one; supply `--n_clusters` explicitly. The plotting backend is headless. Input metadata and output files belong in a writable mounted directory. Upstream release v0.3 is installed under /opt/epu-group-afis. https://github.com/DustinMorado/EPU_group_AFIS"
     },
+    "fiji": {
+        "apps": {
+            "fiji 20261112-1517": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "fiji_20261112-1517",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MTrack2 2.0.1 (bundled as MTrack2_-2.0.1.jar in Fiji 20261112-1517) and combined GPLv3 distribution notices in /opt/Fiji.app/licenses",
+                        "url": "https://github.com/fiji/MTrack2/tree/MTrack2_-2.0.1"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Fiji 20261112-1517 / ImageJ2 core components and Maven/SciJava corresponding source repositories",
+                        "url": "https://downloads.imagej.net/fiji/archive/stable/20261112-1517/"
+                    }
+                ]
+            },
+            "Fiji-fiji 20261112-1517": {
+                "version": "20261123",
+                "exec": "fiji",
+                "apptainer_args": [],
+                "image": "fiji_20261112-1517",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MTrack2 2.0.1 (bundled as MTrack2_-2.0.1.jar in Fiji 20261112-1517) and combined GPLv3 distribution notices in /opt/Fiji.app/licenses",
+                        "url": "https://github.com/fiji/MTrack2/tree/MTrack2_-2.0.1"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Fiji 20261112-1517 / ImageJ2 core components and Maven/SciJava corresponding source repositories",
+                        "url": "https://downloads.imagej.net/fiji/archive/stable/20261112-1517/"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation"
+        ],
+        "citation": "Schindelin, J., Arganda-Carreras, I., Frise, E., Kaynig, V., Longair, M.,\nPietzsch, T., Preibisch, S., Rueden, C., Saalfeld, S., Schmid, B.,\nTinevez, J.-Y., White, D. J., Hartenstein, V., Eliceiri, K., Tomancak, P.,\n& Cardona, A. (2012). Fiji: an open-source platform for biological-image\nanalysis. Nature Methods, 9(7), 676-682. https://doi.org/10.1038/nmeth.2019",
+        "description": "Fiji (Fiji Is Just ImageJ) is an open-source image processing package based on ImageJ2, bundling Bio-Formats, BigDataViewer, and scientific microscopy plugins for 2D/3D visualization, segmentation, registration, and analysis."
+    },
     "gautomatch": {
         "apps": {
             "gautomatch 0.56.0": {
@@ -1167,6 +1250,34 @@
             "data organisation"
         ],
         "description": "Globus client"
+    },
+    "icy": {
+        "apps": {
+            "icy 2.5.4.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "icy_2.5.4.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            },
+            "Icy-icy 2.5.4.0": {
+                "version": "20261123",
+                "exec": "icy",
+                "apptainer_args": [],
+                "image": "icy_2.5.4.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image segmentation"
+        ],
+        "citation": "de Chaumont, F., Dallongeville, S., Chenouard, N., Hervé, N., Pop, S.,\nProvoost, T., Meas-Yedid, V., Pankajakshan, P., Lecomte, T., Le Montagner,\nY., Lagache, T., Dufour, A., & Olivo-Marin, J.-C. (2012). Icy: an open\nbioimage informatics platform for extended reproducible research. Nature\nMethods, 9(7), 690-696. https://doi.org/10.1038/nmeth.2075",
+        "description": "Icy is an open-source bioimage informatics platform developed at Institut Pasteur for 2D/3D microscopy visualization, Bio-Formats image loading, ROI measurement, and reproducible visual Protocols workflows."
     },
     "ilastik": {
         "apps": {
@@ -2578,6 +2689,92 @@
         "description": "pyem provides Python tools for cryo-EM metadata and image processing. Upstream release v0.69 is installed in /opt/pyem-venv. Run `csparc2star.py --help` for CryoSPARC conversion and `star.py --help` for RELION STAR selection and editing. All upstream console scripts are exposed. For example, `star.py --class 1 particles.star selected.star` selects one class. Commands and Python use private temporary Numba and Matplotlib cache directories, removed when the command exits. No writable home directory is required. Set NUMBA_CACHE_DIR or MPLCONFIGDIR to your own writable paths to retain caches. Mount your metadata, images and output directory at runtime. These CPU metadata tools do not require a GPU. https://github.com/asarnow/pyem",
         "citation": "Asarnow D, Palovcak E, Cheng Y. UCSF pyem v0.5 (Zenodo). 2019. doi:10.5281/zenodo.3576630"
     },
+    "pymol": {
+        "apps": {
+            "pymol 3.1.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "pymol_3.1.0",
+                "license": [
+                    "PyMOL Open-Source License (Schrodinger, Inc.)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "PyMOL Open-Source License (Schrodinger, Inc.)",
+                        "url": "https://github.com/schrodinger/pymol-open-source/blob/master/LICENSE"
+                    }
+                ]
+            },
+            "PyMOL-pymol 3.1.0": {
+                "version": "20261123",
+                "exec": "pymol",
+                "apptainer_args": [],
+                "image": "pymol_3.1.0",
+                "license": [
+                    "PyMOL Open-Source License (Schrodinger, Inc.)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "PyMOL Open-Source License (Schrodinger, Inc.)",
+                        "url": "https://github.com/schrodinger/pymol-open-source/blob/master/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "molecular biology",
+            "cryo EM"
+        ],
+        "citation": "The PyMOL Molecular Graphics System, Version 3.1.0, Open-Source build,\nSchrödinger, LLC. https://github.com/schrodinger/pymol-open-source",
+        "description": "Open-Source PyMOL is a molecular and volumetric 3D visualization system widely used for structural biology, cryo-EM density maps (MRC/CCP4), protein structures (PDB/mmCIF), and publication-quality ray-traced figures."
+    },
+    "pymol_arm64": {
+        "apps": {
+            "pymol_arm64 3.1.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "pymol_arm64_3.1.0",
+                "license": [
+                    "PyMOL Open-Source License (Schrodinger, Inc.)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "PyMOL Open-Source License (Schrodinger, Inc.)",
+                        "url": "https://github.com/schrodinger/pymol-open-source/blob/master/LICENSE"
+                    }
+                ]
+            },
+            "PyMOL-pymol_arm64 3.1.0": {
+                "version": "20261123",
+                "exec": "pymol",
+                "apptainer_args": [],
+                "image": "pymol_arm64_3.1.0",
+                "license": [
+                    "PyMOL Open-Source License (Schrodinger, Inc.)"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-open",
+                        "name": "PyMOL Open-Source License (Schrodinger, Inc.)",
+                        "url": "https://github.com/schrodinger/pymol-open-source/blob/master/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "molecular biology",
+            "cryo EM"
+        ],
+        "citation": "The PyMOL Molecular Graphics System, Version 3.1.0, Open-Source build,\nSchrödinger, LLC. https://github.com/schrodinger/pymol-open-source",
+        "description": "Open-Source PyMOL is a molecular and volumetric 3D visualization system widely used for structural biology, cryo-EM density maps (MRC/CCP4), protein structures (PDB/mmCIF), and publication-quality ray-traced figures."
+    },
     "qupath": {
         "apps": {
             "qupath 0.6.0": {
@@ -3378,6 +3575,25 @@
         ],
         "description": "Voreen is an open source rapid application development framework for the interactive visualization and analysis of multi-modal volumetric data sets. It provides GPU-based volume rendering and data analysis techniques.",
         "citation": "Jennis Meyer-Spradow, Timo Ropinski, Jorg Mensmann, Klaus H. Hinrichs:\nVoreen: A Rapid-Prototyping Environment for Ray-Casting-Based Volume Visualizations. IEEE Computer Graphics and Applications 29(6): 6-13 (2009)"
+    },
+    "webknossos": {
+        "apps": {
+            "webknossos 4.4.0": {
+                "version": "20261123",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "webknossos_4.4.0",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "data organisation"
+        ],
+        "citation": "Boergens, K. M., Berning, M., Bocklisch, T., Bräunlein, D., Drawitsch, F.,\nFrohnhofen, J., Herold, T., Otto, P., Rzepka, N., Werkmeister, T., Werner,\nD., Wiese, G., Wissler, H., & Helmstaedter, M. (2017). webKnossos: efficient\nonline 3D data annotation for connectomics. Nature Methods, 14(7), 691-694.\nhttps://doi.org/10.1038/nmeth.4331",
+        "description": "WEBKNOSSOS Python library and CLI for converting, streaming, and analyzing large 3D microscopy and connectomics datasets (WKW, OME-Zarr, N5, TIFF, CZI, MRC, Imaris) and working with annotations and skeletons from local storage or a remote WEBKNOSSOS server."
     },
     "xmipp": {
         "apps": {

@@ -6,6 +6,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "postgresanalytics_18.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.24464326",
                 "license": [
                     "Apache-2.0",
                     "GPL-2.0-or-later",
@@ -28,6 +29,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "postgresanalytics_arm64_18.7.0",
+                "doi": "https://doi.org/10.5281/zenodo.24464322",
                 "license": [
                     "Apache-2.0",
                     "GPL-2.0-or-later",
