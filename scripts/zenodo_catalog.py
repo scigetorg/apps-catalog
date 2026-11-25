@@ -20,7 +20,7 @@ from urllib.parse import quote
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.exceptions import MaxRetryError, ReadTimeoutError
-from urllib3.response import BaseHTTPResponse
+from urllib3.response import HTTPResponse
 from urllib3.util.retry import Retry
 
 from .doi_license import fetch_catalogue, rights_from_catalog, same_rights
@@ -357,9 +357,10 @@ class RemoteStream:
         try:
             # Use read1 so a single read() makes at most one bounded recv() instead
             # of looping across many slow trickle receives past the deadline.
-            if isinstance(raw, BaseHTTPResponse):
+            read1 = getattr(type(raw), "read1", None)
+            if isinstance(raw, HTTPResponse) and callable(read1):
                 chunk = raw.read1(size, decode_content=False)
-            elif callable(getattr(type(raw), "read1", None)):
+            elif callable(read1):
                 chunk = raw.read1(size)
             else:
                 chunk = raw.read(size)
