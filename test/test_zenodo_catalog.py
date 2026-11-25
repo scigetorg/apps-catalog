@@ -1,7 +1,11 @@
 """DOI publication uses the domain catalog's exact image identities."""
 
+import http.server
 import json
+import socketserver
 import tempfile
+import threading
+import time
 import unittest
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
@@ -14,6 +18,7 @@ from urllib3.exceptions import ConnectTimeoutError, MaxRetryError, ReadTimeoutEr
 from scripts.doi_metadata import build_metadata
 from scripts.zenodo_catalog import (
     RDM_JSON,
+    RemoteStream,
     WRITE_RETRY_MAX_RETRY_AFTER_SECONDS,
     WRITE_RETRY_MAX_SECONDS,
     _probe_get,
@@ -567,6 +572,47 @@ class ZenodoCatalogTests(unittest.TestCase):
         self.assertEqual(resp.json(), {"status": "completed"})
         self.assertEqual(captured["max_retries"], 0)
         self.assertEqual(captured["auth"], "Bearer secret-token")
+
+    def test_remote_stream_bounds_slow_drip_read_to_deadline(self) -> None:
+        class SlowDripHandler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self) -> None:
+                self.send_response(200)
+                self.send_header("Content-Length", "16")
+                self.end_headers()
+                for _ in range(16):
+                    try:
+                        self.wfile.write(b"x")
+                        self.wfile.flush()
+                    except OSError:
+                        break
+                    time.sleep(0.05)
+
+            def log_message(self, *_args) -> None:
+                pass
+
+        class LocalTCPServer(socketserver.TCPServer):
+            allow_reuse_address = True
+
+        server = LocalTCPServer(("127.0.0.1", 0), SlowDripHandler)
+        port = server.server_address[1]
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            response = requests.get(f"http://127.0.0.1:{port}/demo.simg",
+                                    stream=True, timeout=(5, 5))
+            try:
+                started = time.monotonic()
+                stream = RemoteStream(response, 16, deadline=started + 0.15)
+                with self.assertRaisesRegex(requests.ReadTimeout, "upload deadline exceeded"):
+                    while stream.read(8192):
+                        pass
+                elapsed = time.monotonic() - started
+                self.assertLess(elapsed, 0.30)
+            finally:
+                response.close()
+        finally:
+            server.shutdown()
+            server.server_close()
 
     def test_publish_recovers_when_file_init_succeeded_before_timeout(self) -> None:
         draft = "https://zenodo.org/api/records/12/draft"

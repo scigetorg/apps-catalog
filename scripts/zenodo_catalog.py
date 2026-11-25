@@ -19,7 +19,8 @@ from urllib.parse import quote
 
 import requests
 from requests.adapters import HTTPAdapter
-from urllib3.exceptions import MaxRetryError
+from urllib3.exceptions import MaxRetryError, ReadTimeoutError
+from urllib3.response import BaseHTTPResponse
 from urllib3.util.retry import Retry
 
 from .doi_license import fetch_catalogue, rights_from_catalog, same_rights
@@ -346,13 +347,25 @@ class RemoteStream:
             pass
 
     def read(self, size: int = -1) -> bytes:
-        if self.deadline is not None:
-            remaining = self.deadline - time.monotonic()
-            if remaining <= 0:
-                raise requests.ReadTimeout("upload deadline exceeded")
-            self._bound_read_timeout(remaining)
-        chunk = self.response.raw.read(size)
-        if self.deadline is not None and time.monotonic() >= self.deadline:
+        raw = self.response.raw
+        if self.deadline is None:
+            return raw.read(size)
+        remaining = self.deadline - time.monotonic()
+        if remaining <= 0:
+            raise requests.ReadTimeout("upload deadline exceeded")
+        self._bound_read_timeout(remaining)
+        try:
+            # Use read1 so a single read() makes at most one bounded recv() instead
+            # of looping across many slow trickle receives past the deadline.
+            if isinstance(raw, BaseHTTPResponse):
+                chunk = raw.read1(size, decode_content=False)
+            elif callable(getattr(type(raw), "read1", None)):
+                chunk = raw.read1(size)
+            else:
+                chunk = raw.read(size)
+        except (ReadTimeoutError, TimeoutError) as exc:
+            raise requests.ReadTimeout("upload deadline exceeded") from exc
+        if time.monotonic() >= self.deadline:
             raise requests.ReadTimeout("upload deadline exceeded")
         return chunk
 
