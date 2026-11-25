@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import requests
-from urllib3.exceptions import ConnectTimeoutError
+from urllib3.exceptions import ConnectTimeoutError, MaxRetryError, ReadTimeoutError
 
 from scripts.doi_metadata import build_metadata
 from scripts.zenodo_catalog import (
@@ -19,6 +19,7 @@ from scripts.zenodo_catalog import (
     _probe_get,
     build_session,
     catalog_artifacts,
+    discard_draft,
     missing_batches,
     publish_deposition,
     record_doi,
@@ -260,13 +261,49 @@ class ZenodoCatalogTests(unittest.TestCase):
         huge.headers = {"Retry-After": "7200"}
         self.assertEqual(retry.get_retry_after(huge), WRITE_RETRY_MAX_SECONDS)
 
-        # Connect errors on POST/PUT/DELETE must not be retried by urllib3.
+        # Connect errors on POST/PUT/DELETE must raise requests.ConnectTimeout (not raw
+        # urllib3 ConnectTimeoutError) with strictly 1 attempt through build_session().
         err = ConnectTimeoutError(None, "https://zenodo.org/api/records", "timed out")
         for method in ("POST", "PUT", "DELETE"):
-            with self.assertRaises(ConnectTimeoutError, msg=method):
+            with self.assertRaises(MaxRetryError, msg=method):
                 retry.increment(method=method, url="/api/records", error=err)
         next_retry = retry.increment(method="GET", url="/api/user/records", error=err)
         self.assertEqual(next_retry.total, retry.total - 1)
+
+        calls = [0]
+
+        def raise_connect_timeout(*_args, **_kwargs):
+            calls[0] += 1
+            raise err
+
+        with patch("urllib3.connectionpool.HTTPSConnectionPool._make_request",
+                   side_effect=raise_connect_timeout):
+            for verb in ("post", "put", "delete"):
+                calls[0] = 0
+                with self.assertRaises(requests.ConnectTimeout, msg=verb):
+                    getattr(session, verb)("https://zenodo.org/api/records", timeout=(1, 1))
+                self.assertEqual(calls[0], 1, verb)
+
+            # discard_draft must catch and log ConnectTimeout instead of masking the caller error.
+            with patch("scripts.zenodo_catalog.time.sleep"), patch("sys.stderr") as stderr:
+                discard_draft(session, "https://zenodo.org/api/records/12/draft",
+                              {"Accept": RDM_JSON}, "12")
+            err_text = "".join(str(c.args[0]) for c in stderr.write.call_args_list)
+            self.assertIn("Could not discard failed draft 12", err_text)
+
+        # Read timeout on POST must map to requests.ReadTimeout with strictly 1 attempt.
+        read_err = ReadTimeoutError(None, "https://zenodo.org/api/records", "read timed out")
+        calls[0] = 0
+
+        def raise_read_timeout(*_args, **_kwargs):
+            calls[0] += 1
+            raise read_err
+
+        with patch("urllib3.connectionpool.HTTPSConnectionPool._make_request",
+                   side_effect=raise_read_timeout):
+            with self.assertRaises(requests.ReadTimeout):
+                session.post("https://zenodo.org/api/records", timeout=(1, 1))
+        self.assertEqual(calls[0], 1)
 
     def test_publish_retries_pre_create_errors_and_file_init(self) -> None:
         session = MagicMock()
@@ -410,28 +447,92 @@ class ZenodoCatalogTests(unittest.TestCase):
         session.delete.assert_called_once()
         self.assertEqual("".join(str(c.args[0]) for c in stderr.write.call_args_list), "")
 
-    def test_publish_respects_deadline_across_retries_and_probes(self) -> None:
+    def test_publish_respects_deadline_across_writes_streams_and_retries(self) -> None:
         draft = "https://zenodo.org/api/records/12/draft"
+        # Subcase A: S3 response arrives after deadline -> no draft creation or file init.
+        clock = [90.0]
+
+        def slow_s3(*_args, **_kwargs):
+            clock[0] = 105.0  # past deadline=100.0
+            dl = MagicMock()
+            dl.status_code = 200
+            dl.headers = {"Content-Length": "3"}
+            dl.raw.read.return_value = b"sif"
+            return dl
+
+        session = MagicMock()
+        with (patch("scripts.zenodo_catalog.requests.get", side_effect=slow_s3),
+              patch("scripts.zenodo_catalog.time.monotonic", side_effect=lambda: clock[0]),
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            with self.assertRaisesRegex(requests.ReadTimeout, "deadline exceeded"):
+                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=100.0)
+        session.post.assert_not_called()
+        session.put.assert_not_called()
+        session.delete.assert_not_called()
+        sleep.assert_not_called()
+
+        # Subcase B: upload and commit timeouts are clamped to remaining deadline, and
+        # retry stops cleanly when backoff would cross the deadline.
+        clock[0] = 80.0  # 20s remaining before deadline=100.0
         dl = MagicMock()
         dl.status_code = 200
         dl.headers = {"Content-Length": "3"}
         dl.raw.read.return_value = b"sif"
         session = MagicMock()
+
+        post_replies = iter([
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+        ])
+
+        def post_dispatch(*_args, **_kwargs):
+            try:
+                return next(post_replies)
+            except StopIteration:
+                clock[0] = 99.0  # only 1.0s left (< 2.0s backoff and <= 1.0s probe min)
+                return reply({}, status=500)
+
+        session.post.side_effect = post_dispatch
+        session.put.return_value = reply({"size": 3})
+        session.delete.return_value = reply({}, status=204)
+        with (patch("scripts.zenodo_catalog.requests.get", return_value=dl),
+              patch("scripts.zenodo_catalog.time.monotonic", side_effect=lambda: clock[0]),
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            with self.assertRaises(requests.HTTPError):
+                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=100.0)
+        self.assertEqual(session.put.call_args.kwargs["timeout"], (20.0, 20.0))
+        self.assertEqual(session.post.call_args_list[2].kwargs["timeout"], (20.0, 20.0))
+        sleep.assert_not_called()
+        session.get.assert_not_called()
+        session.delete.assert_called_once()
+        self.assertEqual(session.delete.call_args.args[0], draft)
+
+        # Subcase C: wall-clock deadline enforced inside RemoteStream.read() during upload.
+        clock[0] = 90.0
+        dl_stream = MagicMock()
+        dl_stream.status_code = 200
+        dl_stream.headers = {"Content-Length": "3"}
+        session = MagicMock()
         session.post.side_effect = [
             reply({"id": "12", "errors": []}),
             reply({"entries": []}),
-            reply({}, status=500),  # commit fails right at deadline -> no sleep, no retry
         ]
-        session.put.return_value = reply({"size": 3})
+
+        def consume_stream(_url, data, **_kwargs):
+            clock[0] = 100.5  # deadline expires mid-upload
+            data.read(1)
+            return reply({"size": 3})
+
+        session.put.side_effect = consume_stream
         session.delete.return_value = reply({}, status=204)
-        # Clock is already at 100.0 while retry deadline is 101.0 (< 2.0s backoff, <= 1.0s probe min).
-        with (patch("scripts.zenodo_catalog.requests.get", return_value=dl),
-              patch("scripts.zenodo_catalog.time.monotonic", return_value=100.0),
+        with (patch("scripts.zenodo_catalog.requests.get", return_value=dl_stream),
+              patch("scripts.zenodo_catalog.time.monotonic", side_effect=lambda: clock[0]),
               patch("scripts.zenodo_catalog.time.sleep") as sleep):
-            with self.assertRaises(requests.HTTPError):
-                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=101.0)
+            with self.assertRaisesRegex(requests.ReadTimeout, "upload deadline exceeded"):
+                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=100.0)
+        dl_stream.close.assert_called_once()
         sleep.assert_not_called()
-        session.get.assert_not_called()
+        self.assertEqual(session.post.call_count, 2)  # never reached /commit
         session.delete.assert_called_once()
         self.assertEqual(session.delete.call_args.args[0], draft)
 

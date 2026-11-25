@@ -19,6 +19,7 @@ from urllib.parse import quote
 
 import requests
 from requests.adapters import HTTPAdapter
+from urllib3.exceptions import MaxRetryError
 from urllib3.util.retry import Retry
 
 from .doi_license import fetch_catalogue, rights_from_catalog, same_rights
@@ -67,6 +68,8 @@ class _CappedRetry(Retry):
         _stacktrace: Any = None,
     ) -> _CappedRetry:
         if error is not None and method is not None and not self._is_method_retryable(method):
+            if self._is_connection_error(error):
+                raise MaxRetryError(_pool, url, error) from error
             raise error.with_traceback(_stacktrace)
         return super().increment(
             method=method,
@@ -312,14 +315,22 @@ def missing_batches(
 
 
 class RemoteStream:
-    def __init__(self, response: requests.Response, length: int):
+    def __init__(
+        self,
+        response: requests.Response,
+        length: int,
+        deadline: float | None = None,
+    ):
         self.response = response
         self.length = length
+        self.deadline = deadline
 
     def __len__(self) -> int:
         return self.length
 
     def read(self, size: int = -1) -> bytes:
+        if self.deadline is not None and time.monotonic() >= self.deadline:
+            raise requests.ReadTimeout("upload deadline exceeded")
         return self.response.raw.read(size)
 
 
@@ -412,8 +423,9 @@ def _probe_get(
 
 def _with_retries(
     label: str,
-    action: Callable[[int], requests.Response],
+    action: Callable[[int, tuple[float, float]], requests.Response],
     *,
+    timeout: tuple[float, float],
     attempts: int = WRITE_RETRY_ATTEMPTS,
     retry_statuses: frozenset[int] = TRANSIENT_STATUSES,
     retry_exception: Callable[[requests.RequestException], bool] | None = None,
@@ -425,10 +437,13 @@ def _with_retries(
     deadline: float | None = None,
 ) -> tuple[requests.Response | None, Any]:
     for attempt in range(1, attempts + 1):
+        attempt_timeout = _bounded_timeout(timeout, deadline)
+        if attempt_timeout is None:
+            raise requests.ReadTimeout(f"{label}: deadline exceeded")
         response: requests.Response | None = None
         exc: requests.RequestException | None = None
         try:
-            response = action(attempt)
+            response = action(attempt, attempt_timeout)
         except requests.RequestException as err:
             exc = err
 
@@ -531,11 +546,10 @@ def discard_draft(
     try:
         _with_retries(
             f"discard {label} {draft_id}",
-            lambda _: session.delete(
-                draft_url,
-                headers=headers,
-                timeout=_bounded_timeout((15.0, 60.0), cleanup_deadline) or (15.0, 60.0),
+            lambda _, req_timeout: session.delete(
+                draft_url, headers=headers, timeout=req_timeout
             ),
+            timeout=(15.0, 60.0),
             attempts=2,
             ok_statuses=frozenset({404}),
             deadline=cleanup_deadline,
@@ -550,7 +564,8 @@ def _open_sif(
     # The public S3 request must never receive the Zenodo bearer token.
     response, _ = _with_retries(
         f"{title} download SIF",
-        lambda _: requests.get(source_url, stream=True, timeout=(15, 300)),
+        lambda _, req_timeout: requests.get(source_url, stream=True, timeout=req_timeout),
+        timeout=(15, 300),
         close_on_retry=True,
         deadline=deadline,
     )
@@ -628,8 +643,10 @@ def publish_deposition(
         # /api/user/records instead of blindly POSTing a second draft.
         created, recovered_draft = _with_retries(
             f"{title} create draft",
-            lambda _: session.post(f"{ZENODO_API}/records", json=payload,
-                                   headers=headers, timeout=(15, 60)),
+            lambda _, req_timeout: session.post(
+                f"{ZENODO_API}/records", json=payload, headers=headers, timeout=req_timeout
+            ),
+            timeout=(15, 60),
             retry_statuses=PRE_CREATE_RETRY_STATUSES,
             retry_exception=lambda exc: isinstance(exc, requests.ConnectTimeout),
             recover=find_created_draft,
@@ -661,8 +678,11 @@ def publish_deposition(
             def init_file() -> None:
                 _with_retries(
                     f"{title} init file",
-                    lambda _: session.post(f"{draft_url}/files", json=[{"key": key}],
-                                           headers=headers, timeout=(15, 60)),
+                    lambda _, req_timeout: session.post(
+                        f"{draft_url}/files", json=[{"key": key}],
+                        headers=headers, timeout=req_timeout,
+                    ),
+                    timeout=(15, 60),
                     recover=check_file_initialized,
                     recover_on_status=frozenset({400}),
                     deadline=deadline,
@@ -677,7 +697,10 @@ def publish_deposition(
                     download = None
                 _with_retries(
                     f"{title} reset file entry",
-                    lambda _: session.delete(file_url, headers=headers, timeout=(15, 60)),
+                    lambda _, req_timeout: session.delete(
+                        file_url, headers=headers, timeout=req_timeout
+                    ),
+                    timeout=(15, 60),
                     ok_statuses=frozenset({404}),
                     deadline=deadline,
                 )
@@ -689,7 +712,7 @@ def publish_deposition(
                         f"{retry_length} != {length}"
                     )
 
-            def upload_attempt(_: int) -> requests.Response:
+            def upload_attempt(_: int, req_timeout: tuple[float, float]) -> requests.Response:
                 nonlocal download
                 assert download is not None
                 stream_response = download
@@ -697,10 +720,10 @@ def publish_deposition(
                 try:
                     return session.put(
                         f"{file_url}/content",
-                        data=RemoteStream(stream_response, length),
+                        data=RemoteStream(stream_response, length, deadline=deadline),
                         headers={**headers, "Content-Type": "application/octet-stream",
                                  "Content-Length": str(length)},
-                        timeout=(30, 300),
+                        timeout=req_timeout,
                     )
                 finally:
                     stream_response.close()
@@ -708,6 +731,7 @@ def publish_deposition(
             upload_resp, _ = _with_retries(
                 f"{title} upload SIF",
                 upload_attempt,
+                timeout=(30, 300),
                 on_retry=reset_for_upload_retry,
                 deadline=deadline,
             )
@@ -735,7 +759,10 @@ def publish_deposition(
 
             committed_resp, committed_body = _with_retries(
                 f"{title} commit file",
-                lambda _: session.post(f"{file_url}/commit", headers=headers, timeout=(30, 600)),
+                lambda _, req_timeout: session.post(
+                    f"{file_url}/commit", headers=headers, timeout=req_timeout
+                ),
+                timeout=(30, 600),
                 recover=check_file_committed,
                 recover_on_status=frozenset({400}),
                 deadline=deadline,
@@ -765,8 +792,10 @@ def publish_deposition(
 
             published_resp, published_body = _with_retries(
                 f"{title} publish draft",
-                lambda _: session.post(f"{draft_url}/actions/publish", headers=headers,
-                                       timeout=(15, 120)),
+                lambda _, req_timeout: session.post(
+                    f"{draft_url}/actions/publish", headers=headers, timeout=req_timeout
+                ),
+                timeout=(15, 120),
                 recover=check_record_published,
                 recover_on_status=frozenset({404}),
                 deadline=deadline,
