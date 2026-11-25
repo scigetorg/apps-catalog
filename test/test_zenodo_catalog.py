@@ -3,6 +3,8 @@
 import json
 import tempfile
 import unittest
+from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -10,6 +12,8 @@ import requests
 
 from scripts.zenodo_catalog import (
     RDM_JSON,
+    WRITE_RETRY_MAX_RETRY_AFTER_SECONDS,
+    build_session,
     catalog_artifacts,
     missing_batches,
     publish_deposition,
@@ -25,12 +29,13 @@ LICENSE_INFO = {
 }
 
 
-def reply(payload, status=200):
+def reply(payload, status=200, headers=None):
     response = MagicMock()
     response.status_code = status
+    response.headers = headers or {}
     response.json.return_value = payload
     response.raise_for_status.side_effect = (
-        requests.HTTPError(str(status)) if status >= 400 else None)
+        requests.HTTPError(str(status), response=response) if status >= 400 else None)
     return response
 
 
@@ -215,24 +220,316 @@ class ZenodoCatalogTests(unittest.TestCase):
 
     def test_failed_publication_discards_the_draft(self) -> None:
         cases = {
-            "upload": {"upload": reply({}, status=503)},
+            "upload": {"upload": reply({}, status=400)},
             "size": {"commit": reply({"size": 2})},
             "publish": {"publish": reply({}, status=400)},
             "field errors": {"create": reply({"id": "12", "errors": [
                 {"field": "metadata.publisher", "messages": ["Missing"]}]})},
         }
-        for label, overrides in cases.items():
-            session = records_session(**overrides)
-            with self.assertRaises((requests.HTTPError, ValueError), msg=label):
-                self.publish(session)
-            session.delete.assert_called_once()
-            self.assertEqual(session.delete.call_args.args[0],
-                             "https://zenodo.org/api/records/12/draft", label)
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            for label, overrides in cases.items():
+                session = records_session(**overrides)
+                with self.assertRaises((requests.HTTPError, ValueError), msg=label):
+                    self.publish(session)
+                session.delete.assert_called_once()
+                self.assertEqual(session.delete.call_args.args[0],
+                                 "https://zenodo.org/api/records/12/draft", label)
+            sleep.assert_not_called()
 
     def test_missing_files_error_on_new_draft_is_expected(self) -> None:
         session = records_session(created_errors=[{"field": "files.enabled",
                                                    "messages": ["Missing uploaded files."]}])
         self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+
+    def test_build_session_retries_safe_and_delete_methods_only(self) -> None:
+        session = build_session("secret-token")
+        retry = session.adapters["https://"].max_retries
+        self.assertEqual(set(retry.allowed_methods), {"GET", "HEAD", "DELETE"})
+        self.assertNotIn("POST", retry.allowed_methods)
+        self.assertNotIn("PUT", retry.allowed_methods)
+        self.assertEqual(set(retry.status_forcelist), {429, 500, 502, 503, 504})
+        self.assertTrue(retry.respect_retry_after_header)
+
+    def test_publish_retries_transient_draft_create_and_file_init(self) -> None:
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({}, status=500),
+            reply({"id": "12", "errors": []}),
+            requests.ReadTimeout("init timed out"),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.get.return_value = reply({}, status=404)
+        session.put.return_value = reply({"size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 2.0])
+        session.delete.assert_not_called()
+
+    def test_publish_recovers_when_file_init_succeeded_before_timeout(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        key = "demo_1.0_20260101.simg"
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            requests.ReadTimeout("init timed out"),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.get.return_value = reply({"key": key, "status": "pending"})
+        session.put.return_value = reply({"size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in session.post.call_args_list], [
+            "https://zenodo.org/api/records", f"{draft}/files",
+            f"{draft}/files/{key}/commit", f"{draft}/actions/publish",
+        ])
+        self.assertEqual(session.get.call_args.args[0], f"{draft}/files/{key}")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0])
+        session.delete.assert_not_called()
+
+    def test_publish_retries_upload_with_fresh_s3_stream_and_file_reset(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        key = "demo_1.0_20260101.simg"
+        file_url = f"{draft}/files/{key}"
+        downloads = []
+        for _ in range(3):
+            dl = MagicMock()
+            dl.status_code = 200
+            dl.headers = {"Content-Length": "3"}
+            dl.raw.read.return_value = b"sif"
+            downloads.append(dl)
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"entries": []}),  # re-init after attempt 1
+            reply({"entries": []}),  # re-init after attempt 2
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.put.side_effect = [
+            requests.ConnectionError("write timed out"),
+            reply({}, status=504),
+            reply({"size": 3}),
+        ]
+        session.delete.side_effect = [reply({}, status=204), reply({}, status=404)]
+        with (patch("scripts.zenodo_catalog.requests.get", side_effect=downloads) as get,
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            doi = publish_deposition("demo_1.0_20260101", LICENSE_INFO, session)
+        self.assertEqual(doi, "10.5281/zenodo.12")
+        self.assertEqual(get.call_count, 3)
+        self.assertTrue(all("headers" not in c.kwargs for c in get.call_args_list))
+        for dl in downloads:
+            dl.close.assert_called_once()
+        self.assertEqual([c.args[0] for c in session.delete.call_args_list],
+                         [file_url, file_url])
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 4.0])
+
+    def test_publish_exhausted_upload_retries_discards_draft(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        key = "demo_1.0_20260101.simg"
+        file_url = f"{draft}/files/{key}"
+        downloads = []
+        for _ in range(4):
+            dl = MagicMock()
+            dl.status_code = 200
+            dl.headers = {"Content-Length": "3"}
+            dl.raw.read.return_value = b"sif"
+            downloads.append(dl)
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"entries": []}),
+            reply({"entries": []}),
+            reply({"entries": []}),
+        ]
+        session.put.return_value = reply({}, status=503)
+        session.delete.return_value = reply({}, status=204)
+        with (patch("scripts.zenodo_catalog.requests.get", side_effect=downloads),
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            with self.assertRaises(requests.HTTPError):
+                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session)
+        for dl in downloads:
+            dl.close.assert_called_once()
+        self.assertEqual(session.put.call_count, 4)
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 4.0, 8.0])
+        self.assertEqual([c.args[0] for c in session.delete.call_args_list],
+                         [file_url, file_url, file_url, draft])
+
+    def test_publish_retries_commit_and_recovers_already_committed_file(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        key = "demo_1.0_20260101.simg"
+        # Subcase A: commit gets 500 while still pending, then succeeds on retry.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({}, status=500),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.return_value = reply({"status": "pending", "size": 0})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0])
+        session.delete.assert_not_called()
+
+        # Subcase B: commit gets 504 after Zenodo already completed it.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({}, status=504),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.return_value = reply({"status": "completed", "size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in session.post.call_args_list], [
+            "https://zenodo.org/api/records", f"{draft}/files",
+            f"{draft}/files/{key}/commit", f"{draft}/actions/publish",
+        ])
+        self.assertEqual(session.get.call_args.args[0], f"{draft}/files/{key}")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0])
+        session.delete.assert_not_called()
+
+        # Subcase C: recovered committed file with wrong size fails and discards draft.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({}, status=504),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.return_value = reply({"status": "completed", "size": 2})
+        with patch("scripts.zenodo_catalog.time.sleep"):
+            with self.assertRaisesRegex(ValueError, "expected 3"):
+                self.publish(session)
+        session.delete.assert_called_once()
+        self.assertEqual(session.delete.call_args.args[0], draft)
+
+    def test_publish_retries_publish_and_recovers_already_published_record(self) -> None:
+        published_record = {
+            "id": "12", "is_published": True,
+            "pids": {"doi": {"identifier": "10.5281/zenodo.12"}},
+        }
+        # Subcase A: publish gets 500, record not yet published (404), retry succeeds.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({}, status=500),
+            reply(published_record),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.return_value = reply({}, status=404)
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual(session.get.call_args.args[0], "https://zenodo.org/api/records/12")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0])
+        session.delete.assert_not_called()
+
+        # Subcase B: publish gets 504 on final attempt after Zenodo already published it.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({}, status=504),
+            reply({}, status=504),
+            reply({}, status=504),
+            reply({}, status=504),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.side_effect = [
+            reply({}, status=404),
+            reply({}, status=404),
+            reply({}, status=404),
+            reply(published_record),
+        ]
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 4.0, 8.0])
+        session.delete.assert_not_called()
+
+        # Subcase C: race where record publishes right between GET 404 and retry POST 404.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({}, status=504),
+            reply({}, status=404),
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.get.side_effect = [reply({}, status=404), reply(published_record)]
+        with patch("scripts.zenodo_catalog.time.sleep"):
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        session.delete.assert_not_called()
+
+    def test_retry_respects_retry_after_header_seconds_and_http_date(self) -> None:
+        # Numeric Retry-After larger than backoff, then clamped huge Retry-After.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({}, status=429, headers={"Retry-After": "15"}),
+            reply({}, status=429, headers={"Retry-After": "9999"}),
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.put.return_value = reply({"size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list],
+                         [15.0, WRITE_RETRY_MAX_RETRY_AFTER_SECONDS])
+
+        # HTTP-date Retry-After ~30s in the future.
+        future = format_datetime(datetime.now(timezone.utc) + timedelta(seconds=30), usegmt=True)
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({}, status=429, headers={"Retry-After": future}),
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.put.return_value = reply({"size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual(sleep.call_count, 1)
+        self.assertGreater(sleep.call_args.args[0], 20.0)
+        self.assertLessEqual(sleep.call_args.args[0], 35.0)
+
+    def test_open_sif_retries_transient_s3_errors_and_closes_failed_responses(self) -> None:
+        bad = reply({}, status=503)
+        good = MagicMock()
+        good.status_code = 200
+        good.headers = {"Content-Length": "3"}
+        good.raw.read.return_value = b"sif"
+        session = records_session()
+        with (patch("scripts.zenodo_catalog.requests.get",
+                    side_effect=[bad, requests.ConnectionError("s3 reset"), good]) as get,
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            doi = publish_deposition("demo_1.0_20260101", LICENSE_INFO, session)
+        self.assertEqual(doi, "10.5281/zenodo.12")
+        self.assertEqual(get.call_count, 3)
+        bad.close.assert_called_once()
+        good.close.assert_called_once()
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 4.0])
 
     def test_user_records_keeps_published_exact_titles_newest_first(self) -> None:
         session = MagicMock()
