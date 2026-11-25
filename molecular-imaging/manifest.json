@@ -1,7 +1,7 @@
 {
-    "entries": 161,
+    "entries": 162,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "fbf01ce28304e2c5c50978372763b96a301a9181"
+        "NeuroDesk/neurocontainers": "cdeda4b62a621d165634d293a6681a82ac698908"
     },
     "app_sources": {
         "amide": {
@@ -315,7 +315,9 @@
             "rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudio 2026.11.0": "NeuroDesk/neurocontainers",
-            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers"
+            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers",
+            "rstudio 2026.11.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.11.1": "NeuroDesk/neurocontainers"
         },
         "slicer": {
             "slicer 4.11.20200930": "NeuroDesk/neurocontainers",

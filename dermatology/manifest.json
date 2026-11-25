@@ -1,7 +1,7 @@
 {
-    "entries": 166,
+    "entries": 170,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "fbf01ce28304e2c5c50978372763b96a301a9181"
+        "NeuroDesk/neurocontainers": "cdeda4b62a621d165634d293a6681a82ac698908"
     },
     "app_sources": {
         "ants": {
@@ -341,6 +341,10 @@
         "nnunetv2_arm64": {
             "nnunetv2_arm64 2.8.1": "NeuroDesk/neurocontainers"
         },
+        "octproz": {
+            "octproz 1.8.0": "NeuroDesk/neurocontainers",
+            "OCTproZ-octproz 1.8.0": "NeuroDesk/neurocontainers"
+        },
         "omero": {
             "omero 5.8.6": "NeuroDesk/neurocontainers",
             "OMERO.insight-omero 5.8.6": "NeuroDesk/neurocontainers"
@@ -353,6 +357,12 @@
         },
         "openrefine": {
             "openrefine 3.10.1": "NeuroDesk/neurocontainers"
+        },
+        "palmettobug": {
+            "palmettobug 0.0.3": "NeuroDesk/neurocontainers",
+            "palmettobugGUI-palmettobug 0.0.3": "NeuroDesk/neurocontainers",
+            "palmettobug 0.2.11": "NeuroDesk/neurocontainers",
+            "palmettobugGUI-palmettobug 0.2.11": "NeuroDesk/neurocontainers"
         },
         "panoptica": {
             "panoptica 2.1.6": "NeuroDesk/neurocontainers",
@@ -399,7 +409,9 @@
             "rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudio 2026.11.0": "NeuroDesk/neurocontainers",
-            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers"
+            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers",
+            "rstudio 2026.11.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.11.1": "NeuroDesk/neurocontainers"
         },
         "skan": {
             "skan 0.13.1": "NeuroDesk/neurocontainers"

@@ -3009,6 +3009,48 @@
         "description": "It is said that `imitation is the sincerest form of flattery`. This project emulates the popular [fslmaths](https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro3/index.html) tool. fslmaths is advertised as a `general image calculator` and is not only one of the foundational tools for FSL's brain imaging pipelines (such as [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT)), but has also been widely adopted by many tools. This popularity suggests that it fulfills an important niche. While scientists are often encouraged to discover novel solutions, it sometimes seems that replication is undervalued. Here are some specific reasons for creating this tool:",
         "citation": "Rorden C, Webster M, Drake C, Jenkinson M, Clayden JD, Li N, Hanayik T (2024) niimath and fslmaths: replication as a method to enhance popular neuroimaging tools. Aperture Neuro.4. doi:10.52294/001c.94384"
     },
+    "octproz": {
+        "apps": {
+            "octproz 1.8.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "octproz_1.8.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "GNU General Public License v3.0 or later",
+                        "url": "https://github.com/spectralcode/OCTproZ/blob/v1.8.0/LICENSE"
+                    }
+                ]
+            },
+            "OCTproZ-octproz 1.8.0": {
+                "version": "20261125",
+                "exec": "OCTproZ",
+                "apptainer_args": [],
+                "image": "octproz_1.8.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "GNU General Public License v3.0 or later",
+                        "url": "https://github.com/spectralcode/OCTproZ/blob/v1.8.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "image reconstruction",
+            "visualization"
+        ],
+        "description": "OCTproZ is GPU-accelerated open-source software (GPL-3.0-or-later) for raw optical coherence tomography (OCT) interferogram reconstruction and real-time 2D B-scan, en face, and 3D volume visualization. This container builds OCTproZ 1.8.0 (`v1.8.0`) from source with CUDA 12.8 (native kernels for compute capability 5.2 through 12.0 plus PTX for newer GPUs) and bundles the in-repo Virtual OCT System and Demo Extension plugins, color lookup tables, and offline documentation. Requirements: - An NVIDIA GPU with a CUDA 12 capable driver (525 or newer). The driver library (`libcuda.so.1`) comes from the host, so launch with GPU passthrough (for"
+    },
     "petfit": {
         "apps": {
             "petfit 0.2.4": {
@@ -3489,6 +3531,24 @@
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.0",
                 "doi": "https://doi.org/10.5281/zenodo.24296641",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
                 "license": [
                     "AGPL-3.0-only"
                 ]

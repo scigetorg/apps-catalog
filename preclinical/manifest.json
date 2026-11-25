@@ -1,7 +1,7 @@
 {
-    "entries": 182,
+    "entries": 184,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "fbf01ce28304e2c5c50978372763b96a301a9181"
+        "NeuroDesk/neurocontainers": "cdeda4b62a621d165634d293a6681a82ac698908"
     },
     "app_sources": {
         "aidamri": {
@@ -301,6 +301,10 @@
             "niimath_arm64 1.0.20260924": "NeuroDesk/neurocontainers",
             "niimath_arm64 1.0.20261016": "NeuroDesk/neurocontainers"
         },
+        "octproz": {
+            "octproz 1.8.0": "NeuroDesk/neurocontainers",
+            "OCTproZ-octproz 1.8.0": "NeuroDesk/neurocontainers"
+        },
         "petfit": {
             "petfit 0.2.4": "NeuroDesk/neurocontainers"
         },
@@ -351,7 +355,9 @@
             "rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudioGUI-rstudio 2026.10.1": "NeuroDesk/neurocontainers",
             "rstudio 2026.11.0": "NeuroDesk/neurocontainers",
-            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers"
+            "rstudioGUI-rstudio 2026.11.0": "NeuroDesk/neurocontainers",
+            "rstudio 2026.11.1": "NeuroDesk/neurocontainers",
+            "rstudioGUI-rstudio 2026.11.1": "NeuroDesk/neurocontainers"
         },
         "samri": {
             "samri 0.5.4": "NeuroDesk/neurocontainers",

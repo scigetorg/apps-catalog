@@ -13326,6 +13326,24 @@
                 "license": [
                     "AGPL-3.0-only"
                 ]
+            },
+            "rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
             }
         },
         "categories": [

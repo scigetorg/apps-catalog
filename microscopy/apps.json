@@ -102,6 +102,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "bioformats2raw_0.14.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526834",
                 "license": [
                     "GPL-2.0-or-later",
                     "LGPL-2.1-or-later"
@@ -144,6 +145,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "bioformats2raw_arm64_0.14.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526822",
                 "license": [
                     "GPL-2.0-or-later",
                     "LGPL-2.1-or-later"
@@ -407,6 +409,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cloudcompare_2.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24526826",
                 "license": [
                     "GPL-2.0-or-later"
                 ],
@@ -423,6 +426,7 @@
                 "exec": "CloudCompare",
                 "apptainer_args": [],
                 "image": "cloudcompare_2.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24526826",
                 "license": [
                     "GPL-2.0-or-later"
                 ],
@@ -450,6 +454,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "cloudcompare_arm64_2.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24526824",
                 "license": [
                     "GPL-2.0-or-later"
                 ],
@@ -466,6 +471,7 @@
                 "exec": "CloudCompare",
                 "apptainer_args": [],
                 "image": "cloudcompare_arm64_2.13.2",
+                "doi": "https://doi.org/10.5281/zenodo.24526824",
                 "license": [
                     "GPL-2.0-or-later"
                 ],
@@ -512,6 +518,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "colmap_3.12.6",
+                "doi": "https://doi.org/10.5281/zenodo.24526835",
                 "license": [
                     "BSD-3-Clause"
                 ],
@@ -528,6 +535,7 @@
                 "exec": "colmap gui",
                 "apptainer_args": [],
                 "image": "colmap_3.12.6",
+                "doi": "https://doi.org/10.5281/zenodo.24526835",
                 "license": [
                     "BSD-3-Clause"
                 ],
@@ -596,6 +604,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "colour-science_0.4.7",
+                "doi": "https://doi.org/10.5281/zenodo.24527492",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -639,6 +648,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "colour-science_arm64_0.4.7",
+                "doi": "https://doi.org/10.5281/zenodo.24526875",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -1175,6 +1185,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "dicom-validator_arm64_0.9.0",
+                "doi": "https://doi.org/10.5281/zenodo.24528334",
                 "license": [
                     "BSD-3-Clause",
                     "MIT"
@@ -1797,6 +1808,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "histoqc_2.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526991",
                 "license": [
                     "BSD-3-Clause-Clear",
                     "MIT"
@@ -1834,6 +1846,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "histoqc_arm64_2.0.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526925",
                 "license": [
                     "BSD-3-Clause-Clear",
                     "MIT"
@@ -1871,6 +1884,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "hyperspy_2.5.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526881",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -2076,6 +2090,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "instanseg_arm64_0.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.24528393",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -2344,6 +2359,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "labelme_7.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526900",
                 "license": [
                     "GPL-3.0-only"
                 ],
@@ -2360,6 +2376,7 @@
                 "exec": "labelme",
                 "apptainer_args": [],
                 "image": "labelme_7.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24526900",
                 "license": [
                     "GPL-3.0-only"
                 ],
@@ -2478,6 +2495,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "lazyslide_arm64_0.13.0",
+                "doi": "https://doi.org/10.5281/zenodo.24528488",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -3208,6 +3226,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "meshlab_2025.07.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527191",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3224,6 +3243,7 @@
                 "exec": "meshlab",
                 "apptainer_args": [],
                 "image": "meshlab_2025.07.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527191",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3250,6 +3270,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "meshlab_arm64_2025.07.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527135",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3266,6 +3287,7 @@
                 "exec": "meshlab",
                 "apptainer_args": [],
                 "image": "meshlab_arm64_2025.07.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527135",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3855,6 +3877,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nnunetv2_2.8.1",
+                "doi": "https://doi.org/10.5281/zenodo.24526956",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -3925,6 +3948,48 @@
             "optical imaging"
         ],
         "description": "nnU-Net v2 (CPU PyTorch 2.15.0 build, code-only — no model weights baked) is a self-configuring deep-learning segmentation framework for 2D and 3D biomedical images including dermoscopy, OCT, HFUS, and histopathology. ### Included CLI Tools"
+    },
+    "octproz": {
+        "apps": {
+            "octproz 1.8.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "octproz_1.8.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "GNU General Public License v3.0 or later",
+                        "url": "https://github.com/spectralcode/OCTproZ/blob/v1.8.0/LICENSE"
+                    }
+                ]
+            },
+            "OCTproZ-octproz 1.8.0": {
+                "version": "20261125",
+                "exec": "OCTproZ",
+                "apptainer_args": [],
+                "image": "octproz_1.8.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "GNU General Public License v3.0 or later",
+                        "url": "https://github.com/spectralcode/OCTproZ/blob/v1.8.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "image reconstruction",
+            "visualization"
+        ],
+        "description": "OCTproZ is GPU-accelerated open-source software (GPL-3.0-or-later) for raw optical coherence tomography (OCT) interferogram reconstruction and real-time 2D B-scan, en face, and 3D volume visualization. This container builds OCTproZ 1.8.0 (`v1.8.0`) from source with CUDA 12.8 (native kernels for compute capability 5.2 through 12.0 plus PTX for newer GPUs) and bundles the in-repo Virtual OCT System and Demo Extension plugins, color lookup tables, and offline documentation. Requirements: - An NVIDIA GPU with a CUDA 12 capable driver (525 or newer). The driver library (`libcuda.so.1`) comes from the host, so launch with GPU passthrough (for"
     },
     "omero": {
         "apps": {
@@ -4007,6 +4072,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "open3d_arm64_0.20.0",
+                "doi": "https://doi.org/10.5281/zenodo.24528669",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -4083,21 +4149,19 @@
                 ]
             },
             "palmettobug 0.2.11": {
-                "version": "20261024",
+                "version": "20261125",
                 "exec": "",
                 "apptainer_args": [],
                 "image": "palmettobug_0.2.11",
-                "doi": "https://doi.org/10.5281/zenodo.23850184",
                 "license": [
                     "GPL-3.0-only"
                 ]
             },
             "palmettobugGUI-palmettobug 0.2.11": {
-                "version": "20261024",
+                "version": "20261125",
                 "exec": "palmettobug",
                 "apptainer_args": [],
                 "image": "palmettobug_0.2.11",
-                "doi": "https://doi.org/10.5281/zenodo.23850184",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -4165,6 +4229,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "phasorpy_0.13.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527215",
                 "license": [
                     "MIT"
                 ],
@@ -4191,6 +4256,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "phasorpy_arm64_0.13.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527193",
                 "license": [
                     "MIT"
                 ],
@@ -4669,6 +4735,24 @@
                 "license": [
                     "AGPL-3.0-only"
                 ]
+            },
+            "rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
+            },
+            "rstudioGUI-rstudio 2026.11.1": {
+                "version": "20261125",
+                "exec": "rstudio",
+                "apptainer_args": [],
+                "image": "rstudio_2026.11.1",
+                "license": [
+                    "AGPL-3.0-only"
+                ]
             }
         },
         "categories": [
@@ -4933,6 +5017,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "slideflow_3.0.2",
+                "doi": "https://doi.org/10.5281/zenodo.24527221",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -5057,6 +5142,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "stardist_0.9.2",
+                "doi": "https://doi.org/10.5281/zenodo.24528747",
                 "license": [
                     "Apache-2.0",
                     "BSD-2-Clause",
@@ -5153,6 +5239,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "tiatoolbox_2.1.3",
+                "doi": "https://doi.org/10.5281/zenodo.24527342",
                 "license": [
                     "BSD-3-Clause",
                     "LGPL-2.1-only"
@@ -5195,6 +5282,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "tiatoolbox_arm64_2.1.3",
+                "doi": "https://doi.org/10.5281/zenodo.24527249",
                 "license": [
                     "BSD-3-Clause",
                     "LGPL-2.1-only"
@@ -5336,6 +5424,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "valis_1.2.0",
+                "doi": "https://doi.org/10.5281/zenodo.24527828",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
