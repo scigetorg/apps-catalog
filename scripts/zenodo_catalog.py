@@ -357,11 +357,19 @@ class RemoteStream:
         try:
             # Use read1 so a single read() makes at most one bounded recv() instead
             # of looping across many slow trickle receives past the deadline.
+            # On urllib3 1.26, HTTPResponse lacks read1(), so delegate to its
+            # underlying http.client.HTTPResponse._fp.read1().
             read1 = getattr(type(raw), "read1", None)
+            fp = getattr(raw, "_fp", None) if isinstance(raw, HTTPResponse) else None
+            fp_read1 = getattr(type(fp), "read1", None)
             if isinstance(raw, HTTPResponse) and callable(read1):
                 chunk = raw.read1(size, decode_content=False)
             elif callable(read1):
                 chunk = raw.read1(size)
+            elif fp is not None and callable(fp_read1):
+                chunk = fp.read1(size)
+                if isinstance(getattr(raw, "_fp_bytes_read", None), int):
+                    raw._fp_bytes_read += len(chunk)
             else:
                 chunk = raw.read(size)
         except (ReadTimeoutError, TimeoutError) as exc:

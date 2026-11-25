@@ -598,18 +598,25 @@ class ZenodoCatalogTests(unittest.TestCase):
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
         try:
-            response = requests.get(f"http://127.0.0.1:{port}/demo.simg",
-                                    stream=True, timeout=(5, 5))
-            try:
-                started = time.monotonic()
-                stream = RemoteStream(response, 16, deadline=started + 0.15)
-                with self.assertRaisesRegex(requests.ReadTimeout, "upload deadline exceeded"):
-                    while stream.read(8192):
-                        pass
-                elapsed = time.monotonic() - started
-                self.assertLess(elapsed, 0.30)
-            finally:
-                response.close()
+            for legacy_urllib3 in (False, True):
+                response = requests.get(f"http://127.0.0.1:{port}/demo.simg",
+                                        stream=True, timeout=(5, 5))
+                try:
+                    if legacy_urllib3:
+                        # Exercise the urllib3 1.26 path where HTTPResponse lacks read1()
+                        # and RemoteStream delegates to raw._fp.read1().
+                        class LegacyHTTPResponse(type(response.raw)):
+                            read1 = None  # type: ignore[assignment]
+                        response.raw.__class__ = LegacyHTTPResponse
+                    started = time.monotonic()
+                    stream = RemoteStream(response, 16, deadline=started + 0.15)
+                    with self.assertRaisesRegex(requests.ReadTimeout, "upload deadline exceeded"):
+                        while stream.read(8192):
+                            pass
+                    elapsed = time.monotonic() - started
+                    self.assertLess(elapsed, 0.30, f"legacy_urllib3={legacy_urllib3}")
+                finally:
+                    response.close()
         finally:
             server.shutdown()
             server.server_close()
