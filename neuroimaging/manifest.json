@@ -1,7 +1,7 @@
 {
-    "entries": 810,
+    "entries": 811,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "2668dde4dbdfae56808c68ec59924f3fde1a5d8f"
+        "NeuroDesk/neurocontainers": "fbf01ce28304e2c5c50978372763b96a301a9181"
     },
     "app_sources": {
         "afni": {
@@ -500,6 +500,9 @@
         },
         "deepwmh": {
             "deepwmh 1.0.1": "NeuroDesk/neurocontainers"
+        },
+        "dentateseg": {
+            "dentateseg 0.3.2": "NeuroDesk/neurocontainers"
         },
         "dhcpstructuralpipeline": {
             "dhcpstructuralpipeline 1.1": "NeuroDesk/neurocontainers"

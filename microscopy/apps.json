@@ -95,6 +95,90 @@
         "description": "ANTs extracts information from complex datasets that include imaging. Paired with ANTsR, ANTs is useful for managing, interpreting and visualizing multidimensional data. ANTs is popularly considered a state-of-the-art medical image registration and segmentation toolkit. ANTsR is an emerging tool supporting standardized multimodality image analysis. ANTs depends on the Insight ToolKit (ITK), a widely used medical image processing library to which ANTs developers contribute. A summary of some ANTs findings and tutorial material (most of which is on this page) is here.\\",
         "citation": "Avants BB, Tustison NJ, Song G, Cook PA, Klein A, Gee JC. A reproducible evaluation of ANTs similarity metric performance in brain image registration. Neuroimage. 2011 Feb 1;54(3):2033-44. doi: 10.1016/j.neuroimage.2010.09.025. Epub 2010 Sep 17. PMID: 20851191; PMCID: PMC3065962."
     },
+    "bioformats2raw": {
+        "apps": {
+            "bioformats2raw 0.14.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "bioformats2raw_0.14.0",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "LGPL-2.1-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "bioformats2raw license",
+                        "url": "https://github.com/glencoesoftware/bioformats2raw/blob/v0.14.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Bio-Formats (formats-gpl) license",
+                        "url": "https://github.com/ome/bioformats/blob/v9.0.0-rc2/LICENSE.txt"
+                    },
+                    {
+                        "license": "LGPL-2.1-or-later",
+                        "name": "OME mdbtools license",
+                        "url": "https://github.com/ome/ome-mdbtools/blob/v5.4.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "OME metakit license",
+                        "url": "https://github.com/ome/ome-metakit/blob/v5.4.0/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "optical imaging",
+            "data organisation"
+        ],
+        "description": "`bioformats2raw` (Glencoe Software) converts proprietary whole-slide microscopy, reflectance confocal microscopy (RCM), and multiphoton acquisitions supported by Bio-Formats into cloud-native OME-Zarr (OME-NGFF) pyramids for downstream viewing and analysis in `napari`, `qupath`, and `webknossos`. ### Included CLI Tool"
+    },
+    "bioformats2raw_arm64": {
+        "apps": {
+            "bioformats2raw_arm64 0.14.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "bioformats2raw_arm64_0.14.0",
+                "license": [
+                    "GPL-2.0-or-later",
+                    "LGPL-2.1-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "bioformats2raw license",
+                        "url": "https://github.com/glencoesoftware/bioformats2raw/blob/v0.14.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "Bio-Formats (formats-gpl) license",
+                        "url": "https://github.com/ome/bioformats/blob/v9.0.0-rc2/LICENSE.txt"
+                    },
+                    {
+                        "license": "LGPL-2.1-or-later",
+                        "name": "OME mdbtools license",
+                        "url": "https://github.com/ome/ome-mdbtools/blob/v5.4.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "OME metakit license",
+                        "url": "https://github.com/ome/ome-metakit/blob/v5.4.0/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "optical imaging",
+            "data organisation"
+        ],
+        "description": "`bioformats2raw` (Glencoe Software) converts proprietary whole-slide microscopy, reflectance confocal microscopy (RCM), and multiphoton acquisitions supported by Bio-Formats into cloud-native OME-Zarr (OME-NGFF) pyramids for downstream viewing and analysis in `napari`, `qupath`, and `webknossos`. ### Included CLI Tool"
+    },
     "blender": {
         "apps": {
             "blender 5.0.1": {
@@ -316,6 +400,92 @@
         "citation": "Stirling, D. R., Swain-Bowden, M. J., Lucas, A. M., Carpenter, A. E.,\nCimini, B. A., & Goodman, A. (2021). CellProfiler 4: improvements in speed,\nutility and usability. BMC Bioinformatics, 22, 433.\nhttps://doi.org/10.1186/s12859-021-04344-9",
         "description": "CellProfiler is an open-source application for quantitative high-throughput microscopy image analysis, providing both an interactive GUI pipeline builder and headless batch execution via Bio-Formats."
     },
+    "cloudcompare": {
+        "apps": {
+            "cloudcompare 2.13.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cloudcompare_2.13.2",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "CloudCompare license",
+                        "url": "https://github.com/CloudCompare/CloudCompare/blob/v2.13.2/license.txt"
+                    }
+                ]
+            },
+            "CloudCompare-cloudcompare 2.13.2": {
+                "version": "20261125",
+                "exec": "CloudCompare",
+                "apptainer_args": [],
+                "image": "cloudcompare_2.13.2",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "CloudCompare license",
+                        "url": "https://github.com/CloudCompare/CloudCompare/blob/v2.13.2/license.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image registration",
+            "shape analysis",
+            "body"
+        ],
+        "description": "CloudCompare is a 3D point-cloud and triangular mesh processing suite supporting ICP registration, cloud-to-mesh distance mapping, and headless batch operations (`-SILENT`) for longitudinal 3D total-body photography (3D-TBP) and 3D wound surface tracking. ### Included Tools"
+    },
+    "cloudcompare_arm64": {
+        "apps": {
+            "cloudcompare_arm64 2.13.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "cloudcompare_arm64_2.13.2",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "CloudCompare license",
+                        "url": "https://github.com/CloudCompare/CloudCompare/blob/v2.13.2/license.txt"
+                    }
+                ]
+            },
+            "CloudCompare-cloudcompare_arm64 2.13.2": {
+                "version": "20261125",
+                "exec": "CloudCompare",
+                "apptainer_args": [],
+                "image": "cloudcompare_arm64_2.13.2",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-2.0-or-later",
+                        "name": "CloudCompare license",
+                        "url": "https://github.com/CloudCompare/CloudCompare/blob/v2.13.2/license.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "image registration",
+            "shape analysis",
+            "body"
+        ],
+        "description": "CloudCompare is a 3D point-cloud and triangular mesh processing suite supporting ICP registration, cloud-to-mesh distance mapping, and headless batch operations (`-SILENT`) for longitudinal 3D total-body photography (3D-TBP) and 3D wound surface tracking. ### Included Tools"
+    },
     "cmtk": {
         "apps": {
             "cmtk 3.4.0": {
@@ -334,6 +504,176 @@
             "structural imaging"
         ],
         "description": "Computational Morphometry Toolkit provides CPU registration and image resampling. Run `cmtk registration --help`, `cmtk warp --help`, or `cmtk reformatx --help` for the affine, nonrigid, and resampling commands. Installed from the official CMTK 3.4.0 source release. This build supports NIfTI, Analyze, and NRRD images. DICOM support uses the bundled DCMTK library. Optional CUDA and Qt viewers are disabled. License texts are in `/opt/cmtk/share/licenses/cmtk`. [Upstream documentation](https://www.nitrc.org/projects/cmtk/)"
+    },
+    "colmap": {
+        "apps": {
+            "colmap 3.12.6": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "colmap_3.12.6",
+                "license": [
+                    "BSD-3-Clause"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "COLMAP license",
+                        "url": "https://github.com/colmap/colmap/blob/3.12.6/COPYING.txt"
+                    }
+                ]
+            },
+            "COLMAP-colmap 3.12.6": {
+                "version": "20261125",
+                "exec": "colmap gui",
+                "apptainer_args": [],
+                "image": "colmap_3.12.6",
+                "license": [
+                    "BSD-3-Clause"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "COLMAP license",
+                        "url": "https://github.com/colmap/colmap/blob/3.12.6/COPYING.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image reconstruction",
+            "shape analysis",
+            "body"
+        ],
+        "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) photogrammetry pipeline — useful for reconstructing 3D wound, scar, and body surface geometry from overlapping clinical photographs. ### Included Tool"
+    },
+    "colmap_arm64": {
+        "apps": {
+            "colmap_arm64 3.12.6": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "colmap_arm64_3.12.6",
+                "license": [
+                    "BSD-3-Clause"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "COLMAP license",
+                        "url": "https://github.com/colmap/colmap/blob/3.12.6/COPYING.txt"
+                    }
+                ]
+            },
+            "COLMAP-colmap_arm64 3.12.6": {
+                "version": "20261125",
+                "exec": "colmap gui",
+                "apptainer_args": [],
+                "image": "colmap_arm64_3.12.6",
+                "license": [
+                    "BSD-3-Clause"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "COLMAP license",
+                        "url": "https://github.com/colmap/colmap/blob/3.12.6/COPYING.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image reconstruction",
+            "shape analysis",
+            "body"
+        ],
+        "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) photogrammetry pipeline — useful for reconstructing 3D wound, scar, and body surface geometry from overlapping clinical photographs. ### Included Tool"
+    },
+    "colour-science": {
+        "apps": {
+            "colour-science 0.4.7": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "colour-science_0.4.7",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "MIT-CMU"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Colour license",
+                        "url": "https://github.com/colour-science/colour/blob/v0.4.7/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Colour - Checker Detection license",
+                        "url": "https://github.com/colour-science/colour-checker-detection/blob/v0.2.3/LICENSE"
+                    },
+                    {
+                        "license": "MIT-CMU",
+                        "name": "Pillow license",
+                        "url": "https://github.com/python-pillow/Pillow/blob/13.0.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "OpenImageIO license",
+                        "url": "https://github.com/AcademySoftwareFoundation/OpenImageIO/blob/v3.2.2.0/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quantitative imaging",
+            "quality control"
+        ],
+        "description": "Provides `colour-science` (0.4.7) and `colour-checker-detection` (0.2.3) using the classical BSD-3-Clause segmentation detector (backed by Ubuntu's system `python3-opencv` package and excluding the optional AGPL Ultralytics extra), together with the `colour-derm` CLI for dermatology colorimetry, CIELAB/ITA skin-tone quantification, and ColorChecker reference chart detection. ### Included CLI Tool"
+    },
+    "colour-science_arm64": {
+        "apps": {
+            "colour-science_arm64 0.4.7": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "colour-science_arm64_0.4.7",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "MIT-CMU"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Colour license",
+                        "url": "https://github.com/colour-science/colour/blob/v0.4.7/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Colour - Checker Detection license",
+                        "url": "https://github.com/colour-science/colour-checker-detection/blob/v0.2.3/LICENSE"
+                    },
+                    {
+                        "license": "MIT-CMU",
+                        "name": "Pillow license",
+                        "url": "https://github.com/python-pillow/Pillow/blob/13.0.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "OpenImageIO license",
+                        "url": "https://github.com/AcademySoftwareFoundation/OpenImageIO/blob/v3.2.2.0/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quantitative imaging",
+            "quality control"
+        ],
+        "description": "Provides `colour-science` (0.4.7) and `colour-checker-detection` (0.2.3) using the classical BSD-3-Clause segmentation detector (backed by Ubuntu's system `python3-opencv` package and excluding the optional AGPL Ultralytics extra), together with the `colour-derm` CLI for dermatology colorimetry, CIELAB/ITA skin-tone quantification, and ColorChecker reference chart detection. ### Included CLI Tool"
     },
     "convert3d": {
         "apps": {
@@ -785,6 +1125,90 @@
         ],
         "description": "DeepLabCut is a toolbox for state-of-the-art markerless pose estimation of animals performing various behaviors. As long as you can see (label) what you want to track, you can use this toolbox, as it is animal and object agnostic.",
         "citation": "@article{Mathisetal2018,\n    title = {DeepLabCut: markerless pose estimation of user-defined body parts with deep learning},\n    author = {Alexander Mathis and Pranav Mamidanna and Kevin M. Cury and Taiga Abe  and Venkatesh N. Murthy and Mackenzie W. Mathis and Matthias Bethge},\n    journal = {Nature Neuroscience},\n    year = {2018},\n    url = {https://www.nature.com/articles/s41593-018-0209-y}}\n\n @article{NathMathisetal2019,\n    title = {Using DeepLabCut for 3D markerless pose estimation across species and behaviors},\n    author = {Nath*, Tanmay and Mathis*, Alexander and Chen, An Chi and Patel, Amir and Bethge, Matthias and Mathis, Mackenzie W},\n    journal = {Nature Protocols},\n    year = {2019},\n    url = {https://doi.org/10.1038/s41596-019-0176-0}}\n    \n@InProceedings{Mathis_2021_WACV,\n    author    = {Mathis, Alexander and Biasi, Thomas and Schneider, Steffen and Yuksekgonul, Mert and Rogers, Byron and Bethge, Matthias and Mathis, Mackenzie W.},\n    title     = {Pretraining Boosts Out-of-Domain Robustness for Pose Estimation},\n    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},\n    month     = {January},\n    year      = {2021},\n    pages     = {1859-1868}}\n    \n@article{Lauer2022MultianimalPE,\n    title={Multi-animal pose estimation, identification and tracking with DeepLabCut},\n    author={Jessy Lauer and Mu Zhou and Shaokai Ye and William Menegas and Steffen Schneider and Tanmay Nath and Mohammed Mostafizur Rahman and     Valentina Di Santo and Daniel Soberanes and Guoping Feng and Venkatesh N. Murthy and George Lauder and Catherine Dulac and M. Mathis and Alexander Mathis},\n    journal={Nature Methods},\n    year={2022},\n    volume={19},\n    pages={496 - 504}}\n\n@article{Ye2024SuperAnimal,\n    title={SuperAnimal pretrained pose estimation models for behavioral analysis},\n    author={Shaokai Ye and Anastasiia Filippova and Jessy Lauer and Steffen Schneider and Maxime Vidal and and Tian Qiu and Alexander Mathis and Mackenzie W. Mathis},\n    journal={Nature Communications},\n    year={2024},\n    volume={15}}"
+    },
+    "dicom-validator": {
+        "apps": {
+            "dicom-validator 0.9.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dicom-validator_0.9.0",
+                "license": [
+                    "BSD-3-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "dicom-validator license",
+                        "url": "https://github.com/pydicom/dicom-validator/blob/v0.9.0/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "highdicom license",
+                        "url": "https://github.com/ImagingDataCommons/highdicom/blob/v0.29.0/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "pyjpegls license",
+                        "url": "https://github.com/pydicom/pyjpegls/blob/v1.5.1/license.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "CharLS license",
+                        "url": "https://github.com/team-charls/charls/blob/36dd3307e070d8fbc765c3ba890b7e681046fa39/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quality control",
+            "data organisation"
+        ],
+        "description": "`dicom-validator` (0.9.0) validates DICOM files against DICOM PS3.3/PS3.4/PS3.6 standard IOD definitions — including Supplement 221 Dermoscopic Photography (`1.2.840.10008.5.1.4.1.1.77.1.7`) and Supplement 145 VL Whole Slide Microscopy (`1.2.840.10008.5.1.4.1.1.77.1.6`). This container also includes `highdicom` (0.29.0) for DICOM segmentation, structured reporting (SR), and microscopy/clinical annotation workflows (note: `highdicom` does not provide dedicated image constructors for the Dermoscopic Photography or WSI image IODs). ### Included CLI Tools"
+    },
+    "dicom-validator_arm64": {
+        "apps": {
+            "dicom-validator_arm64 0.9.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dicom-validator_arm64_0.9.0",
+                "license": [
+                    "BSD-3-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "dicom-validator license",
+                        "url": "https://github.com/pydicom/dicom-validator/blob/v0.9.0/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "highdicom license",
+                        "url": "https://github.com/ImagingDataCommons/highdicom/blob/v0.29.0/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "pyjpegls license",
+                        "url": "https://github.com/pydicom/pyjpegls/blob/v1.5.1/license.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "CharLS license",
+                        "url": "https://github.com/team-charls/charls/blob/36dd3307e070d8fbc765c3ba890b7e681046fa39/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quality control",
+            "data organisation"
+        ],
+        "description": "`dicom-validator` (0.9.0) validates DICOM files against DICOM PS3.3/PS3.4/PS3.6 standard IOD definitions — including Supplement 221 Dermoscopic Photography (`1.2.840.10008.5.1.4.1.1.77.1.7`) and Supplement 145 VL Whole Slide Microscopy (`1.2.840.10008.5.1.4.1.1.77.1.6`). This container also includes `highdicom` (0.29.0) for DICOM segmentation, structured reporting (SR), and microscopy/clinical annotation workflows (note: `highdicom` does not provide dedicated image constructors for the Dermoscopic Photography or WSI image IODs). ### Included CLI Tools"
     },
     "dicomtools": {
         "apps": {
@@ -1366,6 +1790,142 @@
         ],
         "description": "Globus client"
     },
+    "histoqc": {
+        "apps": {
+            "histoqc 2.0.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "histoqc_2.0.0",
+                "license": [
+                    "BSD-3-Clause-Clear",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause-Clear",
+                        "name": "HistoQC license",
+                        "url": "https://github.com/choosehappy/HistoQC/blob/376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5/LICENSE.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause-Clear",
+                        "name": "CohortFinder license",
+                        "url": "https://github.com/choosehappy/CohortFinder/blob/02cc538ee4de47dbbeb63ced95f38f8ba8a40ba6/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "lazy-property license",
+                        "url": "https://github.com/jackmaney/lazy-property/blob/a412bf3d3042eeeb6df72d0ccf5bb45464b90ef4/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "quality control",
+            "optical imaging"
+        ],
+        "description": "HistoQC (commit `376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5`) is an open-source quality control pipeline for digital pathology whole-slide images (WSIs), detecting tissue area, pen markings, out-of-focus blur, air bubbles, and staining outliers. ### Included CLI Tools"
+    },
+    "histoqc_arm64": {
+        "apps": {
+            "histoqc_arm64 2.0.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "histoqc_arm64_2.0.0",
+                "license": [
+                    "BSD-3-Clause-Clear",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause-Clear",
+                        "name": "HistoQC license",
+                        "url": "https://github.com/choosehappy/HistoQC/blob/376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5/LICENSE.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause-Clear",
+                        "name": "CohortFinder license",
+                        "url": "https://github.com/choosehappy/CohortFinder/blob/02cc538ee4de47dbbeb63ced95f38f8ba8a40ba6/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "lazy-property license",
+                        "url": "https://github.com/jackmaney/lazy-property/blob/a412bf3d3042eeeb6df72d0ccf5bb45464b90ef4/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "quality control",
+            "optical imaging"
+        ],
+        "description": "HistoQC (commit `376f49a53a8d3891b3f2cf2bd16aa62f6c71f5f5`) is an open-source quality control pipeline for digital pathology whole-slide images (WSIs), detecting tissue area, pen markings, out-of-focus blur, air bubbles, and staining outliers. ### Included CLI Tools"
+    },
+    "hyperspy": {
+        "apps": {
+            "hyperspy 2.5.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "hyperspy_2.5.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "HyperSpy license",
+                        "url": "https://github.com/hyperspy/hyperspy/blob/v2.5.0/COPYING.txt"
+                    },
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "RosettaSciIO license",
+                        "url": "https://github.com/hyperspy/rosettasciio/blob/v0.15.0/COPYING.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "spectroscopy",
+            "quantitative imaging"
+        ],
+        "description": "HyperSpy is an open-source Python library for multi-dimensional spectroscopic and hyperspectral data analysis (decomposition, blind source separation, curve fitting, and HDF5/TIFF I/O via RosettaSciIO 0.15.0) — suited for Raman, reflectance, and fluorescence optical skin imaging. ### Included CLI Tool"
+    },
+    "hyperspy_arm64": {
+        "apps": {
+            "hyperspy_arm64 2.5.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "hyperspy_arm64_2.5.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "HyperSpy license",
+                        "url": "https://github.com/hyperspy/hyperspy/blob/v2.5.0/COPYING.txt"
+                    },
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "RosettaSciIO license",
+                        "url": "https://github.com/hyperspy/rosettasciio/blob/v0.15.0/COPYING.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "spectroscopy",
+            "quantitative imaging"
+        ],
+        "description": "HyperSpy is an open-source Python library for multi-dimensional spectroscopic and hyperspectral data analysis (decomposition, blind source separation, curve fitting, and HDF5/TIFF I/O via RosettaSciIO 0.15.0) — suited for Raman, reflectance, and fluorescence optical skin imaging. ### Included CLI Tool"
+    },
     "icy": {
         "apps": {
             "icy 2.5.4.0": {
@@ -1470,6 +2030,82 @@
         ],
         "description": "ilastik is a simple, user-friendly tool for interactive image classification, segmentation and analysis. It is built as a modular software framework, which currently has workflows for automated (supervised) pixel- and object-level classification, automated and semi-automated object tracking, semi-automated segmentation and object counting without detection.",
         "citation": "ilastik: interactive machine learning for (bio)image analysis\nStuart Berg, Dominik Kutra, Thorben Kroeger, Christoph N. Straehle, Bernhard X. Kausler, Carsten Haubold, Martin Schiegg, Janez Ales, Thorsten Beier, Markus Rudy, Kemal Eren, Jaime I Cervantes, Buote Xu, Fynn Beuttenmueller, Adrian Wolny, Chong Zhang, Ullrich Koethe, Fred A. Hamprecht & Anna Kreshuk\nin: Nature Methods, (2019)"
+    },
+    "instanseg": {
+        "apps": {
+            "instanseg 0.1.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "instanseg_0.1.2",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "InstanSeg license",
+                        "url": "https://github.com/instanseg/instanseg/blob/v0.1.2/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-3.0-only",
+                        "name": "fastremap license",
+                        "url": "https://github.com/seung-lab/fastremap/blob/1.21.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "`InstanSeg` (`instanseg-torch`) is an Apache-2.0 embedding-based nuclei and cell instance segmentation toolkit supporting brightfield H&E dermatopathology and multichannel fluorescence microscopy. This container ships the official open-source CPU PyTorch (`2.15.0+cpu`) build on both `x86_64` and `aarch64` without proprietary CUDA wheels. ### Included CLI Tool"
+    },
+    "instanseg_arm64": {
+        "apps": {
+            "instanseg_arm64 0.1.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "instanseg_arm64_0.1.2",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "InstanSeg license",
+                        "url": "https://github.com/instanseg/instanseg/blob/v0.1.2/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-3.0-only",
+                        "name": "fastremap license",
+                        "url": "https://github.com/seung-lab/fastremap/blob/1.21.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "`InstanSeg` (`instanseg-torch`) is an Apache-2.0 embedding-based nuclei and cell instance segmentation toolkit supporting brightfield H&E dermatopathology and multichannel fluorescence microscopy. This container ships the official open-source CPU PyTorch (`2.15.0+cpu`) build on both `x86_64` and `aarch64` without proprietary CUDA wheels. ### Included CLI Tool"
     },
     "irkernel": {
         "apps": {
@@ -1700,6 +2336,190 @@
         ],
         "citation": "Gerst, R., Cseresnyés, Z., & Figge, M. T. (2023). JIPipe: visual batch\nprocessing for ImageJ. Nature Methods, 20(2), 168-169.\nhttps://doi.org/10.1038/s41592-022-01744-4",
         "description": "JIPipe (Java Image Processing Pipeline) is an open-source visual programming language and workflow builder for ImageJ/Fiji, enabling reproducible batch microscopy image analysis without coding."
+    },
+    "labelme": {
+        "apps": {
+            "labelme 7.11.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "labelme_7.11.0",
+                "license": [
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-only",
+                        "name": "Labelme license",
+                        "url": "https://github.com/wkentaro/labelme/blob/v7.11.0/LICENSE"
+                    }
+                ]
+            },
+            "LabelMe-labelme 7.11.0": {
+                "version": "20261125",
+                "exec": "labelme",
+                "apptainer_args": [],
+                "image": "labelme_7.11.0",
+                "license": [
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-only",
+                        "name": "Labelme license",
+                        "url": "https://github.com/wkentaro/labelme/blob/v7.11.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "optical imaging",
+            "visualization"
+        ],
+        "description": "Labelme is an open-source graphical image annotation tool for polygon, rectangle, circle, line, point, and mask labeling — well suited for offline dermoscopic lesion delineation, clinical macro photography, and chronic wound boundary annotation. This container ships code only (no pre-downloaded AI/SAM weights) and uses Ubuntu 26.04 system `PySide6` packages. ### Included GUI Tool"
+    },
+    "labelme_arm64": {
+        "apps": {
+            "labelme_arm64 7.11.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "labelme_arm64_7.11.0",
+                "license": [
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-only",
+                        "name": "Labelme license",
+                        "url": "https://github.com/wkentaro/labelme/blob/v7.11.0/LICENSE"
+                    }
+                ]
+            },
+            "LabelMe-labelme_arm64 7.11.0": {
+                "version": "20261125",
+                "exec": "labelme",
+                "apptainer_args": [],
+                "image": "labelme_arm64_7.11.0",
+                "license": [
+                    "GPL-3.0-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-only",
+                        "name": "Labelme license",
+                        "url": "https://github.com/wkentaro/labelme/blob/v7.11.0/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "optical imaging",
+            "visualization"
+        ],
+        "description": "Labelme is an open-source graphical image annotation tool for polygon, rectangle, circle, line, point, and mask labeling — well suited for offline dermoscopic lesion delineation, clinical macro photography, and chronic wound boundary annotation. This container ships code only (no pre-downloaded AI/SAM weights) and uses Ubuntu 26.04 system `PySide6` packages. ### Included GUI Tool"
+    },
+    "lazyslide": {
+        "apps": {
+            "lazyslide 0.13.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "lazyslide_0.13.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "LazySlide license",
+                        "url": "https://github.com/rendeirolab/lazyslide/blob/v0.13.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "OpenCV license",
+                        "url": "https://github.com/opencv/opencv/blob/4.14.0/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.2/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.7/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning",
+            "optical imaging"
+        ],
+        "description": "LazySlide (CPU-only PyTorch build, code-only without baked foundation-model checkpoints) provides whole-slide image (WSI) reading, tissue segmentation, tiling, and SpatialData/WSIData integration for computational dermatopathology. ### Included CLI & Python Environment"
+    },
+    "lazyslide_arm64": {
+        "apps": {
+            "lazyslide_arm64 0.13.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "lazyslide_arm64_0.13.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "LazySlide license",
+                        "url": "https://github.com/rendeirolab/lazyslide/blob/v0.13.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "OpenCV license",
+                        "url": "https://github.com/opencv/opencv/blob/4.14.0/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.2/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.7/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning",
+            "optical imaging"
+        ],
+        "description": "LazySlide (CPU-only PyTorch build, code-only without baked foundation-model checkpoints) provides whole-slide image (WSI) reading, tissue segmentation, tiling, and SpatialData/WSIData integration for computational dermatopathology. ### Included CLI & Python Environment"
     },
     "libreoffice": {
         "apps": {
@@ -2381,6 +3201,90 @@
         "description": "MEDE de-identifies medical imaging data including MRI, CT, ultrasound, whole slide images, and MRI raw data. It supports metadata de-identification, defacing, skull stripping, text removal, and file renaming.\nThis container removes all private DICOM tags recursively with basicProfile. The rtnSafePrivOpt option is rejected because MEDE 0.0.12 has no validated safe-private allowlist. Other profiles alone do not enable basicProfile; select it explicitly for metadata de-identification.",
         "citation": "Rempe M, Heine L, Seibold C, Horst F, Kleesiek J. De-identification of medical imaging data: a comprehensive tool for ensuring patient privacy. European Radiology. 2025."
     },
+    "meshlab": {
+        "apps": {
+            "meshlab 2025.07.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "meshlab_2025.07.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MeshLab license",
+                        "url": "https://github.com/cnr-isti-vclab/meshlab/blob/main/LICENSE.txt"
+                    }
+                ]
+            },
+            "MeshLab-meshlab 2025.07.0": {
+                "version": "20261125",
+                "exec": "meshlab",
+                "apptainer_args": [],
+                "image": "meshlab_2025.07.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MeshLab license",
+                        "url": "https://github.com/cnr-isti-vclab/meshlab/blob/main/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "shape analysis",
+            "body"
+        ],
+        "description": "MeshLab is an open-source system for processing, cleaning, remeshing, inspecting, and measuring 3D triangular meshes — useful for textured `.obj`/`.ply` exports from 3D total-body photography (3D-TBP) systems and 3D wound or scar surface reconstructions. ### Included GUI Tool"
+    },
+    "meshlab_arm64": {
+        "apps": {
+            "meshlab_arm64 2025.07.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "meshlab_arm64_2025.07.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MeshLab license",
+                        "url": "https://github.com/cnr-isti-vclab/meshlab/blob/main/LICENSE.txt"
+                    }
+                ]
+            },
+            "MeshLab-meshlab_arm64 2025.07.0": {
+                "version": "20261125",
+                "exec": "meshlab",
+                "apptainer_args": [],
+                "image": "meshlab_arm64_2025.07.0",
+                "license": [
+                    "GPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "MeshLab license",
+                        "url": "https://github.com/cnr-isti-vclab/meshlab/blob/main/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "visualization",
+            "shape analysis",
+            "body"
+        ],
+        "description": "MeshLab is an open-source system for processing, cleaning, remeshing, inspecting, and measuring 3D triangular meshes — useful for textured `.obj`/`.ply` exports from 3D total-body photography (3D-TBP) systems and 3D wound or scar surface reconstructions. ### Included GUI Tool"
+    },
     "mipav": {
         "apps": {
             "mipav 11.3.3": {
@@ -2944,6 +3848,84 @@
         "description": "It is said that `imitation is the sincerest form of flattery`. This project emulates the popular [fslmaths](https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro3/index.html) tool. fslmaths is advertised as a `general image calculator` and is not only one of the foundational tools for FSL's brain imaging pipelines (such as [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT)), but has also been widely adopted by many tools. This popularity suggests that it fulfills an important niche. While scientists are often encouraged to discover novel solutions, it sometimes seems that replication is undervalued. Here are some specific reasons for creating this tool:",
         "citation": "Rorden C, Webster M, Drake C, Jenkinson M, Clayden JD, Li N, Hanayik T (2024) niimath and fslmaths: replication as a method to enhance popular neuroimaging tools. Aperture Neuro.4. doi:10.52294/001c.94384"
     },
+    "nnunetv2": {
+        "apps": {
+            "nnunetv2 2.8.1": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nnunetv2_2.8.1",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "nnU-Net v2 license",
+                        "url": "https://github.com/MIC-DKFZ/nnUNet/blob/v2.8.1/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-3.0-or-later",
+                        "name": "connected-components-3d license",
+                        "url": "https://github.com/seung-lab/connected-components-3d/blob/4.1.1/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning",
+            "digital pathology",
+            "optical imaging"
+        ],
+        "description": "nnU-Net v2 (CPU PyTorch 2.15.0 build, code-only — no model weights baked) is a self-configuring deep-learning segmentation framework for 2D and 3D biomedical images including dermoscopy, OCT, HFUS, and histopathology. ### Included CLI Tools"
+    },
+    "nnunetv2_arm64": {
+        "apps": {
+            "nnunetv2_arm64 2.8.1": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "nnunetv2_arm64_2.8.1",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-3.0-or-later"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "nnU-Net v2 license",
+                        "url": "https://github.com/MIC-DKFZ/nnUNet/blob/v2.8.1/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-3.0-or-later",
+                        "name": "connected-components-3d license",
+                        "url": "https://github.com/seung-lab/connected-components-3d/blob/4.1.1/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "machine learning",
+            "digital pathology",
+            "optical imaging"
+        ],
+        "description": "nnU-Net v2 (CPU PyTorch 2.15.0 build, code-only — no model weights baked) is a self-configuring deep-learning segmentation framework for 2D and 3D biomedical images including dermoscopy, OCT, HFUS, and histopathology. ### Included CLI Tools"
+    },
     "omero": {
         "apps": {
             "omero 5.8.6": {
@@ -2973,6 +3955,94 @@
         ],
         "citation": "Allan, C., Burel, J.-M., Moore, J., Blackburn, C., Linkert, M., Loynton, S.,\nMacDonald, D., Moore, W. J., Neves, C., Patterson, A., Porter, M., Tarkowska,\nA., Loranger, B., Avondo, J., Lagerstedt, I., Lianas, L., Leo, S., Hands, K.,\nHay, R. T., ... Swedlow, J. R. (2012). OMERO: flexible, model-driven data\nmanagement for experimental biology. Nature Methods, 9(3), 245-253.\nhttps://doi.org/10.1038/nmeth.1896",
         "description": "OMERO.insight is the official desktop client for the Open Microscopy Environment (OMERO), enabling biologists and imaging facilities to browse, annotate, import, and visualize multi-dimensional microscopy image datasets managed on an OMERO server."
+    },
+    "open3d": {
+        "apps": {
+            "open3d 0.20.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "open3d_0.20.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "Open3D license",
+                        "url": "https://github.com/isl-org/Open3D/blob/v0.20.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "oneTBB license (x86_64 v2021.5.0 / aarch64 v2021.12.0)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.12.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Intel ITT (bundled in oneTBB v2021.5.0 on x86_64)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.5.0/third-party-programs.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Intel ITT (bundled in oneTBB v2021.12.0 on aarch64)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.12.0/third-party-programs.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image reconstruction",
+            "shape analysis",
+            "visualization",
+            "body"
+        ],
+        "description": "Open3D is an open-source 3D data processing library (CPU build) for point-cloud and triangle-mesh registration (ICP, FPFH), surface reconstruction, normal estimation, and morphometric measurement in 3D total-body photography (3D-TBP) and wound/scar imaging. ### Included CLI & Python Environment"
+    },
+    "open3d_arm64": {
+        "apps": {
+            "open3d_arm64 0.20.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "open3d_arm64_0.20.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "Open3D license",
+                        "url": "https://github.com/isl-org/Open3D/blob/v0.20.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "oneTBB license (x86_64 v2021.5.0 / aarch64 v2021.12.0)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.12.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Intel ITT (bundled in oneTBB v2021.5.0 on x86_64)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.5.0/third-party-programs.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "Intel ITT (bundled in oneTBB v2021.12.0 on aarch64)",
+                        "url": "https://github.com/uxlfoundation/oneTBB/blob/v2021.12.0/third-party-programs.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image reconstruction",
+            "shape analysis",
+            "visualization",
+            "body"
+        ],
+        "description": "Open3D is an open-source 3D data processing library (CPU build) for point-cloud and triangle-mesh registration (ICP, FPFH), surface reconstruction, normal estimation, and morphometric measurement in 3D total-body photography (3D-TBP) and wound/scar imaging. ### Included CLI & Python Environment"
     },
     "openrefine": {
         "apps": {
@@ -3087,6 +4157,58 @@
         ],
         "description": "panoptica is a Python framework for instance-wise evaluation of 3D segmentation maps (instance matching, panoptic quality, Dice, IoU, ASSD). Part of the BrainLesion Suite (BLS): https://github.com/BrainLesion This container provides both a command line tool and the Python library. ### Command line",
         "citation": "https://doi.org/10.1101/2024.10.03.24314745"
+    },
+    "phasorpy": {
+        "apps": {
+            "phasorpy 0.13.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "phasorpy_0.13.0",
+                "license": [
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "PhasorPy license",
+                        "url": "https://github.com/phasorpy/phasorpy/blob/v0.13/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quantitative imaging",
+            "spectroscopy"
+        ],
+        "description": "PhasorPy is an open-source Python library and CLI for phasor-space analysis of fluorescence lifetime imaging microscopy (FLIM) and hyperspectral fluorescence data — useful for multiphoton and NADH/FAD autofluorescence skin imaging. ### Included CLI Tool"
+    },
+    "phasorpy_arm64": {
+        "apps": {
+            "phasorpy_arm64 0.13.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "phasorpy_arm64_0.13.0",
+                "license": [
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "PhasorPy license",
+                        "url": "https://github.com/phasorpy/phasorpy/blob/v0.13/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "quantitative imaging",
+            "spectroscopy"
+        ],
+        "description": "PhasorPy is an open-source Python library and CLI for phasor-space analysis of fluorescence lifetime imaging microscopy (FLIM) and hyperspectral fluorescence data — useful for multiphoton and NADH/FAD autofluorescence skin imaging. ### Included CLI Tool"
     },
     "plantseg": {
         "apps": {
@@ -3804,6 +4926,51 @@
         ],
         "description": "This project will develop a comprehensive software that will allow biomedical scientists to precisely locate shape changes in their imaging studies. This software called Shape AnaLysis Toolbox (SALT), will enhance the intuitiveness and ease of use for such studies, as well as allow researchers to find shape changes with higher statistical power. Altogether this constitutes a crucial resource for the imaging field that will enable many and important new findings in biomedical imaging studies."
     },
+    "slideflow": {
+        "apps": {
+            "slideflow 3.0.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "slideflow_3.0.2",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-2.1-or-later",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "Slideflow license",
+                        "url": "https://github.com/slideflow/slideflow/blob/3.0.2/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.14.1/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-2.1-or-later",
+                        "name": "crc32c license",
+                        "url": "https://github.com/ICRAR/crc32c/blob/v2.9.post0/LICENSE"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "Dear ImGui license (bundled in imgui)",
+                        "url": "https://github.com/ocornut/imgui/blob/v1.82/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "machine learning",
+            "optical imaging",
+            "visualization"
+        ],
+        "description": "Slideflow (Apache-2.0 core only, CPU PyTorch + libvips backend) provides whole-slide image reading, tile extraction, stain normalization, and deep learning workflows for computational dermatopathology. Non-commercial add-ons (`slideflow-noncommercial`, `triangle`) are intentionally excluded. ### Included CLI & Python Environment"
+    },
     "smartscope": {
         "apps": {
             "smartscope 0.10.0": {
@@ -3830,6 +4997,102 @@
         ],
         "description": "SmartScope (NIEHS and Duke University) screens cryo-EM grids automatically. It drives the microscope through SerialEM: it acquires an atlas, finds and ranks squares and holes, collects high-magnification images and reports CTF and ice-thickness estimates in a web interface. https://smartscope.org Upstream ships SmartScope as several docker-compose services. This container runs them all from one image: MariaDB, Redis, the SmartScope web application (gunicorn behind nginx) and its Celery worker. It also includes IMOD 5.1.13 (`alignframes`) and CTFFIND 5.0.2, which SmartScope uses to process high-magnification movies. ### Create an instance once An instance directory holds the database, settings, logs and screening data. Choose a writable directory that keeps the same path in later sessions. The container image itself is read-only.",
         "citation": "Bouvette J, Huang Q, Riccio AA, Copeland WC, Bartesaghi A,\nBorgnia MJ. Automated systematic evaluation of cryo-EM specimens with\nSmartScope. eLife 11, e80047 (2022). https://doi.org/10.7554/eLife.80047"
+    },
+    "spectral": {
+        "apps": {
+            "spectral 0.26.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "spectral_0.26.0",
+                "license": [
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "Spectral Python license",
+                        "url": "https://github.com/spectralpython/spectral/blob/master/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "spectroscopy",
+            "quantitative imaging"
+        ],
+        "description": "Spectral Python (SPy) is a pure-Python module for processing hyperspectral and multispectral image cubes (ENVI I/O, spectral unmixing, PCA, and Spectral Angle Mapper classification) — suited for VIS-NIR skin chromophore and lesion hyperspectral imaging. ### Included CLI Tool"
+    },
+    "spectral_arm64": {
+        "apps": {
+            "spectral_arm64 0.26.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "spectral_arm64_0.26.0",
+                "license": [
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "Spectral Python license",
+                        "url": "https://github.com/spectralpython/spectral/blob/master/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "optical imaging",
+            "spectroscopy",
+            "quantitative imaging"
+        ],
+        "description": "Spectral Python (SPy) is a pure-Python module for processing hyperspectral and multispectral image cubes (ENVI I/O, spectral unmixing, PCA, and Spectral Angle Mapper classification) — suited for VIS-NIR skin chromophore and lesion hyperspectral imaging. ### Included CLI Tool"
+    },
+    "stardist": {
+        "apps": {
+            "stardist 0.9.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "stardist_0.9.2",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-2-Clause",
+                    "BSD-3-Clause"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "StarDist license",
+                        "url": "https://github.com/stardist/stardist/blob/0.9.2/LICENSE.txt"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "TensorFlow license",
+                        "url": "https://github.com/tensorflow/tensorflow/blob/v2.21.0/LICENSE"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "FlatBuffers license",
+                        "url": "https://github.com/google/flatbuffers/blob/v25.12.19/LICENSE"
+                    },
+                    {
+                        "license": "BSD-2-Clause",
+                        "name": "libaec license (bundled in h5py)",
+                        "url": "https://github.com/Deutsches-Klimarechenzentrum/libaec/blob/v1.1.3/LICENSE.txt"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning",
+            "optical imaging"
+        ],
+        "description": "StarDist (CPU-only TensorFlow/Keras build, code-only without baked pretrained weights) performs star-convex polygon (2D) and polyhedron (3D) instance segmentation of nuclei and cells in H&E histopathology and fluorescence dermatology microscopy. ### Included CLI & Python Environment"
     },
     "terastitcher": {
         "apps": {
@@ -3882,6 +5145,90 @@
         ],
         "description": "TeraStitcher is a free tool that enables the stitching of Teravoxel-sized tiled microscopy images even on workstations with relatively limited resources of memory (<8 GB) and processing power.",
         "citation": "Bria A, Iannello G. TeraStitcher - A tool for fast automatic 3D-stitching of teravoxel-sized microscopy images. BMC Bioinformatics. 2012;13:316. doi:10.1186/1471-2105-13-316\n\nBria A, Bernaschi M, Guarrasi M, Iannello G. Exploiting Multi-Level Parallelism for Stitching Very Large Microscopy Images. Front Neuroinform. 2019;13:41. doi:10.3389/fninf.2019.00041"
+    },
+    "tiatoolbox": {
+        "apps": {
+            "tiatoolbox 2.1.3": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "tiatoolbox_2.1.3",
+                "license": [
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "TIAToolbox license",
+                        "url": "https://github.com/TissueImageAnalytics/tiatoolbox/blob/v2.1.3/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.12.1/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.1/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.3/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "TIAToolbox is an open-source computational pathology toolbox from the Tissue Image Analytics (TIA) Centre for reading whole-slide microscopy images, generating Otsu/morphological tissue masks, performing Macenko/Vahadane/Reinhard H&E stain normalization, and extracting tiles at arbitrary resolutions. This container is **code-only** and ships CPU PyTorch (`2.12.1+cpu`), Ubuntu 26.04 system `OpenCV` and `Shapely`, and OpenSlide (`openslide-bin` 4.0.1.1, `openslide-python` 1.4.3). No pretrained model checkpoints (some of which carry non-commercial upstream"
+    },
+    "tiatoolbox_arm64": {
+        "apps": {
+            "tiatoolbox_arm64 2.1.3": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "tiatoolbox_arm64_2.1.3",
+                "license": [
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only"
+                ],
+                "license_details": [
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "TIAToolbox license",
+                        "url": "https://github.com/TissueImageAnalytics/tiatoolbox/blob/v2.1.3/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.12.1/LICENSE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.1/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.3/COPYING.LESSER"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image segmentation",
+            "machine learning"
+        ],
+        "description": "TIAToolbox is an open-source computational pathology toolbox from the Tissue Image Analytics (TIA) Centre for reading whole-slide microscopy images, generating Otsu/morphological tissue masks, performing Macenko/Vahadane/Reinhard H&E stain normalization, and extracting tiles at arbitrary resolutions. This container is **code-only** and ships CPU PyTorch (`2.12.1+cpu`), Ubuntu 26.04 system `OpenCV` and `Shapely`, and OpenSlide (`openslide-bin` 4.0.1.1, `openslide-python` 1.4.3). No pretrained model checkpoints (some of which carry non-commercial upstream"
     },
     "tissuumaps": {
         "apps": {
@@ -3981,6 +5328,50 @@
         ],
         "description": "A pipeline for particle detection in cryo-electron microscopy images using convolutional neural networks trained from positive and unlabeled examples. Topaz also includes methods for micrograph and tomogram denoising using deep denoising models.",
         "citation": "Bepler, T., Morin, A., Rapp, M. et al. Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs. Nat Methods 16, 1153-1160 (2019)."
+    },
+    "valis": {
+        "apps": {
+            "valis 1.2.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "valis_1.2.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "GPL-3.0-or-later",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "MIT",
+                        "name": "VALIS license",
+                        "url": "https://github.com/MathOnco/valis/blob/v1.2.0/LICENSE.txt"
+                    },
+                    {
+                        "license": "Apache-2.0",
+                        "name": "OpenCV license",
+                        "url": "https://github.com/opencv/opencv/blob/4.9.0/LICENSE"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "PyTorch license",
+                        "url": "https://github.com/pytorch/pytorch/blob/v2.15.0/LICENSE"
+                    },
+                    {
+                        "license": "GPL-3.0-or-later",
+                        "name": "aicspylibczi license",
+                        "url": "https://github.com/AllenCellModeling/aicspylibczi/blob/main/LICENSE"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "image registration",
+            "optical imaging"
+        ],
+        "description": "VALIS (Virtual Alignment of pathoLogy Image Series) performs automated rigid and non-rigid registration of serial H&E, IHC, and multiplex dermatopathology whole-slide images using OpenCV contrib (`xfeatures2d`, `optflow`), `pyvips`, `SimpleITK`, and CPU PyTorch. Proprietary non-commercial Magic Leap SuperPoint/SuperGlue code and weights are intentionally omitted; open-licensed detectors/matchers (`VggFD`, `BriskFD`, `OrbFD`, `KazeFD`, `AkazeFD`, `DaisyFD`, `DiskFD`, `LightGlueMatcher`) are included. ### Included CLI & Python Environment"
     },
     "vesselvio": {
         "apps": {
@@ -4126,6 +5517,102 @@
         ],
         "citation": "Boergens, K. M., Berning, M., Bocklisch, T., Bräunlein, D., Drawitsch, F.,\nFrohnhofen, J., Herold, T., Otto, P., Rzepka, N., Werkmeister, T., Werner,\nD., Wiese, G., Wissler, H., & Helmstaedter, M. (2017). webKnossos: efficient\nonline 3D data annotation for connectomics. Nature Methods, 14(7), 691-694.\nhttps://doi.org/10.1038/nmeth.4331",
         "description": "WEBKNOSSOS Python library and CLI for converting, streaming, and analyzing large 3D microscopy and connectomics datasets (WKW, OME-Zarr, N5, TIFF, CZI, MRC, Imaris) and working with annotations and skeletons from local storage or a remote WEBKNOSSOS server."
+    },
+    "wsidicomizer": {
+        "apps": {
+            "wsidicomizer 0.32.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "wsidicomizer_0.32.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "wsidicomizer license",
+                        "url": "https://github.com/imi-bigpicture/wsidicomizer/blob/v0.32.0/LICENCE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.2/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.7/COPYING.LESSER"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "pyjpegls license",
+                        "url": "https://github.com/pydicom/pyjpegls/blob/v1.5.1/license.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "CharLS license",
+                        "url": "https://github.com/team-charls/charls/blob/36dd3307e070d8fbc765c3ba890b7e681046fa39/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "data organisation"
+        ],
+        "description": "`wsidicomizer` (IMI Bigpicture) reads proprietary whole-slide microscopy formats (`.svs`, `.ndpi`, `.mrxs`, `.czi`, `.tiff`) and converts them to standard DICOM VL Whole Slide Microscopy Image objects (DICOM Supplement 145). This container bundles OpenSlide 4.x (`openslide-bin` 4.0.1.2, `openslide-python` 1.4.7), `imagecodecs`, OpenJPEG, JPEG-LS (`pyjpegls` 1.5.1), and SIMD pyramid downsampling (`wsidicom-kernels`). ### Included CLI Tool"
+    },
+    "wsidicomizer_arm64": {
+        "apps": {
+            "wsidicomizer_arm64 0.32.0": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "wsidicomizer_arm64_0.32.0",
+                "license": [
+                    "Apache-2.0",
+                    "BSD-3-Clause",
+                    "LGPL-2.1-only",
+                    "MIT"
+                ],
+                "license_details": [
+                    {
+                        "license": "Apache-2.0",
+                        "name": "wsidicomizer license",
+                        "url": "https://github.com/imi-bigpicture/wsidicomizer/blob/v0.32.0/LICENCE"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide binary distribution license",
+                        "url": "https://github.com/openslide/openslide-bin/blob/v4.0.1.2/COPYING.LESSER"
+                    },
+                    {
+                        "license": "LGPL-2.1-only",
+                        "name": "OpenSlide Python license",
+                        "url": "https://github.com/openslide/openslide-python/blob/v1.4.7/COPYING.LESSER"
+                    },
+                    {
+                        "license": "MIT",
+                        "name": "pyjpegls license",
+                        "url": "https://github.com/pydicom/pyjpegls/blob/v1.5.1/license.txt"
+                    },
+                    {
+                        "license": "BSD-3-Clause",
+                        "name": "CharLS license",
+                        "url": "https://github.com/team-charls/charls/blob/36dd3307e070d8fbc765c3ba890b7e681046fa39/LICENSE.md"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "digital pathology",
+            "data organisation"
+        ],
+        "description": "`wsidicomizer` (IMI Bigpicture) reads proprietary whole-slide microscopy formats (`.svs`, `.ndpi`, `.mrxs`, `.czi`, `.tiff`) and converts them to standard DICOM VL Whole Slide Microscopy Image objects (DICOM Supplement 145). This container bundles OpenSlide 4.x (`openslide-bin` 4.0.1.2, `openslide-python` 1.4.7), `imagecodecs`, OpenJPEG, JPEG-LS (`pyjpegls` 1.5.1), and SIMD pyramid downsampling (`wsidicom-kernels`). ### Included CLI Tool"
     },
     "xmipp": {
         "apps": {

@@ -1,7 +1,7 @@
 {
-    "entries": 182,
+    "entries": 219,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "2668dde4dbdfae56808c68ec59924f3fde1a5d8f"
+        "NeuroDesk/neurocontainers": "fbf01ce28304e2c5c50978372763b96a301a9181"
     },
     "app_sources": {
         "ants": {
@@ -15,6 +15,12 @@
         },
         "ants_arm64": {
             "ants_arm64 2.6.5": "NeuroDesk/neurocontainers"
+        },
+        "bioformats2raw": {
+            "bioformats2raw 0.14.0": "NeuroDesk/neurocontainers"
+        },
+        "bioformats2raw_arm64": {
+            "bioformats2raw_arm64 0.14.0": "NeuroDesk/neurocontainers"
         },
         "blender": {
             "blender 5.0.1": "NeuroDesk/neurocontainers",
@@ -42,8 +48,30 @@
             "cellprofiler 4.2.8.1": "NeuroDesk/neurocontainers",
             "CellProfiler-cellprofiler 4.2.8.1": "NeuroDesk/neurocontainers"
         },
+        "cloudcompare": {
+            "cloudcompare 2.13.2": "NeuroDesk/neurocontainers",
+            "CloudCompare-cloudcompare 2.13.2": "NeuroDesk/neurocontainers"
+        },
+        "cloudcompare_arm64": {
+            "cloudcompare_arm64 2.13.2": "NeuroDesk/neurocontainers",
+            "CloudCompare-cloudcompare_arm64 2.13.2": "NeuroDesk/neurocontainers"
+        },
         "cmtk": {
             "cmtk 3.4.0": "NeuroDesk/neurocontainers"
+        },
+        "colmap": {
+            "colmap 3.12.6": "NeuroDesk/neurocontainers",
+            "COLMAP-colmap 3.12.6": "NeuroDesk/neurocontainers"
+        },
+        "colmap_arm64": {
+            "colmap_arm64 3.12.6": "NeuroDesk/neurocontainers",
+            "COLMAP-colmap_arm64 3.12.6": "NeuroDesk/neurocontainers"
+        },
+        "colour-science": {
+            "colour-science 0.4.7": "NeuroDesk/neurocontainers"
+        },
+        "colour-science_arm64": {
+            "colour-science_arm64 0.4.7": "NeuroDesk/neurocontainers"
         },
         "convert3d": {
             "convert3d 1.0.0": "NeuroDesk/neurocontainers",
@@ -94,6 +122,12 @@
         "deeplabcut": {
             "deeplabcut 2.3.11": "NeuroDesk/neurocontainers",
             "deeplabcut 3.0.2": "NeuroDesk/neurocontainers"
+        },
+        "dicom-validator": {
+            "dicom-validator 0.9.0": "NeuroDesk/neurocontainers"
+        },
+        "dicom-validator_arm64": {
+            "dicom-validator_arm64 0.9.0": "NeuroDesk/neurocontainers"
         },
         "dicomtools": {
             "dicomtools 1.0.0": "NeuroDesk/neurocontainers",
@@ -153,6 +187,18 @@
             "globus_arm64 3.3.2": "NeuroDesk/neurocontainers",
             "globusGUI-globus_arm64 3.3.2": "NeuroDesk/neurocontainers"
         },
+        "histoqc": {
+            "histoqc 2.0.0": "NeuroDesk/neurocontainers"
+        },
+        "histoqc_arm64": {
+            "histoqc_arm64 2.0.0": "NeuroDesk/neurocontainers"
+        },
+        "hyperspy": {
+            "hyperspy 2.5.0": "NeuroDesk/neurocontainers"
+        },
+        "hyperspy_arm64": {
+            "hyperspy_arm64 2.5.0": "NeuroDesk/neurocontainers"
+        },
         "icy": {
             "icy 2.5.4.0": "NeuroDesk/neurocontainers",
             "Icy-icy 2.5.4.0": "NeuroDesk/neurocontainers"
@@ -162,6 +208,12 @@
             "ilastikGUI-ilastik 1.4.0": "NeuroDesk/neurocontainers",
             "ilastik 1.4.2": "NeuroDesk/neurocontainers",
             "ilastikGUI-ilastik 1.4.2": "NeuroDesk/neurocontainers"
+        },
+        "instanseg": {
+            "instanseg 0.1.2": "NeuroDesk/neurocontainers"
+        },
+        "instanseg_arm64": {
+            "instanseg_arm64 0.1.2": "NeuroDesk/neurocontainers"
         },
         "irkernel": {
             "irkernel 4.4.3 arm64": "NeuroDesk/neurocontainers"
@@ -188,6 +240,20 @@
         "jipipe": {
             "jipipe 5.3.0": "NeuroDesk/neurocontainers",
             "JIPipe-jipipe 5.3.0": "NeuroDesk/neurocontainers"
+        },
+        "labelme": {
+            "labelme 7.11.0": "NeuroDesk/neurocontainers",
+            "LabelMe-labelme 7.11.0": "NeuroDesk/neurocontainers"
+        },
+        "labelme_arm64": {
+            "labelme_arm64 7.11.0": "NeuroDesk/neurocontainers",
+            "LabelMe-labelme_arm64 7.11.0": "NeuroDesk/neurocontainers"
+        },
+        "lazyslide": {
+            "lazyslide 0.13.0": "NeuroDesk/neurocontainers"
+        },
+        "lazyslide_arm64": {
+            "lazyslide_arm64 0.13.0": "NeuroDesk/neurocontainers"
         },
         "libreoffice": {
             "libreoffice 26.2.4": "NeuroDesk/neurocontainers",
@@ -250,6 +316,14 @@
         },
         "mede_arm64": {
             "mede_arm64 0.0.12": "NeuroDesk/neurocontainers"
+        },
+        "meshlab": {
+            "meshlab 2025.07.0": "NeuroDesk/neurocontainers",
+            "MeshLab-meshlab 2025.07.0": "NeuroDesk/neurocontainers"
+        },
+        "meshlab_arm64": {
+            "meshlab_arm64 2025.07.0": "NeuroDesk/neurocontainers",
+            "MeshLab-meshlab_arm64 2025.07.0": "NeuroDesk/neurocontainers"
         },
         "mipav": {
             "mipav 11.3.3": "NeuroDesk/neurocontainers"
@@ -319,9 +393,21 @@
             "niimath_arm64 1.0.20260924": "NeuroDesk/neurocontainers",
             "niimath_arm64 1.0.20261016": "NeuroDesk/neurocontainers"
         },
+        "nnunetv2": {
+            "nnunetv2 2.8.1": "NeuroDesk/neurocontainers"
+        },
+        "nnunetv2_arm64": {
+            "nnunetv2_arm64 2.8.1": "NeuroDesk/neurocontainers"
+        },
         "omero": {
             "omero 5.8.6": "NeuroDesk/neurocontainers",
             "OMERO.insight-omero 5.8.6": "NeuroDesk/neurocontainers"
+        },
+        "open3d": {
+            "open3d 0.20.0": "NeuroDesk/neurocontainers"
+        },
+        "open3d_arm64": {
+            "open3d_arm64 0.20.0": "NeuroDesk/neurocontainers"
         },
         "openrefine": {
             "openrefine 3.10.1": "NeuroDesk/neurocontainers"
@@ -338,6 +424,12 @@
         },
         "panoptica_arm64": {
             "panoptica_arm64 2.1.7": "NeuroDesk/neurocontainers"
+        },
+        "phasorpy": {
+            "phasorpy 0.13.0": "NeuroDesk/neurocontainers"
+        },
+        "phasorpy_arm64": {
+            "phasorpy_arm64 0.13.0": "NeuroDesk/neurocontainers"
         },
         "plantseg": {
             "plantseg 2.2.0": "NeuroDesk/neurocontainers",
@@ -418,14 +510,32 @@
             "3DSlicerGUI-slicersalt 3.0.0": "NeuroDesk/neurocontainers",
             "slicersalt 6.0.0": "NeuroDesk/neurocontainers"
         },
+        "slideflow": {
+            "slideflow 3.0.2": "NeuroDesk/neurocontainers"
+        },
         "smartscope": {
             "smartscope 0.10.0": "NeuroDesk/neurocontainers"
+        },
+        "spectral": {
+            "spectral 0.26.0": "NeuroDesk/neurocontainers"
+        },
+        "spectral_arm64": {
+            "spectral_arm64 0.26.0": "NeuroDesk/neurocontainers"
+        },
+        "stardist": {
+            "stardist 0.9.2": "NeuroDesk/neurocontainers"
         },
         "terastitcher": {
             "terastitcher 1.11.10": "NeuroDesk/neurocontainers"
         },
         "terastitcher_arm64": {
             "terastitcher_arm64 1.11.10": "NeuroDesk/neurocontainers"
+        },
+        "tiatoolbox": {
+            "tiatoolbox 2.1.3": "NeuroDesk/neurocontainers"
+        },
+        "tiatoolbox_arm64": {
+            "tiatoolbox_arm64 2.1.3": "NeuroDesk/neurocontainers"
         },
         "tissuumaps": {
             "tissuumaps 3.2.1.14": "NeuroDesk/neurocontainers",
@@ -439,6 +549,9 @@
         "topaz_arm64": {
             "topaz_arm64 0.3.20": "NeuroDesk/neurocontainers",
             "topaz_arm64 0.3.21": "NeuroDesk/neurocontainers"
+        },
+        "valis": {
+            "valis 1.2.0": "NeuroDesk/neurocontainers"
         },
         "vesselvio": {
             "vesselvio 1.1.2": "NeuroDesk/neurocontainers",
@@ -458,6 +571,12 @@
         "webknossos": {
             "webknossos 4.4.0": "NeuroDesk/neurocontainers",
             "webknossos 5.0.0": "NeuroDesk/neurocontainers"
+        },
+        "wsidicomizer": {
+            "wsidicomizer 0.32.0": "NeuroDesk/neurocontainers"
+        },
+        "wsidicomizer_arm64": {
+            "wsidicomizer_arm64 0.32.0": "NeuroDesk/neurocontainers"
         },
         "xmipp": {
             "xmipp 6.0.0": "NeuroDesk/neurocontainers"

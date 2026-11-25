@@ -4415,6 +4415,34 @@
         "description": "DeepWMH is an annotation-free white matter hyperintensity (WMH) segmentation\ntool. It segments WMH lesions from a single T2-FLAIR image without requiring\nmanually labelled training data, using multi-atlas registration and a\nnegative log-likelihood formulation to bootstrap an nnU-Net. The container\nbundles the authors' pre-trained model, ROBEX and ANTs.",
         "citation": "Liu C, Zhuo Z, Qu L, Jin Y, Hua T, Xu J, Tan G, Li Y, Duan Y, Wang T, Zhang Z,\nZhang Y, Chen R, Yu P, Zhang P, Shi Y, Zhang J, Tian D, Li R, Zhang X, Shi F,\nWang Y, Jiang J, Carass A, Liu Y, Ye C. (2024) DeepWMH: a deep learning tool\nfor accurate white matter hyperintensity segmentation without requiring manual\nannotations for training. Science Bulletin 69(7):872-875.\ndoi:10.1016/j.scib.2024.01.034"
     },
+    "dentateseg": {
+        "apps": {
+            "dentateseg 0.3.2": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "dentateseg_0.3.2",
+                "license": [
+                    "NOASSERTION"
+                ],
+                "license_details": [
+                    {
+                        "license": "NOASSERTION",
+                        "name": "DentateSeg (no license declared upstream)",
+                        "url": "https://github.com/art2mri/DentateSeg"
+                    }
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "quantitative imaging",
+            "structural imaging",
+            "machine learning"
+        ],
+        "citation": "Shiraishi, D. H.*, Saha, S.*, et al., Harding, I. H., Rezende, T. J. R., TRACK-FA Neuroimaging Consortium (*co-first). Automated Deep Learning-based Segmentation of the Dentate Nucleus Using Quantitative Susceptibility Mapping MRI. Radiology: Artificial Intelligence (2025). https://doi.org/10.1148/ryai.240478",
+        "description": "DentateSeg is an automated deep-learning pipeline for segmenting the left and right cerebellar dentate nuclei from Quantitative Susceptibility Mapping (QSM) MRI images. It runs a two-stage workflow combining a MONAI 3D U-Net cerebellar localization model with a 5-fold 3D full-resolution nnU-Net v2 segmentation ensemble, producing labeled NIfTI masks (1 = left dentate nucleus, 2 = right dentate nucleus) along with CSV and Excel volumetric and texture analysis reports. Both CPU and CUDA GPU execution (`--gpu`, with `--nv` under Apptainer/Singularity or `--gpus=all` under Docker) are supported."
+    },
     "dhcpstructuralpipeline": {
         "apps": {
             "dhcpstructuralpipeline 1.1": {
