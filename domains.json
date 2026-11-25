@@ -37,7 +37,7 @@
       ],
       "title": "microscopy",
       "description": "Image processing, segmentation, and quantitative analysis",
-      "registry": "docker.io/vnmd/microdesktop",
+      "registry": "ghcr.io/scigetorg/microdesktop",
       "defaultVersion": "latest",
       "containerName": "microscopy",
       "volumeMount": "microscopy-home",
