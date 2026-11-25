@@ -101,7 +101,19 @@
       "eessi_stacks": [
         "2025.06"
       ],
-      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/preclinical/eessi.json"
+      "title": "preclinicaldesktop",
+      "description": "Preclinical imaging research: small-animal MRI, CT, PET/SPECT, registration, segmentation, and quantitative analysis",
+      "registry": "ghcr.io/scigetorg/preclinicaldesktop",
+      "defaultVersion": "latest",
+      "containerName": "preclinicaldesktop",
+      "volumeMount": "preclinicaldesktop-home",
+      "defaultStorageMount": "preclinicaldesktop-storage",
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/preclinical/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/preclinical/eessi.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     },
     "molecular-imaging": {
       "source_repositories": [
@@ -110,7 +122,19 @@
       "eessi_stacks": [
         "2025.06"
       ],
-      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/molecular-imaging/eessi.json"
+      "title": "moleculardesktop",
+      "description": "Molecular imaging research: PET, SPECT, kinetic modelling, radiomics, multimodal registration, and quantitative analysis",
+      "registry": "ghcr.io/scigetorg/moleculardesktop",
+      "defaultVersion": "latest",
+      "containerName": "moleculardesktop",
+      "volumeMount": "moleculardesktop-home",
+      "defaultStorageMount": "moleculardesktop-storage",
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/molecular-imaging/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/molecular-imaging/eessi.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     }
   }
 }
