@@ -328,10 +328,33 @@ class RemoteStream:
     def __len__(self) -> int:
         return self.length
 
+    def _bound_read_timeout(self, remaining: float) -> None:
+        conn = getattr(self.response.raw, "_connection", None)
+        sock = getattr(conn, "sock", None)
+        if sock is None:
+            fp = getattr(getattr(self.response.raw, "_fp", None), "fp", None)
+            sock = getattr(getattr(fp, "raw", None), "_sock", None)
+        settimeout = getattr(sock, "settimeout", None)
+        if not callable(settimeout):
+            return
+        gettimeout = getattr(sock, "gettimeout", None)
+        try:
+            current = gettimeout() if callable(gettimeout) else None
+            limit = min(current, remaining) if isinstance(current, (int, float)) else remaining
+            settimeout(limit)
+        except OSError:
+            pass
+
     def read(self, size: int = -1) -> bytes:
+        if self.deadline is not None:
+            remaining = self.deadline - time.monotonic()
+            if remaining <= 0:
+                raise requests.ReadTimeout("upload deadline exceeded")
+            self._bound_read_timeout(remaining)
+        chunk = self.response.raw.read(size)
         if self.deadline is not None and time.monotonic() >= self.deadline:
             raise requests.ReadTimeout("upload deadline exceeded")
-        return self.response.raw.read(size)
+        return chunk
 
 
 def raise_draft_errors(body: dict[str, Any], ignore: tuple[str, ...] = ()) -> None:

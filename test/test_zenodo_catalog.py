@@ -507,20 +507,30 @@ class ZenodoCatalogTests(unittest.TestCase):
         session.delete.assert_called_once()
         self.assertEqual(session.delete.call_args.args[0], draft)
 
-        # Subcase C: wall-clock deadline enforced inside RemoteStream.read() during upload.
+        # Subcase C: wall-clock deadline enforced inside RemoteStream.read() even when
+        # the blocking S3 read starts before the deadline and finishes after it.
         clock[0] = 90.0
+        sock = MagicMock()
+        sock.gettimeout.return_value = 300.0
         dl_stream = MagicMock()
         dl_stream.status_code = 200
         dl_stream.headers = {"Content-Length": "3"}
+        dl_stream.raw._connection.sock = sock
+
+        def slow_raw_read(_size=-1):
+            clock[0] = 100.5  # deadline expires while S3 read is in progress
+            return b"s"
+
+        dl_stream.raw.read.side_effect = slow_raw_read
         session = MagicMock()
         session.post.side_effect = [
             reply({"id": "12", "errors": []}),
             reply({"entries": []}),
         ]
+        delivered = []
 
         def consume_stream(_url, data, **_kwargs):
-            clock[0] = 100.5  # deadline expires mid-upload
-            data.read(1)
+            delivered.append(data.read(1))
             return reply({"size": 3})
 
         session.put.side_effect = consume_stream
@@ -530,6 +540,8 @@ class ZenodoCatalogTests(unittest.TestCase):
               patch("scripts.zenodo_catalog.time.sleep") as sleep):
             with self.assertRaisesRegex(requests.ReadTimeout, "upload deadline exceeded"):
                 publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=100.0)
+        self.assertEqual(delivered, [])  # bytes from an expired read are never handed to upload
+        sock.settimeout.assert_called_once_with(10.0)
         dl_stream.close.assert_called_once()
         sleep.assert_not_called()
         self.assertEqual(session.post.call_count, 2)  # never reached /commit
