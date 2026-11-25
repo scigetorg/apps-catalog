@@ -107,6 +107,26 @@ class BackfillTests(unittest.TestCase):
         session.delete.assert_called_once()
         self.assertEqual(session.delete.call_args.args[0], f"{ZENODO_API}/records/12/draft")
 
+    def test_failed_discard_logs_error_and_404_is_ignored(self):
+        session = edit_session(
+            update=reply({"errors": [{"field": "metadata.rights", "messages": ["bad"]}]}))
+        session.delete.return_value = reply({}, status=403)
+        with patch("sys.stderr") as stderr:
+            code, _ = run("--apply", session=session)
+        self.assertEqual(code, 1)
+        err_text = "".join(str(c.args[0]) for c in stderr.write.call_args_list)
+        self.assertIn("Could not discard edit draft 12", err_text)
+        self.assertIn("FAILED demo_1.0_20260101", err_text)
+
+        session = edit_session(
+            update=reply({"errors": [{"field": "metadata.rights", "messages": ["bad"]}]}))
+        session.delete.return_value = reply({}, status=404)
+        with patch("sys.stderr") as stderr:
+            code, _ = run("--apply", session=session)
+        self.assertEqual(code, 1)
+        err_text = "".join(str(c.args[0]) for c in stderr.write.call_args_list)
+        self.assertNotIn("Could not discard edit draft", err_text)
+
     def test_deprecated_spdx_ids_are_written_as_zenodo_ids(self):
         # civet: apps.json lists GPL-2.0 and LGPL-2.1; Zenodo only knows -only/-or-later
         # and answers "400 Invalid value gpl-2.0." to the old spelling.
