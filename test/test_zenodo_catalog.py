@@ -9,10 +9,14 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import requests
+from urllib3.exceptions import ConnectTimeoutError
 
+from scripts.doi_metadata import build_metadata
 from scripts.zenodo_catalog import (
     RDM_JSON,
     WRITE_RETRY_MAX_RETRY_AFTER_SECONDS,
+    WRITE_RETRY_MAX_SECONDS,
+    _probe_get,
     build_session,
     catalog_artifacts,
     missing_batches,
@@ -241,19 +245,34 @@ class ZenodoCatalogTests(unittest.TestCase):
                                                    "messages": ["Missing uploaded files."]}])
         self.assertEqual(self.publish(session), "10.5281/zenodo.12")
 
-    def test_build_session_retries_safe_and_delete_methods_only(self) -> None:
+    def test_build_session_retries_safe_methods_caps_retry_after_and_blocks_write_retries(self) -> None:
         session = build_session("secret-token")
         retry = session.adapters["https://"].max_retries
-        self.assertEqual(set(retry.allowed_methods), {"GET", "HEAD", "DELETE"})
+        self.assertEqual(set(retry.allowed_methods), {"GET", "HEAD"})
         self.assertNotIn("POST", retry.allowed_methods)
         self.assertNotIn("PUT", retry.allowed_methods)
+        self.assertNotIn("DELETE", retry.allowed_methods)
         self.assertEqual(set(retry.status_forcelist), {429, 500, 502, 503, 504})
         self.assertTrue(retry.respect_retry_after_header)
 
-    def test_publish_retries_transient_draft_create_and_file_init(self) -> None:
+        # Retry-After: 7200 must be capped so one sleep cannot blow the cleanup window.
+        huge = MagicMock()
+        huge.headers = {"Retry-After": "7200"}
+        self.assertEqual(retry.get_retry_after(huge), WRITE_RETRY_MAX_SECONDS)
+
+        # Connect errors on POST/PUT/DELETE must not be retried by urllib3.
+        err = ConnectTimeoutError(None, "https://zenodo.org/api/records", "timed out")
+        for method in ("POST", "PUT", "DELETE"):
+            with self.assertRaises(ConnectTimeoutError, msg=method):
+                retry.increment(method=method, url="/api/records", error=err)
+        next_retry = retry.increment(method="GET", url="/api/user/records", error=err)
+        self.assertEqual(next_retry.total, retry.total - 1)
+
+    def test_publish_retries_pre_create_errors_and_file_init(self) -> None:
         session = MagicMock()
         session.post.side_effect = [
-            reply({}, status=500),
+            requests.ConnectTimeout("connect timed out"),
+            reply({}, status=503),
             reply({"id": "12", "errors": []}),
             requests.ReadTimeout("init timed out"),
             reply({"entries": []}),
@@ -265,8 +284,176 @@ class ZenodoCatalogTests(unittest.TestCase):
         session.put.return_value = reply({"size": 3})
         with patch("scripts.zenodo_catalog.time.sleep") as sleep:
             self.assertEqual(self.publish(session), "10.5281/zenodo.12")
-        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 2.0])
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0, 4.0, 2.0])
         session.delete.assert_not_called()
+
+    def test_publish_reconciles_ambiguous_create_without_duplicate_drafts(self) -> None:
+        expected_meta = build_metadata("demo_1.0_20260101", LICENSE_INFO)["metadata"]
+        matching_draft = {
+            "id": "12",
+            "is_published": False,
+            "metadata": {
+                "title": expected_meta["title"],
+                "description": expected_meta["description"],
+                "rights": [
+                    {"id": "mit", "title": {"en": "MIT License"}},
+                    {"title": {"en": "Research terms"}, "link": "https://example.org/terms"},
+                ],
+            },
+            "files": {"enabled": True, "count": 0},
+        }
+        # Subcase A: 504 on create after Zenodo actually created draft 12 -> adopts it.
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({}, status=504),
+            reply({"entries": []}),
+            reply({"size": 3}),
+            reply({"id": "12", "is_published": True,
+                   "pids": {"doi": {"identifier": "10.5281/zenodo.12"}}}),
+        ]
+        session.get.return_value = reply({"hits": {"hits": [matching_draft]}})
+        session.put.return_value = reply({"size": 3})
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            self.assertEqual(self.publish(session), "10.5281/zenodo.12")
+        self.assertEqual(session.post.call_args_list[0].args[0], "https://zenodo.org/api/records")
+        self.assertEqual(session.post.call_args_list[1].args[0],
+                         "https://zenodo.org/api/records/12/draft/files")
+        self.assertEqual(session.get.call_args.args[0], "https://zenodo.org/api/user/records")
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2.0])
+        session.delete.assert_not_called()
+
+        # Subcase B: 500/504/ReadTimeout on create when draft is NOT found -> NEVER sends a 2nd POST.
+        for outcome in (reply({}, status=500), reply({}, status=504),
+                        requests.ReadTimeout("create timed out")):
+            session = MagicMock()
+            session.post.side_effect = [outcome]
+            session.get.return_value = reply({"hits": {"hits": []}})
+            with patch("scripts.zenodo_catalog.time.sleep"):
+                with self.assertRaises((requests.HTTPError, requests.ReadTimeout)):
+                    self.publish(session)
+            self.assertEqual(session.post.call_count, 1)
+            session.delete.assert_not_called()
+
+        # Subcase C: stale draft with different rights is ignored (never adopted or re-POSTed).
+        stale_draft = {
+            **matching_draft,
+            "metadata": {**matching_draft["metadata"], "rights": [{"id": "apache-2.0"}]},
+        }
+        session = MagicMock()
+        session.post.side_effect = [reply({}, status=504)]
+        session.get.return_value = reply({"hits": {"hits": [stale_draft]}})
+        with patch("scripts.zenodo_catalog.time.sleep"):
+            with self.assertRaises(requests.HTTPError):
+                self.publish(session)
+        self.assertEqual(session.post.call_count, 1)
+
+    def test_upload_retry_preparation_failure_runs_reset_only_once(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        key = "demo_1.0_20260101.simg"
+        file_url = f"{draft}/files/{key}"
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+        ]
+        session.put.return_value = reply({}, status=503)
+        # Reset DELETE exhausts its own 4 attempts with 503; final discard DELETE succeeds.
+        session.delete.side_effect = [
+            reply({}, status=503),
+            reply({}, status=503),
+            reply({}, status=503),
+            reply({}, status=503),
+            reply({}, status=204),
+        ]
+        with patch("scripts.zenodo_catalog.time.sleep"):
+            with self.assertRaises(requests.HTTPError):
+                self.publish(session)
+        self.assertEqual(session.put.call_count, 1)
+        # Exactly one reset (4 DELETE attempts on file_url) + 1 draft discard on draft_url.
+        self.assertEqual([c.args[0] for c in session.delete.call_args_list],
+                         [file_url, file_url, file_url, file_url, draft])
+
+    def test_upload_http_200_with_errors_aborts_before_commit_and_discards_draft(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        session = records_session(
+            upload=reply({"key": "demo_1.0_20260101.simg",
+                          "errors": [{"field": "files", "messages": ["Transfer failed"]}]}),
+        )
+        with patch("scripts.zenodo_catalog.time.sleep") as sleep:
+            with self.assertRaisesRegex(ValueError, "Transfer failed"):
+                self.publish(session)
+        # Only create and init POSTs ran; commit and publish were never called.
+        self.assertEqual([c.args[0] for c in session.post.call_args_list], [
+            "https://zenodo.org/api/records", f"{draft}/files",
+        ])
+        session.delete.assert_called_once()
+        self.assertEqual(session.delete.call_args.args[0], draft)
+        sleep.assert_not_called()
+
+    def test_failed_discard_is_reported_while_404_is_silent(self) -> None:
+        # 403 on DELETE logs the discard failure while preserving the original ValueError.
+        session = records_session(commit=reply({"size": 2}))
+        session.delete.return_value = reply({}, status=403)
+        with patch("sys.stderr") as stderr:
+            with self.assertRaisesRegex(ValueError, "expected 3"):
+                self.publish(session)
+        session.delete.assert_called_once()
+        err_text = "".join(str(c.args[0]) for c in stderr.write.call_args_list)
+        self.assertIn("Could not discard failed draft 12", err_text)
+
+        # 404 on DELETE is treated as already discarded and stays silent.
+        session = records_session(commit=reply({"size": 2}))
+        session.delete.return_value = reply({}, status=404)
+        with patch("sys.stderr") as stderr:
+            with self.assertRaisesRegex(ValueError, "expected 3"):
+                self.publish(session)
+        session.delete.assert_called_once()
+        self.assertEqual("".join(str(c.args[0]) for c in stderr.write.call_args_list), "")
+
+    def test_publish_respects_deadline_across_retries_and_probes(self) -> None:
+        draft = "https://zenodo.org/api/records/12/draft"
+        dl = MagicMock()
+        dl.status_code = 200
+        dl.headers = {"Content-Length": "3"}
+        dl.raw.read.return_value = b"sif"
+        session = MagicMock()
+        session.post.side_effect = [
+            reply({"id": "12", "errors": []}),
+            reply({"entries": []}),
+            reply({}, status=500),  # commit fails right at deadline -> no sleep, no retry
+        ]
+        session.put.return_value = reply({"size": 3})
+        session.delete.return_value = reply({}, status=204)
+        # Clock is already at 100.0 while retry deadline is 101.0 (< 2.0s backoff, <= 1.0s probe min).
+        with (patch("scripts.zenodo_catalog.requests.get", return_value=dl),
+              patch("scripts.zenodo_catalog.time.monotonic", return_value=100.0),
+              patch("scripts.zenodo_catalog.time.sleep") as sleep):
+            with self.assertRaises(requests.HTTPError):
+                publish_deposition("demo_1.0_20260101", LICENSE_INFO, session, deadline=101.0)
+        sleep.assert_not_called()
+        session.get.assert_not_called()
+        session.delete.assert_called_once()
+        self.assertEqual(session.delete.call_args.args[0], draft)
+
+    def test_probe_get_uses_non_retrying_adapter_for_real_session(self) -> None:
+        real_session = build_session("secret-token")
+        captured = {}
+
+        def fake_send(adapter_self, request, **kwargs):
+            captured["max_retries"] = adapter_self.max_retries.total
+            captured["auth"] = request.headers.get("Authorization")
+            res = requests.Response()
+            res.status_code = 200
+            res._content = b'{"status": "completed"}'
+            return res
+
+        with patch.object(requests.adapters.HTTPAdapter, "send", autospec=True,
+                          side_effect=fake_send):
+            resp = _probe_get(real_session, "https://zenodo.org/api/records/12",
+                              headers={"Accept": RDM_JSON}, timeout=(10.0, 30.0))
+        self.assertEqual(resp.json(), {"status": "completed"})
+        self.assertEqual(captured["max_retries"], 0)
+        self.assertEqual(captured["auth"], "Bearer secret-token")
 
     def test_publish_recovers_when_file_init_succeeded_before_timeout(self) -> None:
         draft = "https://zenodo.org/api/records/12/draft"

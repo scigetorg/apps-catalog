@@ -39,19 +39,51 @@ MAX_FILE_BYTES = 50_000_000_000
 RDM_JSON = "application/vnd.inveniordm.v1+json"
 TITLES_PER_QUERY = 50
 TRANSIENT_STATUSES = frozenset({429, 500, 502, 503, 504})
+PRE_CREATE_RETRY_STATUSES = frozenset({429, 503})
 WRITE_RETRY_ATTEMPTS = 4
 WRITE_RETRY_BASE_SECONDS = 2.0
 WRITE_RETRY_MAX_SECONDS = 60.0
-WRITE_RETRY_MAX_RETRY_AFTER_SECONDS = 300.0
+WRITE_RETRY_MAX_RETRY_AFTER_SECONDS = 60.0
+CLEANUP_BUDGET_SECONDS = 120.0
 _NOT_RECOVERED = object()
 
 
+class _CappedRetry(Retry):
+    """urllib3 Retry that caps Retry-After sleeps and never retries non-allowed methods."""
+
+    def get_retry_after(self, response: Any) -> float | None:
+        retry_after = super().get_retry_after(response)
+        if retry_after is None:
+            return None
+        return min(retry_after, WRITE_RETRY_MAX_SECONDS)
+
+    def increment(
+        self,
+        method: str | None = None,
+        url: str | None = None,
+        response: Any = None,
+        error: Exception | None = None,
+        _pool: Any = None,
+        _stacktrace: Any = None,
+    ) -> _CappedRetry:
+        if error is not None and method is not None and not self._is_method_retryable(method):
+            raise error.with_traceback(_stacktrace)
+        return super().increment(
+            method=method,
+            url=url,
+            response=response,
+            error=error,
+            _pool=_pool,
+            _stacktrace=_stacktrace,
+        )
+
+
 def build_session(token: str) -> requests.Session:
-    retry = Retry(
-        total=5,
+    retry = _CappedRetry(
+        total=3,
         backoff_factor=1,
         status_forcelist=sorted(TRANSIENT_STATUSES),
-        allowed_methods=["GET", "HEAD", "DELETE"],
+        allowed_methods=["GET", "HEAD"],
         respect_retry_after_header=True,
     )
     session = requests.Session()
@@ -293,7 +325,10 @@ class RemoteStream:
 
 def raise_draft_errors(body: dict[str, Any], ignore: tuple[str, ...] = ()) -> None:
     # Draft writes answer HTTP 200/201 even when fields fail validation.
-    errors = [error for error in body.get("errors") or [] if error.get("field") not in ignore]
+    errors = [
+        error for error in body.get("errors") or []
+        if not (isinstance(error, dict) and error.get("field") in ignore)
+    ]
     if errors:
         raise ValueError(f"Zenodo rejected draft fields: {errors}")
 
@@ -342,103 +377,182 @@ def _is_transient_exception(exc: Exception) -> tuple[bool, requests.Response | N
     return False, None
 
 
+def _bounded_timeout(
+    timeout: tuple[float, float], deadline: float | None, *, minimum: float = 1.0
+) -> tuple[float, float] | None:
+    if deadline is None:
+        return timeout
+    remaining = deadline - time.monotonic()
+    if remaining <= minimum:
+        return None
+    return (min(timeout[0], remaining), min(timeout[1], remaining))
+
+
+def _probe_get(
+    session: requests.Session,
+    url: str,
+    *,
+    headers: dict[str, str],
+    timeout: tuple[float, float],
+    params: dict[str, Any] | None = None,
+) -> requests.Response:
+    """Single-attempt GET for recovery probes without nested adapter retries."""
+    kwargs: dict[str, Any] = {"headers": headers, "timeout": timeout}
+    if params is not None:
+        kwargs["params"] = params
+    if (isinstance(session, requests.Session)
+            and getattr(session.get, "__func__", None) is requests.Session.get):
+        with requests.Session() as probe_session:
+            probe_session.headers.update(session.headers)
+            probe_session.mount("https://", HTTPAdapter(max_retries=0))
+            probe_session.mount("http://", HTTPAdapter(max_retries=0))
+            return probe_session.get(url, **kwargs)
+    return session.get(url, **kwargs)
+
+
 def _with_retries(
     label: str,
     action: Callable[[int], requests.Response],
     *,
     attempts: int = WRITE_RETRY_ATTEMPTS,
+    retry_statuses: frozenset[int] = TRANSIENT_STATUSES,
+    retry_exception: Callable[[requests.RequestException], bool] | None = None,
     recover: Callable[[], Any] | None = None,
     recover_on_status: frozenset[int] = frozenset(),
     ok_statuses: frozenset[int] = frozenset(),
     on_retry: Callable[[int], None] | None = None,
     close_on_retry: bool = False,
+    deadline: float | None = None,
 ) -> tuple[requests.Response | None, Any]:
     for attempt in range(1, attempts + 1):
+        response: requests.Response | None = None
+        exc: requests.RequestException | None = None
         try:
             response = action(attempt)
+        except requests.RequestException as err:
+            exc = err
+
+        if exc is None:
+            assert response is not None
             status = getattr(response, "status_code", None)
             if status in ok_statuses:
                 return response, _NOT_RECOVERED
-            if status in TRANSIENT_STATUSES:
-                if attempt == attempts:
-                    if recover is not None:
-                        recovered = recover()
-                        if recovered is not _NOT_RECOVERED:
-                            if close_on_retry:
-                                response.close()
-                            return None, recovered
-                    try:
-                        response.raise_for_status()
-                        raise requests.HTTPError(f"HTTP {status}", response=response)
-                    finally:
-                        if close_on_retry:
-                            response.close()
-                delay = _retry_delay(attempt, response)
-                if close_on_retry:
-                    response.close()
-                print(
-                    f"{label}: HTTP {status} (attempt {attempt}/{attempts}); "
-                    f"retrying in {delay:.1f}s ...",
-                    file=sys.stderr, flush=True,
-                )
-                time.sleep(delay)
-                if recover is not None:
+            if status not in TRANSIENT_STATUSES:
+                if attempt > 1 and status in recover_on_status and recover is not None:
                     recovered = recover()
                     if recovered is not _NOT_RECOVERED:
+                        if close_on_retry:
+                            response.close()
                         return None, recovered
-                if on_retry is not None:
-                    on_retry(attempt)
-                continue
-            if attempt > 1 and status in recover_on_status and recover is not None:
-                recovered = recover()
-                if recovered is not _NOT_RECOVERED:
+                try:
+                    response.raise_for_status()
+                except Exception:
                     if close_on_retry:
                         response.close()
-                    return None, recovered
-            try:
-                response.raise_for_status()
-            except Exception:
-                if close_on_retry:
-                    response.close()
-                raise
-            return response, _NOT_RECOVERED
-        except requests.RequestException as exc:
-            transient, err_response = _is_transient_exception(exc)
-            err_status = getattr(err_response, "status_code", None)
+                    raise
+                return response, _NOT_RECOVERED
+            transient_resp = response
+            error_desc = f"HTTP {status}"
+            can_retry = status in retry_statuses
+        else:
+            transient, transient_resp = _is_transient_exception(exc)
+            err_status = getattr(transient_resp, "status_code", None)
             if not transient:
                 if attempt > 1 and err_status in recover_on_status and recover is not None:
                     recovered = recover()
                     if recovered is not _NOT_RECOVERED:
                         return None, recovered
-                raise
-            if attempt == attempts:
-                if recover is not None:
-                    recovered = recover()
-                    if recovered is not _NOT_RECOVERED:
-                        return None, recovered
-                raise
-            delay = _retry_delay(attempt, err_response)
-            print(
-                f"{label}: {type(exc).__name__} (attempt {attempt}/{attempts}); "
-                f"retrying in {delay:.1f}s ...",
-                file=sys.stderr, flush=True,
-            )
-            time.sleep(delay)
+                raise exc
+            error_desc = type(exc).__name__
+            if err_status is not None:
+                can_retry = err_status in retry_statuses
+            elif retry_exception is not None:
+                can_retry = retry_exception(exc)
+            else:
+                can_retry = True
+
+        # Recovery, backoff sleep, and retry preparation run outside the request
+        # try/except so errors in on_retry are never mistaken for action failures.
+        delay = _retry_delay(attempt, transient_resp)
+        exhausted = attempt == attempts or not can_retry
+        budget_allows_sleep = deadline is None or time.monotonic() + delay < deadline
+        if exhausted or not budget_allows_sleep:
+            if not can_retry and recover is not None and budget_allows_sleep:
+                time.sleep(delay)
             if recover is not None:
                 recovered = recover()
                 if recovered is not _NOT_RECOVERED:
+                    if close_on_retry and response is not None:
+                        response.close()
                     return None, recovered
-            if on_retry is not None:
-                on_retry(attempt)
+            if exc is not None:
+                raise exc
+            assert response is not None
+            try:
+                response.raise_for_status()
+                raise requests.HTTPError(error_desc, response=response)
+            finally:
+                if close_on_retry:
+                    response.close()
+
+        if close_on_retry and response is not None:
+            response.close()
+        print(
+            f"{label}: {error_desc} (attempt {attempt}/{attempts}); "
+            f"retrying in {delay:.1f}s ...",
+            file=sys.stderr, flush=True,
+        )
+        time.sleep(delay)
+        if recover is not None:
+            recovered = recover()
+            if recovered is not _NOT_RECOVERED:
+                return None, recovered
+        if deadline is not None and time.monotonic() >= deadline:
+            if exc is not None:
+                raise exc
+            assert response is not None
+            response.raise_for_status()
+            raise requests.HTTPError(error_desc, response=response)
+        if on_retry is not None:
+            on_retry(attempt)
     raise AssertionError("unreachable")
 
 
-def _open_sif(source_url: str, title: str) -> tuple[requests.Response, int]:
+def discard_draft(
+    session: requests.Session,
+    draft_url: str,
+    headers: dict[str, str],
+    draft_id: Any,
+    *,
+    label: str = "failed draft",
+) -> None:
+    """Discard a draft, treating 404 as already gone and logging any other failure."""
+    cleanup_deadline = time.monotonic() + CLEANUP_BUDGET_SECONDS
+    try:
+        _with_retries(
+            f"discard {label} {draft_id}",
+            lambda _: session.delete(
+                draft_url,
+                headers=headers,
+                timeout=_bounded_timeout((15.0, 60.0), cleanup_deadline) or (15.0, 60.0),
+            ),
+            attempts=2,
+            ok_statuses=frozenset({404}),
+            deadline=cleanup_deadline,
+        )
+    except requests.RequestException as error:
+        print(f"Could not discard {label} {draft_id}: {error}", file=sys.stderr, flush=True)
+
+
+def _open_sif(
+    source_url: str, title: str, *, deadline: float | None = None
+) -> tuple[requests.Response, int]:
     # The public S3 request must never receive the Zenodo bearer token.
     response, _ = _with_retries(
         f"{title} download SIF",
         lambda _: requests.get(source_url, stream=True, timeout=(15, 300)),
         close_on_retry=True,
+        deadline=deadline,
     )
     assert response is not None
     try:
@@ -452,22 +566,76 @@ def _open_sif(source_url: str, title: str) -> tuple[requests.Response, int]:
 
 
 def publish_deposition(
-    title: str, license_info: dict[str, Any], session: requests.Session
+    title: str,
+    license_info: dict[str, Any],
+    session: requests.Session,
+    *,
+    deadline: float | None = None,
 ) -> str:
     """Create a draft, stream the SIF from S3 into it, and publish; return the DOI."""
     source_url = sif_url(title)
     download: requests.Response | None = None
     try:
-        download, length = _open_sif(source_url, title)
+        download, length = _open_sif(source_url, title, deadline=deadline)
         headers = {"Accept": RDM_JSON}
         payload = build_metadata(title, license_info)
-        created, _ = _with_retries(
+
+        def find_created_draft() -> Any:
+            timeout = _bounded_timeout((15.0, 60.0), deadline)
+            if timeout is None:
+                return _NOT_RECOVERED
+            try:
+                probe = _probe_get(
+                    session,
+                    f"{ZENODO_API}/user/records",
+                    headers=headers,
+                    params={
+                        "q": f'is_published:false AND metadata.title:"{title}"',
+                        "allversions": "true",
+                        "sort": "newest",
+                        "size": 10,
+                    },
+                    timeout=timeout,
+                )
+                if getattr(probe, "status_code", None) != 200:
+                    return _NOT_RECOVERED
+                hits = (probe.json().get("hits") or {}).get("hits")
+                if not isinstance(hits, list):
+                    return _NOT_RECOVERED
+            except (requests.RequestException, ValueError):
+                return _NOT_RECOVERED
+            expected_meta = payload["metadata"]
+            expected_rights = expected_meta.get("rights") or []
+            expected_revision = str(license_info.get("revision") or "")
+            for row in hits:
+                if not isinstance(row, dict) or row.get("is_published") is not False:
+                    continue
+                meta = row.get("metadata") or {}
+                description = meta.get("description") or ""
+                if (meta.get("title") != title
+                        or (expected_revision and expected_revision not in description)
+                        or not same_rights(meta.get("rights") or [], expected_rights)):
+                    continue
+                files = row.get("files") or {}
+                if files.get("count", 0) or files.get("entries"):
+                    continue
+                if row.get("id") is not None:
+                    return row
+            return _NOT_RECOVERED
+
+        # Retry draft creation only on pre-submission failures (ConnectTimeout, 429, 503).
+        # Ambiguous failures (500/502/504/ReadTimeout/ConnectionError) reconcile via
+        # /api/user/records instead of blindly POSTing a second draft.
+        created, recovered_draft = _with_retries(
             f"{title} create draft",
             lambda _: session.post(f"{ZENODO_API}/records", json=payload,
                                    headers=headers, timeout=(15, 60)),
+            retry_statuses=PRE_CREATE_RETRY_STATUSES,
+            retry_exception=lambda exc: isinstance(exc, requests.ConnectTimeout),
+            recover=find_created_draft,
+            deadline=deadline,
         )
-        assert created is not None
-        draft = created.json()
+        draft = created.json() if created is not None else recovered_draft
         draft_id = draft["id"]
         draft_url = f"{ZENODO_API}/records/{draft_id}/draft"
         try:
@@ -477,8 +645,11 @@ def publish_deposition(
             file_url = f"{draft_url}/files/{quote(key, safe='')}"
 
             def check_file_initialized() -> Any:
+                timeout = _bounded_timeout((15.0, 60.0), deadline)
+                if timeout is None:
+                    return _NOT_RECOVERED
                 try:
-                    probe = session.get(file_url, headers=headers, timeout=(15, 60))
+                    probe = _probe_get(session, file_url, headers=headers, timeout=timeout)
                     if getattr(probe, "status_code", None) == 200:
                         body = probe.json()
                         if isinstance(body, dict):
@@ -494,6 +665,7 @@ def publish_deposition(
                                            headers=headers, timeout=(15, 60)),
                     recover=check_file_initialized,
                     recover_on_status=frozenset({400}),
+                    deadline=deadline,
                 )
 
             init_file()
@@ -507,9 +679,10 @@ def publish_deposition(
                     f"{title} reset file entry",
                     lambda _: session.delete(file_url, headers=headers, timeout=(15, 60)),
                     ok_statuses=frozenset({404}),
+                    deadline=deadline,
                 )
                 init_file()
-                download, retry_length = _open_sif(source_url, title)
+                download, retry_length = _open_sif(source_url, title, deadline=deadline)
                 if retry_length != length:
                     raise ValueError(
                         f"SIF size changed during upload retry for {title}: "
@@ -532,15 +705,26 @@ def publish_deposition(
                 finally:
                     stream_response.close()
 
-            _with_retries(
+            upload_resp, _ = _with_retries(
                 f"{title} upload SIF",
                 upload_attempt,
                 on_retry=reset_for_upload_retry,
+                deadline=deadline,
             )
+            assert upload_resp is not None
+            try:
+                upload_body = upload_resp.json()
+            except ValueError:
+                upload_body = None
+            if isinstance(upload_body, dict):
+                raise_draft_errors(upload_body)
 
             def check_file_committed() -> Any:
+                timeout = _bounded_timeout((15.0, 60.0), deadline)
+                if timeout is None:
+                    return _NOT_RECOVERED
                 try:
-                    probe = session.get(file_url, headers=headers, timeout=(15, 60))
+                    probe = _probe_get(session, file_url, headers=headers, timeout=timeout)
                     if getattr(probe, "status_code", None) == 200:
                         body = probe.json()
                         if isinstance(body, dict) and body.get("status") == "completed":
@@ -554,15 +738,23 @@ def publish_deposition(
                 lambda _: session.post(f"{file_url}/commit", headers=headers, timeout=(30, 600)),
                 recover=check_file_committed,
                 recover_on_status=frozenset({400}),
+                deadline=deadline,
             )
             commit_json = committed_resp.json() if committed_resp is not None else committed_body
             if commit_json.get("size") != length:
                 raise ValueError(f"Zenodo stored {commit_json.get('size')} bytes, expected {length}")
 
             def check_record_published() -> Any:
+                # Even past the retry deadline, allow one short bounded check so an
+                # already-published DOI is recovered instead of discarded.
+                timeout = _bounded_timeout((15.0, 60.0), deadline) or (10.0, 30.0)
                 try:
-                    probe = session.get(f"{ZENODO_API}/records/{draft_id}",
-                                        headers=headers, timeout=(15, 60))
+                    probe = _probe_get(
+                        session,
+                        f"{ZENODO_API}/records/{draft_id}",
+                        headers=headers,
+                        timeout=timeout,
+                    )
                     if getattr(probe, "status_code", None) == 200:
                         body = probe.json()
                         if isinstance(body, dict) and body.get("is_published") is True:
@@ -577,6 +769,7 @@ def publish_deposition(
                                        timeout=(15, 120)),
                 recover=check_record_published,
                 recover_on_status=frozenset({404}),
+                deadline=deadline,
             )
             record = published_resp.json() if published_resp is not None else published_body
             raise_draft_errors(record)
@@ -585,10 +778,7 @@ def publish_deposition(
                 raise ValueError(f"Published Zenodo record has no DOI: {title}")
             return doi
         except Exception:
-            try:
-                session.delete(draft_url, headers=headers, timeout=(15, 60))
-            except requests.RequestException as error:
-                print(f"Could not discard failed draft {draft_id}: {error}", file=sys.stderr)
+            discard_draft(session, draft_url, headers, draft_id, label="failed draft")
             raise
     finally:
         if download is not None:
@@ -633,7 +823,7 @@ def publish_batch(
                     f"{license_info['rights']!r}"
                 )
             print(f"{prefix}: uploading to Zenodo ...", flush=True)
-            doi = publish_deposition(title, license_info, session)
+            doi = publish_deposition(title, license_info, session, deadline=deadline)
             existing[title] = {"pids": {"doi": {"identifier": doi}}}
             count += 1
             print(f"{prefix}: published {doi}", flush=True)

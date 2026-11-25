@@ -35,8 +35,8 @@ from .doi_license import (
 )
 from .license_terms import OTHER_IDS
 from .zenodo_catalog import (
-    RDM_JSON, ZENODO_API, build_session, catalog_artifacts, raise_draft_errors,
-    record_doi, user_records,
+    RDM_JSON, ZENODO_API, build_session, catalog_artifacts, discard_draft,
+    raise_draft_errors, record_doi, user_records,
 )
 
 # Fields the records API accepts back on a draft update.
@@ -107,10 +107,7 @@ def replace_rights(session, record_id, rights):
         published = session.post(f"{draft_url}/actions/publish", headers=headers, timeout=(15, 120))
         raise_for_zenodo(published)
     except Exception:
-        try:
-            session.delete(draft_url, headers=headers, timeout=(15, 60))
-        except requests.RequestException as error:
-            print(f"Could not discard edit draft {record_id}: {error}", file=sys.stderr)
+        discard_draft(session, draft_url, headers, record_id, label="edit draft")
         raise
     return published.json()
 
