@@ -396,6 +396,38 @@
                         "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
                     }
                 ]
+            },
+            "afni 26.3.13": {
+                "version": "20261125",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "afni_26.3.13",
+                "license": [
+                    "AFNI public domain core and restricted third-party components"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "AFNI public domain core and restricted third-party components",
+                        "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
+                    }
+                ]
+            },
+            "sumaGUI-afni 26.3.13": {
+                "version": "20261125",
+                "exec": "suma",
+                "apptainer_args": [],
+                "image": "afni_26.3.13",
+                "license": [
+                    "AFNI public domain core and restricted third-party components"
+                ],
+                "license_details": [
+                    {
+                        "license": "other-closed",
+                        "name": "AFNI public domain core and restricted third-party components",
+                        "url": "https://github.com/afni/afni/blob/master/LICENSE.txt"
+                    }
+                ]
             }
         },
         "categories": [
@@ -4422,6 +4454,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "dentateseg_0.3.2",
+                "doi": "https://doi.org/10.5281/zenodo.24526866",
                 "license": [
                     "NOASSERTION"
                 ],
@@ -13332,6 +13365,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -13341,6 +13375,7 @@
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]

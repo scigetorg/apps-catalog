@@ -1498,6 +1498,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -1507,6 +1508,7 @@
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]

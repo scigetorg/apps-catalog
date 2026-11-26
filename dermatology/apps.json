@@ -543,6 +543,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "colmap_arm64_3.12.6",
+                "doi": "https://doi.org/10.5281/zenodo.24530482",
                 "license": [
                     "BSD-3-Clause"
                 ],
@@ -559,6 +560,7 @@
                 "exec": "colmap gui",
                 "apptainer_args": [],
                 "image": "colmap_arm64_3.12.6",
+                "doi": "https://doi.org/10.5281/zenodo.24530482",
                 "license": [
                     "BSD-3-Clause"
                 ],
@@ -1026,6 +1028,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "dicom-validator_0.9.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530486",
                 "license": [
                     "BSD-3-Clause",
                     "MIT"
@@ -1680,6 +1683,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "hyperspy_arm64_2.5.0",
+                "doi": "https://doi.org/10.5281/zenodo.24529371",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -1816,6 +1820,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "instanseg_0.1.2",
+                "doi": "https://doi.org/10.5281/zenodo.24530498",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -2189,6 +2194,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "labelme_arm64_7.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24529487",
                 "license": [
                     "GPL-3.0-only"
                 ],
@@ -2205,6 +2211,7 @@
                 "exec": "labelme",
                 "apptainer_args": [],
                 "image": "labelme_arm64_7.11.0",
+                "doi": "https://doi.org/10.5281/zenodo.24529487",
                 "license": [
                     "GPL-3.0-only"
                 ],
@@ -2231,6 +2238,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "lazyslide_0.13.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530485",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -3467,6 +3475,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "nnunetv2_arm64_2.8.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530480",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -3506,6 +3515,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "octproz_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530488",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3522,6 +3532,7 @@
                 "exec": "OCTproZ",
                 "apptainer_args": [],
                 "image": "octproz_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530488",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3578,6 +3589,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "open3d_0.20.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530569",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -3703,6 +3715,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "palmettobug_0.2.11",
+                "doi": "https://doi.org/10.5281/zenodo.24530530",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -3712,6 +3725,7 @@
                 "exec": "palmettobug",
                 "apptainer_args": [],
                 "image": "palmettobug_0.2.11",
+                "doi": "https://doi.org/10.5281/zenodo.24530530",
                 "license": [
                     "GPL-3.0-only"
                 ]
@@ -4113,6 +4127,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -4122,6 +4137,7 @@
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -4405,6 +4421,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "spectral_0.26.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530729",
                 "license": [
                     "MIT"
                 ],
@@ -4431,6 +4448,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "spectral_arm64_0.26.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530719",
                 "license": [
                     "MIT"
                 ],
@@ -4762,6 +4780,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "wsidicomizer_0.32.0",
+                "doi": "https://doi.org/10.5281/zenodo.24529982",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",
@@ -4810,6 +4829,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "wsidicomizer_arm64_0.32.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530625",
                 "license": [
                     "Apache-2.0",
                     "BSD-3-Clause",

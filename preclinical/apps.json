@@ -3016,6 +3016,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "octproz_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530488",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3032,6 +3033,7 @@
                 "exec": "OCTproZ",
                 "apptainer_args": [],
                 "image": "octproz_1.8.0",
+                "doi": "https://doi.org/10.5281/zenodo.24530488",
                 "license": [
                     "GPL-3.0-or-later"
                 ],
@@ -3540,6 +3542,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
@@ -3549,6 +3552,7 @@
                 "exec": "rstudio",
                 "apptainer_args": [],
                 "image": "rstudio_2026.11.1",
+                "doi": "https://doi.org/10.5281/zenodo.24530734",
                 "license": [
                     "AGPL-3.0-only"
                 ]
