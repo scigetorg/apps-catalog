@@ -24,6 +24,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - visualization
     launchers:
@@ -42,6 +43,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - programming
       - statistics
@@ -61,6 +63,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - programming
       - statistics
@@ -81,6 +84,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - programming
     launchers:
@@ -112,6 +116,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - programming
       - statistics
@@ -132,6 +137,7 @@ packages:
       - preclinical
       - molecular-imaging
       - dermatology
+      - genomics
     categories:
       - molecular biology
       - statistics
@@ -147,6 +153,7 @@ packages:
     id: rstudio-server
     domains:
       - datascience
+      - genomics
     categories:
       - programming
       - statistics
@@ -261,6 +268,7 @@ packages:
       - microscopy
       - preclinical
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
       - programming
@@ -482,6 +490,7 @@ packages:
     id: samtools
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     launchers:
@@ -495,6 +504,7 @@ packages:
     id: bcftools
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     launchers:
@@ -508,6 +518,7 @@ packages:
     id: blast-plus
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     launchers:
@@ -521,6 +532,7 @@ packages:
     id: bowtie2
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     launchers:
@@ -534,6 +546,7 @@ packages:
     id: hmmer
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     launchers:
@@ -547,6 +560,7 @@ packages:
     id: iq-tree
     domains:
       - molecular-imaging
+      - genomics
     categories:
       - molecular biology
     # EESSI 2023.06 ships IQ-TREE 2.x (binary `iqtree2`); restrict this `iqtree3`
@@ -555,6 +569,257 @@ packages:
     launchers:
       - name: IQ-TREE
         exec: [iqtree3]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  FastQC:
+    id: fastqc
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+      - visualization
+    launchers:
+      - name: FastQC
+        exec: [fastqc]
+        gui: true
+        show_in_menu: true
+        show_in_applist: true
+
+  BEDTools:
+    id: bedtools
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: BEDTools
+        exec: [bedtools]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  HTSlib:
+    id: htslib
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: HTSlib
+        exec: [bgzip]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  BWA:
+    id: bwa
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: BWA
+        exec: [bwa]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  minimap2:
+    id: minimap2
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: minimap2
+        exec: [minimap2]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  STAR:
+    id: star
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: STAR
+        exec: [STAR]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Salmon:
+    id: salmon
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: Salmon
+        exec: [salmon]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  MultiQC:
+    id: multiqc
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+      - visualization
+    launchers:
+      - name: MultiQC
+        exec: [multiqc]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  fastp:
+    id: fastp
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: fastp
+        exec: [fastp]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Trimmomatic:
+    id: trimmomatic
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: Trimmomatic
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  GATK:
+    id: gatk
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: GATK
+        exec: [gatk]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  VCFtools:
+    id: vcftools
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: VCFtools
+        exec: [vcftools]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  DIAMOND:
+    id: diamond
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: DIAMOND
+        exec: [diamond]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  MMseqs2:
+    id: mmseqs2
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: MMseqs2
+        exec: [mmseqs]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  MUMmer:
+    id: mummer
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: MUMmer
+        exec: [nucmer]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Flye:
+    id: flye
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: Flye
+        exec: [flye]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Kraken2:
+    id: kraken2
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+    launchers:
+      - name: Kraken2
+        exec: [kraken2]
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  Pysam:
+    id: pysam
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+      - programming
+    launchers:
+      - name: Pysam
+        exec: []
+        gui: false
+        show_in_menu: false
+        show_in_applist: true
+
+  anndata:
+    id: anndata
+    domains:
+      - genomics
+    categories:
+      - molecular biology
+      - programming
+    launchers:
+      - name: AnnData
+        exec: []
         gui: false
         show_in_menu: false
         show_in_applist: true

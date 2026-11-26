@@ -135,6 +135,27 @@
         "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
         "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
       ]
+    },
+    "genomics": {
+      "source_repositories": [
+        "NeuroDesk/neurocontainers"
+      ],
+      "eessi_stacks": [
+        "2025.06"
+      ],
+      "title": "genomicsdesktop",
+      "description": "Genomics and single-cell bioinformatics: Viash Hub, OpenPipelines, Nextflow, EESSI genomics tools, and single-cell analysis",
+      "registry": "ghcr.io/scigetorg/genomicsdesktop",
+      "defaultVersion": "latest",
+      "containerName": "genomicsdesktop",
+      "volumeMount": "genomicsdesktop-home",
+      "defaultStorageMount": "genomicsdesktop-storage",
+      "appJsonUrl": "https://apps-catalog.scigetorg.workers.dev/genomics/apps.json",
+      "eessiCatalogUrl": "https://apps-catalog.scigetorg.workers.dev/genomics/eessi.json",
+      "downloadUrls": [
+        "https://object-store.rc.nectar.org.au/v1/AUTH_dead991e1fa847e3afcca2d3a7041f5d/neurodesk/{file}",
+        "https://neurocontainers.s3.us-east-2.amazonaws.com/{file}"
+      ]
     }
   }
 }
