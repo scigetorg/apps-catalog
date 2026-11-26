@@ -13,6 +13,9 @@
         "dermatology": [
             "2025.06"
         ],
+        "genomics": [
+            "2025.06"
+        ],
         "microscopy": [
             "2025.06"
         ],
@@ -27,6 +30,36 @@
         ]
     },
     "tools": {
+        "anndata": {
+            "package": "anndata",
+            "categories": [
+                "molecular biology",
+                "programming"
+            ],
+            "description": "anndata is a Python package for handling annotated data matrices in memory and on disk, positioned between pandas and xarray",
+            "homepage": "https://github.com/scverse/anndata",
+            "apps": {
+                "AnnData 0.12.16 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "anndata/0.12.16-foss-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.12.16",
+                    "toolchain": "foss/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "arrow": {
             "package": "Arrow",
             "categories": [
@@ -111,6 +144,37 @@
                     "gpu": false,
                     "exec": [
                         "bcftools"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "bedtools": {
+            "package": "BEDTools",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "BEDTools: a powerful toolset for genome arithmetic. The BEDTools utilities allow one to address common genomics tasks such as finding feature overlaps and computing coverage. The utilities are largely based on four widely-used file formats: BED, GFF/GTF, VCF, and SAM/BAM.",
+            "homepage": "https://bedtools.readthedocs.io/",
+            "apps": {
+                "BEDTools 2.31.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "BEDTools/2.31.1-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.31.1",
+                    "toolchain": "GCC/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "bedtools"
                     ],
                     "gui": false,
                     "show_in_menu": false,
@@ -239,6 +303,37 @@
                 }
             }
         },
+        "bwa": {
+            "package": "BWA",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Burrows-Wheeler Aligner (BWA) is an efficient program that aligns relatively short nucleotide sequences against a long reference sequence such as the human genome.",
+            "homepage": "https://bio-bwa.sourceforge.net/",
+            "apps": {
+                "BWA 0.7.19 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "BWA/0.7.19-GCCcore-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.7.19",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "bwa"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "dask": {
             "package": "dask",
             "categories": [
@@ -264,6 +359,162 @@
                     ],
                     "gpu": false,
                     "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "diamond": {
+            "package": "DIAMOND",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Accelerated BLAST compatible local sequence aligner",
+            "homepage": "https://github.com/bbuchfink/diamond",
+            "apps": {
+                "DIAMOND 2.1.14 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "DIAMOND/2.1.14-GCC-14.2.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.1.14",
+                    "toolchain": "GCC/14.2.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "diamond"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "fastp": {
+            "package": "fastp",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "A tool designed to provide fast all-in-one preprocessing for FastQ files. This tool is developed in C++ with multithreading supported to afford high performance.",
+            "homepage": "https://github.com/OpenGene/fastp",
+            "apps": {
+                "fastp 1.1.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "fastp/1.1.0-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.1.0",
+                    "toolchain": "GCC/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "fastp"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "fastqc": {
+            "package": "FastQC",
+            "categories": [
+                "molecular biology",
+                "visualization"
+            ],
+            "description": "FastQC is a quality control application for high throughput sequence data. It reads in sequence data in a variety of formats and can either provide an interactive application to review the results of several different QC checks, or create an HTML based report which can be integrated into a pipeline.",
+            "homepage": "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/",
+            "apps": {
+                "FastQC 0.12.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "FastQC/0.12.1-GCCcore-14.3.0-Java-21",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.12.1",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "fastqc"
+                    ],
+                    "gui": true,
+                    "show_in_menu": true,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "flye": {
+            "package": "Flye",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Flye is a de novo assembler for long and noisy reads, such as those produced by PacBio and Oxford Nanopore Technologies.",
+            "homepage": "https://github.com/fenderglass/Flye",
+            "apps": {
+                "Flye 2.9.6 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Flye/2.9.6-GCC-14.2.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.9.6",
+                    "toolchain": "GCC/14.2.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "flye"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "gatk": {
+            "package": "GATK",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "The Genome Analysis Toolkit or GATK is a software package developed at the Broad Institute to analyse next-generation resequencing data. The toolkit offers a wide variety of tools, with a primary focus on variant discovery and genotyping as well as strong emphasis on data quality assurance. Its robust architecture, powerful processing engine and high-performance computing features make it capable of taking on projects of any size.",
+            "homepage": "https://www.broadinstitute.org/gatk/",
+            "apps": {
+                "GATK 4.6.2.0 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "GATK/4.6.2.0-GCCcore-14.3.0-Java-17",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "4.6.2.0",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "gatk"
+                    ],
                     "gui": false,
                     "show_in_menu": false,
                     "show_in_applist": true
@@ -393,6 +644,37 @@
                 }
             }
         },
+        "htslib": {
+            "package": "HTSlib",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "A C library for reading/writing high-throughput sequencing data. This package includes the utilities bgzip and tabix",
+            "homepage": "https://www.htslib.org/",
+            "apps": {
+                "HTSlib 1.22.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "HTSlib/1.22.1-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.22.1",
+                    "toolchain": "GCC/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "bgzip"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "ijulia": {
             "package": "IJulia",
             "categories": [
@@ -515,6 +797,37 @@
                 }
             }
         },
+        "kraken2": {
+            "package": "Kraken2",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Kraken is a system for assigning taxonomic labels to short DNA sequences, usually obtained through metagenomic studies. Previous attempts by other bioinformatics software to accomplish this task have often used sequence alignment or machine learning techniques that were quite slow, leading to the development of less sensitive but much faster abundance estimation programs. Kraken aims to achieve high sensitivity and high speed by utilizing exact alignments of k-mers and a novel classification algorithm.",
+            "homepage": "https://github.com/DerrickWood/kraken2/wiki",
+            "apps": {
+                "Kraken2 2.17.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Kraken2/2.17.1-gompi-2025b",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.17.1",
+                    "toolchain": "gompi/2025b",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "kraken2"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "lammps": {
             "package": "LAMMPS",
             "categories": [
@@ -540,6 +853,131 @@
                     "gpu": false,
                     "exec": [
                         "lmp"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "minimap2": {
+            "package": "minimap2",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Minimap2 is a fast sequence mapping and alignment program that can find overlaps between long noisy reads, or map long reads or their assemblies to a reference genome optionally with detailed alignment (i.e. CIGAR). At present, it works efficiently with query sequences from a few kilobases to ~100 megabases in length at an error rate ~15%. Minimap2 outputs in the PAF or the SAM format. On limited test data sets, minimap2 is over 20 times faster than most other long-read aligners. It will replace BWA-MEM for long reads and contig alignment.",
+            "homepage": "https://github.com/lh3/minimap2",
+            "apps": {
+                "minimap2 2.30 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "minimap2/2.30-GCCcore-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.30",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "minimap2"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "mmseqs2": {
+            "package": "MMseqs2",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "MMseqs2: ultra fast and sensitive search and clustering suite",
+            "homepage": "https://mmseqs.com",
+            "apps": {
+                "MMseqs2 18-8cc5c (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "MMseqs2/18-8cc5c-gompi-2025a",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "18-8cc5c",
+                    "toolchain": "gompi/2025a",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "mmseqs"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "multiqc": {
+            "package": "MultiQC",
+            "categories": [
+                "molecular biology",
+                "visualization"
+            ],
+            "description": "Aggregate results from bioinformatics analyses across many samples into a single report. MultiQC searches a given directory for analysis logs and compiles an HTML report. It's a general use tool, perfect for summarising the output from numerous bioinformatics tools.",
+            "homepage": "https://multiqc.info",
+            "apps": {
+                "MultiQC 1.28 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "MultiQC/1.28-gfbf-2024a",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.28",
+                    "toolchain": "gfbf/2024a",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "multiqc"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "mummer": {
+            "package": "MUMmer",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "MUMmer is a system for rapidly aligning entire genomes, whether in complete or draft form. AMOS makes use of it.",
+            "homepage": "https://mummer.sourceforge.net/",
+            "apps": {
+                "MUMmer 4.0.1 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "MUMmer/4.0.1-GCCcore-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "4.0.1",
+                    "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "nucmer"
                     ],
                     "gui": false,
                     "show_in_menu": false,
@@ -690,6 +1128,36 @@
                     ],
                     "software_version": "6.5.0",
                     "toolchain": "GCCcore/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "pysam": {
+            "package": "Pysam",
+            "categories": [
+                "molecular biology",
+                "programming"
+            ],
+            "description": "Pysam is a python module for reading and manipulating Samfiles. It's a lightweight wrapper of the samtools C-API. Pysam also includes an interface for tabix.",
+            "homepage": "https://github.com/pysam-developers/pysam",
+            "apps": {
+                "Pysam 0.23.3 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Pysam/0.23.3-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.23.3",
+                    "toolchain": "GCC/14.3.0",
                     "arch": [
                         "aarch64",
                         "x86_64"
@@ -863,6 +1331,37 @@
                 }
             }
         },
+        "salmon": {
+            "package": "Salmon",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Salmon is a wicked-fast program to produce a highly-accurate, transcript-level quantification estimate from RNA-seq data.",
+            "homepage": "https://github.com/COMBINE-lab/salmon",
+            "apps": {
+                "Salmon 1.10.3 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Salmon/1.10.3-GCC-13.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "1.10.3",
+                    "toolchain": "GCC/13.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "salmon"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "samtools": {
             "package": "SAMtools",
             "categories": [
@@ -985,6 +1484,37 @@
                 }
             }
         },
+        "star": {
+            "package": "STAR",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "STAR aligns RNA-seq reads to a reference genome using uncompressed suffix arrays.",
+            "homepage": "https://github.com/alexdobin/STAR",
+            "apps": {
+                "STAR 2.7.11b (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "STAR/2.7.11b-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "2.7.11b",
+                    "toolchain": "GCC/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "STAR"
+                    ],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
         "statsmodels": {
             "package": "statsmodels",
             "categories": [
@@ -1009,6 +1539,66 @@
                     ],
                     "gpu": false,
                     "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "trimmomatic": {
+            "package": "Trimmomatic",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "Trimmomatic performs a variety of useful trimming tasks for illumina paired-end and single ended data.The selection of trimming steps and their associated parameters are supplied on the command line.",
+            "homepage": "http://www.usadellab.org/cms/?page=trimmomatic",
+            "apps": {
+                "Trimmomatic 0.40 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "Trimmomatic/0.40-Java-17",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.40",
+                    "toolchain": "system",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [],
+                    "gui": false,
+                    "show_in_menu": false,
+                    "show_in_applist": true
+                }
+            }
+        },
+        "vcftools": {
+            "package": "VCFtools",
+            "categories": [
+                "molecular biology"
+            ],
+            "description": "The aim of VCFtools is to provide easily accessible methods for working with complex genetic variation data in the form of VCF files.",
+            "homepage": "https://vcftools.github.io",
+            "apps": {
+                "VCFtools 0.1.17 (EESSI/2025.06)": {
+                    "backend": "eessi",
+                    "stack": "2025.06",
+                    "module": "VCFtools/0.1.17-GCC-14.3.0",
+                    "required_modules": [
+                        "EESSI/2025.06"
+                    ],
+                    "software_version": "0.1.17",
+                    "toolchain": "GCC/14.3.0",
+                    "arch": [
+                        "aarch64",
+                        "x86_64"
+                    ],
+                    "gpu": false,
+                    "exec": [
+                        "vcftools"
+                    ],
                     "gui": false,
                     "show_in_menu": false,
                     "show_in_applist": true

@@ -402,6 +402,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "afni_26.3.13",
+                "doi": "https://doi.org/10.5281/zenodo.24547665",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],
@@ -418,6 +419,7 @@
                 "exec": "suma",
                 "apptainer_args": [],
                 "image": "afni_26.3.13",
+                "doi": "https://doi.org/10.5281/zenodo.24547665",
                 "license": [
                     "AFNI public domain core and restricted third-party components"
                 ],

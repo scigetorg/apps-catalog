@@ -4582,6 +4582,7 @@
                 "exec": "",
                 "apptainer_args": [],
                 "image": "relion_5.1.1",
+                "doi": "https://doi.org/10.5281/zenodo.24547668",
                 "license": [
                     "GPL-2.0-only"
                 ]
