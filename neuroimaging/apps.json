@@ -9291,19 +9291,48 @@
     "minc": {
         "apps": {
             "minc 1.9.18": {
-                "version": "20230208",
+                "version": "20261127",
                 "exec": "",
+                "apptainer_args": [],
                 "image": "minc_1.9.18",
-                "doi": "https://doi.org/10.5281/zenodo.18931388",
                 "license": [
                     "GPL-3.0"
                 ]
             },
             "registerGUI-minc 1.9.18": {
-                "version": "20230208",
+                "version": "20261127",
                 "exec": "register",
+                "apptainer_args": [],
                 "image": "minc_1.9.18",
-                "doi": "https://doi.org/10.5281/zenodo.18931388",
+                "license": [
+                    "GPL-3.0"
+                ]
+            }
+        },
+        "categories": [
+            "image segmentation",
+            "image registration",
+            "structural imaging"
+        ],
+        "description": "This software repository contains open-source tools developed at the McConnell Brain Imaging Centre, Montreal Neurological Institute The main documentation site for this repository is located at wikibooks",
+        "citation": "Vincent RD, Neelin P, Khalili-Mahani N, et al. MINC 2.0: a flexible format for multi-modal images. Front Neuroinform. 2016;10:35. doi:10.3389/fninf.2016.00035"
+    },
+    "minc_arm64": {
+        "apps": {
+            "minc_arm64 1.9.18": {
+                "version": "20261127",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "minc_arm64_1.9.18",
+                "license": [
+                    "GPL-3.0"
+                ]
+            },
+            "registerGUI-minc_arm64 1.9.18": {
+                "version": "20261127",
+                "exec": "register",
+                "apptainer_args": [],
+                "image": "minc_arm64_1.9.18",
                 "license": [
                     "GPL-3.0"
                 ]
@@ -13598,6 +13627,28 @@
             "electrophysiology"
         ],
         "description": "SigViewer is a viewing application for biosignals such as EEG or MEG time series. In addition to viewing raw data, SigViewer can also create, edit, and display event information (such as annotations or artifact selections)."
+    },
+    "simcortex": {
+        "apps": {
+            "simcortex 2.0.0": {
+                "version": "20261127",
+                "exec": "",
+                "apptainer_args": [],
+                "image": "simcortex_2.0.0",
+                "license": [
+                    "Apache-2.0",
+                    "CC-BY-SA-4.0"
+                ]
+            }
+        },
+        "categories": [
+            "structural imaging",
+            "image segmentation",
+            "shape analysis",
+            "machine learning"
+        ],
+        "citation": "Moradkhani K, Rushmore RJ, Bouix S.\nSimCortex: Collision-free Simultaneous Cortical Surfaces\nReconstruction. 2025.\nhttps://doi.org/10.1007/978-3-032-06774-6_26\n\nMoradkhani K, Bouix S.\nSimCortex v2: Joint Cortical Surface Reconstruction with\nNear-Zero Collisions and Self-Intersections.\nhttps://arxiv.org/abs/2610.07378",
+        "description": "SimCortex is a deep learning framework for joint cortical surface reconstruction from T1-weighted MRI.\nIt reconstructs bilateral white matter and pial surfaces through MRI preprocessing, segmentation, initial surface generation, and joint surface deformation.\nEnd-to-end MRI-only inference does not require FreeSurfer. Single-subject and BIDS-like batch inference are supported. Surfaces can be exported in MNI152 and native scanner RAS space.\nNVIDIA GPU acceleration is supported. SimCortex is intended for research use.\nPretrained checkpoints and the MNI152 reference image must be supplied separately.\nOfficial pretrained models: https://doi.org/10.5281/zenodo.22710781\nUse the reference template documented in the upstream SimCortex v2.0.0 release."
     },
     "skan": {
         "apps": {

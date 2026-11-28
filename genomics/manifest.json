@@ -1,7 +1,7 @@
 {
     "entries": 50,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "b56af26896d5dd83d580be99667fc534ce4d2887"
+        "NeuroDesk/neurocontainers": "1154aae789ece9ec2fc94dec6e41be74e3019e4c"
     },
     "app_sources": {
         "datalad": {

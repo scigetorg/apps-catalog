@@ -1,7 +1,7 @@
 {
-    "entries": 813,
+    "entries": 815,
     "source_commits": {
-        "NeuroDesk/neurocontainers": "b56af26896d5dd83d580be99667fc534ce4d2887"
+        "NeuroDesk/neurocontainers": "1154aae789ece9ec2fc94dec6e41be74e3019e4c"
     },
     "app_sources": {
         "afni": {
@@ -1036,6 +1036,10 @@
             "minc 1.9.18": "NeuroDesk/neurocontainers",
             "registerGUI-minc 1.9.18": "NeuroDesk/neurocontainers"
         },
+        "minc_arm64": {
+            "minc_arm64 1.9.18": "NeuroDesk/neurocontainers",
+            "registerGUI-minc_arm64 1.9.18": "NeuroDesk/neurocontainers"
+        },
         "mipav": {
             "mipav 11.3.3": "NeuroDesk/neurocontainers"
         },
@@ -1545,6 +1549,9 @@
         "sigviewer_arm64": {
             "sigviewer_arm64 0.6.4": "NeuroDesk/neurocontainers",
             "sigviewerGUI-sigviewer_arm64 0.6.4": "NeuroDesk/neurocontainers"
+        },
+        "simcortex": {
+            "simcortex 2.0.0": "NeuroDesk/neurocontainers"
         },
         "skan": {
             "skan 0.13.1": "NeuroDesk/neurocontainers"
